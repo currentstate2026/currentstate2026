@@ -261,6 +261,9 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 .ed [data-findings] h3 + .two::before{grid-column:1/-1;margin-bottom:-12px}
 .ed [data-findings] h3 + p::before,.ed [data-findings] .tbl + p::before,.ed [data-findings] .two + p::before{content:"READING"}
 .ed [data-findings] h3{margin-top:var(--space-5) !important}
+.ed .subhead.turn{margin-top:var(--space-7) !important;padding-top:var(--space-5);border-top:var(--hairline) solid var(--ink)}
+.ed .subhead.turn::after{display:none}
+.ed .subhead.turn + .pull{border-top:0;margin-top:var(--space-2);padding-top:var(--space-2)}
 /* 引言 */
 .pull{margin:var(--space-4) 0 var(--space-5);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line);max-width:var(--measure)}
 .pull p{font-family:var(--font-serif);font-size:22px;line-height:40px;font-weight:500;letter-spacing:.04em}
@@ -865,9 +868,9 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <aside class="keyf" aria-label="關鍵發現">
       <p class="label">KEY FINDINGS ─ 關鍵發現</p>
       <div class="keyf-grid">
-        <div><p class="keyf-num num">92% <small>vs</small> 43%</p><p class="keyf-txt">考前一天兩個方法都完成的孩子，自評「達成目標」的是 92%；只有部分完成的孩子是 43%。</p><p class="keyf-note">分母：各組孩子。這是孩子的自評，不是成績；兩組人數都不多。</p></div>
-        <div><p class="keyf-num num">九成 <small>vs</small> 42%</p><p class="keyf-txt">選擇「整理易錯重點」的孩子，九成做完了，但考後覺得有幫助的是 42%。</p><p class="keyf-note">分母：選擇這個方法的孩子。做完，不一定覺得有用。</p></div>
-        <div><p class="keyf-num num">65% <small>vs</small> 10%</p><p class="keyf-txt">錯題分類時，65% 的孩子勾了「粗心失誤」，勾「觀念還不熟悉」的只有 10%；但全班失分率最高的主題是「地震」（12.7%）。</p><p class="keyf-note">分母：填寫錯題分類的孩子，可複選。失分率是另一種指標，兩者不直接比較大小。</p></div>
+        <div><p class="keyf-num num">92% <small>vs</small> 43%</p><p class="keyf-txt">兩個方法都完成的孩子，自評「達成目標」的比例較高。</p><p class="keyf-note">兩組孩子各自的自評比例，不是成績</p></div>
+        <div><p class="keyf-num num">90%<small>／</small>42%</p><p class="keyf-txt">「整理易錯重點」多數人做完，但覺得有幫助的不到一半。</p><p class="keyf-note">完成率／覺得有幫助，分母都是選這個方法的孩子</p></div>
+        <div><p class="keyf-num num">65%<small>／</small>10%</p><p class="keyf-txt">錯題多被歸因為粗心，很少孩子認為是觀念不熟。</p><p class="keyf-note">「粗心」／「觀念不熟」的勾選比例，可複選</p></div>
       </div>
       <p class="keyf-foot">以上是一個班的匿名統計，只當作趨勢來看，不當作因果。</p>
     </aside>
@@ -935,7 +938,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </table></div>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">寫承諾對孩子來說不難，但要回頭查考卷、寫出正確的觀念，對四年級來說就比較吃力。另外，覺得「沒達到預期」的孩子，成績其實也不差，他們的失望多半來自對自己的高要求。</p>
   
-    <p class="subhead" style="margin-top:var(--space-5)">我的反思</p>
+    <p class="subhead turn" style="margin-top:var(--space-5)">我的反思</p>
     <blockquote class="pull"><p>「粗心」是一個很安全的答案，要讓孩子願意說「我其實不懂」，需要先讓他覺得說出來是安全的。</p><cite>── 摘自本篇反思</cite></blockquote>
     <h2>做完之後</h2>
     <div class="prose">
@@ -1122,7 +1125,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
    下方程式會再過濾一次非公開狀態，作為第二道防線。
 ---------------------------------------------------------------- */
 /* ===== 網站編輯：你修改過的文字存在這裡（由編輯模式自動寫入，請勿手動修改） ===== */
-var EDITS = /*EDITS_START*/{"about:6@after":["\u003cspan>現在的我，還在學習怎麼把這些不同領域的知識慢慢整合起來。\u003c/span>"],"about:6":"不過，有些事情即使有了方法，還是不一定能順利執行。這也讓我對心理學，以及人的想法、情緒和行為產生更多興趣。\u003cbr>","home:12":"我的生活實驗筆記","newsletter:4":"平常我喜歡研究 Notion、AI 和各種工具，也對心理學及人的想法與行為很感興趣。","newsletter:6":"這時候，我通常會嘗試其他方法，看看結果會不會不一樣。","newsletter:7":"當然，不是每次都有效。有些方法確實解決了問題，有些則是在實際使用後，才發現還有需要調整的地方。","newsletter:21":"不一定每次都有完整的答案，有些方法也可能試了才發現不適合。\u003cbr>但我覺得，這些嘗試和調整的過程，本身就很值得記錄。","t:case-midterm-reflection:22":"90%&nbsp;\u003csmall>vs\u003c/small> 42%","t:case-midterm-reflection:23":"選擇「整理易錯重點」的孩子，90%做完了，但考後覺得有幫助的是 42%。","t:case-midterm-reflection:27":"","t:case-midterm-reflection:24":"","t:case-midterm-reflection:21":""}/*EDITS_END*/;
+var EDITS = /*EDITS_START*/{"about:6@after": ["\u003cspan>現在的我，還在學習怎麼把這些不同領域的知識慢慢整合起來。\u003c/span>"], "about:6": "不過，有些事情即使有了方法，還是不一定能順利執行。這也讓我對心理學，以及人的想法、情緒和行為產生更多興趣。\u003cbr>", "home:12": "我的生活實驗筆記", "newsletter:4": "平常我喜歡研究 Notion、AI 和各種工具，也對心理學及人的想法與行為很感興趣。", "newsletter:6": "這時候，我通常會嘗試其他方法，看看結果會不會不一樣。", "newsletter:7": "當然，不是每次都有效。有些方法確實解決了問題，有些則是在實際使用後，才發現還有需要調整的地方。", "newsletter:21": "不一定每次都有完整的答案，有些方法也可能試了才發現不適合。\u003cbr>但我覺得，這些嘗試和調整的過程，本身就很值得記錄。"}/*EDITS_END*/;
 var PENDING = {};
 var EDITING = false;
 var ALLOWED = {STRONG:1,B:1,EM:1,I:1,BR:1,SMALL:1,SPAN:1};
@@ -1181,6 +1184,7 @@ function renderAfter(base,k){
 function tagLeaves(root, prefix){
   var n=0;
   Array.prototype.slice.call(root.querySelectorAll("*")).forEach(function(el){
+    if(!root.contains(el)) return; /* 已被前面的修改取代的舊節點，不再編號 */
     if(ALLOWED[el.tagName] && el.parentElement && isLeaf(el.parentElement)) return;
     if(!isLeaf(el)) return;
     if(el.parentElement && el.parentElement!==root && isLeaf(el.parentElement)) return;
