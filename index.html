@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Potter Lien 個人品牌素材庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: 編輯式紙本版面。左側窄欄放直書章節名，右側寬欄放內容；分層靠髮絲線，不靠陰影。
+   Tokens 與「Potter Lien 品牌設計系統」一致，只在這裡定義一次。 */
+:root{
+  --paper:#F7F3EA; --paper-deep:#E8DFD1; --paper-raised:#FCFAF5;
+  --ink:#3E3A39; --ink-muted:#625C57; --line:#D9CFBF; --line-strong:#8A8279;
+  --sage:#A6B1A1; --mist:#9BAAB0; --flax:#C2B58E;
+  --sage-soft:#DFE4DB; --mist-soft:#DCE3E5; --flax-soft:#EDE6D3;
+  --sage-ink:#526049; --mist-ink:#4E5F66; --flax-ink:#665C3A;
+  --font-serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --font-sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --space-1:4px; --space-2:8px; --space-3:16px; --space-4:24px; --space-5:40px; --space-6:64px; --space-7:104px;
+  --radius-sm:2px; --radius-md:6px; --radius-pill:999px;
+  --measure:36em; --container:1080px; --hairline:1px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.875;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-serif);font-weight:600;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--sage-ink);text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:var(--radius-sm)}
+.label{font-size:12px;line-height:18px;font-weight:500;letter-spacing:.16em;color:var(--ink-muted)}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--space-4)}
+[hidden]{display:none !important}
+
+/* header */
+.top{border-bottom:var(--hairline) solid var(--line)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap;padding-top:var(--space-3);padding-bottom:var(--space-3)}
+.mark{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.seal{width:34px;height:34px;border:1.5px solid var(--flax);display:grid;place-items:center;font-family:var(--font-serif);font-weight:600;font-size:18px;color:var(--flax-ink);border-radius:var(--radius-sm)}
+.mark b{font-family:var(--font-serif);font-weight:600;font-size:17px;letter-spacing:.06em}
+.nav{display:flex;gap:var(--space-4);flex-wrap:wrap}
+.nav a{color:var(--ink-muted);text-decoration:none;font-size:15px;padding:2px 0;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--ink)}
+.nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* editorial grid: side label + content */
+.sheet{display:grid;grid-template-columns:72px 1fr;gap:var(--space-5);padding-top:var(--space-6)}
+.side{position:relative}
+.vlabel{writing-mode:vertical-rl;font-family:var(--font-serif);font-size:15px;letter-spacing:.4em;color:var(--ink-muted);border-left:var(--hairline) solid var(--line);padding-left:var(--space-2);position:sticky;top:var(--space-5)}
+.main{min-width:0}
+.block{padding-bottom:var(--space-6)}
+.block+ .block{border-top:var(--hairline) solid var(--line);padding-top:var(--space-5)}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap}
+.head h2{font-size:24px;line-height:36px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 220px;gap:var(--space-5);align-items:end;padding-bottom:var(--space-6)}
+.hero h1{font-size:clamp(30px,5vw,44px);line-height:1.3;letter-spacing:.04em}
+.hero .lede{margin-top:var(--space-4);max-width:var(--measure);color:var(--ink-muted)}
+.hero .meta{margin-top:var(--space-4);display:flex;gap:var(--space-2);flex-wrap:wrap}
+.hero svg{width:100%;height:auto}
+.ill{stroke:var(--sage-ink);stroke-width:1.25;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ill-fill{fill:var(--sage)}
+.ill-flax{fill:var(--flax)}
+
+/* chips & tags */
+.chip{display:inline-flex;align-items:center;font-size:13px;line-height:22px;padding:1px 12px;border-radius:var(--radius-pill);border:var(--hairline) solid var(--line);color:var(--ink-muted);background:transparent}
+.t-work{background:var(--sage-soft);color:var(--sage-ink);border-color:transparent}
+.t-project{background:var(--flax-soft);color:var(--flax-ink);border-color:transparent}
+.t-note{background:var(--mist-soft);color:var(--mist-ink);border-color:transparent}
+.t-asset{background:var(--paper-deep);color:var(--ink-muted);border-color:transparent}
+.prog{font-size:12px;letter-spacing:.1em;color:var(--flax-ink)}
+
+/* section index */
+.index{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--hairline) solid var(--ink)}
+.index a{display:flex;flex-direction:column;gap:var(--space-1);padding:var(--space-3) var(--space-3) var(--space-4) 0;text-decoration:none;color:var(--ink);border-right:var(--hairline) solid var(--line)}
+.index a+ a{padding-left:var(--space-3)}
+.index a:last-child{border-right:0}
+.index b{font-family:var(--font-serif);font-weight:600;font-size:19px}
+.index span{font-size:14px;color:var(--ink-muted)}
+.index a:hover b{color:var(--sage-ink)}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+.card{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);text-decoration:none;color:var(--ink);transition:border-color .2s}
+.card:hover{border-color:var(--line-strong)}
+.card .row{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}
+.card h3{font-size:19px;line-height:30px}
+.card p{font-size:14px;line-height:24px;color:var(--ink-muted)}
+.card .foot{margin-top:auto;padding-top:var(--space-2);display:flex;justify-content:space-between;gap:var(--space-2);font-size:13px;color:var(--ink-muted)}
+.empty{border:1px dashed var(--line-strong);border-radius:var(--radius-md);padding:var(--space-4);color:var(--ink-muted);font-size:14px;line-height:24px}
+
+/* list rows (archive) */
+.rows{border-top:var(--hairline) solid var(--ink)}
+.r{display:grid;grid-template-columns:96px 72px 1fr auto;gap:var(--space-3);align-items:baseline;padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line);text-decoration:none;color:var(--ink)}
+.r:hover .rt{color:var(--sage-ink)}
+.rt{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:28px}
+.rs{display:block;font-size:14px;line-height:24px;color:var(--ink-muted);margin-top:2px}
+.rtags{display:flex;gap:var(--space-1);flex-wrap:wrap;justify-content:flex-end}
+
+/* archive tools */
+.tools{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-4)}
+.search{display:flex;align-items:center;gap:var(--space-2);border:var(--hairline) solid var(--line-strong);border-radius:var(--radius-sm);background:var(--paper-raised);padding:0 var(--space-3);max-width:480px}
+.search .label{white-space:nowrap}
+.search input{border:0;background:transparent;font:inherit;color:var(--ink);padding:10px 0;width:100%;outline:none}
+.search:focus-within{outline:2px solid var(--ink);outline-offset:3px}
+.filters{display:flex;gap:var(--space-2);flex-wrap:wrap;align-items:center}
+.filters .label{margin-right:var(--space-1);min-width:3em}
+.fbtn{font:inherit;font-size:13px;line-height:22px;padding:1px 12px;border-radius:var(--radius-pill);border:var(--hairline) solid var(--line-strong);background:transparent;color:var(--ink);cursor:pointer}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.count{font-size:13px;color:var(--ink-muted)}
+
+/* prose & article */
+.prose{max-width:var(--measure);display:flex;flex-direction:column;gap:var(--space-3)}
+.prose h3{font-size:19px;line-height:30px;margin-top:var(--space-2)}
+.lead{font-size:17px;line-height:32px}
+.art-head{display:flex;flex-direction:column;gap:var(--space-3);padding-bottom:var(--space-5);border-bottom:var(--hairline) solid var(--ink);margin-bottom:var(--space-5)}
+.art-head h1{font-size:clamp(26px,4vw,32px);line-height:1.4;letter-spacing:.03em}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3)}
+.facts div{display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:24px}
+.sec{display:grid;grid-template-columns:120px 1fr;gap:var(--space-4);padding:var(--space-5) 0;border-bottom:var(--hairline) solid var(--line)}
+.sec:last-of-type{border-bottom:0}
+.sec > .label{padding-top:6px}
+.sec h2{font-size:24px;line-height:36px;margin-bottom:var(--space-3)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);border-top:var(--hairline) solid var(--ink)}
+.steps div{padding:var(--space-3) var(--space-3) var(--space-3) 0;display:flex;flex-direction:column;gap:2px}
+.steps div+div{padding-left:var(--space-3);border-left:var(--hairline) solid var(--line)}
+.steps b{font-family:var(--font-serif);font-size:28px;line-height:1.2;color:var(--sage-ink)}
+.steps span{font-size:14px;line-height:22px;color:var(--ink-muted)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px;line-height:26px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:var(--hairline) solid var(--line)}
+th{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ink-muted);border-bottom-color:var(--ink)}
+ol.obj{margin:0;padding:0;list-style:none;counter-reset:o;display:flex;flex-direction:column}
+ol.obj li{counter-increment:o;display:grid;grid-template-columns:40px 1fr;gap:var(--space-2);padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
+ol.obj li::before{content:counter(o,decimal-leading-zero);font-family:var(--font-serif);color:var(--sage-ink)}
+ol.obj small{display:block;color:var(--ink-muted);font-size:14px}
+.pend{border:1px dashed var(--line-strong);border-radius:var(--radius-sm);padding:var(--space-3);color:var(--ink-muted);font-size:14px;line-height:24px;margin-top:var(--space-3)}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+.flow div{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);font-size:14px;line-height:24px}
+.flow b{display:block;font-family:var(--font-serif);font-size:17px;margin:2px 0 4px}
+.back{font-size:14px;text-decoration:none}
+.btn-main{display:inline-flex;align-items:center;gap:6px;background:var(--sage-ink);color:var(--paper);text-decoration:none;padding:10px 18px;border-radius:var(--radius-md);font-weight:500}
+.btn-main:hover{background:var(--ink)}
+
+/* about */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-2) var(--space-4);font-size:15px;margin:0}
+.dl dt{color:var(--ink-muted)}
+.dl dd{margin:0}
+.princ{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--hairline) solid var(--ink)}
+.princ div{padding:var(--space-3) var(--space-3) 0 0}
+.princ div+div{padding-left:var(--space-3);border-left:var(--hairline) solid var(--line)}
+.princ h3{font-size:17px;margin-bottom:var(--space-1)}
+.princ p{font-size:14px;line-height:24px;color:var(--ink-muted)}
+
+/* footer */
+footer{background:var(--paper-deep);margin-top:var(--space-6)}
+.foot-in{display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;padding-top:var(--space-5);padding-bottom:var(--space-5);font-size:14px;color:var(--ink-muted)}
+.foot-in b{font-family:var(--font-serif);color:var(--ink);font-size:16px;display:block;margin-bottom:4px}
+
+@media (max-width:720px){
+  .wrap{padding:0 var(--space-3)}
+  .sheet{grid-template-columns:1fr;gap:var(--space-3);padding-top:var(--space-5)}
+  .vlabel{writing-mode:horizontal-tb;letter-spacing:.3em;border-left:0;border-bottom:var(--hairline) solid var(--line);padding:0 0 var(--space-1);position:static;display:inline-block}
+  .hero{grid-template-columns:1fr}
+  .hero svg{max-width:160px}
+  .index{grid-template-columns:repeat(2,1fr)}
+  .index a,.index a+ a{padding:var(--space-3) var(--space-3) var(--space-3) 0;border-right:0;border-bottom:var(--hairline) solid var(--line)}
+  .cards,.two,.princ,.flow{grid-template-columns:1fr}
+  .princ div,.princ div+div{padding:var(--space-3) 0;border-left:0;border-bottom:var(--hairline) solid var(--line)}
+  .r{grid-template-columns:1fr;gap:var(--space-1)}
+  .rtags{justify-content:flex-start}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .sec{grid-template-columns:1fr;gap:var(--space-2)}
+  .steps{grid-template-columns:1fr}
+  .steps div,.steps div+div{padding:var(--space-2) 0;border-left:0;border-bottom:var(--hairline) solid var(--line)}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="mark" href="#home"><span class="seal" aria-hidden="true">連</span><b>Potter Lien</b></a>
+    <nav class="nav" aria-label="主要選單">
+      <a href="#about" data-nav="about">關於</a>
+      <a href="#works" data-nav="works">作品</a>
+      <a href="#projects" data-nav="projects">專案</a>
+      <a href="#notes" data-nav="notes">筆記</a>
+      <a href="#archive" data-nav="archive">素材庫</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HOME ===== -->
+<div class="view wrap" id="v-home">
+  <div class="sheet">
+    <div class="side"><p class="vlabel">個人品牌素材庫</p></div>
+    <div class="main">
+      <div class="hero">
+        <div>
+          <p class="label">國小自然老師・輔導組長</p>
+          <h1 style="margin-top:12px">嗨，我是 Potter。</h1>
+          <p class="lede">我是連欀婷，在高雄的國小教自然，也兼任輔導組長和自然領域召集人。這幾年我一直在想，怎麼把課設計得更清楚，讓每個孩子都能找到自己的節奏。這裡放的是我做過的課程、行政工作和學習紀錄，一邊做，一邊整理。</p>
+          <div class="meta"><span class="chip">Gemini Certified Educator</span><span class="chip">Apple Teacher</span><span class="chip">中山大學 教育研究所 碩士</span></div>
+        </div>
+        <svg viewBox="0 0 220 240" aria-hidden="true">
+          <rect class="ill-fill" x="24" y="40" width="120" height="152" rx="2"/>
+          <rect class="ill-flax" x="152" y="148" width="44" height="44" rx="2"/>
+          <path class="ill" d="M8 200 H212"/>
+          <path class="ill" d="M110 200 V96"/>
+          <path class="ill" d="M110 132 C110 110 128 96 152 96 C152 118 134 132 110 132 Z"/>
+          <path class="ill" d="M110 160 C110 142 94 130 72 130 C72 148 88 160 110 160 Z"/>
+        </svg>
+      </div>
+
+      <section class="block" aria-labelledby="h-index">
+        <div class="head"><h2 id="h-index">這裡有什麼</h2></div>
+        <nav class="index" aria-labelledby="h-index">
+          <a href="#works"><span class="label">01</span><b>作品</b><span id="n-work"></span></a>
+          <a href="#projects"><span class="label">02</span><b>專案</b><span id="n-project"></span></a>
+          <a href="#notes"><span class="label">03</span><b>筆記</b><span id="n-note"></span></a>
+          <a href="#archive"><span class="label">04</span><b>素材庫</b><span id="n-all"></span></a>
+        </nav>
+      </section>
+
+      <section class="block" aria-labelledby="h-feat">
+        <div class="head"><h2 id="h-feat">最近在做的事</h2><a href="#archive" class="back">看全部 →</a></div>
+        <div class="cards" id="featured"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<div class="view wrap" id="v-about" hidden>
+  <div class="sheet">
+    <div class="side"><p class="vlabel">關於</p></div>
+    <div class="main">
+      <section class="block">
+        <h1 style="font-size:32px;line-height:44px;margin-bottom:var(--space-4)">關於我</h1>
+        <div class="two">
+          <div class="prose">
+            <p class="lead">我在國小教自然，同時是輔導組長和自然領域召集人。</p>
+            <p>三個角色讓我每天面對不同的人：課堂上的學生、需要多一點陪伴的孩子，還有一起備課的老師。做久了我發現，不管面對的是誰，我在做的事其實很像，都是先弄清楚對方卡在哪裡，再想辦法設計一條他走得過去的路。</p>
+            <p>我在中山大學教育研究所念在職專班，論文研究組織溝通和組織文化對行政人員留任意願的影響。這份研究讓我相信，想讓一群人願意改變，營造支持的氣氛往往比用規定要求更有用。這也是我後來推動校內共備時，一直提醒自己的事。</p>
+            <p>這幾年我也大量使用 AI 工具，從設計教材到處理行政文書都有。我很喜歡它帶來的效率，但也一直提醒自己，工具是用來幫忙的，課要怎麼上、孩子需要什麼，還是要由老師來判斷。</p>
+          </div>
+          <dl class="dl">
+            <dt>現職</dt><dd>國小自然科任教師、輔導組長、自然領域召集人</dd>
+            <dt>學歷</dt><dd>國立中山大學 教育研究所 碩士（在職專班）<br>國立臺北教育大學 教育學系（輔修兒童英語教育學系）</dd>
+            <dt>認證</dt><dd>Gemini Certified Educator、Apple Teacher、Google AI Essentials</dd>
+            <dt>培訓</dt><dd>教育部 114 年中小學雙語教學學分班<br>高師大南區 SEL 種子教師培訓</dd>
+            <dt>交流</dt><dd>2026 青年百億海外圓夢基金計畫，赴澳洲見習 16 天</dd>
+            <dt>專長</dt><dd>課程設計、UDL、AI 教學與行政應用、學習數據分析</dd>
+          </dl>
+        </div>
+      </section>
+      <section class="block" aria-labelledby="h-pr">
+        <div class="head"><h2 id="h-pr">我在意的三件事</h2></div>
+        <div class="princ">
+          <div><h3>先找出卡住的地方</h3><p>上課前先用前測或聊天了解孩子的想法，再決定要怎麼教。</p></div>
+          <div><h3>讓每個孩子都有路走</h3><p>同一個任務準備圖像、操作和文字幾種方式，快的、慢的孩子都跟得上。</p></div>
+          <div><h3>用結果檢查自己</h3><p>每個目標都搭配一種評量，先試教，看結果，再修改。</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LIST VIEWS (works / projects / notes) ===== -->
+<div class="view wrap" id="v-list" hidden>
+  <div class="sheet">
+    <div class="side"><p class="vlabel" id="list-label"></p></div>
+    <div class="main">
+      <section class="block">
+        <div class="head"><h1 id="list-title" style="font-size:32px;line-height:44px"></h1><span class="count" id="list-count"></span></div>
+        <p id="list-desc" style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-4)"></p>
+        <div class="cards" id="list-cards"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ARCHIVE ===== -->
+<div class="view wrap" id="v-archive" hidden>
+  <div class="sheet">
+    <div class="side"><p class="vlabel">素材庫</p></div>
+    <div class="main">
+      <section class="block">
+        <div class="head"><h1 style="font-size:32px;line-height:44px">素材庫</h1><span class="count" id="arc-count"></span></div>
+        <div class="tools">
+          <label class="search" for="q"><span class="label" aria-hidden="true">搜尋</span><input id="q" type="search" placeholder="標題、摘要或標籤" autocomplete="off"></label>
+          <div class="filters" id="f-type" role="group" aria-label="依類型篩選"><span class="label">類型</span></div>
+          <div class="filters" id="f-tag" role="group" aria-label="依標籤篩選"><span class="label">標籤</span></div>
+        </div>
+        <div class="rows" id="arc-rows"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SINGLE ITEM ===== -->
+<div class="view wrap" id="v-item" hidden>
+  <div class="sheet">
+    <div class="side"><p class="vlabel" id="item-label"></p></div>
+    <div class="main" id="item-main"></div>
+  </div>
+</div>
+
+<!-- Item bodies: one <template> per public item, keyed by slug -->
+<template id="body-case-gender-equality-hub">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>為什麼要做這個網站</h2>
+    <div class="prose"><p>身為輔導組長，性平宣導是我每學期都要處理的業務，教育局也會發文要求辦理性平宣導和友善校園週。但資料散在中央、各縣市、輔導團和學校歷年的雲端資料夾裡，老師備課時要花很多時間找。遇到疑似事件時，也常有老師來問我，到底要先通知學務處還是輔導室。</p></div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 整理</p><div>
+    <h2>我怎麼整理</h2>
+    <div class="prose"><p>一開始我規劃的是六大類雲端資料夾，也設定好全校老師可以檢視、承辦人可以編輯。後來改成網站，因為我發現老師需要的不只是檔案，還要知道什麼時候用、遇到事情要找誰。原始檔案還是放在雲端硬碟，網站只負責當入口。</p></div>
+    <div class="tbl" style="margin-top:var(--space-3)"><table>
+      <thead><tr><th>分區</th><th>給老師用在</th></tr></thead>
+      <tbody>
+        <tr><td>關於性平</td><td>處室分工、通報流程、定義和法源，遇到事情先看這裡</td></tr>
+        <tr><td>課程架構</td><td>一到六年級每學期的教學主題，對應議題實質內涵</td></tr>
+        <tr><td>議題內涵</td><td>國小階段性 E1 到性 E13</td></tr>
+        <tr><td>參考教材</td><td>依年段整理的教案和歷年教材</td></tr>
+        <tr><td>宣導資源</td><td>分成六類共 32 筆，可以展開，也可以用關鍵字查</td></tr>
+        <tr><td>教案網站</td><td>中央、各縣市和其他學校的教案資源</td></tr>
+        <tr><td>家長專區</td><td>求助專線、親職和數位安全資源</td></tr>
+        <tr><td>學生影片專區</td><td>可以在課堂上直接播放的宣導影片</td></tr>
+      </tbody>
+    </table></div>
+    <div class="flow" style="margin-top:var(--space-3)">
+      <div><span class="label">分工</span><b>通報找誰</b>我把學務處、輔導室和老師各自要做的事和時限並排列出來，老師不用讀完法規，也知道第一步要做什麼。</div>
+      <div><span class="label">維護</span><b>讓接手的人好維護</b>宣導資源固定分六類，歷年教材依學年度放資料夾，外部資源一律連回原單位，每頁也標上更新日期。</div>
+      <div><span class="label">語氣</span><b>文字盡量客觀</b>網站以說明事實和流程為主；求助專線和緊急時撥打 110 的提醒，直接放在首頁。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 成果</p><div>
+    <h2>目前的成果</h2>
+    <div class="prose"><p>現在課程架構、教材、宣導資源、法規流程和求助資訊都集中在同一個網站，一到六年級每學期也都有對應的教學主題。</p></div>
+    <p class="pend">之後會補上老師使用的情形和回饋。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 應用</p><div>
+    <h2>這套做法也能用在企業</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>在這個網站</th><th>在企業</th></tr></thead>
+      <tbody>
+        <tr><td>依使用情境整理資料</td><td>員工知識庫、內部入口網站</td></tr>
+        <tr><td>處室分工和通報時限</td><td>合規訓練和作業流程，例如職場性騷擾申訴</td></tr>
+        <tr><td>固定分類、標示更新日期</td><td>知識管理的維護方式</td></tr>
+        <tr><td>外部資源連回原單位</td><td>確保資料來源正確、可信</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 反思</p><div>
+    <h2>做完之後</h2>
+    <p class="pend">之後補上。</p>
+  </div></div>
+</template>
+
+<template id="body-case-learning-support">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>為什麼要改</h2>
+    <div class="prose"><p>學習扶助是一整年循環的業務，從篩選測驗、成長測驗、開班、表單到經費請購，還有定期的訪視。這些資訊散在公文、實施計畫和會議紀錄裡，授課老師常來問我現在該做什麼、要交哪些表。舊版的實施計畫又是公文格式，很難看出現況和目標之間的關係。</p></div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 計畫</p><div>
+    <h2>把計畫改成從數據出發</h2>
+    <div class="steps" style="grid-template-columns:repeat(4,1fr)">
+      <div><b>1</b><strong>現況分析</strong><span>整理近三年的提報、施測、未通過、進步和受輔數據</span></div>
+      <div><b>2</b><strong>年度目標</strong><span>從數據找出缺口，訂出可以檢查的目標</span></div>
+      <div><b>3</b><strong>重點工作</strong><span>每個目標搭配實際的開班和教學做法</span></div>
+      <div><b>4</b><strong>預期效益</strong><span>用同一組數據檢查，明年再接著改</span></div>
+    </div>
+    <p style="color:var(--ink-muted);margin-top:var(--space-3);font-size:15px">寫計畫時，我也參考了鄰近學校的實施計畫和學習輔導小組會議紀錄。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 網站</p><div>
+    <h2>幫授課老師做一個網站</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>頁面</th><th>內容</th></tr></thead>
+      <tbody>
+        <tr><td>首頁</td><td>「本月重點」會依月份自動更換，也說明一級和二級扶助的差別</td></tr>
+        <tr><td>年度時程</td><td>從 7 月排到隔年 6 月，用四種顏色分出測驗、會議、扶助班和行政事項</td></tr>
+        <tr><td>授課教師</td><td>開班資訊、要交的表單、檔案格式、經費和請購步驟</td></tr>
+        <tr><td>常錯指標</td><td>各科各年級最多人沒通過的三個學習目標，以及可能的原因</td></tr>
+        <tr><td>現況數據</td><td>受輔率、受輔和未受輔學生的進步率比較、和全市的比較</td></tr>
+        <tr><td>教學資源</td><td>教材網站、科技化評量系統和相關法規</td></tr>
+        <tr><td>小組與指標</td><td>學習輔導小組的組成，以及依訪視指標整理、可以依身分篩選的準備清單</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 考量</p><div>
+    <h2>設計時的考量</h2>
+    <div class="flow">
+      <div><span class="label">主軸</span><b>從「這個月要做什麼」開始</b>這是每年都會重複的業務，所以網站以時間為主軸，而不是一長串資源清單。</div>
+      <div><span class="label">隱私</span><b>只放統計</b>網站不放學生姓名、個人成績和名冊，只呈現全校和各年級的統計，老師也只寫職稱。人數太少的數據，我會另外註明，避免誤解。</div>
+      <div><span class="label">訪視</span><b>平常就開始準備</b>我依訪視指標的三個面向，整理出各處室和授課老師要準備的資料，平常就能慢慢累積，不用等到最後才趕。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 應用</p><div>
+    <h2>這套做法也能用在企業</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>在這個方案</th><th>在企業</th></tr></thead>
+      <tbody>
+        <tr><td>現況 → 目標 → 重點工作 → 效益</td><td>年度訓練計畫、訓練需求分析</td></tr>
+        <tr><td>常錯指標</td><td>找出員工的能力落差</td></tr>
+        <tr><td>本月重點、年度時程</td><td>訓練行事曆、承辦人作業流程</td></tr>
+        <tr><td>依指標整理訪視資料</td><td>訓練品質評核（例如 TTQS）的準備</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">06 · 下一步</p><div>
+    <h2>接下來</h2>
+    <p class="pend">之後會補上網站上線後老師使用的情形，以及今年目標的達成狀況。</p>
+  </div></div>
+</template>
+
+<template id="body-project-australia-ai-lab">
+  <div class="sec"><p class="label">01 · 出發前</p><div>
+    <h2>我先寫下三個問題</h2>
+    <div class="prose"><p>我在學校同時是輔導組長、自然老師和領域召集人，三個角色各自都有讓我困擾的問題。所以出發前，我先把問題寫下來，也設計了一份觀察紀錄表，提醒自己每到一所學校都要找答案。</p></div>
+    <div class="tbl" style="margin-top:var(--space-3)"><table>
+      <thead><tr><th>問題</th><th>想知道的事</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 教學現場</td><td>老師怎麼在不增加備課負擔的情況下做到 UDL？AI 是幫忙設計，還是只是做得比較快？</td></tr>
+        <tr><td>Q2 行政</td><td>學校怎麼在效率和學生資料隱私之間拿捏？</td></tr>
+        <tr><td>Q3 社群</td><td>老師怎麼從各自嘗試，變成一起備課？</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 見習</p><div>
+    <h2>去了哪些地方</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>參訪單位</th><th>我看到的</th><th>我帶回來的做法</th></tr></thead>
+      <tbody>
+        <tr><td>Hilliard State School</td><td>iPad 融入學習、UDL 工作坊、每週一小時老師互相學習</td><td>在領域會議做簡單的工具分享</td></tr>
+        <tr><td>Kenmore South State School</td><td>創客教室、特教班的空間設計、多感官的探究課</td><td>在教室一角放情緒緩衝角，常態展示學生作品</td></tr>
+        <tr><td>Rochedale South State School</td><td>學習牆、探究教學；和夥伴一起試教「海洋資源」</td><td>單元學習牆；「開發者和海洋科學家」角色便利貼活動</td></tr>
+        <tr><td>QUT／TRI‧SPARQ-ed／UQ</td><td>STEM 工作坊的「魔法燈泡」、顯微鏡濕載片實作</td><td>把魔法燈泡放進四年級電路單元</td></tr>
+        <tr><td>The Hills Grammar School</td><td>「HI+AI」人和 AI 的分工、NotebookLM 和 SCAMPER</td><td>在一個單元試著讓 AI 整理資料，我專心引導提問</td></tr>
+        <tr><td>Plumpton HS 研討會</td><td>Dr. Amy Berry 談學生投入程度、emoji 自評</td><td>下課前用 emoji 卡讓學生自評投入程度</td></tr>
+        <tr><td>St Ives North Public School</td><td>全校共同的 3R 語言、「I do, We do, You do」</td><td>在簡報或黑板標出現在是哪個學習階段</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 答案</p><div>
+    <h2>三個問題，我找到的答案</h2>
+    <div class="flow">
+      <div><span class="label">Q1 教學現場</span><b>AI 只是幫忙加快</b>澳洲老師很少把 UDL 掛在嘴上，但備課時早就準備好圖像、操作和文字幾種方式。科技讓成果做得更快，課怎麼設計還是老師決定。</div>
+      <div><span class="label">Q2 行政</span><b>先限制使用範圍</b>我參訪的學校，AI 主要開放給老師備課，多數學生不能用，只有高中生能用學校審核過的工具。在規範還不完整之前，我覺得這是很實際的做法。</div>
+      <div><span class="label">Q3 社群</span><b>固定、簡單、常常做</b>一起備課的習慣，不是靠一兩次研習，而是每週固定時間的分享，再加上對新老師的陪伴。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 體會</p><div>
+    <h2>最深的三個體會</h2>
+    <ol class="obj">
+      <li><div><strong>不要為了用科技而用科技。</strong>課本講得清楚的內容，不用硬換成螢幕操作；科技的價值，在於幫孩子看見抽象的概念，或完成紙筆做不到的探究。</div></li>
+      <li><div><strong>早一點看見差異，先搭好鷹架。</strong>備課時就準備好圖像、操作和文字幾種方式，需要多一點引導的孩子和跑得快的孩子，都能在同一間教室找到自己的節奏。</div></li>
+      <li><div><strong>真實的問題，才會讓孩子主動投入。</strong>當學習和環保、生態這些真實問題連在一起，再把主導權交一些給孩子，他們才會自己去追問題、找答案。</div></li>
+    </ol>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 行動</p><div>
+    <h2>回來之後要做的事</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>行動</th><th>內容</th><th>目標</th><th>進度</th></tr></thead>
+      <tbody>
+        <tr><td>一 輔導行政</td><td>用 AI 整理重複的欄位、產出初稿，我只做檢查和專業判斷，資料全程去識別化</td><td>建檔時間從 30 分鐘縮短到 10 分鐘</td><td style="white-space:nowrap">進行中</td></tr>
+        <tr><td>二 學習扶助</td><td>一頁式學力盲點診斷書，加上 UDL 資源包</td><td>幫助 20 位學扶生</td><td style="white-space:nowrap">進行中</td></tr>
+        <tr><td>三 自然教學</td><td>UDL 加 AI 的差異化教案：海洋資源角色便利貼、魔法燈泡電路探究、多元成果評量</td><td>寫 3 篇實踐文章</td><td style="white-space:nowrap">進行中</td></tr>
+        <tr><td>四 領域社群</td><td>每月一次在領域會議做 AI 小分享，找夥伴一起備課</td><td>找到 3 位夥伴</td><td style="white-space:nowrap">進行中</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">06 · 應用</p><div>
+    <h2>這套做法也能用在企業</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>在這個專案</th><th>在企業</th></tr></thead>
+      <tbody>
+        <tr><td>帶著三個問題去參訪</td><td>有目的的標竿學習、外部參訪</td></tr>
+        <tr><td>觀察紀錄 → 行動方案 → 分學期執行</td><td>把訓練內容帶回工作上的計畫</td></tr>
+        <tr><td>分級開放 AI</td><td>企業內部的 AI 使用規範、資料管理</td></tr>
+        <tr><td>固定、簡單的同儕分享</td><td>內部學習社群、同儕教練</td></tr>
+        <tr><td>中英文計畫書和面試</td><td>提案撰寫和簡報能力</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">07 · 反思</p><div>
+    <h2>下次我會怎麼做</h2>
+    <ul class="prose" style="padding-left:1.2em;margin:0">
+      <li>這次的跨校試教，出發前沒有機會和組員討論，到了之後一週內就要上場，壓力很大。下次我會在出發前先安排線上共備。</li>
+      <li>這次看到的大多是教學現場，行政和 AI 倫理的第一手觀察比較少，是我下一步想補足的部分。</li>
+      <li>我已經盡力用英文交流了，但還是希望自己更勇敢一點，多爭取上台試教和跟國外老師深聊的機會。</li>
+    </ul>
+  </div></div>
+</template>
+
+<template id="body-course-g4-115-1">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>為什麼想改版</h2>
+    <div class="prose">
+      <p>去年我用 Padlet 放自然課的教材，每個單元一欄，放進度分配和 Canva 簡報。學生找得到檔案，但我發現他們其實不太清楚這個單元要學會什麼，下課後也不知道該怎麼複習。</p>
+      <p>所以今年我把它改成課程入口。學生打開一個單元，就能看到要學會什麼、接下來做什麼，學完也可以自己檢查。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 結構</p><div>
+    <h2>每個單元都有五個部分</h2>
+    <div class="steps">
+      <div><b>1</b><strong>我要學會</strong><span>用「我能……」寫的學習目標</span></div>
+      <div><b>2</b><strong>自學路徑</strong><span>課前、課中、課後要做的事，加一個生活問題</span></div>
+      <div><b>3</b><strong>教材</strong><span>依活動排好的簡報和學習單</span></div>
+      <div><b>4</b><strong>自我檢核</strong><span>學生自己勾選，看看學會多少</span></div>
+      <div><b>5</b><strong>家長</strong><span>一個可以在家一起做的小活動</span></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 設計</p><div>
+    <h2>設計時我在意的事</h2>
+    <div class="flow">
+      <div><span class="label">對照</span><b>目標和檢核用同一組句子</b>學習目標寫成「我能……」，自我檢核也用一樣的句子，孩子比較容易對照。</div>
+      <div><span class="label">安心</span><b>檢核結果只留在孩子的電腦</b>勾選紀錄老師看不到，孩子比較敢誠實勾出還沒學會的地方。</div>
+      <div><span class="label">一致</span><b>四個單元同一個版型</b>學會一個單元的用法，其他單元就不用重新摸索。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 下一步</p><div>
+    <h2>接下來要做的事</h2>
+    <p class="pend">教材要改成公開的檢視連結、補上 4-3 的教材，單元結束後也會請學生填回饋，比較改版前後的差別。</p>
+  </div></div>
+</template>
+
+<template id="body-project-sel">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>不另外上一堂情緒課</h2>
+    <div class="prose">
+      <p>參加 SEL 種子教師培訓之後，我一直在想：科任老師一週只見孩子幾節課，要怎麼做 SEL？我的答案是，不另外找時間上「情緒課」，而是把它放進原本就要上的自然課裡。</p>
+      <p>這學期我試了三種做法，從每節課幾分鐘的小練習，到一整堂課的設計，再到跨越整個期中考的反思。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 三個做法</p><div>
+    <h2>從每天，到一堂課，到一次考試</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>做法</th><th>多久一次</th><th>練習的能力</th><th>孩子做什麼</th></tr></thead>
+      <tbody>
+        <tr><td style="white-space:nowrap">情緒打卡</td><td style="white-space:nowrap">每節課</td><td>自我覺察</td><td>上課時把名字放到符合當下心情的位置，心情變了可以自己移動</td></tr>
+        <tr><td style="white-space:nowrap"><a href="#case-sel-earthquake">情緒地震儀</a></td><td style="white-space:nowrap">一堂課</td><td>五大能力</td><td>在地震防災課中，發現身體的訊號、用呼吸穩定情緒、安慰同學、規劃身心避難包</td></tr>
+        <tr><td style="white-space:nowrap"><a href="#case-midterm-reflection">期中考反思單</a></td><td style="white-space:nowrap">一次考試</td><td>自我覺察、自我管理、負責任的決定</td><td>考前訂目標、選讀書方法，考後回頭看心情、方法和錯誤原因，再寫下一次的承諾</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 情緒打卡</p><div>
+    <h2>每節課的小練習</h2>
+    <div class="prose">
+      <p>每一節自然課，孩子都會先替自己的心情打卡。這個做法是我在進階培訓聽其他老師分享後，隔週就開始試的。</p>
+      <p>有的孩子上課時還提不起勁，下課卻主動把名字移到開心的位置。我覺得這代表他有在留意自己情緒的變化。每節課都練一次，比一學期上一堂情緒課更容易變成習慣，也能替後面的自我管理打好基礎。</p>
+    </div>
+    <p class="pend">之後會補上打卡的整體紀錄，只記錄每種心情的人數，不記名字。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 串起來</p><div>
+    <h2>三件事其實在練同一件事</h2>
+    <div class="flow">
+      <div><span class="label">看見</span><b>先發現自己的狀態</b>情緒打卡看見當下的心情，地震儀看見身體的訊號，反思單看見自己準備得怎麼樣。</div>
+      <div><span class="label">調整</span><b>再想辦法調整</b>用呼吸讓自己穩下來，用讀書方法和成長承諾安排下一步。</div>
+      <div><span class="label">連結</span><b>最後想到身邊的人</b>安慰害怕的同學、在小組中分工，看到全班的匿名統計，知道自己不是唯一一個這樣想的人。</div>
+    </div>
+    <div class="prose" style="margin-top:var(--space-3)">
+      <p>做反思單時我也發現，孩子考完覺得「沒達到預期」的時候，其實分數並不低，他們的失望多半來自對自己的高要求。這讓我更確定，考試反思不只是檢討分數，也是在練習面對自己的情緒。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 下一步</p><div>
+    <h2>接下來</h2>
+    <ol class="obj">
+      <li><div>情緒地震儀拆成兩節課，加入安心提示小卡和角色扮演。</div></li>
+      <li><div>期末考再做一次反思單，加入分辨「粗心」和「觀念不熟」的練習。</div></li>
+      <li><div>從校園佈置開始，把情緒覺察和人際互動的句型放進教室和走廊。</div></li>
+    </ol>
+  </div></div>
+</template>
+
+<template id="body-case-sel-earthquake">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>從研習走進教室</h2>
+    <div class="prose">
+      <p>上學期我參加了 SEL（社會情緒學習）種子教師的初階培訓。研習中有一個概念讓我印象很深，叫「情緒雜物」：如果孩子的腦袋已經被情緒塞滿，就沒有空間學習了。回想以前面對情緒失控的孩子，我常急著要他回座位、跟他講道理，現在才明白，他那時候根本聽不進去。</p>
+      <p>所以這學期進入進階培訓前，我想試試看把 SEL 放進自己的課裡，而不是另外找時間上一堂「情緒課」。四年級自然第一單元剛好在教地震和防災，又遇上國家防災日的演練，我就從這裡開始。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 想法</p><div>
+    <h2>防震演練，也可以練「內心的避難」</h2>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>平常的防震演練</th><th>這次多加的部分</th></tr></thead>
+      <tbody>
+        <tr><td>練習什麼</td><td>趴下、掩護、穩住</td><td>發現身體的訊號，讓情緒穩下來</td></tr>
+        <tr><td>重點</td><td>避難動線，常常很匆忙</td><td>先安頓自己，再支持身邊的同學</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 設計</p><div>
+    <h2>一堂課，對應 SEL 的五大能力</h2>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-2)">我用 CASEL 的五大能力當架構，把課程分成五個部分，最後再回到自我覺察。</p>
+    <div class="tbl"><table>
+      <thead><tr><th>活動</th><th>SEL 能力</th><th>孩子做什麼</th></tr></thead>
+      <tbody>
+        <tr><td style="white-space:nowrap">1 情緒地震儀</td><td>自我覺察</td><td>播放國家級警報聲，孩子對照 0～7 級的「心靈震度」，勾選自己的身體訊號，例如心跳加快、手心出汗、肌肉緊繃</td></tr>
+        <tr><td style="white-space:nowrap">2 呼吸穩定法</td><td>自我管理</td><td>躲在桌下掩護時，練習吸氣 4 秒、閉氣 2 秒、吐氣 6 秒，讓心跳慢下來</td></tr>
+        <tr><td style="white-space:nowrap">3 我們在一起很安全</td><td>社會覺察、人際技巧</td><td>小組討論：如果身邊同學嚇到發抖、大哭，你可以對他說什麼、為他做什麼</td></tr>
+        <tr><td style="white-space:nowrap">4 身心避難包</td><td>負責任的決定</td><td>背包空間有限，除了水、手電筒這些生存物資，還要選兩樣能讓自己安心的東西，並說出理由</td></tr>
+        <tr><td style="white-space:nowrap">5 我的情緒地震波</td><td>自我覺察</td><td>在剛聽到警報、桌下呼吸、寫完避難包三個時間點標出自己的情緒，連成一條折線</td></tr>
+      </tbody>
+    </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">我把氣象署的震度分級和孩子的身體反應放在同一張表裡，讓自然課學的「震度」，也能拿來量自己心裡的震度。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 觀察</p><div>
+    <h2>孩子的反應</h2>
+    <div class="flow">
+      <div><span class="label">看得見</span><b>孩子能感受到同學的害怕</b>多數孩子都能想像，地震時身邊的同學會緊張、會害怕。</div>
+      <div><span class="label">說不出</span><b>安慰的話很有限</b>孩子想到的安慰幾乎都是「不要怕」「別緊張」。四年級的語文能力有限，需要更多句型可以參考。</div>
+      <div><span class="label">做得到</span><b>用動作補上話語</b>話雖然說得少，但很多孩子會寫下握手、拍拍肩膀這些動作，用行動表達支持。</div>
+    </div>
+    <div class="prose" style="margin-top:var(--space-3)">
+      <p>身心避難包也讓我很有收穫。孩子寫下的安心物品，有的是玩偶，有的是家人或朋友。培訓時同組的老師提醒我，這些答案其實也讓老師知道孩子心裡真正需要的是什麼，以後孩子情緒不穩的時候，可以從這裡找到幫助他的方法。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 修正</p><div>
+    <h2>下次我會這樣改</h2>
+    <ol class="obj">
+      <li><div>把一節課拆成兩節。五個活動擠在一節課太趕了，孩子討論和練習的時間都不夠。</div></li>
+      <li><div>做一張「安心提示小卡」，提供同理感受、承諾陪伴、具體引導幾種句型，再加上角色扮演，讓孩子有更多話可以說。</div></li>
+    </ol>
+  </div></div>
+
+  <div class="sec"><p class="label">06 · 延伸</p><div>
+    <h2>從一堂課，到每一節課</h2>
+    <div class="prose">
+      <p>在進階培訓中分享完這堂課後，我也聽了很多老師分享 SEL 和班級經營的結合。我覺得班級經營要走在教學前面，班級穩定了，孩子才能好好學習。所以研習後的隔週，我就在科任班級開始做兩件事：</p>
+    </div>
+    <div class="flow" style="margin-top:var(--space-3)">
+      <div><span class="label">情緒打卡</span><b>每節課都做</b>每一節自然課，孩子都會把自己的名字放到符合當下心情的位置。有的孩子上課時還提不起勁，下課卻主動把名字移到開心的位置。我覺得這代表他有在留意自己情緒的變化，而每節課都練習，也能替之後的自我管理和社會覺察打好基礎。</div>
+      <div><span class="label">小組分工</span><b>每個人都有任務</b>有些班級比較少分組，常把工作都推給同一個人。這也是機會教育，讓孩子發現自己的長處，進而幫助別人。</div>
+    </div>
+    <p class="pend">接下來我想從校園佈置開始，參考澳洲學校的學習牆，把情緒覺察和人際互動的句型放進教室和走廊。實施後會補上紀錄。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">07 · 應用</p><div>
+    <h2>這套做法也能用在企業</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>在這堂課</th><th>在企業</th></tr></thead>
+      <tbody>
+        <tr><td>把 SEL 放進原本的課，不另開一堂</td><td>把軟實力訓練放進原有的專業課程或工作流程</td></tr>
+        <tr><td>用 CASEL 五大能力對應活動</td><td>用職能模型規劃訓練內容</td></tr>
+        <tr><td>情緒地震儀、呼吸穩定法</td><td>壓力管理、情緒韌性訓練</td></tr>
+        <tr><td>我們在一起很安全</td><td>團隊心理安全感、同儕支持</td></tr>
+        <tr><td>安心提示小卡、角色扮演</td><td>溝通話術卡、情境演練</td></tr>
+        <tr><td>情緒打卡</td><td>團隊每日 check-in、員工身心狀態關懷</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">08 · 反思</p><div>
+    <h2>做完之後</h2>
+    <div class="prose">
+      <p>這堂課最後一張投影片，我寫給孩子的是：外面的世界雖然會晃動，但每個人都有能力讓自己的內心恢復平靜；保護好自己，就能成為別人身邊溫暖、可靠的存在。</p>
+      <p>其實這句話也是寫給我自己的。兩次培訓下來，我最大的體會是，老師要先照顧好自己的情緒，才有餘力陪伴孩子。SEL 不用另外找時間教，它可以就在每一堂課、每一次班級互動裡。</p>
+      <p>這學期其他和 SEL 有關的做法，整理在<a href="#project-sel">這一頁</a>。</p>
+    </div>
+  </div></div>
+</template>
+
+<template id="body-case-midterm-reflection">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>為什麼想做反思單</h2>
+    <div class="prose">
+      <p>每次發回考卷，多數孩子看完分數就收進書包了。他們知道自己考幾分，卻不太清楚自己是怎麼準備的、哪個方法有用，下一次也就照舊。</p>
+      <p>所以這學期期中考，我想讓孩子在考前先替自己設定目標、選好讀書方法，考完再回頭看看：方法有沒有做到、有沒有幫助、錯的題目到底錯在哪裡。我先在自己任教的一個四年級班級試做。這份反思單也是我這學期 <a href="#project-sel">把 SEL 放進自然課</a>的其中一個做法。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 設計</p><div>
+    <h2>一張學習單，分成考前和考後</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>時間</th><th>孩子要做的事</th></tr></thead>
+      <tbody>
+        <tr><td style="white-space:nowrap">考前一週</td><td>① 設定目標　② 寫下自己有多少把握　③ 從五種讀書方法中選擇要做的</td></tr>
+        <tr><td style="white-space:nowrap">考前一天</td><td>回頭勾選每個方法：完成、部分完成，還是尚未完成</td></tr>
+        <tr><td style="white-space:nowrap">考後</td><td>③ 考後心情和原因　④ 哪些方法真的有幫助　⑤ 錯題偵探：替每一題錯誤分類　⑥ 肯定自己　⑦ 下次要怎麼做</td></tr>
+        <tr><td style="white-space:nowrap">最後</td><td>成長承諾：「因為我想要＿＿，所以我會在＿＿（時間）做到＿＿。」</td></tr>
+      </tbody>
+    </table></div>
+    <div class="prose" style="margin-top:var(--space-3)">
+      <p>錯題偵探把錯誤分成五類：A 題目沒看清楚、B 觀念還不熟悉、C 不知道怎麼應用、D 時間安排不當、E 粗心失誤。我希望孩子不要只說「我粗心」，而是真的去想錯在哪裡。</p>
+      <p>學習單前後改了好幾版。一開始我限制每題最多勾兩項，後來發現限制太多反而讓孩子卡住，就改成至少勾一項。成長承諾原本只寫「我想要」和「我會做到」，後來加上「什麼時候」，承諾才比較具體。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 工具</p><div>
+    <h2>為了讓反思寫得出來，我另外準備的東西</h2>
+    <div class="flow">
+      <div><span class="label">考前</span><b>作戰卡</b>把每個孩子自己選的目標和方法印成一張小卡帶回家，每做完一項就打勾。</div>
+      <div><span class="label">考後</span><b>錯題提示條</b>每個孩子一張，寫出他錯了哪幾題、最需要加強的主題，以及「對照考卷，在每一題旁邊寫下 A～E」的步驟。孩子不用自己翻找，也比較不會全部都勾粗心。</div>
+      <div><span class="label">整理</span><b>試算表</b>紙本回答登錄後會自動檢查漏填、計算全班統計，也會和期中考成績對照。個別資料只有我看得到。</div>
+      <div><span class="label">回饋</span><b>給全班看的簡報</b>只放全班的平均和比例，長條圖從 0 開始，只有一兩個人的選項不顯示，避免孩子猜出是誰。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 結果</p><div>
+    <h2>我從全班的回答看到什麼</h2>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-3)">以下都是全班的匿名統計。這個班 23 人應考，人數不多，所以我只把結果當作趨勢來看，不當作因果。</p>
+
+    <h3 style="font-size:17px;margin:var(--space-3) 0 var(--space-2)">1. 把策略做完的孩子，大多覺得自己達成了目標</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>考前一天的完成情形</th><th>人數</th><th>自評「達成目標」</th></tr></thead>
+      <tbody>
+        <tr><td>兩個方法都完成</td><td>13</td><td>92%</td></tr>
+        <tr><td>有部分完成</td><td>7</td><td>43%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">這是所有比對裡差距最大的一項。不過兩組和平時考相比都進步了大約 4 分，所以我跟孩子說的是：有行動就會進步，把方法做完，更容易達到自己訂的目標。</p>
+
+    <h3 style="font-size:17px;margin:var(--space-4) 0 var(--space-2)">2. 孩子對自己的預估其實很準</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>考前把握程度</th><th>人數</th><th>期中考平均</th></tr></thead>
+      <tbody>
+        <tr><td>很有把握</td><td>6</td><td>97.7</td></tr>
+        <tr><td>普通</td><td>14</td><td>92.0</td></tr>
+      </tbody>
+    </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">少數勾「有點擔心」的孩子，分數也確實比較低。多數孩子對自己準備得好不好，心裡是有數的。</p>
+
+    <h3 style="font-size:17px;margin:var(--space-4) 0 var(--space-2)">3. 最常做完的方法，不一定最有幫助</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>讀書方法</th><th>選擇的人</th><th>考後覺得有幫助</th></tr></thead>
+      <tbody>
+        <tr><td>複習課本、習作和筆記</td><td>16</td><td>75%</td></tr>
+        <tr><td>分次複習</td><td>7</td><td>57%</td></tr>
+        <tr><td>整理易錯重點</td><td>12</td><td>42%</td></tr>
+        <tr><td>練習題目、弄懂錯因</td><td>8</td><td>25%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">「整理易錯重點」的完成率最高，有九成的人做完，但只有四成覺得有幫助。我猜孩子可能只是把重點抄一遍，沒有真的弄懂，這是我下次要教的地方。</p>
+
+    <h3 style="font-size:17px;margin:var(--space-4) 0 var(--space-2)">4. 孩子覺得自己粗心，成績卻顯示觀念還不熟</h3>
+    <div class="two">
+      <div class="tbl"><table>
+        <thead><tr><th>孩子自己的分類</th><th>比例</th></tr></thead>
+        <tbody>
+          <tr><td>E 粗心失誤</td><td>65%</td></tr>
+          <tr><td>A 題目沒看清楚</td><td>60%</td></tr>
+          <tr><td>C 不知道怎麼應用</td><td>25%</td></tr>
+          <tr><td>B 觀念還不熟悉</td><td>10%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="tbl"><table>
+        <thead><tr><th>主題</th><th>全班失分率</th></tr></thead>
+        <tbody>
+          <tr><td>地震</td><td>12.7%</td></tr>
+          <tr><td>水域環境</td><td>10.0%</td></tr>
+          <tr><td>水生生物</td><td>6.8%</td></tr>
+          <tr><td>地表變化</td><td>5.0%</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">這是最讓我意外的結果。全班失分最多的是「地震」，有 9 個孩子最弱的主題都是它，明顯是觀念上的問題，但只有一成的孩子認為自己是觀念不熟。孩子下次想做的事，也集中在「寫完再檢查」和「仔細讀題」。</p>
+
+    <h3 style="font-size:17px;margin:var(--space-4) 0 var(--space-2)">5. 越需要思考的題目，寫的人越少</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>文字題</th><th>有寫的比例</th></tr></thead>
+      <tbody>
+        <tr><td>成長承諾</td><td>86～90%</td></tr>
+        <tr><td>最想弄懂第幾題</td><td>71%</td></tr>
+        <tr><td>方法為什麼有效</td><td>57%</td></tr>
+        <tr><td>錯題的正確想法</td><td>43%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">寫承諾對孩子來說不難，但要回頭查考卷、寫出正確的觀念，對四年級來說就比較吃力。另外，覺得「沒達到預期」的孩子，平均其實也有將近 94 分，他們的失望多半來自對自己的高要求。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 下一步</p><div>
+    <h2>期末考，我想這樣調整</h2>
+    <ol class="obj">
+      <li><div>考卷發回後，先用一兩題示範怎麼分辨「粗心」和「觀念不熟」：同一題重寫一次還是不會，就不是粗心。</div></li>
+      <li><div>教孩子整理完重點後，自己出題考自己，讓「整理易錯重點」不只是抄寫。</div></li>
+      <li><div>「錯題的正確想法」改成小組一起討論，或由我先示範。</div></li>
+      <li><div>先補強地震單元，再看期末考的錯誤分類有沒有改變。</div></li>
+      <li><div>如果效果不錯，再推到我教的其他三個班。</div></li>
+    </ol>
+    <p class="pend">期末考後會補上第二輪的結果，以及孩子看到全班統計後的反應。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">06 · 應用</p><div>
+    <h2>這套做法也能用在企業訓練</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>在這張反思單</th><th>在企業訓練</th></tr></thead>
+      <tbody>
+        <tr><td>考前設定目標、選擇讀書方法</td><td>訓練前和主管一起訂學習目標、學習契約</td></tr>
+        <tr><td>考前一天的完成度檢核</td><td>學習歷程追蹤、課前作業完成率</td></tr>
+        <tr><td>孩子自評和實際成績的對照</td><td>比較學員滿意度和實際學習成效之間的落差</td></tr>
+        <tr><td>錯題提示條</td><td>個人化的測驗回饋報告</td></tr>
+        <tr><td>成長承諾</td><td>課後行動計畫，回到工作上追蹤</td></tr>
+        <tr><td>只給全班看匿名統計</td><td>團隊回饋報告，保護個人資料</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">07 · 反思</p><div>
+    <h2>做完之後</h2>
+    <div class="prose">
+      <p>做這份反思單之前，我以為孩子最缺的是讀書方法。做完才發現，他們其實很會選方法，也知道自己準備得好不好，真正難的是誠實面對錯在哪裡。「粗心」是一個很安全的答案，要讓孩子願意說「我其實不懂」，需要先讓他覺得說出來是安全的。這也是我只給全班看匿名統計、個別資料只留給自己的原因。</p>
+      <p>這次花最多時間的是登錄和整理資料。如果之後要推到四個班，我得先想辦法簡化流程，讓老師不用多花太多力氣。</p>
+    </div>
+  </div></div>
+</template>
+
+<template id="body-project-50">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>為什麼要給自己 50 天</h2>
+    <div class="prose">
+      <p>這學期我同時要教書、處理輔導室的業務，還想準備英文檢定、學日文。事情一多，最先被犧牲的總是睡覺和運動。所以九月開學，我給自己一個挑戰：連續 50 天，每天都做到六件小事。</p>
+      <p>我在 Day-0 寫下的初衷是：下半年希望能持續跨出舒適圈，在工作、生活和身心健康之間取得平衡，保有對世界的熱情。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 規則</p><div>
+    <h2>每天的六件事</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>習慣</th><th>標準</th></tr></thead>
+      <tbody>
+        <tr><td>早睡</td><td>上班日 11 點前，假日 12 點前</td></tr>
+        <tr><td>運動</td><td>至少 30 分鐘，羽球、快走、在家有氧都可以</td></tr>
+        <tr><td>閱讀</td><td>每天讀 10 頁書</td></tr>
+        <tr><td>英文</td><td>一小時，背單字加讀一篇文章</td></tr>
+        <tr><td>新技能</td><td>一小時，日文、AI 教學、影片剪輯或專案管理</td></tr>
+        <tr><td>飲食</td><td>不喝含糖飲料，喝 2000ml 的水</td></tr>
+      </tbody>
+    </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">我用 Notion 資料庫記錄，每天再發一篇【Day-N】到 Threads。公開記錄是為了讓自己有個持續前進的目標，但它不算在六項習慣裡。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 調整</p><div>
+    <h2>規則改了好幾次</h2>
+    <div class="prose"><p>開始一週後我就發現，原本的規則太死板了。打完羽球回到家已經十點多，不可能 11 點前睡；連假出去玩，也不可能每天讀英文一小時。如果照原本的規則，很快就會覺得「反正已經破功了」而放棄。所以我把每次修改都記下來：</p></div>
+    <div class="tbl" style="margin-top:var(--space-3)"><table>
+      <thead><tr><th>我改了什麼</th><th>為什麼</th></tr></thead>
+      <tbody>
+        <tr><td>從「有做／沒做」改成三種：達成、部分、未達成</td><td>只做了一半也是努力，我想看見這個差別</td></tr>
+        <tr><td>新增「彈性日」，每週最多三天</td><td>連假和聚餐需要彈性，但設上限，避免標準失去意義</td></tr>
+        <tr><td>打羽球那天，就寢標準延到 12 點</td><td>羽球團 8 點到 10 點，這是我很喜歡的運動，不想為了早睡放棄</td></tr>
+        <tr><td>早睡改由就寢時間自動判定</td><td>讓判定一致，不用每天自己猶豫算不算</td></tr>
+        <tr><td>用工作成果代替新技能也算數</td><td>趕成果報告的那天，其實也在學東西</td></tr>
+        <tr><td>連假五天完全休息，天數不往下算</td><td>Day 編號只算真正執行的日子，挑戰不再設固定結束日</td></tr>
+      </tbody>
+    </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">之後我又在每週回顧加了一段薩提爾冰山日記：記下一件事、我的反應、背後的情緒，以及下週想做的新選擇，下週再回頭看有沒有做到。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 數據</p><div>
+    <h2>前 18 天的紀錄</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>習慣</th><th>完整達成的比例</th></tr></thead>
+      <tbody>
+        <tr><td>閱讀</td><td>94%</td></tr>
+        <tr><td>飲食</td><td>94%</td></tr>
+        <tr><td>英文</td><td>83%</td></tr>
+        <tr><td>新技能</td><td>83%</td></tr>
+        <tr><td>早睡</td><td>81%（另有 19% 晚了一點）</td></tr>
+        <tr><td>運動</td><td>72%</td></tr>
+      </tbody>
+    </table></div>
+    <div class="flow" style="margin-top:var(--space-3)">
+      <div><span class="label">整體</span><b>平均達成 84%</b>18 天裡，有 9 天六件事全部做到。</div>
+      <div><span class="label">最難</span><b>運動</b>有連續三天身體太累沒運動，運動也是唯一一項會受天氣和體力影響的習慣。</div>
+      <div><span class="label">轉折</span><b>連假之後</b>中秋連假前的 10 天平均 92%，連假後的 8 天降到 75%。英文和新技能最先掉下來，加班的日子也最容易破功。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 心得</p><div>
+    <h2>我學到的事</h2>
+    <div class="prose">
+      <p>最大的收穫是，我發現自己需要的不是更強的意志力，而是一套允許自己不完美的規則。「部分達成」和「彈性日」看起來像是放水，但正是因為有它們，我才沒有在第一次破功時就放棄。</p>
+      <p>第二個發現是，休息之後重新開始，比一直維持更難。連假前我幾乎每天都做到，回來之後卻花了好幾天才找回節奏。下次遇到長假，我會先替自己安排一個「回來第一天」的最低標準。</p>
+      <p>做完才發現，這其實和我設計課程很像：目標要具體、標準要清楚、要保留彈性，也要定期看數據回頭調整。只是這次，學習者是我自己。</p>
+    </div>
+    <p class="pend">Day-18 之後的紀錄還在整理，之後會補上完整的 50 天結果。</p>
+  </div></div>
+</template>
+
+<template id="body-case-transition-briefing">
+  <div class="sec"><p class="label">01 · 起點</p><div>
+    <h2>這場說明會在做什麼</h2>
+    <div class="prose">
+      <p>六年級的孩子明年就要上國中了。很多孩子和家長只知道學區裡有哪幾所學校，卻不清楚每一所的特色。所以輔導室每年都會辦升學輔導說明會，邀請學區國中派人來，輪流向六年級學生介紹自己的學校。</p>
+      <p>當天看起來只是一個下午、每校 10 分鐘的簡報，但從十月發文開始，我有將近兩個月都在處理聯繫的事。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 流程</p><div>
+    <h2>從發文到當天</h2>
+    <div class="steps" style="grid-template-columns:repeat(5,1fr)">
+      <div><b>1</b><strong>發文邀請</strong><span>十月中發公文給學區國中，附上意願調查表</span></div>
+      <div><b>2</b><strong>彙整回函</strong><span>整理各校是否參加、出席人員</span></div>
+      <div><b>3</b><strong>追蹤</strong><span>沒回覆的學校先打電話，再改寄電子郵件</span></div>
+      <div><b>4</b><strong>排順序</strong><span>抽籤決定各校簡報順序，排出流程表</span></div>
+      <div><b>5</b><strong>辦理</strong><span>十二月在禮堂辦理，每校 10 分鐘</span></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 狀況</p><div>
+    <h2>最花時間的，是沒有回覆的學校</h2>
+    <div class="prose">
+      <p>今年有一所學校過了回函期限都沒有消息。我打了好幾次電話，承辦人都剛好不在。後來我翻了過去幾年的往來信件，發現這幾年都是同一位組長回覆的，就直接把調查表寄到他的信箱。</p>
+      <p>寄信的時候，其他學校的順序已經抽好了。我不想為了一所學校重排全部流程，所以在信裡說明：如果還有意願參加，會安排在最後一個時段，並請對方在兩個工作天內回覆，讓我能盡快確認最後的流程。</p>
+    </div>
+    <div class="flow" style="margin-top:var(--space-3)">
+      <div><span class="label">發現</span><b>窗口其實一直都在</b>同一所學校的承辦人往往好幾年都沒換，過去的信件就是最好的聯絡簿。</div>
+      <div><span class="label">取捨</span><b>不為了一所學校重排</b>已經通知其他學校的順序不動，晚回覆的學校補在最後，對大家最公平。</div>
+      <div><span class="label">提醒</span><b>收到回覆要檢查附件</b>以前曾經有學校回信時漏附檔案，所以收到信後我都會先確認附件。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 應用</p><div>
+    <h2>這套做法也能用在企業</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>在這場說明會</th><th>在企業</th></tr></thead>
+      <tbody>
+        <tr><td>發文邀請、意願調查</td><td>邀請外部講師或合作單位、確認出席</td></tr>
+        <tr><td>追蹤未回覆的學校</td><td>專案利害關係人的溝通與追蹤</td></tr>
+        <tr><td>抽籤排順序、補排晚回覆的學校</td><td>議程安排、臨時變動的處理原則</td></tr>
+        <tr><td>從歷年信件找到窗口</td><td>建立合作單位聯絡資料，方便交接</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 結果</p><div>
+    <h2>辦完之後</h2>
+    <p class="pend">說明會在十二月辦理，結束後會補上參加的學校數、學生的回饋，以及明年想調整的地方。</p>
+  </div></div>
+</template>
+
+<template id="body-case-circuit">
+  <div class="sec"><p class="label">01 · 流程</p><div>
+    <h2>我怎麼安排這個單元</h2>
+    <div class="steps">
+      <div><b>A</b><strong>分析</strong><span>用前測了解孩子的想法和程度差異</span></div>
+      <div><b>D</b><strong>設計</strong><span>寫學習目標、規劃評量和活動順序</span></div>
+      <div><b>D</b><strong>開發</strong><span>做互動題、學習單和檢核表</span></div>
+      <div><b>I</b><strong>實施</strong><span>先在一個班試教，修改後再教其他三班</span></div>
+      <div><b>E</b><strong>評估</strong><span>看孩子的反應、學習成果，比較兩輪的差別</span></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">02 · 分析</p><div>
+    <h2>先了解孩子卡在哪裡</h2>
+    <div class="prose"><p>這個單元有三個活動：<strong>如何讓燈泡發亮</strong>（燈泡亮了、電路與開關）、<strong>電路有哪些連接方式</strong>（電池和燈泡的串聯與並聯）和<strong>用電觀念知多少</strong>（認識小馬達、用電安全）。以前教這個單元時，我常發現孩子在動手接電路之前，心裡已經有一套自己的想法，其中有些是錯的。所以這次我想先做前測，看看下面四種迷思有多常見：</p></div>
+    <div class="tbl" style="margin-top:var(--space-3)"><table>
+      <thead><tr><th>迷思</th><th>孩子可能的想法</th><th>前測怎麼問</th></tr></thead>
+      <tbody>
+        <tr><td>單極接法</td><td>燈泡只要接到電池的一端就會亮</td><td>看圖預測哪幾種接法會亮，並說明理由</td></tr>
+        <tr><td>電流用完了</td><td>電流流到燈泡就被用完了</td><td>二選一＋理由：電線兩端的電流一樣多嗎？</td></tr>
+        <tr><td>電池連接</td><td>多一顆電池，不管怎麼接都一定更亮</td><td>比較兩顆電池串聯和並聯時燈泡的亮度</td></tr>
+        <tr><td>燈泡連接</td><td>兩顆燈泡不管怎麼接，拿掉一顆另一顆都會熄滅</td><td>預測串聯和並聯時，取下一顆燈泡後另一顆會不會亮</td></tr>
+      </tbody>
+    </table></div>
+    <p class="pend">前測結果會在教學前整理好補上。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">03 · 設計</p><div>
+    <h2>學習目標和評量</h2>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-2)">我用 ABCD 的寫法（對象、行為、條件、標準）寫目標，並讓每個目標都對應一種評量，上完課才有辦法檢查孩子到底學會了沒有。</p>
+    <ol class="obj">
+      <li><div>學生拿到一顆電池、一個燈泡和兩條電線，能接出讓燈泡發亮的通路，三次操作至少成功兩次。<small>評量：實作檢核表</small></div></li>
+      <li><div>學生能從 6 張電路圖中判斷通路或斷路，正確率達 80% 以上。<small>評量：H5P 互動判斷題</small></div></li>
+      <li><div>學生能用檢測電路測試 5 種生活物品，分出導體和絕緣體，並說出判斷的理由。<small>評量：實驗記錄單＋口頭說明</small></div></li>
+      <li><div>學生能比較電池串聯和並聯時燈泡亮度的不同，並用自己的話說明。<small>評量：預測—實驗—解釋學習單</small></div></li>
+      <li><div>學生能說明燈泡串聯和並聯時，拿掉其中一顆對另一顆的影響，並想到家裡電器的接法。<small>評量：預測—實驗—解釋學習單</small></div></li>
+      <li><div>學生能運用導體、開關和小馬達的概念，做出一個能開關、會發亮或會轉動的電路玩具。<small>評量：作品檢核表</small></div></li>
+      <li><div>學生能在 5 個生活情境中判斷用電行為安不安全，並說出理由。<small>評量：情境判斷題</small></div></li>
+    </ol>
+  </div></div>
+
+  <div class="sec"><p class="label">04 · 開發</p><div>
+    <h2>準備的教材</h2>
+    <div class="flow">
+      <div><span class="label">互動題</span><b>H5P 判斷題</b>做通路、斷路的判斷題和電路符號配對，孩子作答後馬上知道對錯，我也能看到每一題的答對率。</div>
+      <div><span class="label">模擬</span><b>PhET 電路模擬</b>動手之前先在模擬器上試接，減少材料耗損，動作比較慢的孩子也能先預習。</div>
+      <div><span class="label">學習單</span><b>三種記錄方式</b>學習單可以畫圖、寫字或口頭說明，讓孩子選自己最順手的方式記錄實驗。</div>
+    </div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-3);font-size:15px">另外，我在澳洲 QUT 的 STEM 工作坊玩過一個「魔法燈泡」活動，也打算改編後放進這個單元，讓孩子設計屬於自己的魔法燈泡。</p>
+    <p class="pend">互動題做好之後會放在這裡。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">05 · 實施</p><div>
+    <h2>先試教一個班</h2>
+    <div class="flow">
+      <div><span class="label">第一輪</span><b>試教班</b>先照原本的設計上課，記下孩子卡住的地方、時間夠不夠，還有他們問的問題。</div>
+      <div><span class="label">修改</span><b>看結果調整</b>看哪幾題答對率低、哪個活動卡住，再修改說明、提示和時間安排。</div>
+      <div><span class="label">第二輪</span><b>其他三個班</b>用修改後的版本上課，再比較兩輪的學習成果。</div>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label">06 · 評估</p><div>
+    <h2>怎麼知道孩子學會了</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>看什麼</th><th>想知道的事</th><th>怎麼蒐集</th></tr></thead>
+      <tbody>
+        <tr><td>反應</td><td>孩子喜不喜歡、願不願意投入？</td><td>表情量表興趣問卷</td></tr>
+        <tr><td>學習</td><td>迷思有沒有被修正？</td><td>前後測的進步、實作檢核表通過率</td></tr>
+        <tr><td>應用</td><td>能不能把概念用在新的情境？</td><td>電路玩具作品、生活情境題</td></tr>
+        <tr><td>比較</td><td>修改後的設計有沒有比較好？</td><td>試教班和第二輪班級的成果比較</td></tr>
+      </tbody>
+    </table></div>
+    <p class="pend">單元結束後會補上成果數據。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">07 · 應用</p><div>
+    <h2>這套流程也能用在企業訓練</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>在這個單元</th><th>在企業訓練</th></tr></thead>
+      <tbody>
+        <tr><td>用前測找出迷思</td><td>訓練需求分析、找出能力落差</td></tr>
+        <tr><td>ABCD 學習目標</td><td>可以衡量的訓練目標，對應工作表現</td></tr>
+        <tr><td>H5P 互動題</td><td>數位學習模組和線上測驗</td></tr>
+        <tr><td>先試教再修改</td><td>先小規模試辦，再全面推出</td></tr>
+        <tr><td>作品檢核表</td><td>技能檢核和在職表現評估</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><p class="label">08 · 反思</p><div>
+    <h2>做完之後</h2>
+    <p class="pend">單元結束後，我會補上哪些設計有效、哪些要調整，以及下次會怎麼做。</p>
+  </div></div>
+</template>
+
+<footer>
+  <div class="wrap foot-in">
+    <div><b>Potter Lien</b>學習設計 · 個人品牌素材庫</div>
+    <div>聯絡：<a href="mailto:mukuro6912@gmail.com">mukuro6912@gmail.com</a></div>
+    <div>本站不呈現任何可辨識學生身分的資料</div>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------
+   CONTENT：網站的唯一資料來源。
+   只放「狀態＝公開」的內容。草稿、審閱中、封存的資料留在私人素材庫，不要貼進這裡。
+   下方程式會再過濾一次非公開狀態，作為第二道防線。
+---------------------------------------------------------------- */
+/* ===== 網站編輯：你修改過的文字存在這裡（由編輯模式自動寫入，請勿手動修改） ===== */
+var EDITS = /*EDITS_START*/{}/*EDITS_END*/;
+var PENDING = {};
+var EDITING = false;
+var ALLOWED = {STRONG:1,B:1,EM:1,I:1,BR:1,SMALL:1,SPAN:1};
+function editVal(k){ return Object.prototype.hasOwnProperty.call(PENDING,k) ? PENDING[k] : (Object.prototype.hasOwnProperty.call(EDITS,k) ? EDITS[k] : null); }
+function cleanHTML(html){
+  var t=document.createElement("template"); t.innerHTML=html;
+  (function walk(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(ch){
+      if(ch.nodeType!==1){ return; }
+      walk(ch);
+      if(ALLOWED[ch.tagName]){
+        Array.prototype.slice.call(ch.attributes).forEach(function(a){ if(!(ch.tagName==="SPAN" && a.name==="class")) ch.removeAttribute(a.name); });
+      } else {
+        if(ch.tagName==="DIV"||ch.tagName==="P"){ ch.parentNode.insertBefore(document.createElement("br"), ch); }
+        while(ch.firstChild) ch.parentNode.insertBefore(ch.firstChild, ch);
+        ch.parentNode.removeChild(ch);
+      }
+    });
+  })(t.content);
+  return t.innerHTML.replace(/^(<br>)+/,"").trim();
+}
+function isLeaf(el){
+  if(!el.textContent.trim()) return false;
+  if(el.closest("a,button,nav,svg,label,input,.cards,.rows,.tools,.index,.lamp-box")) return false;
+  var all=el.getElementsByTagName("*");
+  for(var i=0;i<all.length;i++){ if(!ALLOWED[all[i].tagName]) return false; }
+  return true;
+}
+function tagLeaves(root, prefix){
+  var n=0;
+  Array.prototype.slice.call(root.querySelectorAll("*")).forEach(function(el){
+    if(ALLOWED[el.tagName] && el.parentElement && isLeaf(el.parentElement)) return;
+    if(!isLeaf(el)) return;
+    if(el.parentElement && el.parentElement!==root && isLeaf(el.parentElement)) return;
+    var k=prefix+":"+(n++);
+    el.setAttribute("data-ek",k);
+    var v=editVal(k); if(v!==null) el.innerHTML=v;
+    if(EDITING) makeEditable(el);
+  });
+}
+/* 首頁、關於：先標記可編輯的文字 */
+tagLeaves(document.getElementById("v-home"),"home");
+tagLeaves(document.getElementById("v-about"),"about");
+
+var CONTENT = [
+  {
+    slug: "case-gender-equality-hub",
+    type: "work",
+    title: "性平教育資源網站：讓全校老師找得到宣導資料",
+    summary: "老師需要性平教材的時候，常常不知道去哪裡找，遇到事情也不確定要先找哪個處室。所以我把散在各處的資料整理成一個網站，讓大家需要時一次就找得到。",
+    tags: ["輔導", "行政", "案例"],
+    status: "public",
+    progress: "已完成",
+    featured: false,
+    created: "2026-11-17",
+    updated: "2026-11-17",
+    link: {text: "開啟性平教育資源網站", url: "https://chukps2026.github.io/"},
+    facts: [["使用者", "全校教師、家長、學生"], ["我的角色", "需求分析、資訊架構、內容整理、建置與維護"], ["工具", "GitHub Pages、Google 雲端硬碟"], ["規模", "8 個分區・宣導資源 32 筆"]]
+  },
+  {
+    slug: "case-learning-support",
+    type: "work",
+    title: "學習扶助方案改版：從數據重新寫計畫",
+    summary: "我是學校學習扶助的承辦人。這一年我把實施計畫改成從數據出發的寫法，也為授課老師做了一個網站，讓大家打開就知道這個月該做什麼。",
+    tags: ["學習設計", "行政", "案例"],
+    status: "public",
+    progress: "進行中",
+    featured: false,
+    created: "2026-11-17",
+    updated: "2026-11-17",
+    facts: [["使用者", "學習扶助授課教師、導師"], ["我的角色", "方案主辦、計畫撰寫、網站規劃"], ["工具", "Google 雲端硬碟、GitHub Pages"], ["範圍", "年度實施計畫＋校內教師網站"]]
+  },
+  {
+    slug: "project-australia-ai-lab",
+    type: "project",
+    title: "澳洲交流：AI Classroom Laboratory",
+    summary: "今年暑假，我帶著工作上的三個問題到澳洲見習 16 天，在布里斯本和雪梨的學校找答案，也和夥伴一起上台試教。回國後，我把看到的做法整理成四項回校行動。",
+    tags: ["AI 應用", "學習設計", "旅行"],
+    status: "public",
+    progress: "進行中",
+    featured: true,
+    created: "2026-11-17",
+    updated: "2026-11-17",
+    link: {text: "觀看成果影片", url: "https://youtu.be/3P_Kx1aYpUw"},
+    facts: [["計畫", "教育部青年發展署 青年百億海外圓夢基金計畫"], ["期間", "2026 年 8 月・16 天"], ["地點", "布里斯本、雪梨"], ["我的角色", "申請人、見習教師、跨校試教成員"]]
+  },
+  {
+    slug: "project-sel",
+    type: "project",
+    title: "把 SEL 放進自然課：這學期的三個做法",
+    summary: "這學期我在自然課裡做了三件和社會情緒學習有關的事：每節課的情緒打卡、地震防災課的情緒地震儀，以及期中考的學習反思單。三件事規模不同，但都在練習同一件事：先看見自己，再調整自己。",
+    tags: ["SEL", "自然科學", "輔導"],
+    status: "public",
+    progress: "進行中",
+    featured: true,
+    created: "2026-09-14",
+    updated: "2026-11-18",
+    facts: [["學習者", "國小四年級（自然科任班級）"], ["期間", "115 學年度上學期"], ["框架", "CASEL 社會情緒學習五大能力"], ["背景", "SEL 種子教師初階、進階培訓"]]
+  },
+  {
+    slug: "case-sel-earthquake",
+    type: "work",
+    title: "我的情緒地震儀：把 SEL 放進地震防災課",
+    summary: "防震演練通常只練「趴下、掩護、穩住」。我想讓孩子多練一件事：聽到警報時，先發現自己在害怕，再讓自己穩下來，還能陪伴身邊的同學。這是我參加 SEL 種子教師培訓後，第一次把 SEL 完整放進自然課。",
+    tags: ["SEL", "自然科學", "學習設計", "案例"],
+    status: "public",
+    progress: "進行中",
+    featured: true,
+    created: "2026-09-15",
+    updated: "2026-11-18",
+    facts: [["學習者", "國小四年級"], ["單元", "自然・地表的變動：怎樣做好地震防災"], ["框架", "CASEL 社會情緒學習五大能力"], ["我的角色", "設計、教學、在種子教師培訓中分享"]]
+  },
+  {
+    slug: "case-midterm-reflection",
+    type: "work",
+    title: "期中考學習反思單：讓孩子看見自己的讀書方法",
+    summary: "我讓四年級學生在期中考前寫下目標和讀書策略，考後再回頭反思，並把全班的回答整理成匿名統計回饋給學生。結果發現，把策略做完的孩子，九成都覺得自己達成了目標。",
+    tags: ["SEL", "學習設計", "自然科學", "案例"],
+    status: "public",
+    progress: "進行中",
+    featured: true,
+    created: "2026-10-14",
+    updated: "2026-11-18",
+    facts: [["學習者", "國小四年級・1 班（23 人應考）"], ["我的角色", "設計學習單、整理數據、課堂回饋"], ["工具", "紙本反思單、試算表、錯題提示條、簡報"], ["期間", "2026 年 10～11 月"]]
+  },
+  {
+    slug: "project-50",
+    type: "note",
+    title: "Project 50：我怎麼替自己設計一套習慣系統",
+    summary: "今年九月，我開始一個 50 天的習慣挑戰，每天記錄早睡、運動、閱讀、英文、新技能和飲食六件事。做到一半，我發現比起每天都做到，更重要的是把規則設計得能讓自己走下去。",
+    tags: ["生活", "文章"],
+    status: "public",
+    progress: "進行中",
+    featured: false,
+    created: "2026-09-14",
+    updated: "2026-11-18",
+    facts: [["開始", "2026 年 9 月 14 日"], ["工具", "Notion 資料庫、Threads"], ["每日習慣", "6 項"]]
+  },
+  {
+    slug: "case-transition-briefing",
+    type: "work",
+    title: "六年級升學輔導說明會：一場活動背後的聯繫工作",
+    summary: "每年十二月，我會邀請學區國中到學校，向六年級學生介紹各校特色。台上每校只有 10 分鐘，台下從十月就要開始發文、追蹤回函、排順序，處理沒有回覆的學校。",
+    tags: ["輔導", "行政", "案例"],
+    status: "public",
+    progress: "進行中",
+    featured: false,
+    created: "2026-10-15",
+    updated: "2026-11-18",
+    facts: [["對象", "六年級學生、學區國中"], ["我的角色", "承辦人（輔導組長）"], ["時程", "10 月發文，12 月辦理"], ["形式", "各校輪流簡報，每校 10 分鐘"]]
+  },
+  {
+    slug: "case-circuit",
+    type: "work",
+    title: "好玩的電路：先找出孩子的迷思，再修改教材",
+    summary: "這學期四年級的電路單元，我想用比較完整的方式設計：教學前先用前測了解學生卡在哪裡，再依目標設計活動和評量，先在一個班試教，修改後再教其他三個班。",
+    tags: ["學習設計", "自然科學", "案例"],
+    status: "public",
+    progress: "進行中",
+    featured: true,
+    created: "2026-11-17",
+    updated: "2026-11-17",
+    facts: [["學習者", "國小四年級・4 班"], ["我的角色", "分析、設計、開發、教學、評估"], ["設計模型", "ADDIE＋快速原型迭代"], ["教材", "康軒版四上第四單元（三個活動）"]]
+  },
+  {
+    slug: "course-g4-115-1",
+    type: "project",
+    title: "115-1 四年級自然課程入口",
+    summary: "去年我用 Padlet 放自然課教材，今年把它改成課程入口，每個單元都加上學習目標、自學步驟和自我檢核，讓學生下課後也知道怎麼複習。",
+    tags: ["學習設計", "自然科學", "工具"],
+    status: "public",
+    progress: "進行中",
+    featured: true,
+    created: "2026-11-17",
+    updated: "2026-11-17",
+    link: {text: "開啟課程入口", url: "https://claude.ai/artifact/6nBBpXAX1cibettzagBB3G"},
+    facts: [["使用者", "四年級學生與家長"], ["範圍", "康軒版四上・4 個單元"], ["我的角色", "課程規劃、內容撰寫、介面設計"], ["前一版", "114-1 Padlet 教材牆"]]
+  }
+];
+
+var TYPES = {
+  work:    {name: "作品", cls: "t-work",    view: "works",    desc: "我做過的課程設計和行政方案。從發現問題、設計到檢討，盡量完整記錄下來。"},
+  project: {name: "專案", cls: "t-project", view: "projects", desc: "需要比較長時間進行的計畫，記錄目標、過程和目前的進度。"},
+  note:    {name: "筆記", cls: "t-note",    view: "notes",    desc: "學習紀錄、讀書心得，還有生活裡的一些想法。"},
+  asset:   {name: "素材", cls: "t-asset",   view: null,       desc: ""}
+};
+
+/* 套用標題、摘要、基本資料的修改 */
+CONTENT.forEach(function(c){
+  var v;
+  if((v=editVal("c:"+c.slug+":title"))!==null) c.title=v;
+  if((v=editVal("c:"+c.slug+":summary"))!==null) c.summary=v;
+  (c.facts||[]).forEach(function(f,i){ if((v=editVal("c:"+c.slug+":f"+i))!==null) f[1]=v; });
+});
+
+var PUBLIC = CONTENT.filter(function(c){ return c.status === "public"; })
+                    .sort(function(a,b){ return a.updated < b.updated ? 1 : -1; });
+
+function esc(s){ return String(s).replace(/[&<>"]/g, function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
+function typeChip(t){ var T = TYPES[t]; return '<span class="chip ' + T.cls + '">' + T.name + '</span>'; }
+function card(c){
+  return '<a class="card" href="#' + esc(c.slug) + '">' +
+    '<div class="row">' + typeChip(c.type) + (c.progress ? '<span class="prog">' + esc(c.progress) + '</span>' : '') + '</div>' +
+    '<h3>' + esc(c.title) + '</h3><p>' + esc(c.summary) + '</p>' +
+    '<div class="foot"><span>' + c.tags.map(esc).join("・") + '</span><span class="num">' + esc(c.updated) + '</span></div></a>';
+}
+function emptyBox(what){
+  return '<p class="empty">目前還沒有公開的' + what + '，整理好之後會放上來。</p>';
+}
+
+/* home */
+document.getElementById("n-work").textContent = PUBLIC.filter(function(c){return c.type==="work";}).length + " 篇";
+document.getElementById("n-project").textContent = PUBLIC.filter(function(c){return c.type==="project";}).length + " 篇";
+document.getElementById("n-note").textContent = PUBLIC.filter(function(c){return c.type==="note";}).length + " 篇";
+document.getElementById("n-all").textContent = "共 " + PUBLIC.length + " 篇";
+var feat = PUBLIC.filter(function(c){ return c.featured; });
+document.getElementById("featured").innerHTML = feat.length ? feat.map(card).join("") : emptyBox("精選內容");
+
+/* list views */
+function renderList(typeKey){
+  var T = TYPES[typeKey], items = PUBLIC.filter(function(c){ return c.type === typeKey; });
+  document.getElementById("list-label").textContent = T.name;
+  document.getElementById("list-title").textContent = T.name;
+  document.getElementById("list-desc").textContent = T.desc;
+  document.getElementById("list-count").textContent = items.length + " 篇";
+  document.getElementById("list-cards").innerHTML = items.length ? items.map(card).join("") : emptyBox(T.name);
+}
+
+/* archive */
+var state = {q: "", type: "", tag: ""};
+var allTags = []; PUBLIC.forEach(function(c){ c.tags.forEach(function(t){ if(allTags.indexOf(t) < 0) allTags.push(t); }); });
+function fbtn(group, val, text){ return '<button type="button" class="fbtn" data-g="' + group + '" data-v="' + esc(val) + '" aria-pressed="false">' + esc(text) + '</button>'; }
+document.getElementById("f-type").insertAdjacentHTML("beforeend", fbtn("type", "", "全部") + Object.keys(TYPES).map(function(k){ return fbtn("type", k, TYPES[k].name); }).join(""));
+document.getElementById("f-tag").insertAdjacentHTML("beforeend", fbtn("tag", "", "全部") + allTags.map(function(t){ return fbtn("tag", t, t); }).join(""));
+function renderArchive(){
+  var q = state.q.trim().toLowerCase();
+  var items = PUBLIC.filter(function(c){
+    if(state.type && c.type !== state.type) return false;
+    if(state.tag && c.tags.indexOf(state.tag) < 0) return false;
+    if(q && (c.title + " " + c.summary + " " + c.tags.join(" ")).toLowerCase().indexOf(q) < 0) return false;
+    return true;
+  });
+  document.getElementById("arc-count").textContent = "顯示 " + items.length + " / " + PUBLIC.length + " 篇";
+  document.getElementById("arc-rows").innerHTML = items.length ? items.map(function(c){
+    return '<a class="r" href="#' + esc(c.slug) + '"><span class="label num">' + esc(c.updated) + '</span><span>' + typeChip(c.type) + '</span>' +
+      '<span><span class="rt">' + esc(c.title) + '</span><span class="rs">' + esc(c.summary) + '</span></span>' +
+      '<span class="rtags">' + c.tags.map(function(t){ return '<span class="chip">' + esc(t) + '</span>'; }).join("") + '</span></a>';
+  }).join("") : '<p class="empty" style="margin-top:var(--space-3)">沒有符合條件的內容。試試其他關鍵字，或把篩選改回「全部」。</p>';
+  document.querySelectorAll(".fbtn").forEach(function(b){ b.setAttribute("aria-pressed", String(state[b.dataset.g] === b.dataset.v)); });
+}
+document.getElementById("q").addEventListener("input", function(e){ state.q = e.target.value; renderArchive(); });
+document.getElementById("v-archive").addEventListener("click", function(e){
+  var b = e.target.closest(".fbtn"); if(!b) return;
+  state[b.dataset.g] = b.dataset.v; renderArchive();
+});
+
+/* single item */
+function renderItem(c){
+  var T = TYPES[c.type], back = T.view ? "#" + T.view : "#archive";
+  var tpl = document.getElementById("body-" + c.slug);
+  document.getElementById("item-label").textContent = T.name;
+  var facts = (c.facts || []).map(function(f,i){ return '<div><span class="label">' + esc(f[0]) + '</span><span data-ek="c:' + c.slug + ':f' + i + '" data-plain="1">' + esc(f[1]) + '</span></div>'; }).join("");
+  var main = document.getElementById("item-main");
+  main.innerHTML = '<a class="back" href="' + back + '">← 回' + T.name + '</a>' +
+    '<header class="art-head" style="margin-top:var(--space-3)"><div class="row" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">' + typeChip(c.type) +
+    (c.progress ? '<span class="prog">' + esc(c.progress) + '</span>' : '') + '<span class="label num">更新 ' + esc(c.updated) + '</span></div>' +
+    '<h1 data-ek="c:' + c.slug + ':title" data-plain="1">' + esc(c.title) + '</h1><p class="lead" data-ek="c:' + c.slug + ':summary" data-plain="1" style="max-width:var(--measure);color:var(--ink-muted)">' + esc(c.summary) + '</p>' +
+    (facts ? '<div class="facts">' + facts + '</div>' : '') +
+    (c.link ? '<p><a class="btn-main" href="' + esc(c.link.url) + '" target="_blank" rel="noopener">' + esc(c.link.text) + ' →</a></p>' : '') + '</header>';
+  if(tpl){ var frag=document.createElement("div"); frag.appendChild(tpl.content.cloneNode(true)); tagLeaves(frag,"t:"+c.slug); while(frag.firstChild) main.appendChild(frag.firstChild); }
+  if(EDITING) main.querySelectorAll('[data-plain]').forEach(makeEditable);
+  else { main.insertAdjacentHTML("beforeend", '<p class="pend">內文整理中。</p>'); }
+}
+
+/* router: #home #about #works #projects #notes #archive #<slug> */
+var VIEWS = ["home","about","list","archive","item"];
+function show(v){ VIEWS.forEach(function(k){ document.getElementById("v-" + k).hidden = (k !== v); }); }
+function route(){
+  var h = (location.hash || "#home").slice(1) || "home";
+  var navKey = h, listMap = {works: "work", projects: "project", notes: "note"};
+  if(h === "home" || h === "top"){ show("home"); navKey = ""; }
+  else if(h === "about"){ show("about"); }
+  else if(listMap[h]){ renderList(listMap[h]); show("list"); }
+  else if(h === "archive"){ renderArchive(); show("archive"); }
+  else {
+    var c = PUBLIC.filter(function(x){ return x.slug === h; })[0];
+    if(c){ renderItem(c); show("item"); navKey = TYPES[c.type].view || "archive"; }
+    else { show("home"); navKey = ""; }
+  }
+  document.querySelectorAll(".nav a").forEach(function(a){
+    if(a.dataset.nav === navKey) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+route();
+
+/* ===== 編輯模式（只有擁有者看得到「編輯文字」按鈕） ===== */
+function makeEditable(el){
+  el.setAttribute("contenteditable", el.hasAttribute("data-plain") ? "plaintext-only" : "true");
+  el.classList.add("ed-on");
+}
+function setEditing(on){
+  EDITING=on;
+  document.body.classList.toggle("editing", on);
+  document.querySelectorAll("[data-ek]").forEach(function(el){
+    if(on) makeEditable(el); else { el.removeAttribute("contenteditable"); el.classList.remove("ed-on"); }
+  });
+  document.getElementById("ed-toggle").hidden = on;
+  document.getElementById("ed-bar").hidden = !on;
+  updateCount();
+}
+function updateCount(){
+  var n=Object.keys(PENDING).length;
+  document.getElementById("ed-count").textContent = n ? "已修改 "+n+" 處，尚未儲存" : "點一下文字即可修改";
+  document.getElementById("ed-save").disabled = !n;
+}
+document.addEventListener("input", function(e){
+  var el=e.target.closest && e.target.closest("[data-ek]"); if(!el||!EDITING) return;
+  var k=el.getAttribute("data-ek");
+  PENDING[k] = el.hasAttribute("data-plain") ? el.textContent.trim() : cleanHTML(el.innerHTML);
+  updateCount();
+});
+document.addEventListener("click", function(e){
+  if(EDITING && e.target.closest("[data-ek]") && e.target.closest("a")) e.preventDefault();
+}, true);
+(function(){
+  var css=document.createElement("style");
+  css.textContent=".ed-on{outline-offset:3px;border-radius:2px;cursor:text}.ed-on:hover{outline:1px dashed var(--line-strong)}.ed-on:focus{outline:2px solid var(--sage-ink);background:var(--paper-raised)}"+
+    "#ed-toggle,#ed-bar{position:fixed;right:20px;bottom:20px;z-index:20;font:inherit}"+
+    "#ed-toggle{background:var(--paper-raised);color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;padding:8px 18px;cursor:pointer;font-size:14px}"+
+    "#ed-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:6px;padding:10px 14px;font-size:14px;max-width:calc(100vw - 40px)}"+
+    "#ed-bar[hidden],#ed-toggle[hidden]{display:none}"+
+    "#ed-bar button{font:inherit;font-size:14px;border-radius:6px;padding:6px 14px;cursor:pointer;border:1px solid var(--line-strong);background:transparent;color:var(--ink)}"+
+    "#ed-bar #ed-save{background:var(--sage-ink);border-color:var(--sage-ink);color:var(--paper)}#ed-bar #ed-save:disabled{opacity:.5;cursor:default}"+
+    "#ed-msg{color:var(--ink-muted)}";
+  document.head.appendChild(css);
+  var wrap=document.createElement("div");
+  wrap.innerHTML='<button id="ed-toggle" type="button" hidden>編輯文字</button>'+
+    '<div id="ed-bar" role="region" aria-label="編輯工具列" hidden><span id="ed-count"></span><span id="ed-msg" aria-live="polite"></span>'+
+    '<button id="ed-cancel" type="button">取消</button><button id="ed-save" type="button">儲存並發布</button></div>';
+  document.body.appendChild(wrap);
+  document.getElementById("ed-toggle").addEventListener("click", function(){ setEditing(true); });
+  document.getElementById("ed-cancel").addEventListener("click", function(){
+    if(Object.keys(PENDING).length && !window.__edConfirm){ window.__edConfirm=true; document.getElementById("ed-msg").textContent="再按一次「取消」會放棄所有未儲存的修改。"; return; }
+    window.__edConfirm=false; PENDING={}; setEditing(false); route();
+    tagLeaves(document.getElementById("v-home"),"home"); tagLeaves(document.getElementById("v-about"),"about");
+    document.getElementById("ed-msg").textContent="";
+  });
+  document.getElementById("ed-save").addEventListener("click", async function(){
+    var btn=this, msg=document.getElementById("ed-msg");
+    btn.disabled=true; msg.textContent="發布中…";
+    try{
+      var artifact = await window.claude.use("artifact");
+      if(!artifact) throw new Error("no-artifact");
+      var res = await fetch(location.href.split("#")[0], {cache:"no-store"});
+      var src = await res.text();
+      var m = src.match(/\/\*EDITS_START\*\/[\s\S]*?\/\*EDITS_END\*\//);
+      if(!m || src.indexOf("<!DOCTYPE")!==0 && src.indexOf("<!doctype")!==0) throw new Error("source");
+      var merged = Object.assign({}, EDITS, PENDING);
+      var json = JSON.stringify(merged).replace(/</g,"\\u003c").replace(/\u2028/g,"\\u2028").replace(/\u2029/g,"\\u2029");
+      var out = src.replace(m[0], function(){ return "/*EDITS_START*/"+json+"/*EDITS_END*/"; });
+      await artifact.publish(out);
+      msg.textContent="已發布，頁面即將重新載入。";
+    }catch(err){
+      btn.disabled=false;
+      var t=String(err&&err.message||err);
+      msg.textContent = /not_granted|not_writer/.test(t) ? "沒有發布權限。" : /conflict/.test(t) ? "網站剛被更新，請重新整理後再修改一次。" : "發布失敗，請稍後再試。";
+    }
+  });
+  if(window.claude && window.claude.use){
+    window.claude.use("user").then(function(u){
+      if(u && (u.canEdit ? u.canEdit() : u.isOwner())) document.getElementById("ed-toggle").hidden=false;
+    }).catch(function(){});
+  }
+})();
+</script>
+</body>
+</html>
