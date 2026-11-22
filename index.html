@@ -1074,7 +1074,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
    下方程式會再過濾一次非公開狀態，作為第二道防線。
 ---------------------------------------------------------------- */
 /* ===== 網站編輯：你修改過的文字存在這裡（由編輯模式自動寫入，請勿手動修改） ===== */
-var EDITS = /*EDITS_START*/{"about:9":"研究所期間，我以組織溝通、組織文化與留任意願作為研究主題。這段經驗讓我開始從不同角度理解組織裡的人，也更注意制度、溝通方式與工作環境之間的關係。\u003cbr>\u003cspan>我也慢慢發現，比起一味要求個人改變，營造支持的環境往往更有幫助。\u003c/span>","about:34":"","about:24":"02｜理解事情背後的人"}/*EDITS_END*/;
+var EDITS = /*EDITS_START*/{}/*EDITS_END*/;
 var PENDING = {};
 var EDITING = false;
 var ALLOWED = {STRONG:1,B:1,EM:1,I:1,BR:1,SMALL:1,SPAN:1};
@@ -1117,6 +1117,19 @@ function applyGlobal(){
   if(g.lh) r.setProperty("--body-lh", String(g.lh)); else r.removeProperty("--body-lh");
   if(g.gap!==undefined && g.gap!=="") r.setProperty("--para-gap", g.gap+"px"); else r.removeProperty("--para-gap");
 }
+function applyHide(el,k){ el.classList.toggle("ed-hidden", editVal(k+"@hide")===true); }
+function renderAfter(base,k){
+  Array.prototype.slice.call(document.querySelectorAll('[data-after-of="'+k+'"]')).forEach(function(x){ x.remove(); });
+  var arr=editVal(k+"@after"); if(!Array.isArray(arr)) return;
+  var ref=base;
+  arr.forEach(function(html,i){
+    var p=document.createElement("p"), nk=k+"@after:"+i;
+    p.setAttribute("data-ek",nk); p.setAttribute("data-after-of",k); p.innerHTML=html;
+    ref.parentNode.insertBefore(p, ref.nextSibling); ref=p;
+    applyStyle(p,nk); applyHide(p,nk);
+    if(EDITING) makeEditable(p);
+  });
+}
 function tagLeaves(root, prefix){
   var n=0;
   Array.prototype.slice.call(root.querySelectorAll("*")).forEach(function(el){
@@ -1126,8 +1139,9 @@ function tagLeaves(root, prefix){
     var k=prefix+":"+(n++);
     el.setAttribute("data-ek",k);
     var v=editVal(k); if(v!==null && typeof v==="string") el.innerHTML=v;
-    applyStyle(el,k);
+    applyStyle(el,k); applyHide(el,k);
     if(EDITING) makeEditable(el);
+    if(el.tagName==="P") renderAfter(el,k);
   });
 }
 applyGlobal();
@@ -1479,7 +1493,13 @@ function updateCount(){
 document.addEventListener("input", function(e){
   var el=e.target.closest && e.target.closest("[data-ek]"); if(!el||!EDITING) return;
   var k=el.getAttribute("data-ek");
-  PENDING[k] = el.hasAttribute("data-plain") ? el.textContent.trim() : cleanHTML(el.innerHTML);
+  var m=k.match(/^(.*)@after:(\d+)$/);
+  if(m){
+    var arr=(editVal(m[1]+"@after")||[]).slice(); arr[+m[2]]=cleanHTML(el.innerHTML);
+    PENDING[m[1]+"@after"]=arr;
+  } else {
+    PENDING[k] = el.hasAttribute("data-plain") ? el.textContent.trim() : cleanHTML(el.innerHTML);
+  }
   updateCount();
 });
 document.addEventListener("click", function(e){
@@ -1504,7 +1524,9 @@ document.addEventListener("keydown", function(e){
     "#ed-layout{position:fixed;right:20px;bottom:76px;z-index:20;width:300px;max-width:calc(100vw - 40px);background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:6px;padding:12px 14px;font-size:14px;display:flex;flex-direction:column;gap:8px}"+
     "#ed-layout[hidden]{display:none}#ed-layout .ed-h{font-weight:500;margin-top:4px}#ed-layout label{display:flex;justify-content:space-between;align-items:center;gap:8px}"+
     "#ed-layout select{font:inherit;font-size:13px;padding:3px 6px;border:1px solid var(--line-strong);border-radius:4px;background:var(--paper)}"+
-    ".ed-cur{outline:2px solid var(--flax)!important}";
+    ".ed-cur{outline:2px solid var(--flax)!important}"+
+    "body:not(.editing) .ed-hidden{display:none!important}.editing .ed-hidden{opacity:.35;text-decoration:line-through}"+
+    "#ed-layout .ed-row{display:flex;gap:8px;flex-wrap:wrap}#ed-layout .ed-row button{font:inherit;font-size:13px;padding:4px 10px;border:1px solid var(--line-strong);border-radius:4px;background:var(--paper);cursor:pointer}#ed-layout .ed-row button:disabled{opacity:.45;cursor:default}";
   document.head.appendChild(css);
   var wrap=document.createElement("div");
   wrap.innerHTML='<button id="ed-toggle" type="button" hidden>編輯文字</button>'+
@@ -1519,6 +1541,7 @@ document.addEventListener("keydown", function(e){
       '<label>行距<select data-s="lh" disabled><option value="">預設</option><option>1.5</option><option>1.7</option><option>1.9</option><option>2.1</option><option>2.3</option></select></label>'+
       '<label>上方間距<select data-s="mt" disabled><option value="">預設</option><option>0</option><option>8</option><option>16</option><option>24</option><option>40</option></select></label>'+
       '<label>下方間距<select data-s="mb" disabled><option value="">預設</option><option>0</option><option>8</option><option>16</option><option>24</option><option>40</option></select></label>'+
+      '<div class="ed-row"><button type="button" id="ed-add" disabled>＋ 在下方新增段落</button><button type="button" id="ed-del" disabled>刪除這段</button></div>'+
     '</div>';
   document.body.appendChild(wrap);
   document.getElementById("ed-toggle").addEventListener("click", function(){ setEditing(true); syncLayout(); });
@@ -1528,7 +1551,41 @@ document.addEventListener("keydown", function(e){
     document.querySelectorAll("#ed-layout [data-g]").forEach(function(s){ s.value = g[s.dataset.g]!==undefined ? String(g[s.dataset.g]) : ""; });
     var st = CUR ? editVal(CUR.getAttribute("data-ek")+"@style") : null; if(!st||typeof st!=="object") st={};
     document.querySelectorAll("#ed-layout [data-s]").forEach(function(s){ s.disabled=!CUR; s.value = st[s.dataset.s]!==undefined ? String(st[s.dataset.s]) : ""; });
+    var add=document.getElementById("ed-add"), del=document.getElementById("ed-del");
+    add.disabled = !(CUR && CUR.tagName==="P" && !CUR.classList.contains("vlabel"));
+    del.disabled = !CUR || CUR.classList.contains("vlabel");
+    if(CUR){
+      var isAdded=/@after:\d+$/.test(CUR.getAttribute("data-ek"));
+      del.textContent = isAdded ? "刪除這段" : (editVal(CUR.getAttribute("data-ek")+"@hide")===true ? "恢復這段" : "隱藏這段");
+    }
   }
+  function baseInfo(el){
+    var k=el.getAttribute("data-ek"), m=k.match(/^(.*)@after:(\d+)$/);
+    return m ? {base:m[1], idx:+m[2]} : {base:k, idx:-1};
+  }
+  function baseEl(bk){ return document.querySelector('[data-ek="'+bk+'"]'); }
+  function focusEl(p){ if(!p) return; p.focus(); if(CUR) CUR.classList.remove("ed-cur"); CUR=p; CUR.classList.add("ed-cur"); syncLayout(); }
+  document.getElementById("ed-add").addEventListener("click", function(){
+    if(!CUR) return; var bi=baseInfo(CUR);
+    var arr=(editVal(bi.base+"@after")||[]).slice(); var at=bi.idx+1;
+    arr.splice(at,0,"新段落，點這裡輸入文字。");
+    PENDING[bi.base+"@after"]=arr;
+    var b=baseEl(bi.base); if(b) renderAfter(b, bi.base);
+    updateCount(); focusEl(baseEl(bi.base+"@after:"+at));
+  });
+  document.getElementById("ed-del").addEventListener("click", function(){
+    if(!CUR) return; var bi=baseInfo(CUR);
+    if(bi.idx>=0){
+      var arr=(editVal(bi.base+"@after")||[]).slice(); arr.splice(bi.idx,1);
+      PENDING[bi.base+"@after"]=arr;
+      var b=baseEl(bi.base); if(b) renderAfter(b, bi.base);
+      CUR=null; document.getElementById("ed-cur").textContent="先點一下要調整的文字";
+    } else {
+      var hk=bi.base+"@hide"; PENDING[hk] = editVal(hk)===true ? false : true;
+      applyHide(CUR, bi.base);
+    }
+    updateCount(); syncLayout();
+  });
   document.getElementById("ed-layout-btn").addEventListener("click", function(){ var p=document.getElementById("ed-layout"); p.hidden=!p.hidden; syncLayout(); });
   document.addEventListener("focusin", function(e){
     if(!EDITING) return; var el=e.target.closest && e.target.closest("[data-ek]"); if(!el) return;
