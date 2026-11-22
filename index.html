@@ -438,14 +438,24 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 
 <!-- Item bodies: one <template> per public item, keyed by slug -->
 <template id="body-case-gender-equality-hub">
-  <div class="sec"><p class="label">01 · 起點</p><div>
+  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
     <h2>為什麼要做這個網站</h2>
     <div class="prose"><p>身為業務承辦人，性平宣導是我每學期都要處理的工作，教育局也會發文要求辦理性平宣導和友善校園週。但資料散在中央、各縣市、輔導團和學校歷年的雲端資料夾裡，老師備課時要花很多時間找。遇到疑似事件時，也常有老師來問我，到底要先通知學務處還是輔導室。</p></div>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 整理</p><div>
+  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
     <h2>我怎麼整理</h2>
     <div class="prose"><p>一開始我規劃的是六大類雲端資料夾，也設定好全校老師可以檢視、承辦人可以編輯。後來改成網站，因為我發現老師需要的不只是檔案，還要知道什麼時候用、遇到事情要找誰。原始檔案還是放在雲端硬碟，網站只負責當入口。</p></div>
+    <div class="flow" style="margin-top:var(--space-3)">
+      <div><span class="label">分工</span><b>通報找誰</b>我把學務處、輔導室和老師各自要做的事和時限並排列出來，老師不用讀完法規，也知道第一步要做什麼。</div>
+      <div><span class="label">維護</span><b>讓接手的人好維護</b>宣導資源固定分六類，歷年教材依學年度放資料夾，外部資源一律連回原單位，每頁也標上更新日期。</div>
+      <div><span class="label">語氣</span><b>文字盡量客觀</b>網站以說明事實和流程為主；求助專線和緊急時撥打 110 的提醒，直接放在首頁。</div>
+    </div>
+  </div></div>
+
+  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
+    <h2>目前的成果</h2>
+    <div class="prose"><p>現在課程架構、教材、宣導資源、法規流程和求助資訊都集中在同一個網站，一到六年級每學期也都有對應的教學主題。</p></div>
     <div class="tbl" style="margin-top:var(--space-3)"><table>
       <thead><tr><th>分區</th><th>給老師用在</th></tr></thead>
       <tbody>
@@ -459,32 +469,22 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <tr><td>學生影片專區</td><td>可以在課堂上直接播放的宣導影片</td></tr>
       </tbody>
     </table></div>
-    <div class="flow" style="margin-top:var(--space-3)">
-      <div><span class="label">分工</span><b>通報找誰</b>我把學務處、輔導室和老師各自要做的事和時限並排列出來，老師不用讀完法規，也知道第一步要做什麼。</div>
-      <div><span class="label">維護</span><b>讓接手的人好維護</b>宣導資源固定分六類，歷年教材依學年度放資料夾，外部資源一律連回原單位，每頁也標上更新日期。</div>
-      <div><span class="label">語氣</span><b>文字盡量客觀</b>網站以說明事實和流程為主；求助專線和緊急時撥打 110 的提醒，直接放在首頁。</div>
-    </div>
-  </div></div>
-
-  <div class="sec"><p class="label">03 · 成果</p><div>
-    <h2>目前的成果</h2>
-    <div class="prose"><p>現在課程架構、教材、宣導資源、法規流程和求助資訊都集中在同一個網站，一到六年級每學期也都有對應的教學主題。</p></div>
     <p class="pend">之後會補上老師使用的情形和回饋。</p>
   </div></div>
 
-  <div class="sec"><p class="label">04 · 反思</p><div>
+  <div class="sec"><p class="label">04<br>做完之後的觀察</p><div>
     <h2>做完之後</h2>
     <p class="pend">之後補上。</p>
   </div></div>
 </template>
 
 <template id="body-case-learning-support">
-  <div class="sec"><p class="label">01 · 起點</p><div>
+  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
     <h2>為什麼要改</h2>
     <div class="prose"><p>學習扶助是一整年循環的業務，從篩選測驗、成長測驗、開班、表單到經費請購，還有定期的訪視。這些資訊散在公文、實施計畫和會議紀錄裡，授課老師常來問我現在該做什麼、要交哪些表。舊版的實施計畫又是公文格式，很難看出現況和目標之間的關係。</p></div>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 計畫</p><div>
+  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
     <h2>把計畫改成從數據出發</h2>
     <div class="steps" style="grid-template-columns:repeat(4,1fr)">
       <div><b>1</b><strong>現況分析</strong><span>整理近三年的提報、施測、未通過、進步和受輔數據</span></div>
@@ -493,9 +493,15 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <div><b>4</b><strong>預期效益</strong><span>用同一組數據檢查，明年再接著改</span></div>
     </div>
     <p style="color:var(--ink-muted);margin-top:var(--space-3);font-size:15px">寫計畫時，我也參考了其他學校的實施計畫和學習輔導小組會議紀錄。</p>
+    <h2>設計時的考量</h2>
+    <div class="flow">
+      <div><span class="label">主軸</span><b>從「這個月要做什麼」開始</b>這是每年都會重複的業務，所以網站以時間為主軸，而不是一長串資源清單。</div>
+      <div><span class="label">隱私</span><b>只放統計</b>網站不放學生姓名、個人成績和名冊，只呈現全校和各年級的統計，老師也只寫職稱。人數太少的數據，我會另外註明，避免誤解。</div>
+      <div><span class="label">訪視</span><b>平常就開始準備</b>我依訪視指標的三個面向，整理出各處室和授課老師要準備的資料，平常就能慢慢累積，不用等到最後才趕。</div>
+    </div>
   </div></div>
 
-  <div class="sec"><p class="label">03 · 網站</p><div>
+  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
     <h2>幫授課老師做一個網站</h2>
     <div class="tbl"><table>
       <thead><tr><th>頁面</th><th>內容</th></tr></thead>
@@ -511,16 +517,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </table></div>
   </div></div>
 
-  <div class="sec"><p class="label">04 · 考量</p><div>
-    <h2>設計時的考量</h2>
-    <div class="flow">
-      <div><span class="label">主軸</span><b>從「這個月要做什麼」開始</b>這是每年都會重複的業務，所以網站以時間為主軸，而不是一長串資源清單。</div>
-      <div><span class="label">隱私</span><b>只放統計</b>網站不放學生姓名、個人成績和名冊，只呈現全校和各年級的統計，老師也只寫職稱。人數太少的數據，我會另外註明，避免誤解。</div>
-      <div><span class="label">訪視</span><b>平常就開始準備</b>我依訪視指標的三個面向，整理出各處室和授課老師要準備的資料，平常就能慢慢累積，不用等到最後才趕。</div>
-    </div>
-  </div></div>
-
-  <div class="sec"><p class="label">05 · 下一步</p><div>
+  <div class="sec"><p class="label">05<br>接下來</p><div>
     <h2>接下來</h2>
     <p class="pend">之後會補上網站上線後老師使用的情形，以及今年目標的達成狀況。</p>
   </div></div>
@@ -685,7 +682,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-case-sel-earthquake">
-  <div class="sec"><p class="label">01 · 起點</p><div>
+  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
     <h2>從研習走進教室</h2>
     <div class="prose">
       <p>上學期我參加了 SEL（社會情緒學習）種子教師的初階培訓。研習中有一個概念讓我印象很深，叫「情緒雜物」：如果孩子的腦袋已經被情緒塞滿，就沒有空間學習了。回想以前面對情緒失控的孩子，我常急著要他回座位、跟他講道理，現在才明白，他那時候根本聽不進去。</p>
@@ -693,7 +690,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 想法</p><div>
+  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
     <h2>防震演練，也可以練「內心的避難」</h2>
     <div class="tbl"><table>
       <thead><tr><th></th><th>平常的防震演練</th><th>這次多加的部分</th></tr></thead>
@@ -705,7 +702,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">情緒練習不取代避難動作，而是在完成避難動作之後進行。</p>
   </div></div>
 
-  <div class="sec"><p class="label">03 · 設計</p><div>
+  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
     <h2>一堂課，對應 SEL 的五大能力</h2>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-2)">我用 CASEL 的五大能力當架構，把課程分成五個部分，最後再回到自我覺察。</p>
     <div class="tbl"><table>
@@ -721,7 +718,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">我把氣象署的震度分級和孩子的身體反應放在同一張表裡，讓自然課學的「震度」，也能拿來量自己心裡的震度。</p>
   </div></div>
 
-  <div class="sec"><p class="label">04 · 觀察</p><div>
+  <div class="sec"><p class="label">04<br>做完之後的觀察</p><div>
+    <p class="subhead">實際結果</p>
     <h2>孩子的反應</h2>
     <div class="flow">
       <div><span class="label">看得見</span><b>孩子能感受到同學的害怕</b>多數孩子都能想像，地震時身邊的同學會緊張、會害怕。</div>
@@ -731,17 +729,22 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <div class="prose" style="margin-top:var(--space-3)">
       <p>身心避難包也讓我很有收穫。孩子寫下的安心物品，有的是玩偶，有的是家人或朋友。培訓時同組的老師提醒我，這些答案其實也讓老師知道孩子心裡真正需要的是什麼，以後孩子情緒不穩的時候，可以從這裡找到幫助他的方法。</p>
     </div>
+    <p class="subhead" style="margin-top:var(--space-5)">我的反思</p>
+    <h2>做完之後</h2>
+    <div class="prose">
+      <p>這堂課最後一張投影片，我寫給孩子的是：外面的世界雖然會晃動，但每個人都有能力讓自己的內心恢復平靜；保護好自己，就能成為別人身邊溫暖、可靠的存在。</p>
+      <p>其實這句話也是寫給我自己的。兩次培訓下來，我最大的體會是，老師要先照顧好自己的情緒，才有餘力陪伴孩子。SEL 不用另外找時間教，它可以就在每一堂課、每一次班級互動裡。</p>
+      <p>這學期其他和 SEL 有關的做法，整理在<a href="#project-sel">這一頁</a>。</p>
+    </div>
   </div></div>
 
-  <div class="sec"><p class="label">05 · 修正</p><div>
+  <div class="sec"><p class="label">05<br>接下來</p><div>
     <h2>下次我會這樣改</h2>
     <ol class="obj">
       <li><div>把一節課拆成兩節。五個活動擠在一節課太趕了，孩子討論和練習的時間都不夠。</div></li>
       <li><div>做一張「安心提示小卡」，提供同理感受、承諾陪伴、具體引導幾種句型，再加上角色扮演，讓孩子有更多話可以說。</div></li>
     </ol>
-  </div></div>
-
-  <div class="sec"><p class="label">06 · 延伸</p><div>
+    <div style="margin-top:var(--space-5)"></div>
     <h2>從一堂課，到每一節課</h2>
     <div class="prose">
       <p>在進階培訓中分享完這堂課後，我也聽了很多老師分享 SEL 和班級經營的結合。我覺得班級經營要走在教學前面，班級穩定了，孩子才能好好學習。所以研習後的隔週，我就在科任班級開始做兩件事：</p>
@@ -751,15 +754,6 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <div><span class="label">小組分工</span><b>每個人都有任務</b>有些班級比較少分組，常把工作都推給同一個人。這也是機會教育，讓孩子發現自己的長處，進而幫助別人。</div>
     </div>
     <p class="pend">接下來我想從校園佈置開始，參考澳洲學校的學習牆，把情緒覺察和人際互動的句型放進教室和走廊。實施後會補上紀錄。</p>
-  </div></div>
-
-  <div class="sec"><p class="label">07 · 反思</p><div>
-    <h2>做完之後</h2>
-    <div class="prose">
-      <p>這堂課最後一張投影片，我寫給孩子的是：外面的世界雖然會晃動，但每個人都有能力讓自己的內心恢復平靜；保護好自己，就能成為別人身邊溫暖、可靠的存在。</p>
-      <p>其實這句話也是寫給我自己的。兩次培訓下來，我最大的體會是，老師要先照顧好自己的情緒，才有餘力陪伴孩子。SEL 不用另外找時間教，它可以就在每一堂課、每一次班級互動裡。</p>
-      <p>這學期其他和 SEL 有關的做法，整理在<a href="#project-sel">這一頁</a>。</p>
-    </div>
   </div></div>
 </template>
 
@@ -960,18 +954,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-case-circuit">
-  <div class="sec"><p class="label">01 · 流程</p><div>
-    <h2>我怎麼安排這個單元</h2>
-    <div class="steps">
-      <div><b>A</b><strong>分析</strong><span>用前測了解孩子的想法和程度差異</span></div>
-      <div><b>D</b><strong>設計</strong><span>寫學習目標、規劃評量和活動順序</span></div>
-      <div><b>D</b><strong>開發</strong><span>做互動題、學習單和檢核表</span></div>
-      <div><b>I</b><strong>實施</strong><span>先在一個班試教，修改後再教其他三班</span></div>
-      <div><b>E</b><strong>評估</strong><span>看孩子的反應、學習成果，比較兩輪的差別</span></div>
-    </div>
-  </div></div>
-
-  <div class="sec"><p class="label">02 · 分析</p><div>
+  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
     <h2>先了解孩子卡在哪裡</h2>
     <div class="prose"><p>這個單元有三個活動：<strong>如何讓燈泡發亮</strong>（燈泡亮了、電路與開關）、<strong>電路有哪些連接方式</strong>（電池和燈泡的串聯與並聯）和<strong>用電觀念知多少</strong>（認識小馬達、用電安全）。以前教這個單元時，我常發現孩子在動手接電路之前，心裡已經有一套自己的想法，其中有些是錯的。所以這次我想先做前測，看看下面四種迷思有多常見：</p></div>
     <div class="tbl" style="margin-top:var(--space-3)"><table>
@@ -986,7 +969,16 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p class="pend">前測結果會在教學前整理好補上。</p>
   </div></div>
 
-  <div class="sec"><p class="label">03 · 設計</p><div>
+  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
+    <h2>我怎麼安排這個單元</h2>
+    <div class="steps">
+      <div><b>A</b><strong>分析</strong><span>用前測了解孩子的想法和程度差異</span></div>
+      <div><b>D</b><strong>設計</strong><span>寫學習目標、規劃評量和活動順序</span></div>
+      <div><b>D</b><strong>開發</strong><span>做互動題、學習單和檢核表</span></div>
+      <div><b>I</b><strong>實施</strong><span>先在一個班試教，修改後再教其他三班</span></div>
+      <div><b>E</b><strong>評估</strong><span>看孩子的反應、學習成果，比較兩輪的差別</span></div>
+    </div>
+    <div style="margin-top:var(--space-5)"></div>
     <h2>學習目標和評量</h2>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-2)">我用 ABCD 的寫法（對象、行為、條件、標準）寫目標，並讓每個目標都對應一種評量，上完課才有辦法檢查孩子到底學會了沒有。</p>
     <ol class="obj">
@@ -1000,7 +992,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </ol>
   </div></div>
 
-  <div class="sec"><p class="label">04 · 開發</p><div>
+  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
     <h2>準備的教材</h2>
     <div class="flow">
       <div><span class="label">互動題</span><b>H5P 判斷題</b>做通路、斷路的判斷題和電路符號配對，孩子作答後馬上知道對錯，我也能看到每一題的答對率。</div>
@@ -1011,16 +1003,19 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p class="pend">互動題做好之後會放在這裡。</p>
   </div></div>
 
-  <div class="sec"><p class="label">05 · 實施</p><div>
+  <div class="sec"><p class="label">04<br>做完之後的觀察</p><div>
+    <h2>做完之後</h2>
+    <p class="pend">單元結束後，我會補上哪些設計有效、哪些要調整，以及下次會怎麼做。</p>
+  </div></div>
+
+  <div class="sec"><p class="label">05<br>接下來</p><div>
     <h2>先試教一個班</h2>
     <div class="flow">
       <div><span class="label">第一輪</span><b>試教班</b>先照原本的設計上課，記下孩子卡住的地方、時間夠不夠，還有他們問的問題。</div>
       <div><span class="label">修改</span><b>看結果調整</b>看哪幾題答對率低、哪個活動卡住，再修改說明、提示和時間安排。</div>
       <div><span class="label">第二輪</span><b>其他三個班</b>用修改後的版本上課，再比較兩輪的學習成果。</div>
     </div>
-  </div></div>
-
-  <div class="sec"><p class="label">06 · 評估</p><div>
+    <div style="margin-top:var(--space-5)"></div>
     <h2>怎麼知道孩子學會了</h2>
     <div class="tbl"><table>
       <thead><tr><th>看什麼</th><th>想知道的事</th><th>怎麼蒐集</th></tr></thead>
@@ -1032,11 +1027,6 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       </tbody>
     </table></div>
     <p class="pend">單元結束後會補上成果數據。</p>
-  </div></div>
-
-  <div class="sec"><p class="label">07 · 反思</p><div>
-    <h2>做完之後</h2>
-    <p class="pend">單元結束後，我會補上哪些設計有效、哪些要調整，以及下次會怎麼做。</p>
   </div></div>
 </template>
 
@@ -1144,6 +1134,7 @@ var CONTENT = [
     featured: 4,
     created: "2026-11-17",
     updated: "2026-11-17",
+    gallery: [],
     facts: [["使用者", "全校教師、家長、學生"], ["我的角色", "需求分析、資訊架構、內容整理、建置與維護"], ["工具", "GitHub Pages、Google 雲端硬碟"], ["規模", "8 個分區・宣導資源 32 筆"]]
   },
   {
@@ -1158,6 +1149,7 @@ var CONTENT = [
     featured: false,
     created: "2026-11-17",
     updated: "2026-11-17",
+    gallery: [],
     facts: [["使用者", "學習扶助授課教師、導師"], ["我的角色", "方案主辦、計畫撰寫、網站規劃"], ["工具", "Google 雲端硬碟、GitHub Pages"], ["範圍", "年度實施計畫＋校內教師網站"]]
   },
   {
@@ -1202,6 +1194,7 @@ var CONTENT = [
     featured: false,
     created: "2026-09-15",
     updated: "2026-11-18",
+    gallery: [],
     facts: [["學習者", "國小四年級"], ["單元", "自然・地表的變動：怎樣做好地震防災"], ["框架", "CASEL 社會情緒學習五大能力"], ["我的角色", "設計、教學、在種子教師培訓中分享"]]
   },
   {
@@ -1247,6 +1240,7 @@ var CONTENT = [
     featured: 2,
     created: "2026-11-17",
     updated: "2026-11-17",
+    gallery: [],
     facts: [["學習者", "國小四年級・4 班"], ["我的角色", "分析、設計、開發、教學、評估"], ["設計模型", "ADDIE＋快速原型迭代"], ["教材", "康軒版四上第四單元（三個活動）"]]
   },
   {
