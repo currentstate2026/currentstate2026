@@ -60,6 +60,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .hero{display:grid;grid-template-columns:1fr 220px;gap:var(--space-5);align-items:end;padding-bottom:var(--space-6)}
 .hero h1{font-size:clamp(30px,5vw,44px);line-height:1.3;letter-spacing:.04em}
 .hero .lede{margin-top:var(--space-4);max-width:var(--measure);color:var(--ink-muted)}
+.hero .lede p+p{margin-top:var(--space-2)}
+.hero h1.hero-slogan{font-size:clamp(26px,3.6vw,36px);line-height:1.5;letter-spacing:.04em}
+.slogan{font-family:var(--font-serif);font-weight:500;font-size:21px;line-height:1.6;color:var(--sage-ink)}
+.idx-desc{line-height:22px;margin-bottom:var(--space-1)}
 .hero .meta{margin-top:var(--space-4);display:flex;gap:var(--space-2);flex-wrap:wrap}
 .hero svg{width:100%;height:auto}
 .ill{stroke:var(--sage-ink);stroke-width:1.25;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -210,14 +214,13 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 <!-- ===== HOME ===== -->
 <div class="view wrap" id="v-home">
   <div class="sheet">
-    <div class="side"><p class="vlabel">個人品牌素材庫</p></div>
+    <div class="side"><p class="vlabel">生活實驗筆記</p></div>
     <div class="main">
       <div class="hero">
         <div>
           <p class="label">一位小學老師的生活實驗筆記</p>
-          <h1 style="margin-top:12px">嗨，我是 Potter。</h1>
-          <p class="lede">我是 Potter L，一位小學老師。平常的生活大多圍繞著教學、行政工作和各種待辦事項，所以我開始用 Notion、AI 和不同的工具整理工作與生活，也對心理學和人的行為越來越好奇。這裡放的是我做過的課程、工具和學習紀錄——在生活裡持續嘗試，把過程整理成自己的方法。</p>
-          <div class="meta"><span class="chip">Gemini Certified Educator</span><span class="chip">Apple Teacher</span><span class="chip">中山大學 教育研究所 碩士</span></div>
+          <h1 class="hero-slogan" style="margin-top:12px">在生活裡持續嘗試，<br>把過程整理成自己的方法。</h1>
+          <p class="lede">關於系統、心理學，以及生活裡那些還在進行的實驗。</p>
         </div>
         <svg viewBox="0 0 220 240" aria-hidden="true">
           <rect class="ill-fill" x="24" y="40" width="120" height="152" rx="2"/>
@@ -229,6 +232,32 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         </svg>
       </div>
 
+      <section class="block" aria-labelledby="h-hello">
+        <div class="head"><h2 id="h-hello">嗨，我是 Potter。</h2></div>
+        <div class="prose">
+          <p>一位喜歡觀察、整理，也喜歡嘗試新方法的小學老師。</p>
+          <p>平常除了教學和行政工作，也喜歡研究 Notion、AI 和各種工具，想讓工作與生活變得更有條理。</p>
+          <p>除了研究工具，我也對人在面對問題時的想法與行為很感興趣。</p>
+          <p>這裡記錄我做過的作品、正在進行的專案，以及過程中的一些觀察與思考。</p>
+        </div>
+        <p style="margin-top:var(--space-4)"><a href="#about" class="back">關於我 →</a></p>
+      </section>
+
+      <section class="block" aria-labelledby="h-index">
+        <div class="head"><h2 id="h-index">這裡有什麼</h2></div>
+        <nav class="index" aria-labelledby="h-index">
+          <a href="#works"><span class="label">01</span><b>作品</b><span class="idx-desc">一些已經完成的教學設計、工具與其他創作成果。</span><span id="n-work"></span></a>
+          <a href="#projects"><span class="label">02</span><b>專案</b><span class="idx-desc">正在進行或已經完成的計畫，包含過程中的嘗試、調整與收穫。</span><span id="n-project"></span></a>
+          <a href="#notes"><span class="label">03</span><b>筆記</b><span class="idx-desc">最近學到的知識、讀到的觀點，以及生活裡的觀察與思考。</span><span id="n-note"></span></a>
+          <a href="#archive"><span class="label">04</span><b>素材庫</b><span class="idx-desc">平常用得到的工具、範本與資源，也分享自己整理的內容。</span><span id="n-all"></span></a>
+        </nav>
+      </section>
+
+      <section class="block" aria-labelledby="h-feat">
+        <div class="head"><h2 id="h-feat">最近在做的事</h2><a href="#archive" class="back">看全部 →</a></div>
+        <div class="cards" id="featured"></div>
+      </section>
+
       <section class="block" aria-labelledby="h-nl-cta">
         <div class="nl-cta">
           <div>
@@ -238,21 +267,6 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
           </div>
           <a class="btn-main" href="#newsletter">訂閱電子報 →</a>
         </div>
-      </section>
-
-      <section class="block" aria-labelledby="h-index">
-        <div class="head"><h2 id="h-index">這裡有什麼</h2></div>
-        <nav class="index" aria-labelledby="h-index">
-          <a href="#works"><span class="label">01</span><b>作品</b><span id="n-work"></span></a>
-          <a href="#projects"><span class="label">02</span><b>專案</b><span id="n-project"></span></a>
-          <a href="#notes"><span class="label">03</span><b>筆記</b><span id="n-note"></span></a>
-          <a href="#archive"><span class="label">04</span><b>素材庫</b><span id="n-all"></span></a>
-        </nav>
-      </section>
-
-      <section class="block" aria-labelledby="h-feat">
-        <div class="head"><h2 id="h-feat">最近在做的事</h2><a href="#archive" class="back">看全部 →</a></div>
-        <div class="cards" id="featured"></div>
       </section>
     </div>
   </div>
@@ -271,8 +285,12 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
           <div class="prose">
             <p>嗨，我是 Potter L，一位小學老師。</p>
             <p>平常的生活大多圍繞著教學、行政工作，以及各種大大小小的待辦事項。因為事情總是很多，我開始嘗試用 Notion、AI 和不同的工具整理工作與生活，也慢慢養成了把問題拆開來思考的習慣。</p>
-            <p>不過，在不斷調整方法的過程中，我也發現，有些事情並不是建立一套系統就能解決。我會拖延、會焦慮，有時候明明知道該怎麼做，卻還是做不到。這也讓我開始對心理學，以及人的行為和思考方式產生更多興趣。</p>
-            <p>這份電子報會每兩週更新一次，分享一個最近的實驗、一點過程中的觀察，以及一些可以實際試試看的方法。不一定每次都有完整的答案，但我覺得，這些嘗試和調整的過程，本身就很值得記錄。</p>
+            <p>不過，在不斷調整方法的過程中，我也發現，有些事情並不是建立一套系統就能解決。</p>
+            <p>我會拖延、會焦慮，有時候明明知道該怎麼做，卻還是做不到。這也讓我開始對心理學，以及人的行為和思考方式產生更多興趣。</p>
+            <p>於是，我想把這些過程記錄下來。</p>
+            <p>可能是最近嘗試的一個 AI 工具、一套工作流程，也可能是讀到的心理學觀點，或是生活裡某件讓我重新思考的小事。</p>
+            <p>這份電子報會每兩週更新一次，分享一個最近的實驗、一點過程中的觀察，以及一些可以實際試試看的方法。</p>
+            <p>不一定每次都有完整的答案，有些方法也可能試了才發現不適合。但我覺得，這些嘗試和調整的過程，本身就很值得記錄。</p>
             <p>這裡是 Current State，記錄那些還在進行中的事。</p>
           </div>
           <div>
@@ -298,31 +316,55 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <div class="side"><p class="vlabel">關於</p></div>
     <div class="main">
       <section class="block">
-        <h1 style="font-size:32px;line-height:44px;margin-bottom:var(--space-4)">關於我</h1>
+        <h1 style="font-size:32px;line-height:44px;margin-bottom:var(--space-4)">嗨，我是 Potter L。</h1>
+        <div class="prose">
+          <p class="lead">目前是一位小學老師，平常的工作主要圍繞著教學與行政。</p>
+          <p>工作之外，我喜歡研究各種工具、學習新的東西，也常常在想：這件事有沒有更好的做法？</p>
+        </div>
+      </section>
+      <section class="block" aria-labelledby="h-think">
+        <div class="head"><h2 id="h-think">從整理事情，到理解人</h2></div>
+        <div class="prose">
+          <p>一開始接觸 Notion、AI 和各種工具，是希望減少重複性的工作，讓生活更有條理。慢慢地，我感興趣的不只是工具能做到什麼，而是怎麼把它們用在實際遇到的問題上：可能是一套工作流程、一份教材，或是生活裡某個不太順手的習慣。</p>
+          <p>但我也發現，有些事情即使有了方法，還是不一定能順利執行。這讓我開始對心理學，以及人的想法、情緒與行為產生興趣。現在的我，還在學習怎麼把這些不同的知識慢慢整合起來。</p>
+        </div>
+      </section>
+      <section class="block" aria-labelledby="h-journey">
+        <div class="head"><h2 id="h-journey">一路走來</h2></div>
         <div class="two">
           <div class="prose">
-            <p class="lead">我是一位小學老師，教自然，也負責一些行政工作。</p>
-            <p>不同的角色讓我每天面對不同的人：課堂上的學生、需要多一點陪伴的孩子，還有一起備課的老師。做久了我發現，不管面對的是誰，我在做的事其實很像，都是先弄清楚對方卡在哪裡，再想辦法設計一條他走得過去的路。</p>
-            <p>我在中山大學教育研究所念在職專班，論文研究組織溝通和組織文化對行政人員留任意願的影響。這份研究讓我相信，想讓一群人願意改變，營造支持的氣氛往往比用規定要求更有用。這也是我後來推動校內共備時，一直提醒自己的事。</p>
-            <p>這幾年我也大量使用 AI 工具，從設計教材到處理行政文書都有。我很喜歡它帶來的效率，但也一直提醒自己，工具是用來幫忙的，課要怎麼上、孩子需要什麼，還是要由老師來判斷。</p>
+            <p>我的經驗大多從教育開始。教學讓我接觸課程設計與不同的學習需求，行政工作則讓我看見更多溝通、協調與組織運作的問題。</p>
+            <p>在研究所時，我研究影響組織的各種因素。這段經驗讓我更注意制度、溝通方式與工作環境之間的關係，也讓我相信——想讓人願意改變，營造支持的氣氛往往比規定更有用。</p>
+            <p>這幾年，我也陸續接觸 AI、雙語教學、SEL 社會情緒學習和不同的數位工具。它們看起來不一定相關，但都是從實際遇到的問題開始，再慢慢延伸出新的興趣。</p>
           </div>
           <dl class="dl">
-            <dt>現職</dt><dd>國小教師（自然科）</dd>
-            <dt>學歷</dt><dd>國立中山大學 教育研究所 碩士（在職專班）</dd>
-            <dt>認證</dt><dd>Gemini Certified Educator、Apple Teacher、Google AI Essentials</dd>
-            <dt>培訓</dt><dd>教育部 114 年中小學雙語教學學分班<br>SEL 種子教師培訓</dd>
-            <dt>交流</dt><dd>2026 青年百億海外圓夢基金計畫，赴澳洲見習 16 天</dd>
-            <dt>專長</dt><dd>課程設計、UDL、AI 教學與行政應用、學習數據分析</dd>
+            <dt>目前的工作</dt><dd>國小教師（自然科教學與行政）</dd>
+            <dt>學歷</dt><dd>國立中山大學 教育研究所 碩士</dd>
+            <dt>專業認證</dt><dd>Gemini Certified Educator<br>Apple Teacher<br>Google AI Essentials</dd>
+            <dt>學習與培訓</dt><dd>教育部中小學雙語教學學分班<br>社會情緒學習（SEL）種子教師培訓</dd>
+            <dt>交流</dt><dd>2026 青年百億海外圓夢基金計畫，澳洲見習 16 天</dd>
           </dl>
         </div>
       </section>
       <section class="block" aria-labelledby="h-pr">
         <div class="head"><h2 id="h-pr">我在意的三件事</h2></div>
         <div class="princ">
-          <div><h3>先找出卡住的地方</h3><p>上課前先用前測或聊天了解孩子的想法，再決定要怎麼教。</p></div>
-          <div><h3>讓每個孩子都有路走</h3><p>同一個任務準備圖像、操作和文字幾種方式，快的、慢的孩子都跟得上。</p></div>
-          <div><h3>用結果檢查自己</h3><p>每個目標都搭配一種評量，先試教，看結果，再修改。</p></div>
+          <div><h3>01｜把事情整理清楚</h3><p>我喜歡把複雜的事情拆開來思考，找到問題所在，再試著建立適合自己的做法。</p></div>
+          <div><h3>02｜理解事情背後的人</h3><p>除了事情怎麼完成，我也會好奇，為什麼每個人的想法和反應不一樣，以及這些差異會帶來什麼影響。</p></div>
+          <div><h3>03｜從嘗試中慢慢調整</h3><p>我不覺得每件事都需要一次做到最好。先試試看、觀察結果，再慢慢修改，反而比較容易找到適合自己的方式。</p></div>
         </div>
+      </section>
+      <section class="block" aria-labelledby="h-why">
+        <div class="head"><h2 id="h-why">為什麼開始 Current State？</h2></div>
+        <div class="prose">
+          <p>我習慣把想法和經驗記下來，只是這些內容常常散落在不同的工具和地方。</p>
+          <p>後來我想，如果能把它們整理在同一個地方，除了方便自己回顧，也許也能分享給有相似興趣的人。</p>
+          <p>於是在 2026 年，我開始了。這裡不會只有教學，也不會只談 AI 或心理學。</p>
+          <p>我想記錄的是自己怎麼觀察、學習、練習及產出。</p>
+          <p class="slogan" style="margin-top:var(--space-2)">在生活裡持續嘗試，把過程整理成自己的方法。</p>
+          <p>這就是我想持續做的事。</p>
+        </div>
+        <p style="margin-top:var(--space-4);display:flex;gap:var(--space-4);flex-wrap:wrap"><a href="#works" class="back">看看作品 →</a><a href="#newsletter" class="back">訂閱電子報 →</a></p>
       </section>
     </div>
   </div>
