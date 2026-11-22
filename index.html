@@ -100,8 +100,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 /* cards */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
-.card{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);text-decoration:none;color:var(--ink);transition:border-color .2s}
-.card:hover{border-color:var(--line-strong)}
+.card{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--line-strong);transform:translateY(-2px)}
 .card .arrow{transition:transform .2s}
 .card:hover .arrow{transform:translateX(3px);color:var(--ink)}
 .card .row{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}
@@ -141,6 +141,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .sec{display:grid;grid-template-columns:120px 1fr;gap:var(--space-4);padding:var(--space-5) 0;border-bottom:var(--hairline) solid var(--line)}
 .sec:last-of-type{border-bottom:0}
 .sec > .label{padding-top:6px}
+.sec > div{min-width:0}
+.main{min-width:0}
 .sec h2{font-size:24px;line-height:36px;margin-bottom:var(--space-3)}
 .steps{display:grid;grid-template-columns:repeat(5,1fr);border-top:var(--hairline) solid var(--ink)}
 .steps div{padding:var(--space-3) var(--space-3) var(--space-3) 0;display:flex;flex-direction:column;gap:2px}
@@ -159,6 +161,12 @@ ol.obj small{display:block;color:var(--ink-muted);font-size:14px}
 .related{margin-top:var(--space-5);padding-top:var(--space-3);border-top:var(--hairline) solid var(--line);display:flex;flex-direction:column;gap:var(--space-2)}
 .related a{display:flex;gap:var(--space-2);align-items:center;text-decoration:none;color:var(--ink);padding:var(--space-2) 0}
 .related a:hover span:nth-child(2){text-decoration:underline}
+.subhead{display:flex;align-items:center;gap:var(--space-2);font-size:13px;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:var(--space-3)}
+.subhead::after{content:"";flex:1;height:0;border-top:var(--hairline) solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-3);margin-top:var(--space-4)}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:auto;display:block;border:var(--hairline) solid var(--line);border-radius:var(--radius-sm);background:var(--paper-raised)}
+.gallery figcaption{font-size:13px;line-height:22px;color:var(--ink-muted);margin-top:var(--space-1)}
 .pend{border:1px dashed var(--line-strong);border-radius:var(--radius-sm);padding:var(--space-3);color:var(--ink-muted);font-size:14px;line-height:24px;margin-top:var(--space-3)}
 .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
 .flow div{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);font-size:14px;line-height:24px}
@@ -169,6 +177,7 @@ ol.obj small{display:block;color:var(--ink-muted);font-size:14px}
 
 /* about */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+.two table,table:not(:has(th:nth-child(3))){min-width:0}
 .dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-2) var(--space-4);font-size:15px;margin:0}
 .dl dt{color:var(--ink-muted)}
 .dl dd{margin:0}
@@ -755,7 +764,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-case-midterm-reflection">
-  <div class="sec"><p class="label">01 · 起點</p><div>
+  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
     <h2>為什麼想做反思單</h2>
     <div class="prose">
       <p>每次發回考卷，多數孩子看完分數就收進書包了。他們知道自己考幾分，卻不太清楚自己是怎麼準備的、哪個方法有用，下一次也就照舊。</p>
@@ -763,7 +772,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 設計</p><div>
+  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
     <h2>一張學習單，分成考前和考後</h2>
     <div class="tbl"><table>
       <thead><tr><th>時間</th><th>孩子要做的事</th></tr></thead>
@@ -780,7 +789,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">03 · 工具</p><div>
+  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
     <h2>為了讓反思寫得出來，我另外準備的東西</h2>
     <div class="flow">
       <div><span class="label">考前</span><b>作戰卡</b>把每個孩子自己選的目標和方法印成一張小卡帶回家，每做完一項就打勾。</div>
@@ -790,7 +799,9 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">04 · 結果</p><div>
+  <div class="sec">
+    <p class="label">04<br>做完之後的觀察</p><div>
+    <p class="subhead">實際結果</p>
     <h2>我從全班的回答看到什麼</h2>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-3)">以下都是全班的匿名統計。這只是一個班的結果，人數不多，所以我只把結果當作趨勢來看，不當作因果。</p>
 
@@ -853,9 +864,16 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       </tbody>
     </table></div>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">寫承諾對孩子來說不難，但要回頭查考卷、寫出正確的觀念，對四年級來說就比較吃力。另外，覺得「沒達到預期」的孩子，成績其實也不差，他們的失望多半來自對自己的高要求。</p>
+  
+    <p class="subhead" style="margin-top:var(--space-5)">我的反思</p>
+    <h2>做完之後</h2>
+    <div class="prose">
+      <p>做這份反思單之前，我以為孩子最缺的是讀書方法。做完才發現，他們其實很會選方法，也知道自己準備得好不好，真正難的是誠實面對錯在哪裡。「粗心」是一個很安全的答案，要讓孩子願意說「我其實不懂」，需要先讓他覺得說出來是安全的。這也是我只給全班看匿名統計、個別資料只留給自己的原因。</p>
+      <p>這次花最多時間的是登錄和整理資料。如果之後要推到四個班，我得先想辦法簡化流程，讓老師不用多花太多力氣。</p>
+    </div>
   </div></div>
 
-  <div class="sec"><p class="label">05 · 下一步</p><div>
+  <div class="sec"><p class="label">05<br>接下來</p><div>
     <h2>期末考，我想這樣調整</h2>
     <ol class="obj">
       <li><div>考卷發回後，先用一兩題示範怎麼分辨「粗心」和「觀念不熟」：同一題重寫一次還是不會，就不是粗心。</div></li>
@@ -865,14 +883,6 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <li><div>如果效果不錯，再推到我教的其他三個班。</div></li>
     </ol>
     <p class="pend">期末考後會補上第二輪的結果，以及孩子看到全班統計後的反應。</p>
-  </div></div>
-
-  <div class="sec"><p class="label">06 · 反思</p><div>
-    <h2>做完之後</h2>
-    <div class="prose">
-      <p>做這份反思單之前，我以為孩子最缺的是讀書方法。做完才發現，他們其實很會選方法，也知道自己準備得好不好，真正難的是誠實面對錯在哪裡。「粗心」是一個很安全的答案，要讓孩子願意說「我其實不懂」，需要先讓他覺得說出來是安全的。這也是我只給全班看匿名統計、個別資料只留給自己的原因。</p>
-      <p>這次花最多時間的是登錄和整理資料。如果之後要推到四個班，我得先想辦法簡化流程，讓老師不用多花太多力氣。</p>
-    </div>
   </div></div>
 </template>
 
@@ -1207,6 +1217,7 @@ var CONTENT = [
     featured: false,
     created: "2026-10-14",
     updated: "2026-11-18",
+    gallery: [],  /* 之後放圖片：{src: "圖片網址", alt: "圖片說明", caption: "圖說"} */
     facts: [["學習者", "國小四年級・1 班"], ["我的角色", "設計學習單、整理數據、課堂回饋"], ["工具", "紙本反思單、試算表、錯題提示條、簡報"], ["期間", "2026 年 10～11 月"]]
   },
   {
@@ -1368,6 +1379,12 @@ function renderItem(c){
   if(tpl){ var frag=document.createElement("div"); frag.appendChild(tpl.content.cloneNode(true)); tagLeaves(frag,"t:"+c.slug); while(frag.firstChild) main.appendChild(frag.firstChild); }
   main.querySelectorAll('[data-ek]').forEach(function(el){ applyStyle(el, el.getAttribute("data-ek")); });
   if(!tpl) main.insertAdjacentHTML("beforeend", '<p class="pend">內文整理中。</p>');
+  /* 圖片：CONTENT 有 gallery 才顯示，放進 data-gallery 那一段；沒有圖片就不出現任何區塊 */
+  var gs = main.querySelector('[data-gallery]');
+  if(gs && c.gallery && c.gallery.length){
+    gs.lastElementChild.insertAdjacentHTML("beforeend", '<div class="gallery">' + c.gallery.map(function(g){
+      return '<figure><img src="' + esc(g.src) + '" alt="' + esc(g.alt || "") + '" loading="lazy">' + (g.caption ? '<figcaption>' + esc(g.caption) + '</figcaption>' : '') + '</figure>'; }).join("") + '</div>');
+  }
   var rel = (c.related || []).map(function(s){ return PUBLIC.filter(function(x){ return x.slug === s; })[0]; }).filter(Boolean);
   if(rel.length) main.insertAdjacentHTML("beforeend", '<section class="related"><p class="label">相關內容</p>' + rel.map(function(r){
     return '<a href="#' + esc(r.slug) + '"><span class="chip ' + TYPES[r.type].cls + '">' + TYPES[r.type].name + '</span><span>' + esc(r.title) + '</span><span aria-hidden="true">→</span></a>'; }).join("") + '</section>');
