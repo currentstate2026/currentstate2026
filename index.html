@@ -72,6 +72,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .t-project{background:var(--flax-soft);color:var(--flax-ink);border-color:transparent}
 .t-note{background:var(--mist-soft);color:var(--mist-ink);border-color:transparent}
 .t-asset{background:var(--paper-deep);color:var(--ink-muted);border-color:transparent}
+.t-letter{background:var(--sage-ink);color:var(--paper);border-color:transparent}
+.nl-box{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3);max-width:560px}
+.nl-box h2{font-size:22px;line-height:32px}
+.nl-box p{font-size:15px;line-height:26px;color:var(--ink-muted)}
+.nl-embed{min-height:60px}
+.nl-cta{display:grid;grid-template-columns:1fr auto;gap:var(--space-4);align-items:center;background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-4)}
+.nl-cta h2{font-size:22px;line-height:32px;margin-bottom:var(--space-1)}
+.nl-cta p{font-size:15px;line-height:26px;color:var(--ink-muted)}
+@media (max-width:720px){.nl-cta{grid-template-columns:1fr}}
 .prog{font-size:12px;letter-spacing:.1em;color:var(--flax-ink)}
 
 /* section index */
@@ -188,6 +197,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   <div class="wrap top-in">
     <a class="mark" href="#home"><span class="seal" aria-hidden="true">C</span><b>Current State｜整合進行式</b></a>
     <nav class="nav" aria-label="主要選單">
+      <a href="#newsletter" data-nav="newsletter">電子報</a>
       <a href="#about" data-nav="about">關於</a>
       <a href="#works" data-nav="works">作品</a>
       <a href="#projects" data-nav="projects">專案</a>
@@ -219,6 +229,17 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         </svg>
       </div>
 
+      <section class="block" aria-labelledby="h-nl-cta">
+        <div class="nl-cta">
+          <div>
+            <p class="label">Current State｜整合進行式</p>
+            <h2 id="h-nl-cta" style="margin-top:4px">每兩週一封的生活實驗筆記</h2>
+            <p>一個最近的實驗、一點過程中的觀察，以及一個可以實際試試看的方法。</p>
+          </div>
+          <a class="btn-main" href="#newsletter">訂閱電子報 →</a>
+        </div>
+      </section>
+
       <section class="block" aria-labelledby="h-index">
         <div class="head"><h2 id="h-index">這裡有什麼</h2></div>
         <nav class="index" aria-labelledby="h-index">
@@ -232,6 +253,40 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <section class="block" aria-labelledby="h-feat">
         <div class="head"><h2 id="h-feat">最近在做的事</h2><a href="#archive" class="back">看全部 →</a></div>
         <div class="cards" id="featured"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NEWSLETTER ===== -->
+<div class="view wrap" id="v-newsletter" hidden>
+  <div class="sheet">
+    <div class="side"><p class="vlabel">電子報</p></div>
+    <div class="main">
+      <section class="block">
+        <p class="label">一位小學老師的生活實驗筆記</p>
+        <h1 style="font-size:clamp(28px,4.5vw,40px);line-height:1.35;letter-spacing:.03em;margin-top:12px">Current State｜整合進行式</h1>
+        <p class="lead" style="margin-top:var(--space-3);color:var(--ink-muted)">用系統整理生活，用心理解人。</p>
+        <div class="two" style="margin-top:var(--space-5)">
+          <div class="prose">
+            <p>嗨，我是 Potter L，一位小學老師。</p>
+            <p>平常的生活大多圍繞著教學、行政工作，以及各種大大小小的待辦事項。因為事情總是很多，我開始嘗試用 Notion、AI 和不同的工具整理工作與生活，也慢慢養成了把問題拆開來思考的習慣。</p>
+            <p>不過，在不斷調整方法的過程中，我也發現，有些事情並不是建立一套系統就能解決。我會拖延、會焦慮，有時候明明知道該怎麼做，卻還是做不到。這也讓我開始對心理學，以及人的行為和思考方式產生更多興趣。</p>
+            <p>這份電子報會每兩週更新一次，分享一個最近的實驗、一點過程中的觀察，以及一些可以實際試試看的方法。不一定每次都有完整的答案，但我覺得，這些嘗試和調整的過程，本身就很值得記錄。</p>
+            <p>這裡是 Current State，記錄那些還在進行中的事。</p>
+          </div>
+          <div>
+            <div class="nl-box">
+              <h2>訂閱電子報</h2>
+              <p>每兩週一封，免費。訂閱後請到信箱點選確認信，才算完成訂閱。</p>
+              <div class="nl-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="db40d778-f05c-454a-a5c0-cc72e59c7927"></script></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="block" aria-labelledby="h-nl-list">
+        <div class="head"><h2 id="h-nl-list">往期電子報</h2><span class="count" id="nl-count"></span></div>
+        <div class="cards" id="nl-cards"></div>
       </section>
     </div>
   </div>
@@ -963,7 +1018,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 
 <footer>
   <div class="wrap foot-in">
-    <div><b>Current State｜整合進行式</b>Potter L · 一位小學老師的生活實驗筆記</div>
+    <div><b>Current State｜整合進行式</b>Potter L · 一位小學老師的生活實驗筆記 · since 2026</div>
+    <div>聯絡：<a href="mailto:hello@currentstate2026.com">hello@currentstate2026.com</a></div>
     <div>本站不呈現任何可辨識學生身分的資料</div>
   </div>
 </footer>
@@ -1019,6 +1075,7 @@ function tagLeaves(root, prefix){
 /* 首頁、關於：先標記可編輯的文字 */
 tagLeaves(document.getElementById("v-home"),"home");
 tagLeaves(document.getElementById("v-about"),"about");
+tagLeaves(document.getElementById("v-newsletter"),"newsletter");
 
 var CONTENT = [
   {
@@ -1155,6 +1212,7 @@ var CONTENT = [
 ];
 
 var TYPES = {
+  letter:  {name: "電子報", cls: "t-letter", view: "newsletter", desc: "每兩週一封的生活實驗筆記。"},
   work:    {name: "作品", cls: "t-work",    view: "works",    desc: "我做過的課程設計和行政方案。從發現問題、設計到檢討，盡量完整記錄下來。"},
   project: {name: "專案", cls: "t-project", view: "projects", desc: "需要比較長時間進行的計畫，記錄目標、過程和目前的進度。"},
   note:    {name: "筆記", cls: "t-note",    view: "notes",    desc: "學習紀錄、讀書心得，還有生活裡的一些想法。"},
@@ -1200,6 +1258,14 @@ function renderList(typeKey){
   document.getElementById("list-desc").textContent = T.desc;
   document.getElementById("list-count").textContent = items.length + " 篇";
   document.getElementById("list-cards").innerHTML = items.length ? items.map(card).join("") : emptyBox(T.name);
+}
+
+/* newsletter */
+function renderNewsletter(){
+  var items = PUBLIC.filter(function(c){ return c.type === "letter"; });
+  document.getElementById("nl-count").textContent = items.length ? items.length + " 期" : "";
+  document.getElementById("nl-cards").innerHTML = items.length ? items.map(card).join("") :
+    '<p class="empty">創刊號準備中，預計 2026 年 12 月寄出。訂閱後就會第一時間收到。</p>';
 }
 
 /* archive */
@@ -1249,13 +1315,14 @@ function renderItem(c){
 }
 
 /* router: #home #about #works #projects #notes #archive #<slug> */
-var VIEWS = ["home","about","list","archive","item"];
+var VIEWS = ["home","about","newsletter","list","archive","item"];
 function show(v){ VIEWS.forEach(function(k){ document.getElementById("v-" + k).hidden = (k !== v); }); }
 function route(){
   var h = (location.hash || "#home").slice(1) || "home";
   var navKey = h, listMap = {works: "work", projects: "project", notes: "note"};
   if(h === "home" || h === "top"){ show("home"); navKey = ""; }
   else if(h === "about"){ show("about"); }
+  else if(h === "newsletter"){ renderNewsletter(); show("newsletter"); }
   else if(listMap[h]){ renderList(listMap[h]); show("list"); }
   else if(h === "archive"){ renderArchive(); show("archive"); }
   else {
@@ -1320,7 +1387,7 @@ document.addEventListener("click", function(e){
   document.getElementById("ed-cancel").addEventListener("click", function(){
     if(Object.keys(PENDING).length && !window.__edConfirm){ window.__edConfirm=true; document.getElementById("ed-msg").textContent="再按一次「取消」會放棄所有未儲存的修改。"; return; }
     window.__edConfirm=false; PENDING={}; setEditing(false); route();
-    tagLeaves(document.getElementById("v-home"),"home"); tagLeaves(document.getElementById("v-about"),"about");
+    tagLeaves(document.getElementById("v-home"),"home"); tagLeaves(document.getElementById("v-about"),"about"); tagLeaves(document.getElementById("v-newsletter"),"newsletter");
     document.getElementById("ed-msg").textContent="";
   });
   document.getElementById("ed-save").addEventListener("click", async function(){
