@@ -102,6 +102,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
 .card{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);text-decoration:none;color:var(--ink);transition:border-color .2s}
 .card:hover{border-color:var(--line-strong)}
+.card .arrow{transition:transform .2s}
+.card:hover .arrow{transform:translateX(3px);color:var(--ink)}
 .card .row{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}
 .card h3{font-size:19px;line-height:30px}
 .card p{font-size:14px;line-height:24px;color:var(--ink-muted)}
@@ -691,6 +693,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <tr><td>重點</td><td>避難動線，常常很匆忙</td><td>先安頓自己，再支持身邊的同學</td></tr>
       </tbody>
     </table></div>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">情緒練習不取代避難動作，而是在完成避難動作之後進行。</p>
   </div></div>
 
   <div class="sec"><p class="label">03 · 設計</p><div>
@@ -1137,7 +1140,7 @@ var CONTENT = [
     slug: "case-learning-support",
     type: "work",
     cat: "工具與系統",
-    title: "學習扶助方案改版：從數據重新寫計畫",
+    title: "學習扶助方案改版：從數據重新整理一份工作計畫",
     summary: "這一年我把學習扶助實施計畫改成從數據出發的寫法，也為授課老師做了一個網站，讓大家打開就知道這個月該做什麼。",
     tags: ["資訊整理", "流程設計"],
     status: "public",
@@ -1226,7 +1229,7 @@ var CONTENT = [
     related: ["project-australia-ai-lab"],
     cat: "教學設計",
     title: "好玩的電路：先找出孩子的迷思，再修改教材",
-    summary: "在準備電路單元時，我想先了解學生容易在哪些觀念卡住，再根據這些問題重新安排教學活動與操作方式。",
+    summary: "在準備電路單元時，我先用前測找出學生容易混淆的觀念，再依這些問題調整活動與評量，先在一個班試教，修改後再教其他班。",
     tags: ["自然科學", "學習設計"],
     status: "public",
     progress: "進行中",
@@ -1276,7 +1279,7 @@ function card(c, useCat){
   return '<a class="card" href="#' + esc(c.slug) + '">' +
     '<div class="row">' + chip + '</div>' +
     '<h3>' + esc(c.title) + '</h3><p>' + esc(c.summary) + '</p>' +
-    '<div class="foot"><span>' + c.tags.slice(0,2).map(esc).join("・") + '</span></div></a>';
+    '<div class="foot"><span>' + c.tags.slice(0,2).map(esc).join("・") + '</span><span class="arrow" aria-hidden="true">→</span></div></a>';
 }
 function emptyBox(what){
   return '<p class="empty">目前還沒有公開的' + what + '，整理好之後會放上來。</p>';
