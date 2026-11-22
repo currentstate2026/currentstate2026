@@ -270,13 +270,13 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 .arch-root::after{content:"";position:absolute;left:50%;top:100%;height:var(--space-4);border-left:var(--hairline) solid var(--line-strong)}
 .arch-groups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-3);margin-top:var(--space-4);padding-top:var(--space-4);border-top:var(--hairline) solid var(--line-strong);position:relative}
 .arch-groups > div{position:relative;border-top:2px solid var(--sage);padding-top:var(--space-2)}
-.arch-g{font-family:var(--font-serif);font-weight:600;font-size:15px;color:var(--sage-ink);margin-bottom:var(--space-1)}
-.arch-groups ul{list-style:none;margin:0;padding:0;font-size:14px;line-height:26px}
+.arch-g{font-family:var(--font-serif);font-weight:600;font-size:15px;line-height:24px;color:var(--sage-ink);margin-bottom:2px}
+.arch-groups ul{list-style:none;margin:0;padding:0;font-size:13px;line-height:22px;color:var(--ink-muted)}
 .arch-groups li{padding-left:12px;position:relative}
-.arch-groups li::before{content:"";position:absolute;left:0;top:12px;width:6px;border-top:var(--hairline) solid var(--line-strong)}
+.arch-groups li::before{content:"";position:absolute;left:0;top:11px;width:6px;border-top:var(--hairline) solid var(--line-strong)}
 .arch figcaption{margin-top:var(--space-3);font-size:12px;line-height:20px;color:var(--ink-muted)}
 /* 分類索引（編輯式） */
-.zidx{list-style:none;margin:var(--space-4) 0 var(--space-4);padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-5);border-top:var(--hairline) solid var(--ink)}
+.zidx{list-style:none;margin:var(--space-4) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-5);border-top:var(--hairline) solid var(--ink)}
 .zidx li{align-content:start;display:grid;grid-template-columns:44px 1fr;column-gap:var(--space-2);row-gap:2px;padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
 .zidx-no{grid-row:1 / span 2;font-family:var(--font-serif);font-size:22px;line-height:28px;color:var(--line-strong)}
 .zidx b{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:28px}
@@ -285,6 +285,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .arch-groups{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
   .zidx{grid-template-columns:1fr}
 }
+.ed-end{margin-top:var(--space-5);padding-top:var(--space-3);border-top:var(--hairline) solid var(--line)}
 /* 引言 */
 .pull{margin:var(--space-4) 0 var(--space-5);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line);max-width:var(--measure)}
 .pull p{font-family:var(--font-serif);font-size:22px;line-height:40px;font-weight:500;letter-spacing:.04em}
@@ -571,12 +572,12 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <li><span class="zidx-no num">07</span><b>家長專區</b><span>求助專線、親職和數位安全資源</span></li>
       <li><span class="zidx-no num">08</span><b>學生影片專區</b><span>可以在課堂上直接播放的宣導影片</span></li>
     </ol>
-    <p class="pend">之後會補上老師使用的情形和回饋。</p>
   </div></div>
 
-  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">FINDINGS</span><span class="zh">做完之後的觀察</span></p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">NEXT</span><span class="zh">做完之後的觀察</span></p><div>
     <h2>做完之後，還想觀察什麼？</h2>
     <div class="prose"><p>網站已經完成資源整合，但實際使用情況仍需要持續觀察。之後會補上教師使用時遇到的問題，以及可能需要調整的地方。</p></div>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -985,7 +986,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <li><div>先補強地震單元，再看期末考的錯誤分類有沒有改變。</div></li>
       <li><div>如果效果不錯，再推到我教的其他三個班。</div></li>
     </ol>
-    <p class="pend">期末考後會補上第二輪的結果，以及孩子看到全班統計後的反應。</p>
+    <div class="prose" style="margin-top:var(--space-4)"><p>期末考後會補上第二輪的結果，以及孩子看到全班統計後的反應。</p></div>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
