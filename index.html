@@ -209,6 +209,76 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .steps{grid-template-columns:1fr}
   .steps div,.steps div+div{padding:var(--space-2) 0;border-left:0;border-bottom:var(--hairline) solid var(--line)}
 }
+/* ── 編輯式內頁（layout: "editorial"），只作用在 .ed ── */
+.ed .ed-head{display:flex;flex-direction:column;gap:var(--space-4);margin-top:var(--space-4);padding-bottom:var(--space-5);border-bottom:var(--hairline) solid var(--ink)}
+.ed-kicker{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;font-size:12px;line-height:18px;letter-spacing:.16em;color:var(--ink-muted);padding-bottom:var(--space-2);border-bottom:var(--hairline) solid var(--line)}
+.ed-kicker i{display:inline-block;width:24px;height:0;border-top:var(--hairline) solid var(--line-strong);vertical-align:middle;margin:0 10px}
+.ed .ed-head h1{font-size:clamp(28px,4.4vw,42px);line-height:1.45;letter-spacing:.04em;font-weight:600}
+.ed .ed-head h1 .t-main,.ed .ed-head h1 .t-sub{display:block}
+.ed .ed-head h1 .t-sub{font-weight:500}
+.ed-dek{max-width:var(--measure);font-size:18px;line-height:34px;color:var(--ink-muted);padding-left:var(--space-3);border-left:var(--hairline) solid var(--line-strong)}
+.ed-colophon{border-top:var(--hairline) solid var(--line);border-bottom:var(--hairline) solid var(--line);padding:var(--space-3) 0;display:flex;flex-direction:column;gap:var(--space-2)}
+.ed-tags{font-size:13px;letter-spacing:.08em;color:var(--ink-muted)}
+.ed .sec{grid-template-columns:150px 1fr;gap:var(--space-5);padding:var(--space-6) 0}
+.ed .sec h2{font-size:26px;line-height:38px;margin-bottom:var(--space-4)}
+.chap{display:flex;flex-direction:column;gap:4px;padding-top:0}
+.chap .no{font-family:var(--font-serif);font-size:44px;line-height:1;letter-spacing:.02em;color:var(--line-strong);font-weight:500}
+.chap .en{font-size:11px;letter-spacing:.24em;margin-top:var(--space-2)}
+.chap .zh{font-size:13px;letter-spacing:.08em;color:var(--ink)}
+.ed .sec > .label.chap{padding-top:0;position:sticky;top:var(--space-5);align-self:start}
+/* 時間軸 */
+.tl{list-style:none;margin:0;padding:0;max-width:var(--measure)}
+.tl li{position:relative;padding:0 0 var(--space-4) var(--space-5);display:flex;flex-direction:column;gap:2px}
+.tl li::before{content:"";position:absolute;left:5px;top:12px;bottom:-12px;border-left:var(--hairline) solid var(--line-strong)}
+.tl li::after{content:"";position:absolute;left:0;top:7px;width:11px;height:11px;border-radius:50%;background:var(--ink)}
+.tl li.end{padding-bottom:0}
+.tl li.end::before{display:none}
+.tl li.end::after{background:var(--paper);border:var(--hairline) solid var(--ink)}
+.tl-when{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:26px}
+.tl-what{font-size:15px;line-height:28px;color:var(--ink-muted)}
+/* 工具卡片：兩欄，有圖片的卡片占滿一列 */
+.ed [data-gallery] .flow{grid-template-columns:repeat(2,1fr)}
+.flow > div.has-img{grid-column:1/-1}
+.flow > div figure{margin:var(--space-3) 0 0}
+.flow > div figure img{width:100%;height:auto;display:block;border:var(--hairline) solid var(--line);border-radius:var(--radius-sm)}
+.flow > div figcaption{font-size:13px;color:var(--ink-muted);margin-top:var(--space-1)}
+/* 關鍵發現 */
+.keyf{border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line);padding:var(--space-3) 0 var(--space-4);margin-bottom:var(--space-6)}
+.keyf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:var(--space-3)}
+.keyf-grid > div{padding:0 var(--space-4);border-left:var(--hairline) solid var(--line);display:flex;flex-direction:column;gap:var(--space-2)}
+.keyf-grid > div:first-child{padding-left:0;border-left:0}
+.keyf-num{font-family:var(--font-serif);font-size:30px;line-height:1.2;color:var(--sage-ink);font-weight:600;white-space:nowrap}
+.keyf-num small{font-size:14px;color:var(--ink-muted);font-weight:400;margin:0 4px}
+.keyf-txt{font-size:15px;line-height:26px}
+.keyf-note{font-size:12px;line-height:20px;color:var(--ink-muted);margin-top:auto;padding-top:var(--space-2);border-top:var(--hairline) dashed var(--line)}
+.keyf-foot{font-size:12px;color:var(--ink-muted);margin-top:var(--space-3)}
+/* 發現 → 數據 → 解讀 */
+.ed [data-findings] h3::before,.ed [data-findings] h3 + .tbl::before,.ed [data-findings] h3 + .two::before,
+.ed [data-findings] h3 + p::before,.ed [data-findings] .tbl + p::before,.ed [data-findings] .two + p::before{
+  display:block;font-family:var(--font-sans);font-size:10px;line-height:16px;font-weight:500;letter-spacing:.24em;color:var(--line-strong);margin-bottom:4px}
+.ed [data-findings] h3::before{content:"FINDING"}
+.ed [data-findings] h3 + .tbl::before,.ed [data-findings] h3 + .two::before{content:"DATA"}
+.ed [data-findings] h3 + .two::before{grid-column:1/-1;margin-bottom:-12px}
+.ed [data-findings] h3 + p::before,.ed [data-findings] .tbl + p::before,.ed [data-findings] .two + p::before{content:"READING"}
+.ed [data-findings] h3{margin-top:var(--space-5) !important}
+/* 引言 */
+.pull{margin:var(--space-4) 0 var(--space-5);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line);max-width:var(--measure)}
+.pull p{font-family:var(--font-serif);font-size:22px;line-height:40px;font-weight:500;letter-spacing:.04em}
+.pull cite{display:block;margin-top:var(--space-2);font-style:normal;font-size:12px;letter-spacing:.12em;color:var(--ink-muted);text-align:right}
+@media (max-width:720px){
+  .ed .sec{grid-template-columns:1fr;gap:var(--space-3);padding:var(--space-5) 0}
+  .ed .sec > .label.chap{position:static;flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 10px}
+  .chap .no{font-size:32px}
+  .chap .en{margin-top:0}
+  .chap .zh{flex-basis:100%}
+  .ed .sec h2{font-size:22px;line-height:34px}
+  .ed-dek{font-size:16px;line-height:30px}
+  .ed [data-gallery] .flow{grid-template-columns:1fr}
+  .keyf-grid{grid-template-columns:1fr}
+  .keyf-grid > div{padding:var(--space-3) 0;border-left:0;border-top:var(--hairline) solid var(--line)}
+  .keyf-grid > div:first-child{padding-top:0;border-top:0}
+  .pull p{font-size:19px;line-height:34px}
+}
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
 </head>
@@ -758,7 +828,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-case-midterm-reflection">
-  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼想做這個？</span></p><div>
     <h2>為什麼想做反思單</h2>
     <div class="prose">
       <p>每次發回考卷，多數孩子看完分數就收進書包了。他們知道自己考幾分，卻不太清楚自己是怎麼準備的、哪個方法有用，下一次也就照舊。</p>
@@ -766,24 +836,21 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">DESIGN</span><span class="zh">我怎麼設計？</span></p><div>
     <h2>一張學習單，分成考前和考後</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>時間</th><th>孩子要做的事</th></tr></thead>
-      <tbody>
-        <tr><td style="white-space:nowrap">考前一週</td><td>① 設定目標　② 寫下自己有多少把握　③ 從五種讀書方法中選擇要做的</td></tr>
-        <tr><td style="white-space:nowrap">考前一天</td><td>回頭勾選每個方法：完成、部分完成，還是尚未完成</td></tr>
-        <tr><td style="white-space:nowrap">考後</td><td>③ 考後心情和原因　④ 哪些方法真的有幫助　⑤ 錯題偵探：替每一題錯誤分類　⑥ 肯定自己　⑦ 下次要怎麼做</td></tr>
-        <tr><td style="white-space:nowrap">最後</td><td>成長承諾：「因為我想要＿＿，所以我會在＿＿（時間）做到＿＿。」</td></tr>
-      </tbody>
-    </table></div>
+    <ol class="tl">
+      <li><span class="tl-when">考前一週</span><span class="tl-what">① 設定目標　② 寫下自己有多少把握　③ 從五種讀書方法中選擇要做的</span></li>
+      <li><span class="tl-when">考前一天</span><span class="tl-what">回頭勾選每個方法：完成、部分完成，還是尚未完成</span></li>
+      <li><span class="tl-when">考後</span><span class="tl-what">③ 考後心情和原因　④ 哪些方法真的有幫助　⑤ 錯題偵探：替每一題錯誤分類　⑥ 肯定自己　⑦ 下次要怎麼做</span></li>
+      <li class="end"><span class="tl-when">最後</span><span class="tl-what">成長承諾：「因為我想要＿＿，所以我會在＿＿（時間）做到＿＿。」</span></li>
+    </ol>
     <div class="prose" style="margin-top:var(--space-3)">
       <p>錯題偵探把錯誤分成五類：A 題目沒看清楚、B 觀念還不熟悉、C 不知道怎麼應用、D 時間安排不當、E 粗心失誤。我希望孩子不要只說「我粗心」，而是真的去想錯在哪裡。</p>
       <p>學習單前後改了好幾版。一開始我限制每題最多勾兩項，後來發現限制太多反而讓孩子卡住，就改成至少勾一項。成長承諾原本只寫「我想要」和「我會做到」，後來加上「什麼時候」，承諾才比較具體。</p>
     </div>
   </div></div>
 
-  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
+  <div class="sec" data-gallery><p class="label chap"><span class="no">03</span><span class="en">MAKING</span><span class="zh">最後做出了什麼？</span></p><div>
     <h2>為了讓反思寫得出來，我另外準備的東西</h2>
     <div class="flow">
       <div><span class="label">考前</span><b>作戰卡</b>把每個孩子自己選的目標和方法印成一張小卡帶回家，每做完一項就打勾。</div>
@@ -793,8 +860,17 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec">
-    <p class="label">04<br>做完之後的觀察</p><div>
+  <div class="sec" data-findings>
+    <p class="label chap"><span class="no">04</span><span class="en">FINDINGS</span><span class="zh">做完之後的觀察</span></p><div>
+    <aside class="keyf" aria-label="關鍵發現">
+      <p class="label">KEY FINDINGS ─ 關鍵發現</p>
+      <div class="keyf-grid">
+        <div><p class="keyf-num num">92% <small>vs</small> 43%</p><p class="keyf-txt">考前一天兩個方法都完成的孩子，自評「達成目標」的是 92%；只有部分完成的孩子是 43%。</p><p class="keyf-note">分母：各組孩子。這是孩子的自評，不是成績；兩組人數都不多。</p></div>
+        <div><p class="keyf-num num">九成 <small>vs</small> 42%</p><p class="keyf-txt">選擇「整理易錯重點」的孩子，九成做完了，但考後覺得有幫助的是 42%。</p><p class="keyf-note">分母：選擇這個方法的孩子。做完，不一定覺得有用。</p></div>
+        <div><p class="keyf-num num">65% <small>vs</small> 10%</p><p class="keyf-txt">錯題分類時，65% 的孩子勾了「粗心失誤」，勾「觀念還不熟悉」的只有 10%；但全班失分率最高的主題是「地震」（12.7%）。</p><p class="keyf-note">分母：填寫錯題分類的孩子，可複選。失分率是另一種指標，兩者不直接比較大小。</p></div>
+      </div>
+      <p class="keyf-foot">以上是一個班的匿名統計，只當作趨勢來看，不當作因果。</p>
+    </aside>
     <p class="subhead">實際結果</p>
     <h2>我從全班的回答看到什麼</h2>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-3)">以下都是全班的匿名統計。這只是一個班的結果，人數不多，所以我只把結果當作趨勢來看，不當作因果。</p>
@@ -860,6 +936,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">寫承諾對孩子來說不難，但要回頭查考卷、寫出正確的觀念，對四年級來說就比較吃力。另外，覺得「沒達到預期」的孩子，成績其實也不差，他們的失望多半來自對自己的高要求。</p>
   
     <p class="subhead" style="margin-top:var(--space-5)">我的反思</p>
+    <blockquote class="pull"><p>「粗心」是一個很安全的答案，要讓孩子願意說「我其實不懂」，需要先讓他覺得說出來是安全的。</p><cite>── 摘自本篇反思</cite></blockquote>
     <h2>做完之後</h2>
     <div class="prose">
       <p>做這份反思單之前，我以為孩子最缺的是讀書方法。做完才發現，他們其實很會選方法，也知道自己準備得好不好，真正難的是誠實面對錯在哪裡。「粗心」是一個很安全的答案，要讓孩子願意說「我其實不懂」，需要先讓他覺得說出來是安全的。這也是我只給全班看匿名統計、個別資料只留給自己的原因。</p>
@@ -867,7 +944,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">05<br>接下來</p><div>
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
     <h2>期末考，我想這樣調整</h2>
     <ol class="obj">
       <li><div>考卷發回後，先用一兩題示範怎麼分辨「粗心」和「觀念不熟」：同一題重寫一次還是不會，就不是粗心。</div></li>
@@ -1200,6 +1277,7 @@ var CONTENT = [
   {
     slug: "case-midterm-reflection",
     type: "work",
+    layout: "editorial",
     related: ["project-sel"],
     cat: "教學設計",
     title: "期中考學習反思單：讓孩子看見自己的讀書方法",
@@ -1363,6 +1441,20 @@ function renderItem(c){
   document.getElementById("item-label").textContent = T.name;
   var facts = (c.facts || []).map(function(f,i){ return '<div><span class="label">' + esc(f[0]) + '</span><span data-ek="c:' + c.slug + ':f' + i + '" data-plain="1">' + esc(f[1]) + '</span></div>'; }).join("");
   var main = document.getElementById("item-main");
+  var ED = c.layout === "editorial";
+  main.classList.toggle("ed", ED);
+  if(ED){
+    var EN = {work: "WORK", project: "PROJECT", note: "NOTE", letter: "LETTER"}[c.type] || "";
+    var t = esc(c.title), k = c.title.indexOf("：");
+    if(!EDITING && k > 0) t = '<span class="t-main">' + esc(c.title.slice(0, k + 1)) + '</span><span class="t-sub">' + esc(c.title.slice(k + 1)) + '</span>';
+    main.innerHTML = '<a class="back" href="' + back + '">← 回' + T.name + '</a>' +
+      '<header class="ed-head"><div class="ed-kicker"><span>' + EN + '<i aria-hidden="true"></i>' + esc(c.cat || T.name) + '</span><span class="num">UPDATED ' + esc(c.updated.replace(/-/g, ".")) + '</span></div>' +
+      '<h1 data-ek="c:' + c.slug + ':title" data-plain="1">' + t + '</h1>' +
+      '<p class="ed-dek" data-ek="c:' + c.slug + ':summary" data-plain="1">' + esc(c.summary) + '</p>' +
+      (facts ? '<div class="ed-colophon"><p class="label">ABOUT THIS WORK</p><div class="facts">' + facts + '</div></div>' : '') +
+      '<p class="ed-tags">' + c.tags.map(esc).join("・") + '</p>' +
+      (c.link ? '<p><a class="btn-main" href="' + esc(c.link.url) + '" target="_blank" rel="noopener">' + esc(c.link.text) + ' →</a></p>' : '') + '</header>';
+  } else
   main.innerHTML = '<a class="back" href="' + back + '">← 回' + T.name + '</a>' +
     '<header class="art-head" style="margin-top:var(--space-3)"><div class="row" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">' +
     '<span class="chip ' + T.cls + '">' + esc(c.cat || T.name) + '</span><span class="meta-tags">' + c.tags.map(esc).join("・") + '</span>' +
@@ -1375,9 +1467,15 @@ function renderItem(c){
   if(!tpl) main.insertAdjacentHTML("beforeend", '<p class="pend">內文整理中。</p>');
   /* 圖片：CONTENT 有 gallery 才顯示，放進 data-gallery 那一段；沒有圖片就不出現任何區塊 */
   var gs = main.querySelector('[data-gallery]');
+  function fig(g){ return '<figure><img src="' + esc(g.src) + '" alt="' + esc(g.alt || "") + '" loading="lazy">' + (g.caption ? '<figcaption>' + esc(g.caption) + '</figcaption>' : '') + '</figure>'; }
   if(gs && c.gallery && c.gallery.length){
-    gs.lastElementChild.insertAdjacentHTML("beforeend", '<div class="gallery">' + c.gallery.map(function(g){
-      return '<figure><img src="' + esc(g.src) + '" alt="' + esc(g.alt || "") + '" loading="lazy">' + (g.caption ? '<figcaption>' + esc(g.caption) + '</figcaption>' : '') + '</figure>'; }).join("") + '</div>');
+    var rest = [];
+    c.gallery.forEach(function(g){
+      /* 有指定 tool 的圖片，放進同名工具卡片；找不到就放到最後 */
+      var card = g.tool ? Array.prototype.filter.call(gs.querySelectorAll(".flow > div"), function(d){ var b = d.querySelector("b"); return b && b.textContent.trim() === g.tool; })[0] : null;
+      if(card){ card.classList.add("has-img"); card.insertAdjacentHTML("beforeend", fig(g)); } else rest.push(g);
+    });
+    if(rest.length) gs.lastElementChild.insertAdjacentHTML("beforeend", '<div class="gallery">' + rest.map(fig).join("") + '</div>');
   }
   var rel = (c.related || []).map(function(s){ return PUBLIC.filter(function(x){ return x.slug === s; })[0]; }).filter(Boolean);
   if(rel.length) main.insertAdjacentHTML("beforeend", '<section class="related"><p class="label">相關內容</p>' + rel.map(function(r){
