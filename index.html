@@ -26,7 +26,7 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.875;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:var(--body-size,16px);line-height:var(--body-lh,1.875);letter-spacing:.02em;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--font-serif);font-weight:600;margin:0;text-wrap:balance}
 p{margin:0}
 a{color:var(--sage-ink);text-underline-offset:3px;text-decoration-thickness:1px}
@@ -128,7 +128,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .count{font-size:13px;color:var(--ink-muted)}
 
 /* prose & article */
-.prose{max-width:var(--measure);display:flex;flex-direction:column;gap:var(--space-3)}
+.prose{max-width:var(--measure);display:flex;flex-direction:column;gap:var(--para-gap,16px)}
 .prose h3{font-size:19px;line-height:30px;margin-top:var(--space-2)}
 .lead{font-size:17px;line-height:32px}
 .art-head{display:flex;flex-direction:column;gap:var(--space-3);padding-bottom:var(--space-5);border-bottom:var(--hairline) solid var(--ink);margin-bottom:var(--space-5)}
@@ -238,7 +238,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <div class="prose">
           <p>一位喜歡觀察、整理，也喜歡嘗試新方法的小學老師。</p>
           <p>平常除了教學和行政工作，也喜歡研究 Notion、AI 和各種工具，想讓工作與生活變得更有條理。</p>
-          <p>除了研究工具，我也對人在面對問題時的想法與行為很感興趣。</p>
+          <p>在研究工具的過程中，我也開始對人在面對問題時的想法與行為產生興趣。</p>
           <p>這裡記錄我做過的作品、正在進行的專案，以及過程中的一些觀察與思考。</p>
         </div>
         <p style="margin-top:var(--space-4)"><a href="#about" class="back">關於我 →</a></p>
@@ -319,15 +319,15 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <section class="block">
         <h1 style="font-size:32px;line-height:44px;margin-bottom:var(--space-4)">嗨，我是 Potter L。</h1>
         <div class="prose">
-          <p class="lead">目前是一位小學老師，平常的工作主要圍繞著教學與行政。</p>
-          <p>工作之外，我喜歡研究各種工具、學習新的東西，也常常在想：這件事有沒有更好的做法？</p>
+          <p class="lead">我一直滿喜歡觀察事情背後的原因，也習慣在遇到問題時，先把事情拆開來思考，再試著找出適合自己的方法。</p>
+          <p>不管是工作上的流程、教學設計，還是生活裡的小事，我常常會想：<br>有沒有其他做法？如果換個方式，結果會不會不一樣？</p>
         </div>
       </section>
       <section class="block" aria-labelledby="h-think">
         <div class="head"><h2 id="h-think">從整理事情，到理解人</h2></div>
         <div class="prose">
           <p>一開始接觸 Notion、AI 和各種工具，是希望減少重複性的工作，讓生活更有條理。慢慢地，我感興趣的不只是工具能做到什麼，而是怎麼把它們用在實際遇到的問題上：可能是一套工作流程、一份教材，或是生活裡某個不太順手的習慣。</p>
-          <p>但我也發現，有些事情即使有了方法，還是不一定能順利執行。這讓我開始對心理學，以及人的想法、情緒與行為產生興趣。現在的我，還在學習怎麼把這些不同的知識慢慢整合起來。</p>
+          <p>不過，有些事情即使有了方法，還是不一定能順利執行。這也讓我對心理學，以及人的想法、情緒和行為產生更多興趣。<br>現在的我，還在學習怎麼把這些不同領域的知識慢慢整合起來。</p>
         </div>
       </section>
       <section class="block" aria-labelledby="h-journey">
@@ -335,15 +335,15 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <div class="two">
           <div class="prose">
             <p>我的經驗大多從教育開始。教學讓我接觸課程設計與不同的學習需求，行政工作則讓我看見更多溝通、協調與組織運作的問題。</p>
-            <p>在研究所時，我研究影響組織的各種因素。這段經驗讓我更注意制度、溝通方式與工作環境之間的關係，也讓我相信——想讓人願意改變，營造支持的氣氛往往比規定更有用。</p>
+            <p>研究所期間，我以組織溝通、組織文化與留任意願作為研究主題，也開始從不同角度理解制度、工作環境與人的關係。這段經驗讓我更注意制度、溝通方式與工作環境之間的關係，也讓我相信：想讓人願意改變，營造支持的氣氛往往比規定更有用。</p>
             <p>這幾年，我也陸續接觸 AI、雙語教學、SEL 社會情緒學習和不同的數位工具。它們看起來不一定相關，但都是從實際遇到的問題開始，再慢慢延伸出新的興趣。</p>
           </div>
           <dl class="dl">
-            <dt>目前的工作</dt><dd>國小教師（自然科教學與行政）</dd>
+            <dt>目前的工作</dt><dd>國小教師（自然科／行政）</dd>
             <dt>學歷</dt><dd>國立中山大學 教育研究所 碩士</dd>
             <dt>專業認證</dt><dd>Gemini Certified Educator<br>Apple Teacher<br>Google AI Essentials</dd>
             <dt>學習與培訓</dt><dd>教育部中小學雙語教學學分班<br>社會情緒學習（SEL）種子教師培訓</dd>
-            <dt>交流</dt><dd>2026 青年百億海外圓夢基金計畫，澳洲見習 16 天</dd>
+            <dt>交流</dt><dd>2026 青年百億海外圓夢基金計畫 海外翱翔組</dd>
           </dl>
         </div>
       </section>
@@ -351,8 +351,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <div class="head"><h2 id="h-pr">我在意的三件事</h2></div>
         <div class="princ">
           <div><h3>01｜把事情整理清楚</h3><p>我喜歡把複雜的事情拆開來思考，找到問題所在，再試著建立適合自己的做法。</p></div>
-          <div><h3>02｜理解事情背後的人</h3><p>除了事情怎麼完成，我也會好奇，為什麼每個人的想法和反應不一樣，以及這些差異會帶來什麼影響。</p></div>
-          <div><h3>03｜從嘗試中慢慢調整</h3><p>我不覺得每件事都需要一次做到最好。先試試看、觀察結果，再慢慢修改，反而比較容易找到適合自己的方式。</p></div>
+          <div><h3>02｜理解事情背後的人</h3><p>除了事情怎麼完成，我也會好奇為什麼每個人的想法和反應不一樣，以及這些差異會帶來什麼影響。</p></div>
+          <div><h3>03｜從嘗試中慢慢調整</h3><p>我認為不用每件事都需要一次做到最好。<br>先試試看、觀察結果，再慢慢修改，反而比較容易找到適合自己的方式。</p></div>
         </div>
       </section>
       <section class="block" aria-labelledby="h-why">
@@ -360,8 +360,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <div class="prose">
           <p>我習慣把想法和經驗記下來，只是這些內容常常散落在不同的工具和地方。</p>
           <p>後來我想，如果能把它們整理在同一個地方，除了方便自己回顧，也許也能分享給有相似興趣的人。</p>
-          <p>於是在 2026 年，我開始了。這裡不會只有教學，也不會只談 AI 或心理學。</p>
-          <p>我想記錄的是自己怎麼觀察、學習、練習及產出。</p>
+          <p>於是在 2026 年，我開始建立 Current State｜整合進行式。</p>
+          <p>這裡不會只有教學，也不會只談 AI 或心理學。<br>我想記錄的是自己怎麼觀察、學習、嘗試，以及過程中慢慢整理出來的方法。</p>
           <p class="slogan" style="margin-top:var(--space-2)">在生活裡持續嘗試，把過程整理成自己的方法。</p>
           <p>這就是我想持續做的事。</p>
         </div>
@@ -1074,7 +1074,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
    下方程式會再過濾一次非公開狀態，作為第二道防線。
 ---------------------------------------------------------------- */
 /* ===== 網站編輯：你修改過的文字存在這裡（由編輯模式自動寫入，請勿手動修改） ===== */
-var EDITS = /*EDITS_START*/{"about:3":"不管是工作上的流程、教學設計，還是生活裡的小事，我常常會想：\u003cbr>有沒有其他做法？如果換個方式，結果會不會不一樣？","about:2":"我一直滿喜歡觀察事情背後的原因，也習慣在遇到問題時，先把事情拆開來思考，再試著找出適合自己的方法。","about:5":"從整理事情，到理解人","about:6":"不過，有些事情即使有了方法，還是不一定能順利執行。這也讓我對心理學，以及人的想法、情緒和行為產生更多興趣。\u003cbr>\u003cspan>現在的我，還在學習怎麼把這些不同領域的知識慢慢整合起來。\u003c/span>","home:7":"在研究工具的過程中，我也開始對人在面對問題時的想法與行為產生興趣。","about:13":"研究所期間，我以組織溝通、組織文化與留任意願作為研究主題，也開始從不同角度理解制度、工作環境與人的關係。這段經驗讓我更注意制度、溝通方式與工作環境之間的關係，也讓我相信：想讓人願意改變，營造支持的氣氛往往比規定更有用。","about:16":"國小教師（自然科/行政）","about:22":"教育部中小學雙語教學學分班\u003cbr>社會情緒學習(SEL)種子教師培訓","about:24":"2026青年百億海外圓夢基金計畫 海外翱翔組\u003cbr>I-8-29 澳洲冒險：AI教室實驗室","about:31":"我認為不用每件事都需要一次做到最好。\u003cbr>\u003cspan>先試試看、觀察結果，再慢慢修改，反而比較容易找到適合自己的方式。\u003c/span>","about:29":"除了事情怎麼完成，我也會好奇為什麼每個人的想法和反應不一樣，以及這些差異會帶來什麼影響。","about:35":"於是在 2026 年，我開始建立 Current State｜整合進行式。","about:36":"這裡不會只有教學，也不會只談 AI 或心理學。\u003cbr>我想記錄的是自己怎麼觀察、學習、嘗試，以及過程中慢慢整理出來的方法。","about:17":"學歷"}/*EDITS_END*/;
+var EDITS = /*EDITS_START*/{}/*EDITS_END*/;
 var PENDING = {};
 var EDITING = false;
 var ALLOWED = {STRONG:1,B:1,EM:1,I:1,BR:1,SMALL:1,SPAN:1};
@@ -1103,6 +1103,20 @@ function isLeaf(el){
   for(var i=0;i<all.length;i++){ if(!ALLOWED[all[i].tagName]) return false; }
   return true;
 }
+/* 版面設定：段落樣式與全站樣式 */
+function applyStyle(el,k){
+  var s=editVal(k+"@style"); if(!s||typeof s!=="object") return;
+  el.style.lineHeight = s.lh ? String(s.lh) : "";
+  el.style.marginTop = (s.mt!==undefined && s.mt!=="") ? s.mt+"px" : "";
+  el.style.marginBottom = (s.mb!==undefined && s.mb!=="") ? s.mb+"px" : "";
+}
+function applyGlobal(){
+  var g=editVal("@global"); var r=document.documentElement.style;
+  if(!g||typeof g!=="object") g={};
+  if(g.size) r.setProperty("--body-size", g.size+"px"); else r.removeProperty("--body-size");
+  if(g.lh) r.setProperty("--body-lh", String(g.lh)); else r.removeProperty("--body-lh");
+  if(g.gap!==undefined && g.gap!=="") r.setProperty("--para-gap", g.gap+"px"); else r.removeProperty("--para-gap");
+}
 function tagLeaves(root, prefix){
   var n=0;
   Array.prototype.slice.call(root.querySelectorAll("*")).forEach(function(el){
@@ -1111,10 +1125,12 @@ function tagLeaves(root, prefix){
     if(el.parentElement && el.parentElement!==root && isLeaf(el.parentElement)) return;
     var k=prefix+":"+(n++);
     el.setAttribute("data-ek",k);
-    var v=editVal(k); if(v!==null) el.innerHTML=v;
+    var v=editVal(k); if(v!==null && typeof v==="string") el.innerHTML=v;
+    applyStyle(el,k);
     if(EDITING) makeEditable(el);
   });
 }
+applyGlobal();
 /* 首頁、關於：先標記可編輯的文字 */
 tagLeaves(document.getElementById("v-home"),"home");
 tagLeaves(document.getElementById("v-about"),"about");
@@ -1353,6 +1369,7 @@ function renderItem(c){
     (facts ? '<div class="facts">' + facts + '</div>' : '') +
     (c.link ? '<p><a class="btn-main" href="' + esc(c.link.url) + '" target="_blank" rel="noopener">' + esc(c.link.text) + ' →</a></p>' : '') + '</header>';
   if(tpl){ var frag=document.createElement("div"); frag.appendChild(tpl.content.cloneNode(true)); tagLeaves(frag,"t:"+c.slug); while(frag.firstChild) main.appendChild(frag.firstChild); }
+  main.querySelectorAll('[data-ek]').forEach(function(el){ applyStyle(el, el.getAttribute("data-ek")); });
   if(EDITING) main.querySelectorAll('[data-plain]').forEach(makeEditable);
   else { main.insertAdjacentHTML("beforeend", '<p class="pend">內文整理中。</p>'); }
 }
@@ -1451,6 +1468,7 @@ function setEditing(on){
   });
   document.getElementById("ed-toggle").hidden = on;
   document.getElementById("ed-bar").hidden = !on;
+  if(!on){ var lp=document.getElementById("ed-layout"); if(lp) lp.hidden=true; document.querySelectorAll(".ed-cur").forEach(function(x){ x.classList.remove("ed-cur"); }); }
   updateCount();
 }
 function updateCount(){
@@ -1467,6 +1485,12 @@ document.addEventListener("input", function(e){
 document.addEventListener("click", function(e){
   if(EDITING && e.target.closest("[data-ek]") && e.target.closest("a")) e.preventDefault();
 }, true);
+document.addEventListener("keydown", function(e){
+  if(!EDITING || e.key!=="Enter" || e.isComposing) return;
+  var el=e.target.closest && e.target.closest("[data-ek]"); if(!el) return;
+  e.preventDefault();
+  if(!el.hasAttribute("data-plain")) document.execCommand("insertLineBreak");
+}, true);
 (function(){
   var css=document.createElement("style");
   css.textContent=".ed-on{outline-offset:3px;border-radius:2px;cursor:text}.ed-on:hover{outline:1px dashed var(--line-strong)}.ed-on:focus{outline:2px solid var(--sage-ink);background:var(--paper-raised)}"+
@@ -1476,19 +1500,60 @@ document.addEventListener("click", function(e){
     "#ed-bar[hidden],#ed-toggle[hidden]{display:none}"+
     "#ed-bar button{font:inherit;font-size:14px;border-radius:6px;padding:6px 14px;cursor:pointer;border:1px solid var(--line-strong);background:transparent;color:var(--ink)}"+
     "#ed-bar #ed-save{background:var(--sage-ink);border-color:var(--sage-ink);color:var(--paper)}#ed-bar #ed-save:disabled{opacity:.5;cursor:default}"+
-    "#ed-msg{color:var(--ink-muted)}";
+    "#ed-msg{color:var(--ink-muted)}"+
+    "#ed-layout{position:fixed;right:20px;bottom:76px;z-index:20;width:300px;max-width:calc(100vw - 40px);background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:6px;padding:12px 14px;font-size:14px;display:flex;flex-direction:column;gap:8px}"+
+    "#ed-layout[hidden]{display:none}#ed-layout .ed-h{font-weight:500;margin-top:4px}#ed-layout label{display:flex;justify-content:space-between;align-items:center;gap:8px}"+
+    "#ed-layout select{font:inherit;font-size:13px;padding:3px 6px;border:1px solid var(--line-strong);border-radius:4px;background:var(--paper)}"+
+    ".ed-cur{outline:2px solid var(--flax)!important}";
   document.head.appendChild(css);
   var wrap=document.createElement("div");
   wrap.innerHTML='<button id="ed-toggle" type="button" hidden>編輯文字</button>'+
     '<div id="ed-bar" role="region" aria-label="編輯工具列" hidden><span id="ed-count"></span><span id="ed-msg" aria-live="polite"></span>'+
-    '<button id="ed-cancel" type="button">取消</button><button id="ed-save" type="button">儲存並發布</button></div>';
+    '<button id="ed-layout-btn" type="button">版面設定</button><button id="ed-cancel" type="button">取消</button><button id="ed-save" type="button">儲存並發布</button></div>'+
+    '<div id="ed-layout" role="region" aria-label="版面設定" hidden>'+
+      '<p class="ed-h">全站文字</p>'+
+      '<label>內文字級<select data-g="size"><option value="">預設（16）</option><option>15</option><option>17</option><option>18</option></select></label>'+
+      '<label>內文行距<select data-g="lh"><option value="">預設（1.875）</option><option>1.7</option><option>1.8</option><option>2</option><option>2.2</option></select></label>'+
+      '<label>段落間距<select data-g="gap"><option value="">預設（16）</option><option>8</option><option>12</option><option>24</option><option>32</option></select></label>'+
+      '<p class="ed-h">目前選取的段落：<span id="ed-cur">先點一下要調整的文字</span></p>'+
+      '<label>行距<select data-s="lh" disabled><option value="">預設</option><option>1.5</option><option>1.7</option><option>1.9</option><option>2.1</option><option>2.3</option></select></label>'+
+      '<label>上方間距<select data-s="mt" disabled><option value="">預設</option><option>0</option><option>8</option><option>16</option><option>24</option><option>40</option></select></label>'+
+      '<label>下方間距<select data-s="mb" disabled><option value="">預設</option><option>0</option><option>8</option><option>16</option><option>24</option><option>40</option></select></label>'+
+    '</div>';
   document.body.appendChild(wrap);
-  document.getElementById("ed-toggle").addEventListener("click", function(){ setEditing(true); });
+  document.getElementById("ed-toggle").addEventListener("click", function(){ setEditing(true); syncLayout(); });
+  var CUR=null;
+  function syncLayout(){
+    var g=editVal("@global"); if(!g||typeof g!=="object") g={};
+    document.querySelectorAll("#ed-layout [data-g]").forEach(function(s){ s.value = g[s.dataset.g]!==undefined ? String(g[s.dataset.g]) : ""; });
+    var st = CUR ? editVal(CUR.getAttribute("data-ek")+"@style") : null; if(!st||typeof st!=="object") st={};
+    document.querySelectorAll("#ed-layout [data-s]").forEach(function(s){ s.disabled=!CUR; s.value = st[s.dataset.s]!==undefined ? String(st[s.dataset.s]) : ""; });
+  }
+  document.getElementById("ed-layout-btn").addEventListener("click", function(){ var p=document.getElementById("ed-layout"); p.hidden=!p.hidden; syncLayout(); });
+  document.addEventListener("focusin", function(e){
+    if(!EDITING) return; var el=e.target.closest && e.target.closest("[data-ek]"); if(!el) return;
+    if(CUR) CUR.classList.remove("ed-cur"); CUR=el; CUR.classList.add("ed-cur");
+    var t=el.textContent.trim(); document.getElementById("ed-cur").textContent = t.length>12 ? t.slice(0,12)+"…" : t;
+    syncLayout();
+  });
+  document.getElementById("ed-layout").addEventListener("change", function(e){
+    var s=e.target; if(s.tagName!=="SELECT") return;
+    var v = s.value==="" ? "" : Number(s.value);
+    if(s.dataset.g){
+      var g=Object.assign({}, (function(x){return x&&typeof x==="object"?x:{};})(editVal("@global"))); 
+      if(v==="") delete g[s.dataset.g]; else g[s.dataset.g]=v;
+      PENDING["@global"]=g; applyGlobal();
+    } else if(s.dataset.s && CUR){
+      var k=CUR.getAttribute("data-ek")+"@style";
+      var st=Object.assign({}, (function(x){return x&&typeof x==="object"?x:{};})(editVal(k)));
+      if(v==="") delete st[s.dataset.s]; else st[s.dataset.s]=v;
+      PENDING[k]=st; applyStyle(CUR, CUR.getAttribute("data-ek"));
+    }
+    updateCount();
+  });
   document.getElementById("ed-cancel").addEventListener("click", function(){
     if(Object.keys(PENDING).length && !window.__edConfirm){ window.__edConfirm=true; document.getElementById("ed-msg").textContent="再按一次「取消」會放棄所有未儲存的修改。"; return; }
-    window.__edConfirm=false; PENDING={}; setEditing(false); route();
-    tagLeaves(document.getElementById("v-home"),"home"); tagLeaves(document.getElementById("v-about"),"about"); tagLeaves(document.getElementById("v-newsletter"),"newsletter");
-    document.getElementById("ed-msg").textContent="";
+    window.__edConfirm=false; PENDING={}; location.reload();
   });
   document.getElementById("ed-save").addEventListener("click", async function(){
     var btn=this, msg=document.getElementById("ed-msg");
