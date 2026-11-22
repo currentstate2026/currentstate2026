@@ -284,8 +284,32 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 @media (max-width:720px){
   .arch-groups{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
   .zidx{grid-template-columns:1fr}
+  .myth{grid-template-columns:1fr}
+  .sysov .arch-groups{grid-template-columns:1fr}
 }
 .ed-end{margin-top:var(--space-5);padding-top:var(--space-3);border-top:var(--hairline) solid var(--line)}
+/* 活動索引（編輯式） */
+.aidx{list-style:none;margin:var(--space-4) 0 var(--space-3);padding:0;border-top:var(--hairline) solid var(--ink)}
+.aidx li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:var(--space-3);padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
+.aidx-no{font-family:var(--font-serif);font-size:22px;line-height:28px;color:var(--line-strong)}
+.aidx-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px var(--space-3)}
+.aidx-head b{font-family:var(--font-serif);font-weight:600;font-size:18px;line-height:28px}
+.aidx-sel{font-size:12px;letter-spacing:.12em;color:var(--sage-ink)}
+.aidx-do{max-width:var(--measure);font-size:15px;line-height:28px;color:var(--ink-muted);margin-top:2px}
+.ed-beyond{margin-top:var(--space-6);padding-top:var(--space-4);border-top:var(--hairline) solid var(--ink);margin-bottom:var(--space-2)}
+.ed .flow:has(> div:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:720px){.ed .flow:has(> div:nth-child(2):last-child){grid-template-columns:1fr}}
+.ed table{min-width:0}
+/* 迷思對照（編輯式） */
+.myth{list-style:none;margin:var(--space-4) 0 var(--space-3);padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-5);border-top:var(--hairline) solid var(--ink)}
+.myth li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:var(--space-2);row-gap:var(--space-1);align-content:start;padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
+.myth-no{grid-row:1 / span 3;font-family:var(--font-serif);font-size:22px;line-height:28px;color:var(--line-strong)}
+.myth b{font-family:var(--font-serif);font-weight:600;font-size:18px;line-height:28px}
+.myth p{font-size:15px;line-height:26px}
+.myth p .label{display:block;font-size:11px;line-height:18px;margin-top:var(--space-1)}
+.tl-tag{display:block;font-family:var(--font-sans);font-weight:500;font-size:11px;line-height:16px;letter-spacing:.16em;color:var(--ink-muted)}
+.sysov .arch-groups{grid-template-columns:repeat(3,minmax(0,1fr));border-top:0;padding-top:0}
+.sysov + .zidx{margin-top:var(--space-5)}
 /* 引言 */
 .pull{margin:var(--space-4) 0 var(--space-5);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line);max-width:var(--measure)}
 .pull p{font-family:var(--font-serif);font-size:22px;line-height:40px;font-weight:500;letter-spacing:.04em}
@@ -582,12 +606,12 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-case-learning-support">
-  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼想做這個？</span></p><div>
     <h2>為什麼要改</h2>
     <div class="prose"><p>學習扶助是一整年循環的業務，從篩選測驗、成長測驗、開班、表單到經費請購，還有定期的訪視。這些資訊散在公文、實施計畫和會議紀錄裡，授課老師常來問我現在該做什麼、要交哪些表。舊版的實施計畫又是公文格式，很難看出現況和目標之間的關係。</p></div>
   </div></div>
 
-  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">DESIGN</span><span class="zh">我怎麼設計？</span></p><div>
     <h2>把計畫改成從數據出發</h2>
     <div class="steps" style="grid-template-columns:repeat(4,1fr)">
       <div><b>1</b><strong>現況分析</strong><span>整理近三年的提報、施測、未通過、進步和受輔數據</span></div>
@@ -596,6 +620,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <div><b>4</b><strong>預期效益</strong><span>用同一組數據檢查，明年再接著改</span></div>
     </div>
     <p style="color:var(--ink-muted);margin-top:var(--space-3);font-size:15px">寫計畫時，我也參考了其他學校的實施計畫和學習輔導小組會議紀錄。</p>
+    <div style="margin-top:var(--space-5)"></div>
     <h2>設計時的考量</h2>
     <div class="flow">
       <div><span class="label">主軸</span><b>從「這個月要做什麼」開始</b>這是每年都會重複的業務，所以網站以時間為主軸，而不是一長串資源清單。</div>
@@ -604,25 +629,37 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
+  <div class="sec" data-gallery><p class="label chap"><span class="no">03</span><span class="en">MAKING</span><span class="zh">最後做出了什麼？</span></p><div>
     <h2>幫授課老師做一個網站</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>頁面</th><th>內容</th></tr></thead>
-      <tbody>
-        <tr><td>首頁</td><td>「本月重點」會依月份自動更換，也說明一級和二級扶助的差別</td></tr>
-        <tr><td>年度時程</td><td>從 7 月排到隔年 6 月，用四種顏色分出測驗、會議、扶助班和行政事項</td></tr>
-        <tr><td>授課教師</td><td>開班資訊、要交的表單、檔案格式、經費和請購步驟</td></tr>
-        <tr><td>常錯指標</td><td>各科各年級最多人沒通過的三個學習目標，以及可能的原因</td></tr>
-        <tr><td>現況數據</td><td>受輔率、受輔和未受輔學生的進步率比較、和全市的比較</td></tr>
-        <tr><td>教學資源</td><td>教材網站、科技化評量系統和相關法規</td></tr>
-        <tr><td>小組與指標</td><td>學習輔導小組的組成，以及依訪視指標整理、可以依身分篩選的準備清單</td></tr>
-      </tbody>
-    </table></div>
+    <figure class="arch sysov" aria-label="系統功能導覽">
+      <p class="label">SYSTEM OVERVIEW ─ 系統功能</p>
+      <div class="arch-groups">
+        <div><p class="arch-g"><span class="num">01</span>｜年度規劃與執行</p><ul><li>首頁</li><li>年度時程</li><li>授課教師</li></ul></div>
+        <div><p class="arch-g"><span class="num">02</span>｜數據與追蹤</p><ul><li>常錯指標</li><li>現況數據</li><li>小組與指標</li></ul></div>
+        <div><p class="arch-g"><span class="num">03</span>｜教學資源</p><ul><li>教學資源</li></ul></div>
+      </div>
+      <figcaption>為了閱讀方便，這裡把七個頁面依用途分成三組；實際網站的頁面和順序沒有改變。</figcaption>
+    </figure>
+    <ol class="zidx">
+      <li><span class="zidx-no num">01</span><b>首頁</b><span>「本月重點」會依月份自動更換，也說明一級和二級扶助的差別</span></li>
+      <li><span class="zidx-no num">02</span><b>年度時程</b><span>從 7 月排到隔年 6 月，用四種顏色分出測驗、會議、扶助班和行政事項</span></li>
+      <li><span class="zidx-no num">03</span><b>授課教師</b><span>開班資訊、要交的表單、檔案格式、經費和請購步驟</span></li>
+      <li><span class="zidx-no num">04</span><b>常錯指標</b><span>各科各年級最多人沒通過的三個學習目標，以及可能的原因</span></li>
+      <li><span class="zidx-no num">05</span><b>現況數據</b><span>受輔率、受輔和未受輔學生的進步率比較、和全市的比較</span></li>
+      <li><span class="zidx-no num">06</span><b>教學資源</b><span>教材網站、科技化評量系統和相關法規</span></li>
+      <li><span class="zidx-no num">07</span><b>小組與指標</b><span>學習輔導小組的組成，以及依訪視指標整理、可以依身分篩選的準備清單</span></li>
+    </ol>
   </div></div>
 
-  <div class="sec"><p class="label">05<br>接下來</p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">FINDINGS</span><span class="zh">做完之後的觀察</span></p><div>
+    <h2>做完之後</h2>
+    <p class="pend">之後補上。</p>
+  </div></div>
+
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
     <h2>接下來</h2>
-    <p class="pend">之後會補上網站上線後老師使用的情形，以及今年目標的達成狀況。</p>
+    <div class="prose" style="margin-top:var(--space-4)"><p>之後會補上網站上線後老師使用的情形，以及今年目標的達成狀況。</p></div>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -785,7 +822,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-case-sel-earthquake">
-  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼想做這個？</span></p><div>
     <h2>從研習走進教室</h2>
     <div class="prose">
       <p>上學期我參加了 SEL（社會情緒學習）種子教師的初階培訓。研習中有一個概念讓我印象很深，叫「情緒雜物」：如果孩子的腦袋已經被情緒塞滿，就沒有空間學習了。回想以前面對情緒失控的孩子，我常急著要他回座位、跟他講道理，現在才明白，他那時候根本聽不進去。</p>
@@ -793,7 +830,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">DESIGN</span><span class="zh">我怎麼設計？</span></p><div>
     <h2>防震演練，也可以練「內心的避難」</h2>
     <div class="tbl"><table>
       <thead><tr><th></th><th>平常的防震演練</th><th>這次多加的部分</th></tr></thead>
@@ -805,23 +842,20 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">情緒練習不取代避難動作，而是在完成避難動作之後進行。</p>
   </div></div>
 
-  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
+  <div class="sec" data-gallery><p class="label chap"><span class="no">03</span><span class="en">MAKING</span><span class="zh">最後做出了什麼？</span></p><div>
     <h2>一堂課，對應 SEL 的五大能力</h2>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-2)">我用 CASEL 的五大能力當架構，把課程分成五個部分，最後再回到自我覺察。</p>
-    <div class="tbl"><table>
-      <thead><tr><th>活動</th><th>SEL 能力</th><th>孩子做什麼</th></tr></thead>
-      <tbody>
-        <tr><td style="white-space:nowrap">1 情緒地震儀</td><td>自我覺察</td><td>播放國家級警報聲，孩子對照 0～7 級的「心靈震度」，勾選自己的身體訊號，例如心跳加快、手心出汗、肌肉緊繃</td></tr>
-        <tr><td style="white-space:nowrap">2 呼吸穩定法</td><td>自我管理</td><td>躲在桌下掩護時，練習吸氣 4 秒、閉氣 2 秒、吐氣 6 秒，讓心跳慢下來</td></tr>
-        <tr><td style="white-space:nowrap">3 我們在一起很安全</td><td>社會覺察、人際技巧</td><td>小組討論：如果身邊同學嚇到發抖、大哭，你可以對他說什麼、為他做什麼</td></tr>
-        <tr><td style="white-space:nowrap">4 身心避難包</td><td>負責任的決定</td><td>背包空間有限，除了水、手電筒這些生存物資，還要選兩樣能讓自己安心的東西，並說出理由</td></tr>
-        <tr><td style="white-space:nowrap">5 我的情緒地震波</td><td>自我覺察</td><td>在剛聽到警報、桌下呼吸、寫完避難包三個時間點標出自己的情緒，連成一條折線</td></tr>
-      </tbody>
-    </table></div>
+    <ol class="aidx">
+      <li><span class="aidx-no num">01</span><div><p class="aidx-head"><b>情緒地震儀</b><span class="aidx-sel">自我覺察</span></p><p class="aidx-do">播放國家級警報聲，孩子對照 0～7 級的「心靈震度」，勾選自己的身體訊號，例如心跳加快、手心出汗、肌肉緊繃</p></div></li>
+      <li><span class="aidx-no num">02</span><div><p class="aidx-head"><b>呼吸穩定法</b><span class="aidx-sel">自我管理</span></p><p class="aidx-do">躲在桌下掩護時，練習吸氣 4 秒、閉氣 2 秒、吐氣 6 秒，讓心跳慢下來</p></div></li>
+      <li><span class="aidx-no num">03</span><div><p class="aidx-head"><b>我們在一起很安全</b><span class="aidx-sel">社會覺察、人際技巧</span></p><p class="aidx-do">小組討論：如果身邊同學嚇到發抖、大哭，你可以對他說什麼、為他做什麼</p></div></li>
+      <li><span class="aidx-no num">04</span><div><p class="aidx-head"><b>身心避難包</b><span class="aidx-sel">負責任的決定</span></p><p class="aidx-do">背包空間有限，除了水、手電筒這些生存物資，還要選兩樣能讓自己安心的東西，並說出理由</p></div></li>
+      <li><span class="aidx-no num">05</span><div><p class="aidx-head"><b>我的情緒地震波</b><span class="aidx-sel">自我覺察</span></p><p class="aidx-do">在剛聽到警報、桌下呼吸、寫完避難包三個時間點標出自己的情緒，連成一條折線</p></div></li>
+    </ol>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">我把氣象署的震度分級和孩子的身體反應放在同一張表裡，讓自然課學的「震度」，也能拿來量自己心裡的震度。</p>
   </div></div>
 
-  <div class="sec"><p class="label">04<br>做完之後的觀察</p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">FINDINGS</span><span class="zh">做完之後的觀察</span></p><div>
     <p class="subhead">實際結果</p>
     <h2>孩子的反應</h2>
     <div class="flow">
@@ -832,7 +866,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <div class="prose" style="margin-top:var(--space-3)">
       <p>身心避難包也讓我很有收穫。孩子寫下的安心物品，有的是玩偶，有的是家人或朋友。培訓時同組的老師提醒我，這些答案其實也讓老師知道孩子心裡真正需要的是什麼，以後孩子情緒不穩的時候，可以從這裡找到幫助他的方法。</p>
     </div>
-    <p class="subhead" style="margin-top:var(--space-5)">我的反思</p>
+    <p class="subhead turn" style="margin-top:var(--space-5)">我的反思</p>
+    <blockquote class="pull"><p>SEL 不用另外找時間教，它可以就在每一堂課、每一次班級互動裡。</p><cite>── 摘自本篇反思</cite></blockquote>
     <h2>做完之後</h2>
     <div class="prose">
       <p>這堂課最後一張投影片，我寫給孩子的是：外面的世界雖然會晃動，但每個人都有能力讓自己的內心恢復平靜；保護好自己，就能成為別人身邊溫暖、可靠的存在。</p>
@@ -841,13 +876,13 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">05<br>接下來</p><div>
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
     <h2>下次我會這樣改</h2>
     <ol class="obj">
       <li><div>把一節課拆成兩節。五個活動擠在一節課太趕了，孩子討論和練習的時間都不夠。</div></li>
       <li><div>做一張「安心提示小卡」，提供同理感受、承諾陪伴、具體引導幾種句型，再加上角色扮演，讓孩子有更多話可以說。</div></li>
     </ol>
-    <div style="margin-top:var(--space-5)"></div>
+    <p class="label ed-beyond">BEYOND THE LESSON</p>
     <h2>從一堂課，到每一節課</h2>
     <div class="prose">
       <p>在進階培訓中分享完這堂課後，我也聽了很多老師分享 SEL 和班級經營的結合。我覺得班級經營要走在教學前面，班級穩定了，孩子才能好好學習。所以研習後的隔週，我就在科任班級開始做兩件事：</p>
@@ -856,7 +891,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <div><span class="label">情緒打卡</span><b>每節課都做</b>每一節自然課，孩子都會把自己的名字放到符合當下心情的位置。有的孩子上課時還提不起勁，下課卻主動把名字移到開心的位置。我覺得這代表他有在留意自己情緒的變化，而每節課都練習，也能替之後的自我管理和社會覺察打好基礎。</div>
       <div><span class="label">小組分工</span><b>每個人都有任務</b>有些班級比較少分組，常把工作都推給同一個人。這也是機會教育，讓孩子發現自己的長處，進而幫助別人。</div>
     </div>
-    <p class="pend">接下來我想從校園佈置開始，參考澳洲學校的學習牆，把情緒覺察和人際互動的句型放進教室和走廊。實施後會補上紀錄。</p>
+    <div class="prose" style="margin-top:var(--space-4)"><p>接下來我想從校園佈置開始，參考澳洲學校的學習牆，把情緒覺察和人際互動的句型放進教室和走廊。實施後會補上紀錄。</p></div>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -1065,22 +1101,19 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-case-circuit">
-  <div class="sec"><p class="label">01<br>為什麼想做這個？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼想做這個？</span></p><div>
     <h2>先了解孩子卡在哪裡</h2>
     <div class="prose"><p>這個單元有三個活動：<strong>如何讓燈泡發亮</strong>（燈泡亮了、電路與開關）、<strong>電路有哪些連接方式</strong>（電池和燈泡的串聯與並聯）和<strong>用電觀念知多少</strong>（認識小馬達、用電安全）。以前教這個單元時，我常發現孩子在動手接電路之前，心裡已經有一套自己的想法，其中有些是錯的。所以這次我想先做前測，看看下面四種迷思有多常見：</p></div>
-    <div class="tbl" style="margin-top:var(--space-3)"><table>
-      <thead><tr><th>迷思</th><th>孩子可能的想法</th><th>前測怎麼問</th></tr></thead>
-      <tbody>
-        <tr><td>單極接法</td><td>燈泡只要接到電池的一端就會亮</td><td>看圖預測哪幾種接法會亮，並說明理由</td></tr>
-        <tr><td>電流用完了</td><td>電流流到燈泡就被用完了</td><td>二選一＋理由：電線兩端的電流一樣多嗎？</td></tr>
-        <tr><td>電池連接</td><td>多一顆電池，不管怎麼接都一定更亮</td><td>比較兩顆電池串聯和並聯時燈泡的亮度</td></tr>
-        <tr><td>燈泡連接</td><td>兩顆燈泡不管怎麼接，拿掉一顆另一顆都會熄滅</td><td>預測串聯和並聯時，取下一顆燈泡後另一顆會不會亮</td></tr>
-      </tbody>
-    </table></div>
+    <ol class="myth">
+      <li><span class="myth-no num">01</span><b>單極接法</b><p><span class="label">孩子可能的想法</span>燈泡只要接到電池的一端就會亮</p><p><span class="label">前測怎麼問</span>看圖預測哪幾種接法會亮，並說明理由</p></li>
+      <li><span class="myth-no num">02</span><b>電流用完了</b><p><span class="label">孩子可能的想法</span>電流流到燈泡就被用完了</p><p><span class="label">前測怎麼問</span>二選一＋理由：電線兩端的電流一樣多嗎？</p></li>
+      <li><span class="myth-no num">03</span><b>電池連接</b><p><span class="label">孩子可能的想法</span>多一顆電池，不管怎麼接都一定更亮</p><p><span class="label">前測怎麼問</span>比較兩顆電池串聯和並聯時燈泡的亮度</p></li>
+      <li><span class="myth-no num">04</span><b>燈泡連接</b><p><span class="label">孩子可能的想法</span>兩顆燈泡不管怎麼接，拿掉一顆另一顆都會熄滅</p><p><span class="label">前測怎麼問</span>預測串聯和並聯時，取下一顆燈泡後另一顆會不會亮</p></li>
+    </ol>
     <p class="pend">前測結果會在教學前整理好補上。</p>
   </div></div>
 
-  <div class="sec"><p class="label">02<br>我怎麼設計？</p><div>
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">DESIGN</span><span class="zh">我怎麼設計？</span></p><div>
     <h2>我怎麼安排這個單元</h2>
     <div class="steps">
       <div><b>A</b><strong>分析</strong><span>用前測了解孩子的想法和程度差異</span></div>
@@ -1103,7 +1136,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </ol>
   </div></div>
 
-  <div class="sec" data-gallery><p class="label">03<br>最後做出了什麼？</p><div>
+  <div class="sec" data-gallery><p class="label chap"><span class="no">03</span><span class="en">MAKING</span><span class="zh">最後做出了什麼？</span></p><div>
     <h2>準備的教材</h2>
     <div class="flow">
       <div><span class="label">互動題</span><b>H5P 判斷題</b>做通路、斷路的判斷題和電路符號配對，孩子作答後馬上知道對錯，我也能看到每一題的答對率。</div>
@@ -1114,18 +1147,18 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p class="pend">互動題做好之後會放在這裡。</p>
   </div></div>
 
-  <div class="sec"><p class="label">04<br>做完之後的觀察</p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">FINDINGS</span><span class="zh">做完之後的觀察</span></p><div>
     <h2>做完之後</h2>
     <p class="pend">單元結束後，我會補上哪些設計有效、哪些要調整，以及下次會怎麼做。</p>
   </div></div>
 
-  <div class="sec"><p class="label">05<br>接下來</p><div>
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
     <h2>先試教一個班</h2>
-    <div class="flow">
-      <div><span class="label">第一輪</span><b>試教班</b>先照原本的設計上課，記下孩子卡住的地方、時間夠不夠，還有他們問的問題。</div>
-      <div><span class="label">修改</span><b>看結果調整</b>看哪幾題答對率低、哪個活動卡住，再修改說明、提示和時間安排。</div>
-      <div><span class="label">第二輪</span><b>其他三個班</b>用修改後的版本上課，再比較兩輪的學習成果。</div>
-    </div>
+    <ol class="tl">
+      <li><span class="tl-when"><span class="tl-tag">第一輪</span>試教班</span><span class="tl-what">先照原本的設計上課，記下孩子卡住的地方、時間夠不夠，還有他們問的問題。</span></li>
+      <li><span class="tl-when"><span class="tl-tag">修改</span>看結果調整</span><span class="tl-what">看哪幾題答對率低、哪個活動卡住，再修改說明、提示和時間安排。</span></li>
+      <li class="end"><span class="tl-when"><span class="tl-tag">第二輪</span>其他三個班</span><span class="tl-what">用修改後的版本上課，再比較兩輪的學習成果。</span></li>
+    </ol>
     <div style="margin-top:var(--space-5)"></div>
     <h2>怎麼知道孩子學會了</h2>
     <div class="tbl"><table>
@@ -1137,7 +1170,8 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <tr><td>比較</td><td>修改後的設計有沒有比較好？</td><td>試教班和第二輪班級的成果比較</td></tr>
       </tbody>
     </table></div>
-    <p class="pend">單元結束後會補上成果數據。</p>
+    <div class="prose" style="margin-top:var(--space-4)"><p>單元結束後會補上成果數據。</p></div>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -1253,6 +1287,7 @@ var CONTENT = [
   {
     slug: "case-learning-support",
     type: "work",
+    layout: "editorial",
     cat: "工具與系統",
     title: "學習扶助方案改版：從數據重新整理一份工作計畫",
     summary: "這一年我把學習扶助實施計畫改成從數據出發的寫法，也為授課老師做了一個網站，讓大家打開就知道這個月該做什麼。",
@@ -1297,6 +1332,7 @@ var CONTENT = [
   {
     slug: "case-sel-earthquake",
     type: "work",
+    layout: "editorial",
     related: ["project-sel"],
     cat: "教學設計",
     title: "我的情緒地震儀：把 SEL 放進地震防災課",
@@ -1344,6 +1380,7 @@ var CONTENT = [
   {
     slug: "case-circuit",
     type: "work",
+    layout: "editorial",
     related: ["project-australia-ai-lab"],
     cat: "教學設計",
     title: "好玩的電路：先找出孩子的迷思，再修改教材",
