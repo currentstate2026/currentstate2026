@@ -82,6 +82,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .nl-box h2{font-size:22px;line-height:32px}
 .nl-box p{font-size:15px;line-height:26px;color:var(--ink-muted)}
 .nl-embed{min-height:60px}
+.nl-note{font-size:13px!important;line-height:22px!important}
 .nl-cta{display:grid;grid-template-columns:1fr auto;gap:var(--space-4);align-items:center;background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-4)}
 .nl-cta h2{font-size:22px;line-height:32px;margin-bottom:var(--space-1)}
 .nl-cta p{font-size:15px;line-height:26px;color:var(--ink-muted)}
@@ -202,12 +203,12 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   <div class="wrap top-in">
     <a class="mark" href="#home"><span class="seal" aria-hidden="true">C</span><b>Current State｜整合進行式</b></a>
     <nav class="nav" aria-label="主要選單">
-      <a href="#newsletter" data-nav="newsletter">電子報</a>
       <a href="#about" data-nav="about">關於</a>
       <a href="#works" data-nav="works">作品</a>
       <a href="#projects" data-nav="projects">專案</a>
       <a href="#notes" data-nav="notes">筆記</a>
       <a href="#archive" data-nav="archive">素材庫</a>
+      <a href="#newsletter" data-nav="newsletter">電子報</a>
     </nav>
   </div>
 </header>
@@ -284,24 +285,32 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <p class="lead" style="margin-top:var(--space-3);color:var(--ink-muted)">用系統整理生活，用心理解人。</p>
         <div class="two" style="margin-top:var(--space-5)">
           <div class="prose">
-            <p>嗨，我是 Potter L，一位小學老師。</p>
-            <p>平常的生活大多圍繞著教學、行政工作，以及各種大大小小的待辦事項。因為事情總是很多，我開始嘗試用 Notion、AI 和不同的工具整理工作與生活，也慢慢養成了把問題拆開來思考的習慣。</p>
-            <p>不過，在不斷調整方法的過程中，我也發現，有些事情並不是建立一套系統就能解決。</p>
-            <p>我會拖延、會焦慮，有時候明明知道該怎麼做，卻還是做不到。這也讓我開始對心理學，以及人的行為和思考方式產生更多興趣。</p>
-            <p>於是，我想把這些過程記錄下來。</p>
-            <p>可能是最近嘗試的一個 AI 工具、一套工作流程，也可能是讀到的心理學觀點，或是生活裡某件讓我重新思考的小事。</p>
-            <p>這份電子報會每兩週更新一次，分享一個最近的實驗、一點過程中的觀察，以及一些可以實際試試看的方法。</p>
-            <p>不一定每次都有完整的答案，有些方法也可能試了才發現不適合。但我覺得，這些嘗試和調整的過程，本身就很值得記錄。</p>
+            <p>平常我喜歡研究 Notion、AI 和各種工具，也對心理學，以及人的想法與行為很感興趣。</p>
+            <p>在工作和生活中，常常會遇到一些想改善的事情。有時候是覺得某個流程不太順手，有時候是讀到一個新的觀點，想知道實際運用起來會是什麼樣子。</p>
+            <p>於是，我會試著換個方法，看看結果有沒有不同。</p>
+            <p>當然，不是每次嘗試都有效。有些方法確實解決了問題，有些則是在實際使用後，才發現還有需要調整的地方。</p>
+            <p>我想把這些經驗記錄下來，除了整理自己的想法，也希望能分享一些對別人有幫助的觀察與方法。</p>
             <p>這裡是 Current State，記錄那些還在進行中的事。</p>
           </div>
           <div>
             <div class="nl-box">
               <h2>訂閱電子報</h2>
-              <p>每兩週一封，免費。訂閱後請到信箱點選確認信，才算完成訂閱。</p>
+              <p>每兩週一封，免費訂閱。</p>
+              <p>分享最近的實驗、過程中的觀察，以及一些可以實際試試看的方法。</p>
               <div class="nl-embed" id="nl-embed"></div>
+              <p class="nl-note">送出後，請到信箱點選確認信，才算完成訂閱。</p>
             </div>
           </div>
         </div>
+      </section>
+      <section class="block" aria-labelledby="h-nl-expect">
+        <div class="head"><h2 id="h-nl-expect">這份電子報會分享什麼？</h2></div>
+        <div class="princ">
+          <div><h3>01｜一個最近的實驗</h3><p>可能是最近使用的 AI 工具、一套工作流程，或是生活裡想嘗試的新方法。</p></div>
+          <div><h3>02｜一點過程中的觀察</h3><p>記錄實際使用後的發現、遇到的問題，以及一些讓我重新思考的地方。</p></div>
+          <div><h3>03｜一個可以試試看的方法</h3><p>從自己的經驗中，整理出一些具體的做法。如果你剛好遇到類似的問題，也許可以拿來試試看。</p></div>
+        </div>
+        <p style="margin-top:var(--space-4);color:var(--ink-muted);max-width:var(--measure)">不一定每次都有完整的答案，有些方法也可能試了才發現不適合。但我覺得，這些嘗試和調整的過程，本身就很值得記錄。</p>
       </section>
       <section class="block" aria-labelledby="h-nl-list">
         <div class="head"><h2 id="h-nl-list">往期電子報</h2><span class="count" id="nl-count"></span></div>
@@ -1338,7 +1347,7 @@ function renderNewsletter(){
   var items = PUBLIC.filter(function(c){ return c.type === "letter"; });
   document.getElementById("nl-count").textContent = items.length ? items.length + " 期" : "";
   document.getElementById("nl-cards").innerHTML = items.length ? items.map(card).join("") :
-    '<p class="empty">創刊號準備中，預計 2026 年 12 月寄出。訂閱後就會第一時間收到。</p>';
+    '<p class="empty">第一期電子報正在準備中，預計於 2026 年 12 月寄出。<br>訂閱後，第一期發刊時就能收到最新內容。</p>';
 }
 
 /* archive */
