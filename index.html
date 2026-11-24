@@ -441,6 +441,11 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .pj .bar-axis{grid-template-columns:3.6em minmax(0,1fr) 2.8em;column-gap:var(--space-2)}
   .pj .day0 p:last-child{font-size:17px;line-height:30px}
 }
+@media (max-width:400px){
+  .pj .pstats:has(> div:nth-child(3)){grid-auto-flow:row;grid-auto-columns:auto}
+  .pj .pstats:has(> div:nth-child(3)) div{flex-direction:row;align-items:baseline;justify-content:space-between;padding:var(--space-2) 0}
+  .pj .pstats:has(> div:nth-child(3)) div+div{padding-left:0;border-left:0;border-top:var(--hairline) solid var(--line)}
+}
 @media (max-width:360px){.pj .habits{grid-template-columns:1fr}.pj .rt-tools{grid-template-columns:1fr}}
 /* SEL 母專案（只作用在 .pj） */
 .pj .guide-go{margin-top:auto;padding-top:var(--space-2);font-size:13px;line-height:22px;color:var(--ink-muted)}
@@ -608,6 +613,62 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .pj .pf3 .pf-wrap{padding-right:38px}
   .pj .pf3 .pf-loop{margin:0}
   .pj .pf3 .pf-loop span{white-space:nowrap}
+}
+/* 海外見習（只作用在 .pj） */
+.pj .t-stack{display:flex;flex-direction:column}
+.pj .ed-head .t-prog{font-family:var(--font-serif);font-weight:600;font-size:clamp(19px,2.9vw,28px);line-height:1.45;letter-spacing:.06em;color:var(--flax-ink)}
+.pj .ed-head .t-meta{margin-top:4px;font-size:13px;line-height:20px;letter-spacing:.14em;color:var(--ink-muted)}
+.pj .t-stack h1{margin-top:var(--space-3)}
+.pj .t-stack h1 .nb{display:inline-block}
+.pj .c-gray{--c:var(--line-strong);--c-soft:var(--paper-deep);--c-ink:var(--ink-muted)}
+.pj .qidx{list-style:none;margin:var(--space-4) 0 0;padding:0;border-top:var(--hairline) solid var(--ink)}
+.pj .qidx li{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:var(--space-3);padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
+.pj .q-ico{grid-row:1/3;width:28px;height:28px;fill:none;stroke:var(--c-ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.pj .q-tag{font-size:13px;line-height:22px;letter-spacing:.08em;color:var(--c-ink);font-weight:500}
+.pj .q-tag b{font-family:var(--font-serif);font-size:17px;margin-right:4px;padding:0 8px;border-radius:var(--radius-sm);background:var(--c-soft)}
+.pj .q-tag span{font-size:11px;letter-spacing:.14em;margin-left:2px}
+.pj .q-txt{font-family:var(--font-serif);font-size:17px;line-height:30px;margin-top:4px}
+.pj .fn{list-style:none;margin:var(--space-3) 0 0;padding:0;border-top:var(--hairline) solid var(--ink)}
+.pj .fn li{display:grid;grid-template-columns:44px 11em minmax(0,1fr);column-gap:var(--space-3);padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
+.pj .fn-no{font-family:var(--font-serif);font-size:22px;line-height:28px;color:var(--line-strong)}
+.pj .fn-where{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:28px}
+.pj .fn-body{display:flex;flex-direction:column;gap:6px}
+.pj .fn-body p{font-size:15px;line-height:26px}
+.pj .fn-body p:last-child{color:var(--sage-ink)}
+.pj .fn-body .label{display:block;font-size:11px;line-height:18px;color:var(--ink-muted)}
+.pj .ans > div{border-top:3px solid var(--c)}
+.pj .ans .label{color:var(--c-ink);font-weight:500}
+.pj .ins{list-style:none;margin:var(--space-3) 0 0;padding:0;border-top:var(--hairline) solid var(--ink);max-width:44em}
+.pj .ins li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:var(--space-3);padding:var(--space-4) 0;border-bottom:var(--hairline) solid var(--line)}
+.pj .ins-no{font-family:var(--font-serif);font-size:22px;line-height:32px;color:var(--line-strong)}
+.pj .ins p{font-size:15px;line-height:28px;color:var(--ink-muted)}
+.pj .ins strong{display:block;font-family:var(--font-serif);font-weight:600;font-size:20px;line-height:32px;color:var(--ink);margin-bottom:4px}
+.pj .pf-act{margin-top:var(--space-3)}
+.pj .pf-act li{justify-content:center}
+.pj .pf-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.pj .pf-chips i{font-style:normal;font-size:12px;line-height:20px;padding:0 8px;border-radius:var(--radius-pill);background:var(--flax-soft);color:var(--flax-ink)}
+.pj .acts{list-style:none;margin:var(--space-4) 0 0;padding:0;border-top:var(--hairline) solid var(--ink)}
+.pj .acts > li{padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line);display:flex;flex-direction:column;gap:4px}
+.pj .ac-head{display:flex;align-items:baseline;gap:var(--space-2) var(--space-3);flex-wrap:wrap}
+.pj .ac-head .label{font-size:12px;color:var(--flax-ink)}
+.pj .ac-head b{font-family:var(--font-serif);font-weight:600;font-size:18px;line-height:28px}
+.pj .ac-st{margin-left:auto;font-size:12px;letter-spacing:.08em;color:var(--ink-muted)}
+.pj .ac-do{font-size:15px;line-height:26px;max-width:var(--measure)}
+.pj .ac-tg{display:flex;flex-wrap:wrap;gap:4px var(--space-2);align-items:baseline;font-size:14px;line-height:24px;color:var(--ink-muted)}
+.pj .ac-tg .label{font-size:11px;padding:0 8px;border:var(--hairline) dashed var(--line-strong);border-radius:var(--radius-sm)}
+.pj .acts-note{margin-top:var(--space-2);font-size:13px;line-height:22px;color:var(--ink-muted)}
+.pj .refl{max-width:var(--measure);display:flex;flex-direction:column;gap:var(--space-2);padding-left:var(--space-4);border-left:var(--hairline) solid var(--line-strong)}
+.pj .refl p:not(.label){font-family:var(--font-serif);font-size:17px;line-height:32px}
+.pj .refl .rf-tag{margin-top:var(--space-3)}
+.pj .refl .rf-tag:first-child{margin-top:0}
+@media (max-width:720px){
+  .pj .fn li{grid-template-columns:36px minmax(0,1fr);row-gap:4px}
+  .pj .fn-body{grid-column:2}
+  .pj .ins li{grid-template-columns:36px minmax(0,1fr)}
+  .pj .ins strong{font-size:18px;line-height:30px}
+  .pj .ac-st{margin-left:0;flex-basis:100%}
+  .pj .refl{padding-left:var(--space-3)}
+  .pj .refl p:not(.label){font-size:16px;line-height:30px}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
@@ -945,73 +1006,58 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-project-australia-ai-lab">
-  <div class="sec"><p class="label">01 · 出發前</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼開始？</span></p><div>
+    <p class="subhead">BEFORE DEPARTURE ─ 出發前</p>
     <h2>我先寫下三個問題</h2>
     <div class="prose"><p>我在學校同時負責教學和行政工作，不同的角色各自都有讓我困擾的問題。所以出發前，我先把問題寫下來，也設計了一份觀察紀錄表，提醒自己每到一所學校都要找答案。</p></div>
-    <div class="tbl" style="margin-top:var(--space-3)"><table>
-      <thead><tr><th>問題</th><th>想知道的事</th></tr></thead>
-      <tbody>
-        <tr><td>Q1 教學現場</td><td>老師怎麼在不增加備課負擔的情況下做到 UDL？AI 是幫忙設計，還是只是做得比較快？</td></tr>
-        <tr><td>Q2 行政</td><td>學校怎麼在效率和學生資料隱私之間拿捏？</td></tr>
-        <tr><td>Q3 社群</td><td>老師怎麼從各自嘗試，變成一起備課？</td></tr>
-      </tbody>
-    </table></div>
+    <ol class="qidx"><li class="c-sage"><svg class="q-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20l4-4 4 4"/><path d="M7 9h6M7 12h4"/></svg><p class="q-tag"><b>Q1</b> 教學現場<span>／TEACHING</span></p><p class="q-txt">老師怎麼在不增加備課負擔的情況下做到 UDL？AI 是幫忙設計，還是只是做得比較快？</p></li><li class="c-flax"><svg class="q-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h6l2 2h8v10H4Z"/><rect x="10" y="12" width="5" height="4" rx="1"/><path d="M11 12v-1.2a1.5 1.5 0 0 1 3 0V12"/></svg><p class="q-tag"><b>Q2</b> 行政<span>／ADMINISTRATION</span></p><p class="q-txt">學校怎麼在效率和學生資料隱私之間拿捏？</p></li><li class="c-gray"><svg class="q-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 19c.5-3 2.3-4.5 4.5-4.5s4 1.5 4.5 4.5"/><path d="M11.5 19c.5-3 2.3-4.5 4.5-4.5s4 1.5 4.5 4.5"/></svg><p class="q-tag"><b>Q3</b> 社群<span>／COMMUNITY</span></p><p class="q-txt">老師怎麼從各自嘗試，變成一起備課？</p></li></ol>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 見習</p><div>
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">PROCESS</span><span class="zh">我怎麼實踐與調整？</span></p><div>
+    <p class="subhead">FIELD NOTES ─ 七筆觀察紀錄</p>
     <h2>去了哪些地方</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>參訪單位</th><th>我看到的</th><th>我帶回來的做法</th></tr></thead>
-      <tbody>
-        <tr><td>公立小學（一）</td><td>iPad 融入學習、UDL 工作坊、每週一小時老師互相學習</td><td>在領域會議做簡單的工具分享</td></tr>
-        <tr><td>公立小學（二）</td><td>創客教室、特教班的空間設計、多感官的探究課</td><td>在教室一角放情緒緩衝角，常態展示學生作品</td></tr>
-        <tr><td>公立小學（三）</td><td>學習牆、探究教學；和夥伴一起試教「海洋資源」</td><td>單元學習牆；「開發者和海洋科學家」角色便利貼活動</td></tr>
-        <tr><td>大學與科學教育中心</td><td>STEM 工作坊的「魔法燈泡」、顯微鏡濕載片實作</td><td>把魔法燈泡放進四年級電路單元</td></tr>
-        <tr><td>私立中小學</td><td>「HI+AI」人和 AI 的分工、NotebookLM 和 SCAMPER</td><td>在一個單元試著讓 AI 整理資料，我專心引導提問</td></tr>
-        <tr><td>教育研討會</td><td>學者談學生投入程度、emoji 自評</td><td>下課前用 emoji 卡讓學生自評投入程度</td></tr>
-        <tr><td>公立小學（四）</td><td>全校共同的 3R 語言、「I do, We do, You do」</td><td>在簡報或黑板標出現在是哪個學習階段</td></tr>
-      </tbody>
-    </table></div>
-  </div></div>
+    <ol class="fn"><li><span class="fn-no num">01</span><p class="fn-where">公立小學（一）</p><div class="fn-body"><p><span class="label">我看到的</span>iPad 融入學習、UDL 工作坊、每週一小時老師互相學習</p><p><span class="label">我帶回來的做法</span>在領域會議做簡單的工具分享</p></div></li><li><span class="fn-no num">02</span><p class="fn-where">公立小學（二）</p><div class="fn-body"><p><span class="label">我看到的</span>創客教室、特教班的空間設計、多感官的探究課</p><p><span class="label">我帶回來的做法</span>在教室一角放情緒緩衝角，常態展示學生作品</p></div></li><li><span class="fn-no num">03</span><p class="fn-where">公立小學（三）</p><div class="fn-body"><p><span class="label">我看到的</span>學習牆、探究教學；和夥伴一起試教「海洋資源」</p><p><span class="label">我帶回來的做法</span>單元學習牆；「開發者和海洋科學家」角色便利貼活動</p></div></li><li><span class="fn-no num">04</span><p class="fn-where">大學與科學教育中心</p><div class="fn-body"><p><span class="label">我看到的</span>STEM 工作坊的「魔法燈泡」、顯微鏡濕載片實作</p><p><span class="label">我帶回來的做法</span>把魔法燈泡放進四年級電路單元</p></div></li><li><span class="fn-no num">05</span><p class="fn-where">私立中小學</p><div class="fn-body"><p><span class="label">我看到的</span>「HI+AI」人和 AI 的分工、NotebookLM 和 SCAMPER</p><p><span class="label">我帶回來的做法</span>在一個單元試著讓 AI 整理資料，我專心引導提問</p></div></li><li><span class="fn-no num">06</span><p class="fn-where">教育研討會</p><div class="fn-body"><p><span class="label">我看到的</span>學者談學生投入程度、emoji 自評</p><p><span class="label">我帶回來的做法</span>下課前用 emoji 卡讓學生自評投入程度</p></div></li><li><span class="fn-no num">07</span><p class="fn-where">公立小學（四）</p><div class="fn-body"><p><span class="label">我看到的</span>全校共同的 3R 語言、「I do, We do, You do」</p><p><span class="label">我帶回來的做法</span>在簡報或黑板標出現在是哪個學習階段</p></div></li></ol>
 
-  <div class="sec"><p class="label">03 · 答案</p><div>
+    <p class="subhead turn">FINDINGS ─ 對照出發前的問題</p>
     <h2>三個問題，我找到的答案</h2>
-    <div class="flow">
-      <div><span class="label">Q1 教學現場</span><b>AI 只是幫忙加快</b>澳洲老師很少把 UDL 掛在嘴上，但備課時早就準備好圖像、操作和文字幾種方式。科技讓成果做得更快，課怎麼設計還是老師決定。</div>
-      <div><span class="label">Q2 行政</span><b>先限制使用範圍</b>我參訪的學校，AI 主要開放給老師備課，多數學生不能用，只有高中生能用學校審核過的工具。在規範還不完整之前，我覺得這是很實際的做法。</div>
-      <div><span class="label">Q3 社群</span><b>固定、簡單、常常做</b>一起備課的習慣，不是靠一兩次研習，而是每週固定時間的分享，再加上對新老師的陪伴。</div>
-    </div>
-  </div></div>
+    <div class="flow ans"><div class="c-sage"><span class="label">Q1 教學現場</span><b>AI 只是幫忙加快</b>澳洲老師很少把 UDL 掛在嘴上，但備課時早就準備好圖像、操作和文字幾種方式。科技讓成果做得更快，課怎麼設計還是老師決定。</div><div class="c-flax"><span class="label">Q2 行政</span><b>先限制使用範圍</b>我參訪的學校，AI 主要開放給老師備課，多數學生不能用，只有高中生能用學校審核過的工具。在規範還不完整之前，我覺得這是很實際的做法。</div><div class="c-gray"><span class="label">Q3 社群</span><b>固定、簡單、常常做</b>一起備課的習慣，不是靠一兩次研習，而是每週固定時間的分享，再加上對新老師的陪伴。</div></div>
 
-  <div class="sec"><p class="label">04 · 體會</p><div>
+    <p class="subhead turn">INSIGHTS ─ 體會</p>
     <h2>最深的三個體會</h2>
-    <ol class="obj">
-      <li><div><strong>不要為了用科技而用科技。</strong>課本講得清楚的內容，不用硬換成螢幕操作；科技的價值，在於幫孩子看見抽象的概念，或完成紙筆做不到的探究。</div></li>
-      <li><div><strong>早一點看見差異，先搭好鷹架。</strong>備課時就準備好圖像、操作和文字幾種方式，需要多一點引導的孩子和跑得快的孩子，都能在同一間教室找到自己的節奏。</div></li>
-      <li><div><strong>真實的問題，才會讓孩子主動投入。</strong>當學習和環保、生態這些真實問題連在一起，再把主導權交一些給孩子，他們才會自己去追問題、找答案。</div></li>
+    <ol class="ins">
+      <li><span class="ins-no num">01</span><p><strong>不要為了用科技而用科技。</strong>課本講得清楚的內容，不用硬換成螢幕操作；科技的價值，在於幫孩子看見抽象的概念，或完成紙筆做不到的探究。</p></li>
+      <li><span class="ins-no num">02</span><p><strong>早一點看見差異，先搭好鷹架。</strong>備課時就準備好圖像、操作和文字幾種方式，需要多一點引導的孩子和跑得快的孩子，都能在同一間教室找到自己的節奏。</p></li>
+      <li><span class="ins-no num">03</span><p><strong>真實的問題，才會讓孩子主動投入。</strong>當學習和環保、生態這些真實問題連在一起，再把主導權交一些給孩子，他們才會自己去追問題、找答案。</p></li>
     </ol>
   </div></div>
 
-  <div class="sec"><p class="label">05 · 行動</p><div>
+  <div class="sec"><p class="label chap"><span class="no">03</span><span class="en">NOW</span><span class="zh">目前走到哪裡？</span></p><div>
+    <p class="subhead">ACTION PLAN ─ 返國行動</p>
     <h2>回來之後要做的事</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>行動</th><th>內容</th><th>目標</th><th>進度</th></tr></thead>
-      <tbody>
-        <tr><td>一 輔導行政</td><td>用 AI 整理重複的欄位、產出初稿，我只做檢查和專業判斷，資料全程去識別化</td><td>建檔時間從 30 分鐘縮短到 10 分鐘</td><td style="white-space:nowrap">進行中</td></tr>
-        <tr><td>二 學習扶助</td><td>一頁式學力盲點診斷書，加上 UDL 資源包</td><td>幫助 20 位學扶生</td><td style="white-space:nowrap">進行中</td></tr>
-        <tr><td>三 自然教學</td><td>UDL 加 AI 的差異化教案：海洋資源角色便利貼、魔法燈泡電路探究、多元成果評量</td><td>寫 3 篇實踐文章</td><td style="white-space:nowrap">進行中</td></tr>
-        <tr><td>四 領域社群</td><td>每月一次在領域會議做 AI 小分享，找夥伴一起備課</td><td>找到 3 位夥伴</td><td style="white-space:nowrap">進行中</td></tr>
-      </tbody>
-    </table></div>
+    <figure class="pflow pf-act" aria-label="經驗轉化架構">
+      <p class="label">FROM EXPERIENCE TO ACTION ─ 經驗轉化</p>
+      <ol>
+        <li><b>澳洲教育見習</b></li>
+        <li><b>觀察、反思與轉化</b></li>
+        <li class="pf-pub"><b>四項返國行動方向</b><span class="pf-chips"><i>輔導行政</i><i>學習扶助</i><i>自然教學</i><i>領域社群</i></span></li>
+      </ol>
+    </figure>
+    <ol class="acts"><li><p class="ac-head"><span class="label">行動一</span><b>輔導行政</b><span class="ac-st">進度：進行中</span></p><p class="ac-do">用 AI 整理重複的欄位、產出初稿，我只做檢查和專業判斷，資料全程去識別化</p><p class="ac-tg"><span class="label">TARGET／目標</span>建檔時間從 30 分鐘縮短到 10 分鐘</p></li><li><p class="ac-head"><span class="label">行動二</span><b>學習扶助</b><span class="ac-st">進度：進行中</span></p><p class="ac-do">一頁式學力盲點診斷書，加上 UDL 資源包</p><p class="ac-tg"><span class="label">TARGET／目標</span>幫助 20 位學扶生</p></li><li><p class="ac-head"><span class="label">行動三</span><b>自然教學</b><span class="ac-st">進度：進行中</span></p><p class="ac-do">UDL 加 AI 的差異化教案：海洋資源角色便利貼、魔法燈泡電路探究、多元成果評量</p><p class="ac-tg"><span class="label">TARGET／目標</span>寫 3 篇實踐文章</p></li><li><p class="ac-head"><span class="label">行動四</span><b>領域社群</b><span class="ac-st">進度：進行中</span></p><p class="ac-do">每月一次在領域會議做 AI 小分享，找夥伴一起備課</p><p class="ac-tg"><span class="label">TARGET／目標</span>找到 3 位夥伴</p></li></ol>
+    <p class="acts-note">以上數字都是預計目標，不是已經達成的成果。</p>
   </div></div>
 
-  <div class="sec"><p class="label">06 · 反思</p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
+    <p class="subhead">REFLECTION ─ 後記</p>
     <h2>下次我會怎麼做</h2>
-    <ul class="prose" style="padding-left:1.2em;margin:0">
-      <li>這次的跨校試教，出發前沒有機會和組員討論，到了之後一週內就要上場，壓力很大。下次我會在出發前先安排線上共備。</li>
-      <li>這次看到的大多是教學現場，行政和 AI 倫理的第一手觀察比較少，是我下一步想補足的部分。</li>
-      <li>我已經盡力用英文交流了，但還是希望自己更勇敢一點，多爭取上台試教和跟國外老師深聊的機會。</li>
-    </ul>
+    <div class="refl">
+      <p class="rf-tag label">PREPARATION ─ 事前準備</p>
+      <p>這次的跨校試教，出發前沒有機會和組員討論，到了之後一週內就要上場，壓力很大。下次我會在出發前先安排線上共備。</p>
+      <p class="rf-tag label">EXPLORATION ─ 深入探索</p>
+      <p>這次看到的大多是教學現場，行政和 AI 倫理的第一手觀察比較少，是我下一步想補足的部分。</p>
+      <p class="rf-tag label">COMMUNICATION ─ 跨文化交流</p>
+      <p>我已經盡力用英文交流了，但還是希望自己更勇敢一點，多爭取上台試教和跟國外老師深聊的機會。</p>
+    </div>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -1686,8 +1732,14 @@ var CONTENT = [
   {
     slug: "project-australia-ai-lab",
     type: "project",
-    related: ["case-circuit"],
-    title: "帶著三個問題出國：一趟教育見習",
+    layout: "project",
+    cat: "教育見習",
+    related: [{slug: "case-circuit", note: "見習時的「魔法燈泡」活動，預計改編放進這個單元"}],
+    title: "青年百億海外圓夢基金計畫：帶著三個問題走進澳洲教育現場",
+    titleProgram: "青年百億海外圓夢基金計畫",
+    titleMeta: "2026 · 海外翱翔組",
+    titleMain: "帶著三個問題，走進澳洲教育現場",
+    stats: [["16", "天", "海外教育見習"], ["03", "個", "核心探索問題"], ["04", "項", "返國行動規劃"]],
     summary: "今年暑假，我帶著工作上的三個問題到澳洲見習 16 天，走訪當地的小學、大學和研討會找答案，也和夥伴一起上台試教。回國後，我把看到的做法整理成四項回校行動。",
     tags: ["AI 應用", "學習設計", "旅行"],
     status: "public",
@@ -1812,6 +1864,7 @@ var TYPES = {
 CONTENT.forEach(function(c){
   var v;
   if((v=editVal("c:"+c.slug+":title"))!==null) c.title=v;
+  if((v=editVal("c:"+c.slug+":titleMain"))!==null) c.titleMain=v;
   if((v=editVal("c:"+c.slug+":summary"))!==null) c.summary=v;
   (c.facts||[]).forEach(function(f,i){ if((v=editVal("c:"+c.slug+":f"+i))!==null) f[1]=v; });
 });
@@ -1912,10 +1965,13 @@ function renderItem(c){
   if(ED){
     var EN = {work: "WORK", project: "PROJECT", note: "NOTE", letter: "LETTER"}[c.type] || "";
     var t = esc(c.title), k = c.title.indexOf("：");
-    if(!EDITING && k > 0) t = '<span class="t-main">' + esc(c.title.slice(0, k + 1)) + '</span><span class="t-sub">' + esc(c.title.slice(k + 1)) + '</span>';
+    var tk = "title";
+    if(c.titleProgram && c.titleMain){ var cm = c.titleMain.indexOf("，"); t = (!EDITING && cm > 0) ? '<span class="nb">' + esc(c.titleMain.slice(0, cm + 1)) + '</span><span class="nb">' + esc(c.titleMain.slice(cm + 1)) + '</span>' : esc(c.titleMain); tk = "titleMain"; }
+    else if(!EDITING && k > 0) t = '<span class="t-main">' + esc(c.title.slice(0, k + 1)) + '</span><span class="t-sub">' + esc(c.title.slice(k + 1)) + '</span>';
     main.innerHTML = '<a class="back" href="' + back + '">← 回' + T.name + '</a>' +
       '<header class="ed-head"><div class="ed-kicker"><span>' + EN + '<i aria-hidden="true"></i>' + esc(c.cat || T.name) + '</span><span class="num">UPDATED ' + esc(c.updated.replace(/-/g, ".")) + '</span></div>' +
-      '<h1 data-ek="c:' + c.slug + ':title" data-plain="1">' + t + '</h1>' +
+      (c.titleProgram ? '<div class="t-stack"><p class="t-prog">' + esc(c.titleProgram) + '</p>' + (c.titleMeta ? '<p class="t-meta">' + esc(c.titleMeta) + '</p>' : '') : '') +
+      '<h1 data-ek="c:' + c.slug + ':' + tk + '" data-plain="1">' + t + '</h1>' + (c.titleProgram ? '</div>' : '') +
       '<p class="ed-dek" data-ek="c:' + c.slug + ':summary" data-plain="1">' + esc(c.summary) + '</p>' +
       (PJ && c.stats ? '<dl class="pstats">' + c.stats.map(function(x){ return '<div><dt class="label">' + esc(x[2]) + '</dt><dd><span class="num">' + esc(x[0]) + '</span><small>' + esc(x[1]) + '</small></dd></div>'; }).join("") + '</dl>' : '') +
       ((facts || PJ) ? '<div class="ed-colophon"><p class="label">' + (PJ ? 'ABOUT THIS PROJECT' : 'ABOUT THIS WORK') + '</p>' + (facts ? '<div class="facts">' + facts + '</div>' : '') +
