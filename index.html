@@ -537,6 +537,78 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .pj .tri-n span{font-size:11px;line-height:16px}
   .pj .tri-list{grid-template-columns:1fr;gap:var(--space-3)}
 }
+/* 課程入口（只作用在 .pj） */
+.pj .dt{margin:var(--space-5) 0 0;padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
+.pj .dt-grid{display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);align-items:stretch;margin-top:var(--space-3)}
+.pj .dt-col{display:flex;flex-direction:column;gap:4px;padding:var(--space-3);border-radius:var(--radius-sm)}
+.pj .dt-before{background:var(--paper-deep)}
+.pj .dt-after{background:var(--mist-soft)}
+.pj .dt-k{font-size:11px;line-height:18px;letter-spacing:.2em;font-weight:500;color:var(--ink-muted)}
+.pj .dt-after .dt-k{color:var(--mist-ink)}
+.pj .dt-ui{width:100%;height:auto;margin:var(--space-2) 0;display:block}
+.pj .dt-ui .f-frame{fill:var(--paper-raised);stroke:var(--line-strong);stroke-width:1}
+.pj .dt-ui .f-col rect{fill:var(--line)}
+.pj .dt-ui .f-card rect{fill:var(--paper-deep);stroke:var(--line);stroke-width:1}
+.pj .dt-ui .f-head{fill:var(--mist)}
+.pj .dt-ui .f-goal circle{fill:none;stroke:var(--sage-ink);stroke-width:1.2}
+.pj .dt-ui .f-goal rect{fill:var(--sage-soft)}
+.pj .dt-ui .f-step rect{fill:var(--mist-soft);stroke:var(--mist);stroke-width:1}
+.pj .dt-ui .f-chk rect{fill:var(--flax-soft)}
+.pj .dt-ui .f-chk rect:nth-child(odd){fill:none;stroke:var(--flax-ink);stroke-width:1}
+.pj .dt-ui .f-chk path{fill:none;stroke:var(--flax-ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.pj .dt-col b{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:28px}
+.pj .dt-sub{font-size:14px;line-height:24px;color:var(--ink-muted)}
+.pj .dt-q{margin-top:auto;padding-top:var(--space-2);border-top:var(--hairline) dashed var(--line-strong);font-family:var(--font-serif);font-size:15px;line-height:26px}
+.pj .dt-q .label{display:block;font-family:var(--font-sans);font-size:11px}
+.pj .dt-arrow{position:relative;margin:0}
+.pj .dt-arrow::before{content:"";position:absolute;top:50%;left:10px;right:12px;border-top:var(--hairline) solid var(--line-strong)}
+.pj .dt-arrow::after{content:"";position:absolute;top:calc(50% - 3px);right:12px;width:6px;height:6px;border-top:var(--hairline) solid var(--line-strong);border-right:var(--hairline) solid var(--line-strong);transform:rotate(45deg)}
+.pj .dt-shift{display:flex;align-items:center;justify-content:center;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:28px}
+.pj .dt-shift span:first-child{color:var(--ink-muted)}
+.pj .dt-shift span:last-child{color:var(--mist-ink)}
+.pj .dt-to{position:relative;width:40px;height:10px}
+.pj .dt-to::before{content:"";position:absolute;top:50%;left:0;right:2px;border-top:var(--hairline) solid var(--line-strong)}
+.pj .dt-to::after{content:"";position:absolute;top:calc(50% - 3px);right:2px;width:6px;height:6px;border-top:var(--hairline) solid var(--line-strong);border-right:var(--hairline) solid var(--line-strong);transform:rotate(45deg)}
+.pj .um-mods{list-style:none;margin:var(--space-4) 0 0;padding:var(--space-4) 0 0;border-top:var(--hairline) solid var(--line-strong);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-3)}
+.pj .um-mods li{display:flex;flex-direction:column;gap:2px;padding:var(--space-2) var(--space-2) var(--space-3);border-top:2px solid var(--mist);background:var(--paper-raised);border-radius:0 0 var(--radius-sm) var(--radius-sm)}
+.pj .um-ico{width:26px;height:26px;fill:none;stroke:var(--mist-ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px}
+.pj .um-en{font-size:10px;line-height:16px;letter-spacing:.12em;color:var(--mist-ink);font-weight:500}
+.pj .um-mods b{font-family:var(--font-serif);font-weight:600;font-size:16px;line-height:26px}
+.pj .um-do{font-size:13px;line-height:22px;color:var(--ink-muted)}
+.pj .principles > div{border-top:3px solid var(--c)}
+.pj .principles .label{color:var(--c-ink);font-size:11px}
+.pj .pf-mist li{background:var(--mist-soft)}
+.pj .pf-mist b{color:var(--mist-ink)}
+.pj .pf3 .pf-loop{margin:0 calc((100% - 2 * var(--pf-gap)) / 6)}
+.pj .pf-note{margin-top:var(--space-3);font-size:13px;line-height:22px;color:var(--ink-muted)}
+.pj .impl{margin:0 0 var(--space-4);padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
+.pj .impl-units{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-3)}
+.pj .impl-units li{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-2) var(--space-3) var(--space-3);background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-sm)}
+.pj .impl-no{font-size:12px;letter-spacing:.12em;color:var(--mist-ink);font-weight:500}
+.pj .impl-bars{display:flex;flex-direction:column;gap:5px}
+.pj .impl-bars i,.pj .impl-key i{display:block;height:8px;border-radius:2px}
+.pj .impl-bars .b1{width:70%}.pj .impl-bars .b2{width:100%}.pj .impl-bars .b3{width:85%}.pj .impl-bars .b4{width:60%}.pj .impl-bars .b5{width:45%}
+.pj .impl .b1{background:var(--sage)}.pj .impl .b2{background:var(--mist)}.pj .impl .b3{background:var(--line)}.pj .impl .b4{background:var(--flax)}.pj .impl .b5{background:var(--paper-deep);outline:1px solid var(--line)}
+.pj .impl-key{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-3);margin-top:var(--space-3);font-size:12px;line-height:20px;color:var(--ink-muted)}
+.pj .impl-key span{display:inline-flex;align-items:center;gap:6px}
+.pj .impl-key i{width:14px}
+@media (max-width:720px){
+  .pj .dt-grid{grid-template-columns:1fr;grid-template-rows:auto 36px auto}
+  .pj .dt-arrow::before{top:6px;bottom:8px;left:50%;right:auto;border-top:0;border-left:var(--hairline) solid var(--line-strong)}
+  .pj .dt-arrow::after{top:auto;bottom:9px;left:calc(50% - 3px);right:auto;transform:rotate(135deg)}
+  .pj .dt-shift{font-size:15px;gap:var(--space-2)}
+  .pj .um-mods{grid-template-columns:1fr;gap:0;padding-top:0;border-top:0}
+  .pj .um-mods li{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:var(--space-2);padding:var(--space-3) 0;background:transparent;border-top:0;border-bottom:var(--hairline) solid var(--line);border-radius:0}
+  .pj .um-ico{grid-row:1/4;margin:2px 0 0}
+  .pj .um .arch-root{margin-left:0}
+  .pj .um .arch-root::after{display:none}
+  .pj .um-do{font-size:14px;line-height:24px}
+  .pj .um-en{font-size:11px;line-height:18px}
+  .pj .impl-units{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-2)}
+  .pj .pf3 .pf-wrap{padding-right:38px}
+  .pj .pf3 .pf-loop{margin:0}
+  .pj .pf3 .pf-loop span{white-space:nowrap}
+}
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
 </head>
@@ -949,6 +1021,27 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <div class="prose">
       <p>去年我用 Padlet 放自然課的教材，每個單元一欄，放進度分配和 Canva 簡報。學生找得到檔案，但我發現他們其實不太清楚這個單元要學會什麼，下課後也不知道該怎麼複習。</p>
     </div>
+    <figure class="dt" aria-label="改版前後概念對照">
+      <p class="label">DESIGN TRANSITION ─ 改版前後（概念示意）</p>
+      <div class="dt-grid">
+        <div class="dt-col dt-before">
+          <p class="dt-k">BEFORE</p>
+          <svg class="dt-ui" viewBox="0 0 240 140" aria-hidden="true"><rect x="1" y="1" width="238" height="138" rx="4" class="f-frame"/><g class="f-col"><rect x="12" y="14" width="48" height="10" rx="2"/><rect x="68" y="14" width="48" height="10" rx="2"/><rect x="124" y="14" width="48" height="10" rx="2"/><rect x="180" y="14" width="48" height="10" rx="2"/></g><g class="f-card"><rect x="12" y="32" width="48" height="30" rx="2"/><rect x="12" y="68" width="48" height="22" rx="2"/><rect x="12" y="96" width="48" height="30" rx="2"/><rect x="68" y="32" width="48" height="22" rx="2"/><rect x="68" y="60" width="48" height="30" rx="2"/><rect x="124" y="32" width="48" height="30" rx="2"/><rect x="124" y="68" width="48" height="22" rx="2"/><rect x="124" y="96" width="48" height="22" rx="2"/><rect x="180" y="32" width="48" height="22" rx="2"/><rect x="180" y="60" width="48" height="30" rx="2"/></g></svg>
+          <b>前一年的 Padlet 教材牆</b>
+          <p class="dt-sub">進度分配、Canva 簡報及教材</p>
+          <p class="dt-q"><span class="label">核心問題</span>學生可以在哪裡找到教材？</p>
+        </div>
+        <p class="dt-arrow" aria-hidden="true"></p>
+        <div class="dt-col dt-after">
+          <p class="dt-k">AFTER</p>
+          <svg class="dt-ui" viewBox="0 0 240 140" aria-hidden="true"><rect x="1" y="1" width="238" height="138" rx="4" class="f-frame"/><rect x="12" y="12" width="96" height="12" rx="2" class="f-head"/><g class="f-goal"><circle cx="18" cy="38" r="3.5"/><rect x="26" y="35" width="110" height="6" rx="2"/><circle cx="18" cy="52" r="3.5"/><rect x="26" y="49" width="90" height="6" rx="2"/></g><g class="f-step"><rect x="12" y="66" width="68" height="26" rx="3"/><rect x="86" y="66" width="68" height="26" rx="3"/><rect x="160" y="66" width="68" height="26" rx="3"/></g><g class="f-chk"><rect x="12" y="102" width="9" height="9" rx="1.5"/><path d="M14 106.5l2 2 3.5-4"/><rect x="26" y="104" width="100" height="6" rx="2"/><rect x="12" y="118" width="9" height="9" rx="1.5"/><rect x="26" y="120" width="80" height="6" rx="2"/></g></svg>
+          <b>自主學習課程入口</b>
+          <p class="dt-sub">學習目標、自學步驟、自我檢核</p>
+          <p class="dt-q"><span class="label">核心問題</span>學生可以如何繼續學習？</p>
+        </div>
+      </div>
+      <p class="dt-shift"><span>以教材為中心</span><span class="dt-to" aria-hidden="true"></span><span>以學習歷程為中心</span></p>
+    </figure>
   </div></div>
 
   <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">PLAN</span><span class="zh">我怎麼規劃？</span></p><div>
@@ -956,39 +1049,42 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <div class="prose">
       <p>所以今年我把它改成課程入口。學生打開一個單元，就能看到要學會什麼、接下來做什麼，學完也可以自己檢查。</p>
     </div>
-    <figure class="arch" aria-label="單元架構示意">
+    <figure class="arch um" aria-label="單元架構示意">
       <p class="label">UNIT STRUCTURE ─ 單元架構</p>
-      <div class="arch-root">一個單元</div>
-      <div class="arch-groups g5">
-        <div><p class="arch-g"><span class="num">1</span>｜我要學會</p><ul><li>用「我能……」寫的學習目標</li></ul></div>
-        <div><p class="arch-g"><span class="num">2</span>｜自學路徑</p><ul><li>課前、課中、課後要做的事</li><li>一個生活問題</li></ul></div>
-        <div><p class="arch-g"><span class="num">3</span>｜教材</p><ul><li>依活動排好的簡報和學習單</li></ul></div>
-        <div><p class="arch-g"><span class="num">4</span>｜自我檢核</p><ul><li>學生自己勾選，看看學會多少</li></ul></div>
-        <div><p class="arch-g"><span class="num">5</span>｜家長</p><ul><li>一個可以在家一起做的小活動</li></ul></div>
-      </div>
+      <div class="arch-root">自然課程單元入口</div>
+      <ul class="um-mods"><li><svg class="um-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg><p class="um-en">LEARNING GOALS</p><b>我要學會</b><p class="um-do">用「我能……」寫的學習目標</p></li><li><svg class="um-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h6a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h6"/></svg><p class="um-en">LEARNING PATH</p><b>自學路徑</b><p class="um-do">課前、課中、課後要做的事，加一個生活問題</p></li><li><svg class="um-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l8-4 8 4-8 4Z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg><p class="um-en">RESOURCES</p><b>教材</b><p class="um-do">依活動排好的簡報和學習單</p></li><li><svg class="um-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg><p class="um-en">SELF-CHECK</p><b>自我檢核</b><p class="um-do">學生自己勾選，看看學會多少</p></li><li><svg class="um-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></svg><p class="um-en">PARENT CONNECTION</p><b>家長</b><p class="um-do">一個可以在家一起做的小活動</p></li></ul>
+      <figcaption>五個部分是同一個單元裡的資訊架構，不需要依序操作。</figcaption>
     </figure>
   </div></div>
 
   <div class="sec"><p class="label chap"><span class="no">03</span><span class="en">PROCESS</span><span class="zh">我怎麼實踐與調整？</span></p><div>
     <h2>設計時我在意的事</h2>
-    <div class="flow">
-      <div><span class="label">對照</span><b>目標和檢核用同一組句子</b>學習目標寫成「我能……」，自我檢核也用一樣的句子，孩子比較容易對照。</div>
-      <div><span class="label">安心</span><b>檢核結果只留在孩子的電腦</b>勾選紀錄老師看不到，孩子比較敢誠實勾出還沒學會的地方。</div>
-      <div><span class="label">一致</span><b>四個單元同一個版型</b>學會一個單元的用法，其他單元就不用重新摸索。</div>
+    <div class="flow principles">
+      <div class="c-mist"><span class="label">ALIGNMENT ─ 對照</span><b>目標和檢核用同一組句子</b>學習目標寫成「我能……」，自我檢核也用一樣的句子，孩子比較容易對照。</div>
+      <div class="c-sage"><span class="label">PRIVACY ─ 安心</span><b>檢核結果只留在孩子的電腦</b>勾選紀錄老師看不到，孩子比較敢誠實勾出還沒學會的地方。</div>
+      <div class="c-flax"><span class="label">CONSISTENCY ─ 一致</span><b>四個單元同一個版型</b>學會一個單元的用法，其他單元就不用重新摸索。</div>
     </div>
-    <figure class="lpath" aria-label="學習路徑示意">
-      <p class="label">LEARNING PATH ─ 學習路徑</p>
-      <ol>
-        <li><b>我要學會</b><span>「我能……」的學習目標</span></li>
-        <li><b>自學路徑</b><span>課前、課中、課後</span></li>
-        <li><b>自我檢核</b><span>和目標用同一組句子</span></li>
-        <li class="back-to"><b>回頭對照目標</b><span>看看自己學會多少</span></li>
-      </ol>
+    <figure class="pflow pf3 pf-mist" aria-label="學習路徑示意">
+      <p class="label">LEARNING PATH ─ 學習設計架構</p>
+      <div class="pf-wrap">
+        <ol>
+          <li><b>我要學會</b><span>「我能……」的學習目標</span></li>
+          <li><b>自學路徑</b><span>課前、課中、課後</span></li>
+          <li><b>自我檢核</b><span>和目標用同一組句子</span></li>
+        </ol>
+        <p class="pf-loop" aria-hidden="true"><span>回頭對照目標</span></p>
+      </div>
+      <p class="pf-note">回頭對照目標：看看自己學會多少</p>
     </figure>
   </div></div>
 
   <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">NOW</span><span class="zh">目前走到哪裡？</span></p><div>
     <h2>目前完成的部分</h2>
+    <figure class="impl" aria-label="四個單元共用版型示意">
+      <p class="label">IMPLEMENTATION ─ 建置成果：四個單元共用版型（概念示意）</p>
+      <ol class="impl-units"><li><span class="impl-no">單元 1</span><span class="impl-bars" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i></span></li><li><span class="impl-no">單元 2</span><span class="impl-bars" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i></span></li><li><span class="impl-no">單元 3</span><span class="impl-bars" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i></span></li><li><span class="impl-no">單元 4</span><span class="impl-bars" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i></span></li></ol>
+      <p class="impl-key" aria-hidden="true"><span><i class="b1"></i>我要學會</span><span><i class="b2"></i>自學路徑</span><span><i class="b3"></i>教材</span><span><i class="b4"></i>自我檢核</span><span><i class="b5"></i>家長</span></p>
+    </figure>
     <ol class="aidx">
       <li><span class="aidx-no num">01</span><div><p class="aidx-head"><b>四個單元同一個版型</b></p><p class="aidx-do">學會一個單元的用法，其他單元就不用重新摸索。</p></div></li>
       <li><span class="aidx-no num">02</span><div><p class="aidx-head"><b>每個單元都有五個部分</b></p><p class="aidx-do">我要學會、自學路徑、教材、自我檢核、家長。</p></div></li>
@@ -1003,6 +1099,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
       <li><div>補上 4-3 的教材。</div></li>
       <li><div>單元結束後請學生填回饋，比較改版前後的差別。</div></li>
     </ol>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -1689,6 +1786,7 @@ var CONTENT = [
     type: "project",
     layout: "project",
     cat: "學習設計",
+    stats: [["04", "個單元", "課程範圍"], ["05", "個部分", "單元資訊架構"]],
     related: [{slug: "case-circuit", note: "課程入口第四單元〈好玩的電路〉的教學設計"}],
     title: "從教材整理到自主學習：自然課程入口的建置",
     summary: "去年我用 Padlet 放自然課教材，今年把它改成課程入口，每個單元都加上學習目標、自學步驟和自我檢核，讓學生下課後也知道怎麼複習。",
