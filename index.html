@@ -328,6 +328,105 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .keyf-grid > div:first-child{padding-top:0;border-top:0}
   .pull p{font-size:19px;line-height:34px}
 }
+/* ── 專案內頁（layout: "project"），只作用在 .pj ── */
+.pj .pstatus{display:flex;gap:var(--space-3);align-items:baseline;flex-wrap:wrap;font-size:13px;line-height:22px;color:var(--ink-muted);padding-top:var(--space-2);border-top:var(--hairline) dashed var(--line)}
+.pj .pstatus .label{font-size:11px;letter-spacing:.2em}
+.pj .arch-groups.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.pj .lpath{margin:var(--space-6) 0 0;padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
+.pj .lpath ol{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4)}
+.pj .lpath li{position:relative;display:flex;flex-direction:column;gap:2px;padding-top:var(--space-2);border-top:2px solid var(--sage)}
+.pj .lpath li:not(:last-child)::after{content:"→";position:absolute;right:calc(-1 * var(--space-4) + 4px);top:var(--space-2);color:var(--line-strong);font-size:15px}
+.pj .lpath li.back-to{border-top-style:dashed;border-top-color:var(--line-strong)}
+.pj .lpath b{font-family:var(--font-serif);font-weight:600;font-size:15px;line-height:24px;color:var(--sage-ink)}
+.pj .lpath span{font-size:13px;line-height:22px;color:var(--ink-muted)}
+.pj .prel{list-style:none;margin:var(--space-6) 0 0;padding:0;border-top:var(--hairline) solid var(--ink)}
+.pj .prel-h{margin-top:var(--space-6)}
+.pj .prel-h + .prel{margin-top:var(--space-2)}
+.pj .prel a{display:grid;grid-template-columns:72px minmax(0,1fr) auto;column-gap:var(--space-3);align-items:baseline;padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line);text-decoration:none;color:var(--ink)}
+.pj .prel .label{font-size:11px}
+.pj .prel b{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:28px}
+.pj .prel small{display:block;font-size:14px;line-height:24px;color:var(--ink-muted)}
+.pj .prel a:hover b{color:var(--sage-ink)}
+@media (max-width:720px){
+  .pj .arch-groups.g5{grid-template-columns:1fr;row-gap:var(--space-3)}
+  .pj .lpath ol{grid-template-columns:1fr;gap:var(--space-3)}
+  .pj .lpath li:not(:last-child)::after{display:none}
+  .pj .prel a{grid-template-columns:1fr auto;row-gap:2px}
+  .pj .prel .label{grid-column:1/-1}
+}
+/* Project 50：習慣卡片、流程、規則迭代、長條圖（只作用在 .pj） */
+.pj .pstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;border-top:var(--hairline) solid var(--line);border-bottom:var(--hairline) solid var(--line)}
+.pj .pstats div{padding:var(--space-3) var(--space-3) var(--space-3) 0;display:flex;flex-direction:column;gap:4px}
+.pj .pstats div+div{padding-left:var(--space-3);border-left:var(--hairline) solid var(--line)}
+.pj .pstats dd{margin:0;font-family:var(--font-serif);font-weight:600;font-size:34px;line-height:1.1;color:var(--sage-ink)}
+.pj .pstats small{font-size:14px;font-weight:500;color:var(--ink-muted);margin-left:4px}
+.pj .day0{margin:var(--space-4) 0 0;max-width:var(--measure);padding:var(--space-3) var(--space-4);border-left:2px solid var(--sage);background:var(--sage-soft);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.pj .day0 .label{color:var(--sage-ink);margin-bottom:4px}
+.pj .day0 p:last-child{font-family:var(--font-serif);font-size:18px;line-height:34px}
+.pj .habits{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
+.pj .habits li{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto 1fr;gap:4px var(--space-2)}
+.pj .hb-no{font-family:var(--font-serif);font-size:15px;color:var(--line-strong)}
+.pj .hb-ico{width:28px;height:28px;fill:none;stroke:var(--sage-ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;grid-row:1/3;grid-column:2}
+.pj .habits b{font-family:var(--font-serif);font-weight:600;font-size:18px;line-height:28px;grid-column:1}
+.pj .hb-std{grid-column:1/-1;font-size:14px;line-height:24px;color:var(--ink-muted)}
+.pj .pflow{margin:var(--space-5) 0 0;padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
+.pj .pflow ol{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:var(--space-4)}
+.pj .pflow li{position:relative;display:flex;flex-direction:column;gap:2px;padding-top:var(--space-2);border-top:2px solid var(--sage)}
+.pj .pflow li:not(:last-child)::after{content:"→";position:absolute;right:calc(-1 * var(--space-4) + 4px);top:var(--space-2);color:var(--line-strong);font-size:15px}
+.pj .pflow li.pf-pub{border-top-style:dashed;border-top-color:var(--line-strong)}
+.pj .pflow b{font-family:var(--font-serif);font-weight:600;font-size:15px;line-height:24px;color:var(--sage-ink)}
+.pj .pflow span{font-size:13px;line-height:22px;color:var(--ink-muted)}
+.pj .iter{list-style:none;margin:var(--space-4) 0 0;padding:0;border-top:var(--hairline) solid var(--ink);max-width:44em}
+.pj .iter > li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:var(--space-3);padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
+.pj .it-no{font-family:var(--font-serif);font-size:22px;line-height:28px;color:var(--line-strong)}
+.pj .it-cat{font-size:12px;letter-spacing:.16em;color:var(--sage-ink);font-weight:500;margin-bottom:4px}
+.pj .it-what,.pj .it-why{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:var(--space-2);font-size:15px;line-height:26px}
+.pj .it-what span:last-child{font-family:var(--font-serif);font-weight:600;font-size:16px}
+.pj .it-why{color:var(--ink-muted);margin-top:4px}
+.pj .it-what .label,.pj .it-why .label{font-size:11px;line-height:26px}
+.pj .it-states{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px 6.5em;padding-left:var(--space-2)}
+.pj .it-states span{font-size:12px;line-height:20px;padding:0 10px;border-radius:var(--radius-pill)}
+.pj .s-full{background:var(--sage-soft);color:var(--sage-ink)}
+.pj .s-part{background:var(--flax-soft);color:var(--flax-ink)}
+.pj .s-none{background:var(--paper-deep);color:var(--ink-muted)}
+.pj .p50-key{margin-bottom:var(--space-5)}
+.pj .p50-key .keyf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pj .review-flag{margin-top:var(--space-3);font-size:13px;line-height:22px;color:var(--flax-ink);background:var(--flax-soft);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm)}
+.pj .bars{margin:0;padding:var(--space-3) 0 var(--space-3);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line);max-width:40em}
+.pj .bars ol{list-style:none;margin:var(--space-3) 0 0;padding:0;display:flex;flex-direction:column;gap:var(--space-2)}
+.pj .bars li{display:grid;grid-template-columns:4.5em minmax(0,1fr) 3em;column-gap:var(--space-3);align-items:center;font-size:15px;line-height:24px}
+.pj .bar-t{display:block;height:10px;background:var(--paper-deep);border-radius:var(--radius-sm);overflow:hidden}
+.pj .bar-f{display:block;height:100%;background:var(--sage)}
+.pj .bar-f.low{background:var(--flax)}
+.pj .bar-v{text-align:right;font-weight:500}
+.pj .bar-n{grid-column:2/-1;font-size:13px;line-height:20px;color:var(--ink-muted)}
+.pj .bar-axis{display:grid;grid-template-columns:4.5em minmax(0,1fr) 3em;column-gap:var(--space-3);font-size:15px;margin-top:var(--space-2)}
+.pj .bar-axis .ax{position:relative;height:18px;border-top:var(--hairline) solid var(--line);font-size:11px;line-height:16px;color:var(--ink-muted)}
+.pj .bar-axis .ax span{position:absolute;top:2px}
+.pj .bar-axis .ax span:nth-child(1){left:0}
+.pj .bar-axis .ax span:nth-child(2){left:50%;transform:translateX(-50%)}
+.pj .bar-axis .ax span:nth-child(3){right:0}
+.pj .p50-find{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pj .cmp{display:flex;flex-direction:column;gap:6px;margin:var(--space-2) 0}
+.pj .cmp-row{display:grid;grid-template-columns:6em minmax(0,1fr) 2.6em;gap:var(--space-2);align-items:center;font-size:13px;color:var(--ink)}
+.pj .cmp-row .num{text-align:right}
+.pj .rf-tag{margin-top:var(--space-3);font-size:11px;color:var(--sage-ink)}
+@media (max-width:720px){
+  .pj .pstats dd{font-size:26px}
+  .pj .pstats div{padding-right:var(--space-2)}
+  .pj .pstats div+div{padding-left:var(--space-2)}
+  .pj .habits{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-2)}
+  .pj .pflow ol{grid-auto-flow:row;grid-auto-columns:auto;gap:var(--space-3)}
+  .pj .pflow li:not(:last-child)::after{display:none}
+  .pj .it-what,.pj .it-why{grid-template-columns:1fr;gap:0}
+  .pj .it-states{margin-left:0;padding-left:0}
+  .pj .p50-key .keyf-grid{grid-template-columns:1fr}
+  .pj .p50-find{grid-template-columns:1fr}
+  .pj .bars li{grid-template-columns:3.6em minmax(0,1fr) 2.8em;column-gap:var(--space-2)}
+  .pj .bar-axis{grid-template-columns:3.6em minmax(0,1fr) 2.8em;column-gap:var(--space-2)}
+  .pj .day0 p:last-child{font-size:17px;line-height:30px}
+}
+@media (max-width:360px){.pj .habits{grid-template-columns:1fr}}
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
 </head>
@@ -735,37 +834,65 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-course-g4-115-1">
-  <div class="sec"><p class="label">01 · 起點</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼開始？</span></p><div>
     <h2>為什麼想改版</h2>
     <div class="prose">
       <p>去年我用 Padlet 放自然課的教材，每個單元一欄，放進度分配和 Canva 簡報。學生找得到檔案，但我發現他們其實不太清楚這個單元要學會什麼，下課後也不知道該怎麼複習。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">PLAN</span><span class="zh">我怎麼規劃？</span></p><div>
+    <h2>每個單元都有五個部分</h2>
+    <div class="prose">
       <p>所以今年我把它改成課程入口。學生打開一個單元，就能看到要學會什麼、接下來做什麼，學完也可以自己檢查。</p>
     </div>
+    <figure class="arch" aria-label="單元架構示意">
+      <p class="label">UNIT STRUCTURE ─ 單元架構</p>
+      <div class="arch-root">一個單元</div>
+      <div class="arch-groups g5">
+        <div><p class="arch-g"><span class="num">1</span>｜我要學會</p><ul><li>用「我能……」寫的學習目標</li></ul></div>
+        <div><p class="arch-g"><span class="num">2</span>｜自學路徑</p><ul><li>課前、課中、課後要做的事</li><li>一個生活問題</li></ul></div>
+        <div><p class="arch-g"><span class="num">3</span>｜教材</p><ul><li>依活動排好的簡報和學習單</li></ul></div>
+        <div><p class="arch-g"><span class="num">4</span>｜自我檢核</p><ul><li>學生自己勾選，看看學會多少</li></ul></div>
+        <div><p class="arch-g"><span class="num">5</span>｜家長</p><ul><li>一個可以在家一起做的小活動</li></ul></div>
+      </div>
+    </figure>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 結構</p><div>
-    <h2>每個單元都有五個部分</h2>
-    <div class="steps">
-      <div><b>1</b><strong>我要學會</strong><span>用「我能……」寫的學習目標</span></div>
-      <div><b>2</b><strong>自學路徑</strong><span>課前、課中、課後要做的事，加一個生活問題</span></div>
-      <div><b>3</b><strong>教材</strong><span>依活動排好的簡報和學習單</span></div>
-      <div><b>4</b><strong>自我檢核</strong><span>學生自己勾選，看看學會多少</span></div>
-      <div><b>5</b><strong>家長</strong><span>一個可以在家一起做的小活動</span></div>
-    </div>
-  </div></div>
-
-  <div class="sec"><p class="label">03 · 設計</p><div>
+  <div class="sec"><p class="label chap"><span class="no">03</span><span class="en">PROCESS</span><span class="zh">我怎麼實踐與調整？</span></p><div>
     <h2>設計時我在意的事</h2>
     <div class="flow">
       <div><span class="label">對照</span><b>目標和檢核用同一組句子</b>學習目標寫成「我能……」，自我檢核也用一樣的句子，孩子比較容易對照。</div>
       <div><span class="label">安心</span><b>檢核結果只留在孩子的電腦</b>勾選紀錄老師看不到，孩子比較敢誠實勾出還沒學會的地方。</div>
       <div><span class="label">一致</span><b>四個單元同一個版型</b>學會一個單元的用法，其他單元就不用重新摸索。</div>
     </div>
+    <figure class="lpath" aria-label="學習路徑示意">
+      <p class="label">LEARNING PATH ─ 學習路徑</p>
+      <ol>
+        <li><b>我要學會</b><span>「我能……」的學習目標</span></li>
+        <li><b>自學路徑</b><span>課前、課中、課後</span></li>
+        <li><b>自我檢核</b><span>和目標用同一組句子</span></li>
+        <li class="back-to"><b>回頭對照目標</b><span>看看自己學會多少</span></li>
+      </ol>
+    </figure>
   </div></div>
 
-  <div class="sec"><p class="label">04 · 下一步</p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">NOW</span><span class="zh">目前走到哪裡？</span></p><div>
+    <h2>目前完成的部分</h2>
+    <ol class="aidx">
+      <li><span class="aidx-no num">01</span><div><p class="aidx-head"><b>四個單元同一個版型</b></p><p class="aidx-do">學會一個單元的用法，其他單元就不用重新摸索。</p></div></li>
+      <li><span class="aidx-no num">02</span><div><p class="aidx-head"><b>每個單元都有五個部分</b></p><p class="aidx-do">我要學會、自學路徑、教材、自我檢核、家長。</p></div></li>
+      <li><span class="aidx-no num">03</span><div><p class="aidx-head"><b>檢核結果只留在孩子的電腦</b></p><p class="aidx-do">勾選紀錄老師看不到。</p></div></li>
+    </ol>
+  </div></div>
+
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
     <h2>接下來要做的事</h2>
-    <p class="pend">教材要改成公開的檢視連結、補上 4-3 的教材，單元結束後也會請學生填回饋，比較改版前後的差別。</p>
+    <ol class="obj">
+      <li><div>教材改成公開的檢視連結。</div></li>
+      <li><div>補上 4-3 的教材。</div></li>
+      <li><div>單元結束後請學生填回饋，比較改版前後的差別。</div></li>
+    </ol>
   </div></div>
 </template>
 
@@ -1028,75 +1155,85 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-project-50">
-  <div class="sec"><p class="label">01 · 起點</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">THE ORIGIN</span><span class="zh">起點</span></p><div>
     <h2>為什麼要給自己 50 天</h2>
     <div class="prose">
       <p>這學期我同時要教書、處理行政業務，還想準備英文檢定、學日文。事情一多，最先被犧牲的總是睡覺和運動。所以九月開學，我給自己一個挑戰：連續 50 天，每天都做到六件小事。</p>
-      <p>我在 Day-0 寫下的初衷是：下半年希望能持續跨出舒適圈，在工作、生活和身心健康之間取得平衡，保有對世界的熱情。</p>
+      <p>我在 Day-0 寫下的初衷是：</p>
     </div>
+    <blockquote class="day0"><p class="label">DAY 0</p><p>下半年希望能持續跨出舒適圈，在工作、生活和身心健康之間取得平衡，保有對世界的熱情。</p></blockquote>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 規則</p><div>
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">THE SYSTEM</span><span class="zh">規則</span></p><div>
     <h2>每天的六件事</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>習慣</th><th>標準</th></tr></thead>
-      <tbody>
-        <tr><td>早睡</td><td>上班日 11 點前，假日 12 點前</td></tr>
-        <tr><td>運動</td><td>至少 30 分鐘，羽球、快走、在家有氧都可以</td></tr>
-        <tr><td>閱讀</td><td>每天讀 10 頁書</td></tr>
-        <tr><td>英文</td><td>一小時，背單字加讀一篇文章</td></tr>
-        <tr><td>新技能</td><td>一小時，日文、AI 教學、影片剪輯或專案管理</td></tr>
-        <tr><td>飲食</td><td>不喝含糖飲料，喝 2000ml 的水</td></tr>
-      </tbody>
-    </table></div>
-    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">我用 Notion 資料庫記錄，每天再發一篇【Day-N】到 Threads。公開記錄是為了讓自己有個持續前進的目標，但它不算在六項習慣裡。</p>
+    <ol class="habits"><li><span class="hb-no num">01</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4.5a7.5 7.5 0 1 0 4 12.6A6.5 6.5 0 0 1 15.5 4.5Z"/><path d="M18 4h3l-3 3.5h3"/></svg><b>早睡</b><span class="hb-std">上班日 11 點前，假日 12 點前</span></li><li><span class="hb-no num">02</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="14.5" cy="4.5" r="1.8"/><path d="M8 21l3-6 3 2v4"/><path d="M6 11l3-3h4l2 4 3 1"/><path d="M11 15l2-7"/></svg><b>運動</b><span class="hb-std">至少 30 分鐘，羽球、快走、在家有氧都可以</span></li><li><span class="hb-no num">03</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5c3-1 6-1 9 1 3-2 6-2 9-1V19c-3-1-6-1-9 1-3-2-6-2-9-1Z"/><path d="M12 6.5V20"/></svg><b>閱讀</b><span class="hb-std">每天讀 10 頁書</span></li><li><span class="hb-no num">04</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4Z"/><path d="M9 13l3-6 3 6"/><path d="M10 11h4"/></svg><b>英文</b><span class="hb-std">一小時，背單字加讀一篇文章</span></li><li><span class="hb-no num">05</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></svg><b>新技能</b><span class="hb-std">一小時，日文、AI 教學、影片剪輯或專案管理</span></li><li><span class="hb-no num">06</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l-1.5 17a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1Z"/><path d="M6.6 9h10.8"/><path d="M10 13.5c1 1 3 1 4 0"/></svg><b>飲食</b><span class="hb-std">不喝含糖飲料，喝 2000ml 的水</span></li></ol>
+    <figure class="pflow" aria-label="每日紀錄流程">
+      <p class="label">DAILY RECORD ─ 每日紀錄流程</p>
+      <ol>
+        <li><b>生活實踐</b><span>六項習慣</span></li>
+        <li><b>Notion</b><span>每日紀錄</span></li>
+        <li class="pf-pub"><b>Threads</b><span>Day-N 公開紀錄</span></li>
+      </ol>
+    </figure>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-3);font-size:15px">我用 Notion 資料庫記錄，每天再發一篇【Day-N】到 Threads。公開記錄是為了讓自己有個持續前進的目標，但它不算在六項習慣裡。</p>
   </div></div>
 
-  <div class="sec"><p class="label">03 · 調整</p><div>
+  <div class="sec"><p class="label chap"><span class="no">03</span><span class="en">THE ITERATION</span><span class="zh">調整</span></p><div>
     <h2>規則改了好幾次</h2>
     <div class="prose"><p>開始一週後我就發現，原本的規則太死板了。打完羽球回到家已經十點多，不可能 11 點前睡；連假出去玩，也不可能每天讀英文一小時。如果照原本的規則，很快就會覺得「反正已經破功了」而放棄。所以我把每次修改都記下來：</p></div>
-    <div class="tbl" style="margin-top:var(--space-3)"><table>
-      <thead><tr><th>我改了什麼</th><th>為什麼</th></tr></thead>
-      <tbody>
-        <tr><td>從「有做／沒做」改成三種：達成、部分、未達成</td><td>只做了一半也是努力，我想看見這個差別</td></tr>
-        <tr><td>新增「彈性日」，每週最多三天</td><td>連假和聚餐需要彈性，但設上限，避免標準失去意義</td></tr>
-        <tr><td>打羽球那天，就寢標準延到 12 點</td><td>羽球團 8 點到 10 點，這是我很喜歡的運動，不想為了早睡放棄</td></tr>
-        <tr><td>早睡改由就寢時間自動判定</td><td>讓判定一致，不用每天自己猶豫算不算</td></tr>
-        <tr><td>用工作成果代替新技能也算數</td><td>趕成果報告的那天，其實也在學東西</td></tr>
-        <tr><td>連假五天完全休息，天數不往下算</td><td>Day 編號只算真正執行的日子，挑戰不再設固定結束日</td></tr>
-      </tbody>
-    </table></div>
-    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-2);font-size:15px">之後我又在每週回顧加了一段薩提爾冰山日記：記下一件事、我的反應、背後的情緒，以及下週想做的新選擇，下週再回頭看有沒有做到。</p>
+    <ol class="iter"><li><span class="it-no num">01</span><div><p class="it-cat">達成判定</p><p class="it-what"><span class="label">我改了什麼</span><span>從「有做／沒做」改成三種：達成、部分、未達成</span></p><span class="it-states" aria-label="三種狀態"><span class="s-full">達成</span><span class="s-part">部分</span><span class="s-none">未達成</span></span><p class="it-why"><span class="label">為什麼</span><span>只做了一半也是努力，我想看見這個差別</span></p></div></li><li><span class="it-no num">02</span><div><p class="it-cat">彈性機制</p><p class="it-what"><span class="label">我改了什麼</span><span>新增「彈性日」，每週最多三天</span></p><p class="it-why"><span class="label">為什麼</span><span>連假和聚餐需要彈性，但設上限，避免標準失去意義</span></p></div></li><li><span class="it-no num">03</span><div><p class="it-cat">情境調整</p><p class="it-what"><span class="label">我改了什麼</span><span>打羽球那天，就寢標準延到 12 點</span></p><p class="it-why"><span class="label">為什麼</span><span>羽球團 8 點到 10 點，這是我很喜歡的運動，不想為了早睡放棄</span></p></div></li><li><span class="it-no num">04</span><div><p class="it-cat">自動化</p><p class="it-what"><span class="label">我改了什麼</span><span>早睡改由就寢時間自動判定</span></p><p class="it-why"><span class="label">為什麼</span><span>讓判定一致，不用每天自己猶豫算不算</span></p></div></li><li><span class="it-no num">05</span><div><p class="it-cat">成果認定</p><p class="it-what"><span class="label">我改了什麼</span><span>用工作成果代替新技能也算數</span></p><p class="it-why"><span class="label">為什麼</span><span>趕成果報告的那天，其實也在學東西</span></p></div></li><li><span class="it-no num">06</span><div><p class="it-cat">休息機制</p><p class="it-what"><span class="label">我改了什麼</span><span>連假五天完全休息，天數不往下算</span></p><p class="it-why"><span class="label">為什麼</span><span>Day 編號只算真正執行的日子，挑戰不再設固定結束日</span></p></div></li></ol>
+    <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-4);font-size:15px">之後我又在每週回顧加了一段薩提爾冰山日記：記下一件事、我的反應、背後的情緒，以及下週想做的新選擇，下週再回頭看有沒有做到。</p>
+    <figure class="pflow pf5" aria-label="每週回顧流程">
+      <p class="label">WEEKLY REVIEW ─ 我的每週回顧流程</p>
+      <ol>
+        <li><b>一件事</b></li>
+        <li><b>我的反應</b></li>
+        <li><b>背後情緒</b></li>
+        <li><b>新的選擇</b></li>
+        <li class="pf-pub"><b>下週回顧</b></li>
+      </ol>
+    </figure>
   </div></div>
 
-  <div class="sec"><p class="label">04 · 數據</p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">THE DATA</span><span class="zh">數據</span></p><div>
     <h2>前 18 天的紀錄</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>習慣</th><th>完整達成的比例</th></tr></thead>
-      <tbody>
-        <tr><td>閱讀</td><td>94%</td></tr>
-        <tr><td>飲食</td><td>94%</td></tr>
-        <tr><td>英文</td><td>83%</td></tr>
-        <tr><td>新技能</td><td>83%</td></tr>
-        <tr><td>早睡</td><td>81%（另有 19% 晚了一點）</td></tr>
-        <tr><td>運動</td><td>72%</td></tr>
-      </tbody>
-    </table></div>
-    <div class="flow" style="margin-top:var(--space-3)">
-      <div><span class="label">整體</span><b>平均達成 84%</b>18 天裡，有 9 天六件事全部做到。</div>
+    <aside class="keyf p50-key" aria-label="主要數據">
+      <p class="label">KEY NUMBERS ─ 主要數據</p>
+      <div class="keyf-grid">
+        <div><p class="keyf-num num">84%</p><p class="keyf-txt">平均達成</p></div>
+        <div><p class="keyf-num num">9<small>／</small>18 天</p><p class="keyf-txt">18 天裡，有 9 天六件事全部做到。</p></div>
+      </div>
+      <p class="review-flag" data-review>待作者確認：早睡達成率與整體平均達成率的統計口徑。目前保留原始數據，未修改。</p>
+    </aside>
+    <figure class="bars" aria-label="六項習慣完整達成的比例">
+      <p class="label">COMPLETION RATE ─ 完整達成的比例</p>
+      <ol><li><span class="bar-k">閱讀</span><span class="bar-t"><span class="bar-f" style="width:94%"></span></span><span class="bar-v num">94%</span></li><li><span class="bar-k">飲食</span><span class="bar-t"><span class="bar-f" style="width:94%"></span></span><span class="bar-v num">94%</span></li><li><span class="bar-k">英文</span><span class="bar-t"><span class="bar-f" style="width:83%"></span></span><span class="bar-v num">83%</span></li><li><span class="bar-k">新技能</span><span class="bar-t"><span class="bar-f" style="width:83%"></span></span><span class="bar-v num">83%</span></li><li><span class="bar-k">早睡</span><span class="bar-t"><span class="bar-f" style="width:81%"></span></span><span class="bar-v num">81%</span><span class="bar-n">（另有 19% 晚了一點）</span></li><li><span class="bar-k">運動</span><span class="bar-t"><span class="bar-f" style="width:72%"></span></span><span class="bar-v num">72%</span></li></ol>
+      <p class="bar-axis num" aria-hidden="true"><span></span><span class="ax"><span>0%</span><span>50%</span><span>100%</span></span><span></span></p>
+    </figure>
+    <p class="subhead" style="margin-top:var(--space-6)">關鍵發現</p>
+    <div class="flow p50-find">
       <div><span class="label">最難</span><b>運動</b>有連續三天身體太累沒運動，運動也是唯一一項會受天氣和體力影響的習慣。</div>
-      <div><span class="label">轉折</span><b>連假之後</b>中秋連假前的 10 天平均 92%，連假後的 8 天降到 75%。英文和新技能最先掉下來，加班的日子也最容易破功。</div>
+      <div><span class="label">轉折</span><b>連假之後</b>
+        <span class="cmp" aria-label="連假前後平均達成率">
+          <span class="cmp-row"><span class="cmp-k">連假前 10 天</span><span class="bar-t"><span class="bar-f" style="width:92%"></span></span><span class="num">92%</span></span>
+          <span class="cmp-row"><span class="cmp-k">連假後 8 天</span><span class="bar-t"><span class="bar-f low" style="width:75%"></span></span><span class="num">75%</span></span>
+        </span>
+        中秋連假前的 10 天平均 92%，連假後的 8 天降到 75%。英文和新技能最先掉下來，加班的日子也最容易破功。</div>
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">05 · 心得</p><div>
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">THE REFLECTION</span><span class="zh">心得</span></p><div>
     <h2>我學到的事</h2>
+    <blockquote class="pull"><p>自己需要的不是更強的意志力，而是一套允許自己不完美的規則。</p><cite>── 摘自本篇心得</cite></blockquote>
     <div class="prose">
       <p>最大的收穫是，我發現自己需要的不是更強的意志力，而是一套允許自己不完美的規則。「部分達成」和「彈性日」看起來像是放水，但正是因為有它們，我才沒有在第一次破功時就放棄。</p>
+      <p class="label rf-tag">RESTART ─ 重新開始</p>
       <p>第二個發現是，休息之後重新開始，比一直維持更難。連假前我幾乎每天都做到，回來之後卻花了好幾天才找回節奏。下次遇到長假，我會先替自己安排一個「回來第一天」的最低標準。</p>
+      <p class="label rf-tag">CONNECTION ─ 從生活回到教學</p>
       <p>做完才發現，這其實和我設計課程很像：目標要具體、標準要清楚、要保留彈性，也要定期看數據回頭調整。只是這次，學習者是我自己。</p>
+      <p>Day-18 之後的紀錄還在整理，之後會補上完整的 50 天結果。</p>
     </div>
-    <p class="pend">Day-18 之後的紀錄還在整理，之後會補上完整的 50 天結果。</p>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -1366,6 +1503,9 @@ var CONTENT = [
   {
     slug: "project-50",
     type: "project",
+    layout: "project",
+    cat: "個人實驗",
+    stats: [["50", "天", "挑戰目標"], ["06", "項", "每日習慣"], ["18", "天", "目前呈現的紀錄範圍"]],
     title: "Project 50：我怎麼替自己設計一套習慣系統",
     summary: "今年九月，我開始一個 50 天的習慣挑戰，每天記錄早睡、運動、閱讀、英文、新技能和飲食六件事。做到一半，我發現比起每天都做到，更重要的是把規則設計得能讓自己走下去。",
     tags: ["習慣養成", "Notion"],
@@ -1397,7 +1537,10 @@ var CONTENT = [
   {
     slug: "course-g4-115-1",
     type: "project",
-    title: "115-1 四年級自然課程入口",
+    layout: "project",
+    cat: "學習設計",
+    related: [{slug: "case-circuit", note: "課程入口第四單元〈好玩的電路〉的教學設計"}],
+    title: "從教材整理到自主學習：自然課程入口的建置",
     summary: "去年我用 Padlet 放自然課教材，今年把它改成課程入口，每個單元都加上學習目標、自學步驟和自我檢核，讓學生下課後也知道怎麼複習。",
     tags: ["學習設計", "自然科學", "工具"],
     status: "public",
@@ -1405,7 +1548,7 @@ var CONTENT = [
     featured: false,
     created: "2026-11-17",
     updated: "2026-11-17",
-    facts: [["使用者", "四年級學生與家長"], ["範圍", "康軒版四上・4 個單元"], ["我的角色", "課程規劃、內容撰寫、介面設計"], ["前一版", "114-1 Padlet 教材牆"]]
+    facts: [["使用者", "四年級學生與家長"], ["範圍", "康軒版四上・4 個單元"], ["我的角色", "課程規劃、內容撰寫、介面設計"], ["前一版", "前一年的 Padlet 教材牆"]]
   }
 ];
 
@@ -1431,7 +1574,7 @@ var PUBLIC = CONTENT.filter(function(c){ return c.status === "public"; })
 function esc(s){ return String(s).replace(/[&<>"]/g, function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
 function typeChip(t){ var T = TYPES[t]; return '<span class="chip ' + T.cls + '">' + T.name + '</span>'; }
 function card(c, useCat){
-  var chip = (useCat && c.cat) ? '<span class="chip ' + TYPES[c.type].cls + '">' + esc(c.cat) + '</span>' : typeChip(c.type);
+  var chip = (useCat && c.cat && c.type === "work") ? '<span class="chip ' + TYPES[c.type].cls + '">' + esc(c.cat) + '</span>' : typeChip(c.type);
   return '<a class="card" href="#' + esc(c.slug) + '">' +
     '<div class="row">' + chip + '</div>' +
     '<h3>' + esc(c.title) + '</h3><p>' + esc(c.summary) + '</p>' +
@@ -1514,8 +1657,10 @@ function renderItem(c){
   document.getElementById("item-label").textContent = T.name;
   var facts = (c.facts || []).map(function(f,i){ return '<div><span class="label">' + esc(f[0]) + '</span><span data-ek="c:' + c.slug + ':f' + i + '" data-plain="1">' + esc(f[1]) + '</span></div>'; }).join("");
   var main = document.getElementById("item-main");
-  var ED = c.layout === "editorial";
+  var PJ = c.layout === "project";
+  var ED = c.layout === "editorial" || PJ;
   main.classList.toggle("ed", ED);
+  main.classList.toggle("pj", PJ);
   if(ED){
     var EN = {work: "WORK", project: "PROJECT", note: "NOTE", letter: "LETTER"}[c.type] || "";
     var t = esc(c.title), k = c.title.indexOf("：");
@@ -1524,7 +1669,9 @@ function renderItem(c){
       '<header class="ed-head"><div class="ed-kicker"><span>' + EN + '<i aria-hidden="true"></i>' + esc(c.cat || T.name) + '</span><span class="num">UPDATED ' + esc(c.updated.replace(/-/g, ".")) + '</span></div>' +
       '<h1 data-ek="c:' + c.slug + ':title" data-plain="1">' + t + '</h1>' +
       '<p class="ed-dek" data-ek="c:' + c.slug + ':summary" data-plain="1">' + esc(c.summary) + '</p>' +
-      (facts ? '<div class="ed-colophon"><p class="label">ABOUT THIS WORK</p><div class="facts">' + facts + '</div></div>' : '') +
+      (PJ && c.stats ? '<dl class="pstats">' + c.stats.map(function(x){ return '<div><dt class="label">' + esc(x[2]) + '</dt><dd><span class="num">' + esc(x[0]) + '</span><small>' + esc(x[1]) + '</small></dd></div>'; }).join("") + '</dl>' : '') +
+      ((facts || PJ) ? '<div class="ed-colophon"><p class="label">' + (PJ ? 'ABOUT THIS PROJECT' : 'ABOUT THIS WORK') + '</p>' + (facts ? '<div class="facts">' + facts + '</div>' : '') +
+        (PJ && c.progress ? '<p class="pstatus"><span class="label">PROJECT STATUS</span><span>' + esc(c.progress) + (c.statusNote ? '｜' + esc(c.statusNote) : '') + '</span></p>' : '') + '</div>' : '') +
       '<p class="ed-tags">' + c.tags.map(esc).join("・") + '</p>' +
       (c.link ? '<p><a class="btn-main" href="' + esc(c.link.url) + '" target="_blank" rel="noopener">' + esc(c.link.text) + ' →</a></p>' : '') + '</header>';
   } else
@@ -1550,7 +1697,15 @@ function renderItem(c){
     });
     if(rest.length) gs.lastElementChild.insertAdjacentHTML("beforeend", '<div class="gallery">' + rest.map(fig).join("") + '</div>');
   }
-  var rel = (c.related || []).map(function(s){ return PUBLIC.filter(function(x){ return x.slug === s; })[0]; }).filter(Boolean);
+  /* 專案頁：章節依實際出現的順序重新編號（隱藏的章節不佔號） */
+  if(PJ){ var no = 0; main.querySelectorAll(".sec > .chap .no").forEach(function(n){ if(n.closest(".sec").classList.contains("ed-hidden")) return; n.textContent = ("0" + (++no)).slice(-2); }); }
+  var relDefs = (c.related || []).map(function(r){ return typeof r === "string" ? {slug: r} : r; });
+  if(PJ){
+    var prel = relDefs.map(function(r){ var x = PUBLIC.filter(function(y){ return y.slug === r.slug; })[0]; return x ? {item: x, note: r.note} : null; }).filter(Boolean);
+    if(prel.length) main.insertAdjacentHTML("beforeend", '<p class="label prel-h">RELATED CONTENT ─ 相關內容</p><ul class="prel">' + prel.map(function(r){
+      return '<li><a href="#' + esc(r.item.slug) + '"><span class="label">' + TYPES[r.item.type].name + '</span><span><b>' + esc(r.item.title) + '</b>' + (r.note ? '<small>' + esc(r.note) + '</small>' : '') + '</span><span aria-hidden="true">→</span></a></li>'; }).join("") + '</ul>');
+  }
+  var rel = PJ ? [] : relDefs.map(function(r){ return PUBLIC.filter(function(x){ return x.slug === r.slug; })[0]; }).filter(Boolean);
   if(rel.length) main.insertAdjacentHTML("beforeend", '<section class="related"><p class="label">相關內容</p>' + rel.map(function(r){
     return '<a href="#' + esc(r.slug) + '"><span class="chip ' + TYPES[r.type].cls + '">' + TYPES[r.type].name + '</span><span>' + esc(r.title) + '</span><span aria-hidden="true">→</span></a>'; }).join("") + '</section>');
   if(EDITING) main.querySelectorAll('[data-plain]').forEach(makeEditable);
