@@ -670,6 +670,39 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .pj .refl{padding-left:var(--space-3)}
   .pj .refl p:not(.label){font-size:16px;line-height:30px}
 }
+/* 專案列表卡片（只作用在 #list-cards.pcards，其他列表與首頁不受影響） */
+.list-en{margin-bottom:var(--space-1)}
+#list-desc{white-space:pre-line}
+.pcards .c-sage{--c:var(--sage);--c-soft:var(--sage-soft);--c-ink:var(--sage-ink)}
+.pcards .c-mist{--c:var(--mist);--c-soft:var(--mist-soft);--c-ink:var(--mist-ink)}
+.pcards .c-flax{--c:var(--flax);--c-soft:var(--flax-soft);--c-ink:var(--flax-ink)}
+.pcards .c-brown{--c:#B5A48E;--c-soft:#EFE7DC;--c-ink:#6B5B49}
+.pcards .c-gray{--c:var(--line-strong);--c-soft:var(--paper-deep);--c-ink:var(--ink-muted)}
+.pcard{padding:0;overflow:hidden;gap:0;border-top:3px solid var(--c)}
+.pcard > :not(.pc-art){margin-left:var(--space-4);margin-right:var(--space-4)}
+.pc-art{aspect-ratio:320/140;background:var(--c-soft);border-bottom:var(--hairline) solid var(--line);display:flex;align-items:center;justify-content:center}
+.pc-art svg{width:100%;height:100%;display:block}
+.pc-art text{font-family:var(--font-sans);font-size:12px;text-anchor:middle;fill:var(--ink)}
+.pc-art .a-tb{font-family:var(--font-serif);font-weight:600;font-size:12px;fill:var(--c-ink)}
+.pc-art .a-coret{font-family:var(--font-serif);font-weight:600;font-size:11px;fill:var(--c-ink);letter-spacing:.04em}
+.pc-art .a-def{font-family:var(--font-sans);font-size:13px;letter-spacing:.2em;text-anchor:start;fill:var(--c-ink)}
+.pc-art .a-ring{fill:none;stroke:var(--c);stroke-width:1;stroke-dasharray:3 3}
+.pc-art .a-arw,.pc-art .a-line{fill:none;stroke:var(--line-strong);stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+.pc-art .a-dash{fill:none;stroke:var(--line-strong);stroke-width:1;stroke-dasharray:3 3}
+.pc-art .a-core{fill:var(--paper-raised);stroke:var(--c-ink);stroke-width:1}
+.pc-art .a-node{fill:var(--paper-raised);stroke:var(--c);stroke-width:1}
+.pc-art .a-chip{fill:var(--paper-raised);stroke:var(--c);stroke-width:1}
+.pc-k{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-2);margin-top:var(--space-3);font-size:11px;line-height:18px;letter-spacing:.16em;font-weight:500;color:var(--c-ink)}
+.pc-k i{font-style:normal;letter-spacing:.08em;color:var(--ink-muted);font-weight:400}
+.pc-st{font-size:12px;letter-spacing:.08em;color:var(--ink-muted);font-weight:400;white-space:nowrap}
+.pcard h3{margin-top:var(--space-2);word-break:keep-all;overflow-wrap:anywhere}
+.pcard h3 .ph{display:inline-block;max-width:100%}
+.pc-prog{display:block;font-size:14px;line-height:22px;letter-spacing:.06em;color:var(--c-ink);margin-bottom:2px}
+.pcard > p:not(.pc-k){margin-top:var(--space-2)}
+.pcard .foot{margin-top:auto;padding:var(--space-3) 0 var(--space-4);align-items:baseline}
+.pcard > h3 + p{margin-bottom:var(--space-2)}
+.pc-go{white-space:nowrap;color:var(--c-ink);font-weight:500}
+@media (max-width:720px){.pcard > :not(.pc-art){margin-left:var(--space-3);margin-right:var(--space-3)}}
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
 </head>
@@ -862,6 +895,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <div class="side"><p class="vlabel" id="list-label"></p></div>
     <div class="main">
       <section class="block">
+        <p class="label list-en" id="list-en" hidden></p>
         <div class="head"><h1 id="list-title" style="font-size:32px;line-height:44px"></h1><span class="count" id="list-count"></span></div>
         <p id="list-desc" style="color:var(--ink-muted);max-width:var(--measure);margin-bottom:var(--space-4)"></p>
         <div class="filters" id="list-filter" style="margin-bottom:var(--space-4)" hidden></div>
@@ -1733,6 +1767,7 @@ var CONTENT = [
     slug: "project-australia-ai-lab",
     type: "project",
     layout: "project",
+    card: {en: "EDUCATIONAL EXPLORATION", tone: "c-brown", art: {kind: "flow", steps: ["三個探索問題", "觀察、反思／與轉化", "四項返國行動"], tags: ["輔導行政", "學習扶助", "自然教學", "領域社群"]}},
     cat: "教育見習",
     related: [{slug: "case-circuit", note: "見習時的「魔法燈泡」活動，預計改編放進這個單元"}],
     title: "青年百億海外圓夢基金計畫：帶著三個問題走進澳洲教育現場",
@@ -1754,6 +1789,7 @@ var CONTENT = [
     slug: "project-sel",
     type: "project",
     layout: "project",
+    card: {en: "SEL PRACTICE", tone: "c-flax", art: {kind: "tri", center: "SEL", nodes: ["覺察", "調整", "連結"]}},
     cat: "教學實踐",
     title: "把 SEL 放進自然課：這學期的三個做法",
     summary: "這學期我在自然課裡做了三件和社會情緒學習有關的事：每節課的情緒打卡、地震防災課的情緒地震儀，以及期中考的學習反思單。三件事規模不同，但都在練習同一件事：先看見自己，再調整自己。",
@@ -1803,6 +1839,7 @@ var CONTENT = [
     slug: "project-50",
     type: "project",
     layout: "project",
+    card: {en: "HABIT SYSTEM", tone: "c-sage", art: {kind: "cycle", center: "PROJECT 50", steps: ["規劃", "實踐", "回顧", "調整"]}},
     cat: "個人實驗",
     stats: [["06", "項", "每日習慣"], ["18", "天", "目前呈現的紀錄範圍"]],
     title: "Project 50：我怎麼替自己設計一套習慣系統",
@@ -1837,6 +1874,7 @@ var CONTENT = [
     slug: "course-g4-115-1",
     type: "project",
     layout: "project",
+    card: {en: "LEARNING DESIGN", tone: "c-mist", art: {kind: "hub", center: "自然課程單元入口", items: ["我要學會", "自學路徑", "教材", "自我檢核", "家長"]}},
     cat: "學習設計",
     stats: [["04", "個單元", "課程範圍"], ["05", "個部分", "單元資訊架構"]],
     related: [{slug: "case-circuit", note: "課程入口第四單元〈好玩的電路〉的教學設計"}],
@@ -1855,7 +1893,7 @@ var CONTENT = [
 var TYPES = {
   letter:  {name: "電子報", cls: "t-letter", view: "newsletter", desc: "每兩週一封的生活實驗筆記。"},
   work:    {name: "作品", cls: "t-work",    view: "works",    desc: "這裡整理一些我實際做過的教材、工具與其他創作。除了完成的成果，也記錄當時遇到的問題、設計時的想法，以及實際使用後的發現。"},
-  project: {name: "專案", cls: "t-project", view: "projects", desc: "需要比較長時間進行的計畫，記錄目標、過程和目前的進度。"},
+  project: {name: "專案", cls: "t-project", view: "projects", en: "PROJECTS — ONGOING EXPERIMENTS", unit: "PROJECTS", desc: "把生活裡的問題，變成一個個可以實踐的計畫。\n記錄從問題、設計到實踐的過程，以及那些還在持續調整的方法。"},
   note:    {name: "筆記", cls: "t-note",    view: "notes",    desc: "學習紀錄、讀書心得，還有生活裡的一些想法。"},
   asset:   {name: "素材", cls: "t-asset",   view: null,       desc: ""}
 };
@@ -1881,6 +1919,64 @@ function card(c, useCat){
     '<h3>' + esc(c.title) + '</h3><p>' + esc(c.summary) + '</p>' +
     '<div class="foot"><span>' + c.tags.slice(0,2).map(esc).join("・") + '</span><span class="arrow" aria-hidden="true">→</span></div></a>';
 }
+/* 專案列表卡片：概念圖解是選用欄位（card.art），沒有設定時用預設樣式 */
+var ART = {
+  cycle: function(a){ /* 中心＋四個環節循環 */
+    var pos=[[160,22],[268,70],[160,118],[52,70]], lab=a.steps||[];
+    return '<svg viewBox="0 0 320 140" aria-hidden="true"><ellipse class="a-ring" cx="160" cy="70" rx="108" ry="48"/>' +
+      '<path class="a-arw" d="M229.8 38.6L236.4 36.1L233.8 29.5M238.9 97.3L236.4 103.9L243.0 106.5M90.2 101.4L83.6 103.9L86.2 110.5M81.1 42.7L83.6 36.1L77.0 33.5"/>' +
+      '<circle class="a-core" cx="160" cy="70" r="34"/>' + (a.center||"").split(" ").map(function(w,i,arr){ return '<text class="a-coret" x="160" y="' + (74 + (i - (arr.length-1)/2) * 13) + '">' + esc(w) + '</text>'; }).join("") +
+      lab.map(function(t,i){ var p=pos[i], w=t.length*12+20; return '<rect class="a-node" x="'+(p[0]-w/2)+'" y="'+(p[1]-11)+'" width="'+w+'" height="22" rx="11"/><text class="a-t" x="'+p[0]+'" y="'+(p[1]+4)+'">'+esc(t)+'</text>'; }).join("") + '</svg>';
+  },
+  tri: function(a){ /* 中心＋三節點 */
+    var pos=[[160,22],[62,116],[258,116]], lab=a.nodes||[];
+    return '<svg viewBox="0 0 320 140" aria-hidden="true"><path class="a-dash" d="M160 72L160 22M160 72L62 116M160 72L258 116"/>' +
+      '<circle class="a-core" cx="160" cy="72" r="26"/><text class="a-coret" x="160" y="76">' + esc(a.center||"") + '</text>' +
+      lab.map(function(t,i){ var p=pos[i], w=t.length*13+28; return '<rect class="a-node" x="'+(p[0]-w/2)+'" y="'+(p[1]-12)+'" width="'+w+'" height="24" rx="4"/><text class="a-t a-tb" x="'+p[0]+'" y="'+(p[1]+4)+'">'+esc(t)+'</text>'; }).join("") + '</svg>';
+  },
+  hub: function(a){ /* 入口＋並列模組 */
+    var n=(a.items||[]).length||1, gap=6, w=(292-gap*(n-1))/n;
+    return '<svg viewBox="0 0 320 140" aria-hidden="true"><rect class="a-core" x="96" y="14" width="128" height="30" rx="3"/><text class="a-t a-tb" x="160" y="33">' + esc(a.center||"") + '</text>' +
+      '<path class="a-line" d="M160 44V62M'+(14+w/2)+' 62H'+(14+(n-1)*(w+gap)+w/2)+'"/>' +
+      (a.items||[]).map(function(t,i){ var x=14+i*(w+gap); return '<path class="a-line" d="M'+(x+w/2)+' 62V76"/><rect class="a-node" x="'+x+'" y="76" width="'+w+'" height="46" rx="3"/><text class="a-t" x="'+(x+w/2)+'" y="103">'+esc(t)+'</text>'; }).join("") + '</svg>';
+  },
+  flow: function(a){ /* 三段轉化＋行動標籤 */
+    var st=a.steps||[], w=88, xs=[8,116,224];
+    return '<svg viewBox="0 0 320 140" aria-hidden="true">' + st.map(function(t,i){ var ln=t.split("／"); return '<rect class="'+(i===st.length-1?'a-core':'a-node')+'" x="'+xs[i]+'" y="20" width="'+w+'" height="44" rx="3"/>' + ln.map(function(l,j){ return '<text class="a-t a-tb" x="'+(xs[i]+w/2)+'" y="'+(46+(j-(ln.length-1)/2)*15)+'">'+esc(l)+'</text>'; }).join(""); }).join("") +
+      '<path class="a-arw" d="M99 42h14m-4-4 4 4-4 4M207 42h14m-4-4 4 4-4 4"/><path class="a-line" d="M268 64V80H43"/>' +
+      (a.tags||[]).map(function(t,i){ var x=10+i*75; return '<path class="a-line" d="M'+(x+33)+' 80V90"/><rect class="a-chip" x="'+x+'" y="90" width="66" height="24" rx="12"/><text class="a-t" x="'+(x+33)+'" y="106">'+esc(t)+'</text>'; }).join("") + '</svg>';
+  }
+};
+function cardArt(c){
+  var a = c.card && c.card.art;
+  if(a && ART[a.kind]) return ART[a.kind](a);
+  return '<svg viewBox="0 0 320 140" aria-hidden="true"><path class="a-line" d="M24 104H296M24 112H220"/><text class="a-def" x="24" y="88">' + esc((c.card && c.card.en) || TYPES[c.type].name) + '</text></svg>';
+}
+/* 卡片標題的自然換行：先依標點分成片語，片語內只在詞與詞之間換行（不寫死換行位置） */
+var SEG = (typeof Intl !== "undefined" && Intl.Segmenter) ? new Intl.Segmenter("zh-Hant", {granularity: "word"}) : null;
+function phrase(text){
+  var chunks = String(text).match(/[^：，、；]+[：，、；]?/g) || [String(text)];
+  return chunks.map(function(ch){
+    if(!SEG) return '<span class="ph">' + esc(ch) + '</span>';
+    var segs = Array.prototype.map.call(Array.from(SEG.segment(ch)), function(x){ return x.segment; }), out = "";
+    segs.forEach(function(sg, i){
+      var prev = segs[i-1];
+      var single = function(x){ return x && x.length === 1 && /[\u4e00-\u9fff]/.test(x); };
+      if(i > 0 && !/^[：，、；。！？）」』]/.test(sg) && !(single(prev) && single(sg)) && !/^\s+$/.test(sg) && !/^\s+$/.test(prev)) out += "<wbr>";
+      out += esc(sg);
+    });
+    return '<span class="ph">' + out + '</span>';
+  }).join("");
+}
+function pcard(c){
+  var k = c.card || {};
+  var title = (c.titleProgram && c.titleMain) ? '<span class="pc-prog">' + esc(c.titleProgram) + '</span>' + phrase(c.titleMain) : phrase(c.title);
+  return '<a class="card pcard ' + esc(k.tone || "c-gray") + '" href="#' + esc(c.slug) + '">' +
+    '<div class="pc-art">' + cardArt(c) + '</div>' +
+    '<p class="pc-k"><span>' + esc(k.en || "PROJECT") + (c.cat ? '<i> ─ ' + esc(c.cat) + '</i>' : '') + '</span>' + (c.progress ? '<span class="pc-st">' + esc(c.progress) + '</span>' : '') + '</p>' +
+    '<h3>' + title + '</h3><p>' + esc(c.summary) + '</p>' +
+    '<div class="foot"><span>' + c.tags.slice(0,2).map(esc).join("・") + '</span><span class="pc-go">閱讀專案 <span class="arrow" aria-hidden="true">→</span></span></div></a>';
+}
 function emptyBox(what){
   return '<p class="empty">目前還沒有公開的' + what + '，整理好之後會放上來。</p>';
 }
@@ -1902,13 +1998,16 @@ function renderList(typeKey, keepCat){
   document.getElementById("list-label").textContent = T.name;
   document.getElementById("list-title").textContent = T.name;
   document.getElementById("list-desc").textContent = T.desc;
-  document.getElementById("list-count").textContent = items.length + " 篇";
+  var en = document.getElementById("list-en"); en.textContent = T.en || ""; en.hidden = !T.en;
+  document.getElementById("list-count").textContent = T.unit ? ("0" + items.length).slice(-2) + " " + T.unit : items.length + " 篇";
   var cats = CATS.filter(function(k){ return all.some(function(c){ return c.cat === k; }); });
   var fl = document.getElementById("list-filter");
   fl.innerHTML = cats.length > 1 ? ['<button type="button" class="fbtn" data-cat="" data-t="' + typeKey + '" aria-pressed="' + (listCat === "") + '">全部</button>'].concat(cats.map(function(k){
     return '<button type="button" class="fbtn" data-cat="' + esc(k) + '" data-t="' + typeKey + '" aria-pressed="' + (listCat === k) + '">' + esc(k) + '</button>'; })).join("") : "";
   fl.hidden = !fl.innerHTML;
-  document.getElementById("list-cards").innerHTML = items.length ? items.map(function(c){ return card(c, true); }).join("") : emptyBox(T.name);
+  var lc = document.getElementById("list-cards");
+  lc.classList.toggle("pcards", typeKey === "project");
+  lc.innerHTML = items.length ? items.map(function(c){ return typeKey === "project" ? pcard(c) : card(c, true); }).join("") : emptyBox(T.name);
 }
 document.getElementById("list-filter").addEventListener("click", function(e){
   var b = e.target.closest(".fbtn"); if(!b) return;
