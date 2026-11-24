@@ -355,7 +355,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .pj .prel .label{grid-column:1/-1}
 }
 /* Project 50：習慣卡片、流程、規則迭代、長條圖（只作用在 .pj） */
-.pj .pstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;border-top:var(--hairline) solid var(--line);border-bottom:var(--hairline) solid var(--line)}
+.pj .pstats{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);margin:0;border-top:var(--hairline) solid var(--line);border-bottom:var(--hairline) solid var(--line)}
 .pj .pstats div{padding:var(--space-3) var(--space-3) var(--space-3) 0;display:flex;flex-direction:column;gap:4px}
 .pj .pstats div+div{padding-left:var(--space-3);border-left:var(--hairline) solid var(--line)}
 .pj .pstats dd{margin:0;font-family:var(--font-serif);font-weight:600;font-size:34px;line-height:1.1;color:var(--sage-ink)}
@@ -369,20 +369,27 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 .pj .hb-ico{width:28px;height:28px;fill:none;stroke:var(--sage-ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;grid-row:1/3;grid-column:2}
 .pj .habits b{font-family:var(--font-serif);font-weight:600;font-size:18px;line-height:28px;grid-column:1}
 .pj .hb-std{grid-column:1/-1;font-size:14px;line-height:24px;color:var(--ink-muted)}
-.pj .pflow{margin:var(--space-5) 0 0;padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
-.pj .pflow ol{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:var(--space-4)}
-.pj .pflow li{position:relative;display:flex;flex-direction:column;gap:2px;padding-top:var(--space-2);border-top:2px solid var(--sage)}
-.pj .pflow li:not(:last-child)::after{content:"→";position:absolute;right:calc(-1 * var(--space-4) + 4px);top:var(--space-2);color:var(--line-strong);font-size:15px}
-.pj .pflow li.pf-pub{border-top-style:dashed;border-top-color:var(--line-strong)}
+.pj .pflow{--pf-gap:32px;margin:var(--space-5) 0 0;padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
+.pj .pf-wrap{position:relative}
+.pj .pflow ol{list-style:none;margin:var(--space-3) 0 0;padding:0;display:flex;gap:var(--pf-gap)}
+.pj .pflow li{position:relative;flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:var(--space-2) var(--space-3);background:var(--sage-soft);border:var(--hairline) solid transparent;border-radius:var(--radius-sm)}
+.pj .pflow li.pf-pub{background:var(--paper-raised);border:var(--hairline) dashed var(--line-strong)}
+.pj .pflow li:not(:last-child)::before{content:"";position:absolute;top:50%;left:calc(100% + 6px);width:calc(var(--pf-gap) - 12px);border-top:var(--hairline) solid var(--line-strong)}
+.pj .pflow li:not(:last-child)::after{content:"";position:absolute;top:calc(50% - 3px);left:calc(100% + var(--pf-gap) - 12px);width:6px;height:6px;border-top:var(--hairline) solid var(--line-strong);border-right:var(--hairline) solid var(--line-strong);transform:rotate(45deg)}
 .pj .pflow b{font-family:var(--font-serif);font-weight:600;font-size:15px;line-height:24px;color:var(--sage-ink)}
+.pj .pflow li.pf-pub b{color:var(--ink)}
 .pj .pflow span{font-size:13px;line-height:22px;color:var(--ink-muted)}
+/* 回顧循環：從最後一格的下方繞回第一格 */
+.pj .pf-loop{position:relative;height:28px;margin:0 calc((100% - 4 * var(--pf-gap)) / 10);border:var(--hairline) solid var(--line-strong);border-top:0;border-radius:0 0 8px 8px;text-align:center}
+.pj .pf-loop::before{content:"";position:absolute;left:-4px;top:0;width:7px;height:7px;border-top:var(--hairline) solid var(--line-strong);border-left:var(--hairline) solid var(--line-strong);transform:rotate(45deg);background:transparent}
+.pj .pf-loop span{position:relative;top:19px;padding:0 var(--space-2);background:var(--paper);font-size:12px;letter-spacing:.12em;color:var(--sage-ink)}
 .pj .iter{list-style:none;margin:var(--space-4) 0 0;padding:0;border-top:var(--hairline) solid var(--ink);max-width:44em}
-.pj .iter > li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:var(--space-3);padding:var(--space-3) 0;border-bottom:var(--hairline) solid var(--line)}
+.pj .iter > li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:var(--space-3);padding:12px 0 14px;border-bottom:var(--hairline) solid var(--line)}
 .pj .it-no{font-family:var(--font-serif);font-size:22px;line-height:28px;color:var(--line-strong)}
-.pj .it-cat{font-size:12px;letter-spacing:.16em;color:var(--sage-ink);font-weight:500;margin-bottom:4px}
+.pj .it-cat{font-size:12px;line-height:20px;letter-spacing:.16em;color:var(--sage-ink);font-weight:500;margin-bottom:2px}
 .pj .it-what,.pj .it-why{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:var(--space-2);font-size:15px;line-height:26px}
 .pj .it-what span:last-child{font-family:var(--font-serif);font-weight:600;font-size:16px}
-.pj .it-why{color:var(--ink-muted);margin-top:4px}
+.pj .it-why{color:var(--ink-muted);margin-top:2px}
 .pj .it-what .label,.pj .it-why .label{font-size:11px;line-height:26px}
 .pj .it-states{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px 6.5em;padding-left:var(--space-2)}
 .pj .it-states span{font-size:12px;line-height:20px;padding:0 10px;border-radius:var(--radius-pill)}
@@ -406,6 +413,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 .pj .bar-axis .ax span:nth-child(1){left:0}
 .pj .bar-axis .ax span:nth-child(2){left:50%;transform:translateX(-50%)}
 .pj .bar-axis .ax span:nth-child(3){right:0}
+.pj .bar-foot{margin-top:var(--space-3);font-size:12px;line-height:20px;color:var(--ink-muted);max-width:var(--measure)}
 .pj .p50-find{grid-template-columns:repeat(2,minmax(0,1fr))}
 .pj .cmp{display:flex;flex-direction:column;gap:6px;margin:var(--space-2) 0}
 .pj .cmp-row{display:grid;grid-template-columns:6em minmax(0,1fr) 2.6em;gap:var(--space-2);align-items:center;font-size:13px;color:var(--ink)}
@@ -416,17 +424,119 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
   .pj .pstats div{padding-right:var(--space-2)}
   .pj .pstats div+div{padding-left:var(--space-2)}
   .pj .habits{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-2)}
-  .pj .pflow ol{grid-auto-flow:row;grid-auto-columns:auto;gap:var(--space-3)}
-  .pj .pflow li:not(:last-child)::after{display:none}
-  .pj .it-what,.pj .it-why{grid-template-columns:1fr;gap:0}
-  .pj .it-states{margin-left:0;padding-left:0}
+  .pj .pflow{--pf-gap:24px}
+  .pj .pflow ol{flex-direction:column}
+  .pj .pflow li:not(:last-child)::before{top:calc(100% + 4px);left:28px;width:0;height:calc(var(--pf-gap) - 10px);border-top:0;border-left:var(--hairline) solid var(--line-strong)}
+  .pj .pflow li:not(:last-child)::after{top:calc(100% + var(--pf-gap) - 10px);left:25.5px;transform:rotate(135deg)}
+  .pj .pf5 .pf-wrap{padding-right:38px}
+  .pj .pf-loop{position:absolute;top:calc(var(--space-3) + 20px);bottom:20px;right:12px;height:auto;width:20px;margin:0;border:var(--hairline) solid var(--line-strong);border-left:0;border-radius:0 8px 8px 0}
+  .pj .pf-loop::before{left:0;top:-4px;transform:rotate(-45deg)}
+  .pj .pf-loop span{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);writing-mode:vertical-rl;padding:4px 0;font-size:12px;letter-spacing:.2em;line-height:1}
+  .pj .it-what,.pj .it-why{grid-template-columns:4.6em minmax(0,1fr);gap:var(--space-2)}
+  .pj .it-what .label,.pj .it-why .label{font-size:10px;letter-spacing:.06em}
+  .pj .it-states{margin-left:calc(4.6em + var(--space-2));padding-left:0}
   .pj .p50-key .keyf-grid{grid-template-columns:1fr}
   .pj .p50-find{grid-template-columns:1fr}
   .pj .bars li{grid-template-columns:3.6em minmax(0,1fr) 2.8em;column-gap:var(--space-2)}
   .pj .bar-axis{grid-template-columns:3.6em minmax(0,1fr) 2.8em;column-gap:var(--space-2)}
   .pj .day0 p:last-child{font-size:17px;line-height:30px}
 }
-@media (max-width:360px){.pj .habits{grid-template-columns:1fr}}
+@media (max-width:360px){.pj .habits{grid-template-columns:1fr}.pj .rt-tools{grid-template-columns:1fr}}
+/* SEL 母專案（只作用在 .pj） */
+.pj .guide-go{margin-top:auto;padding-top:var(--space-2);font-size:13px;line-height:22px;color:var(--ink-muted)}
+.pj .guide-go a{text-decoration:none;font-weight:500}
+.pj .guide-go a:hover{text-decoration:underline}
+.pj .pj-fig{margin:var(--space-5) 0 0;max-width:420px}
+.pj .pj-fig img{display:block;width:100%;height:auto;border:var(--hairline) solid var(--line);border-radius:var(--radius-sm);background:var(--paper-raised)}
+.pj .pj-fig figcaption,.pj .plan3 figcaption,.pj .tri figcaption{font-size:13px;line-height:22px;color:var(--ink-muted);margin-top:var(--space-2)}
+.pj .c-sage{--c:var(--sage);--c-soft:var(--sage-soft);--c-ink:var(--sage-ink)}
+.pj .c-mist{--c:var(--mist);--c-soft:var(--mist-soft);--c-ink:var(--mist-ink)}
+.pj .c-flax{--c:var(--flax);--c-soft:var(--flax-soft);--c-ink:var(--flax-ink)}
+/* PLAN：三欄並列，匯聚到同一個目標 */
+.pj .plan3{--g:var(--space-3);margin:var(--space-5) 0 0;padding-top:var(--space-3);border-top:var(--hairline) solid var(--ink)}
+.pj .p3{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g)}
+.pj .p3 > li{position:relative;display:flex;flex-direction:column;gap:2px;padding:var(--space-3);background:var(--paper-raised);border:var(--hairline) solid var(--line);border-top:3px solid var(--c);border-radius:var(--radius-sm)}
+.pj .p3-k{font-size:11px;line-height:18px;letter-spacing:.16em;color:var(--c-ink);font-weight:500}
+.pj .p3 b{font-family:var(--font-serif);font-weight:600;font-size:19px;line-height:30px}
+.pj .p3-ab{font-size:12px;line-height:20px;color:var(--c-ink);background:var(--c-soft);align-self:flex-start;padding:0 8px;border-radius:var(--radius-pill)}
+.pj .p3-do{font-size:14px;line-height:24px;color:var(--ink-muted);margin-top:var(--space-1)}
+.pj .p3-conv{position:relative;height:22px;margin:0 calc((100% - 2 * var(--g)) / 6);border:var(--hairline) solid var(--line-strong);border-top:0}
+.pj .p3-conv::before{content:"";position:absolute;left:50%;top:0;height:100%;border-left:var(--hairline) solid var(--line-strong)}
+.pj .p3-conv::after{content:"";position:absolute;left:50%;top:100%;height:18px;border-left:var(--hairline) solid var(--line-strong)}
+.pj .p3-root{margin:18px auto 0;width:max-content;max-width:100%;padding:var(--space-2) var(--space-4);border:var(--hairline) solid var(--line-strong);border-radius:var(--radius-sm);background:var(--paper-raised);font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:26px;text-align:center}
+/* PROCESS：課堂流程分支圖 */
+.pj .routine{margin:var(--space-5) 0 0;padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
+.pj .rt{font-family:var(--font-sans);display:grid;margin-top:var(--space-3);grid-template-columns:minmax(0,1fr) 44px minmax(0,1.15fr) 76px minmax(0,1fr);grid-template-areas:"check a1 ready a2 learn" ". . vv . ." ". . choose . .";align-items:stretch}
+.pj .rt-check{grid-area:check}.pj .rt-a1{grid-area:a1}.pj .rt-ready{grid-area:ready}.pj .rt-a2{grid-area:a2}.pj .rt-learn{grid-area:learn}.pj .rt-vv{grid-area:vv}.pj .rt-choose{grid-area:choose}
+.pj .rt-n{display:flex;flex-direction:column;gap:2px;padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);border:var(--hairline) solid transparent}
+.pj .rt-k{font-size:11px;line-height:18px;letter-spacing:.16em;font-weight:500}
+.pj .rt-n b{font-family:var(--font-serif);font-weight:600;font-size:15px;line-height:24px}
+.pj .rt-check{background:var(--sage-soft)}.pj .rt-check .rt-k{color:var(--sage-ink)}
+.pj .rt-ready{background:var(--paper-raised);border-color:var(--line-strong)}.pj .rt-ready .rt-k{color:var(--ink)}
+.pj .rt-learn{background:var(--flax-soft)}.pj .rt-learn .rt-k{color:var(--flax-ink)}
+.pj .rt-choose{background:var(--mist-soft)}.pj .rt-choose .rt-k{color:var(--mist-ink)}
+.pj .rt-tools{list-style:none;margin:var(--space-2) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.pj .rt-tools li{background:var(--paper-raised);border-radius:var(--radius-sm);padding:4px 8px;font-size:13px;line-height:20px;font-weight:500;color:var(--mist-ink)}
+.pj .rt-tools small{display:block;font-size:12px;font-weight:400;color:var(--ink-muted)}
+.pj .rt-a{position:relative;display:block;font-size:11px;line-height:16px;letter-spacing:.12em;color:var(--ink-muted)}
+.pj .rt-a1::before,.pj .rt-a2::before{content:"";position:absolute;top:50%;left:6px;right:8px;border-top:var(--hairline) solid var(--line-strong)}
+.pj .rt-a1::after,.pj .rt-a2::after{content:"";position:absolute;top:calc(50% - 3px);right:8px;width:6px;height:6px;border-top:var(--hairline) solid var(--line-strong);border-right:var(--hairline) solid var(--line-strong);transform:rotate(45deg)}
+.pj .rt-a2 > span{position:absolute;left:50%;bottom:calc(50% + 4px);transform:translateX(-50%);color:var(--flax-ink);font-weight:500}
+.pj .rt-vv{display:grid;grid-template-columns:1fr 1fr;height:64px}
+.pj .rt-down,.pj .rt-up{height:100%}
+.pj .rt-down::before,.pj .rt-up::before{content:"";position:absolute;left:50%;top:4px;bottom:4px;border-left:var(--hairline) solid var(--line-strong)}
+.pj .rt-down::after{content:"";position:absolute;left:calc(50% - 3px);bottom:5px;width:6px;height:6px;border-right:var(--hairline) solid var(--line-strong);border-bottom:var(--hairline) solid var(--line-strong);transform:rotate(45deg)}
+.pj .rt-up::after{content:"";position:absolute;left:calc(50% - 3px);top:5px;width:6px;height:6px;border-left:var(--hairline) solid var(--line-strong);border-top:var(--hairline) solid var(--line-strong);transform:rotate(45deg)}
+.pj .rt-down > span,.pj .rt-up > span{position:absolute;top:50%;transform:translateY(-50%);white-space:nowrap}
+.pj .rt-down > span{right:calc(50% + 8px);color:var(--mist-ink);font-weight:500}
+.pj .rt-up > span{left:calc(50% + 8px)}
+/* NOW：三節點匯聚概念圖 */
+.pj .tri{margin:0;padding:var(--space-3) 0 var(--space-4);border-top:var(--hairline) solid var(--ink);border-bottom:var(--hairline) solid var(--line)}
+.pj .tri-map{position:relative;height:300px;max-width:560px;margin:var(--space-3) auto 0}
+.pj .tri-lines{position:absolute;inset:0;width:100%;height:100%}
+.pj .tri-lines path{fill:none;stroke:var(--line-strong);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:3 3}
+.pj .tri-c{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:132px;height:132px;border-radius:50%;display:grid;place-items:center;text-align:center;background:var(--paper-raised);border:var(--hairline) solid var(--line-strong);font-family:var(--font-serif);font-weight:600;font-size:15px;line-height:24px}
+.pj .tri-n{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:0;padding:6px 14px;border-radius:var(--radius-md);background:var(--c-soft);border:var(--hairline) solid var(--c);text-align:center;white-space:nowrap}
+.pj .tn-sage{left:50%;top:14%;--c:var(--sage);--c-soft:var(--sage-soft);--c-ink:var(--sage-ink)}
+.pj .tn-mist{left:18%;top:86%;--c:var(--mist);--c-soft:var(--mist-soft);--c-ink:var(--mist-ink)}
+.pj .tn-flax{left:82%;top:86%;--c:var(--flax);--c-soft:var(--flax-soft);--c-ink:var(--flax-ink)}
+.pj .tri-n b{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:26px;color:var(--c-ink)}
+.pj .tri-n span{font-size:12px;line-height:18px;color:var(--ink-muted)}
+.pj .tri-list{list-style:none;margin:var(--space-4) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+.pj .tri-list li{display:flex;flex-direction:column;gap:2px;padding-top:var(--space-2);border-top:2px solid var(--c)}
+.pj .tri-list .label{font-size:11px;color:var(--c-ink)}
+.pj .tri-list b{font-family:var(--font-serif);font-weight:600;font-size:17px;line-height:28px}
+.pj .tri-list .pf-txt{font-size:14px;line-height:24px;color:var(--ink-muted)}
+@media (max-width:720px){
+  .pj .p3{grid-template-columns:1fr;gap:var(--space-2)}
+  .pj .p3-wrap{position:relative;padding-left:22px}
+  .pj .p3-wrap::before{content:"";position:absolute;left:6px;top:calc(var(--space-3) + 28px);bottom:22px;border-left:var(--hairline) solid var(--line-strong)}
+  .pj .p3 > li::before{content:"";position:absolute;left:-16px;top:28px;width:15px;border-top:var(--hairline) solid var(--line-strong)}
+  .pj .p3-conv{display:none}
+  .pj .p3-root{position:relative;margin:var(--space-3) 0 0;width:auto}
+  .pj .p3-root::before{content:"";position:absolute;left:-16px;top:50%;width:15px;border-top:var(--hairline) solid var(--line-strong)}
+  .pj .rt{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--space-2);grid-template-areas:"check check" "a1 a1" "ready ready" "vv a2" "choose learn"}
+  .pj .rt-a1{height:32px}
+  .pj .rt-a1::before{top:4px;bottom:6px;left:50%;right:auto;border-top:0;border-left:var(--hairline) solid var(--line-strong)}
+  .pj .rt-a1::after{top:auto;bottom:7px;left:calc(50% - 3px);right:auto;transform:rotate(135deg)}
+  .pj .rt-a2{height:64px}
+  .pj .rt-a2::before{top:4px;bottom:4px;left:50%;right:auto;border-top:0;border-left:var(--hairline) solid var(--line-strong)}
+  .pj .rt-a2::after{top:auto;bottom:5px;left:calc(50% - 3px);right:auto;transform:rotate(135deg)}
+  .pj .rt-a2 > span{left:calc(50% + 8px);bottom:auto;top:50%;transform:translateY(-50%)}
+  .pj .rt-vv{grid-template-columns:76px minmax(0,1fr);height:72px}
+  .pj .rt-down::before,.pj .rt-up::before{left:10px}
+  .pj .rt-down::after,.pj .rt-up::after{left:7px}
+  .pj .rt-down > span,.pj .rt-up > span{left:20px;right:0;top:50%;transform:translateY(-50%);font-size:10px;line-height:14px;letter-spacing:.04em;white-space:normal}
+  .pj .rt-down > span{right:auto}
+  .pj .rt-learn{align-self:start}
+  .pj .tri-map{height:260px}
+  .pj .tri-c{width:112px;height:112px;font-size:13px;line-height:20px}
+  .pj .tri-n{padding:4px 8px;white-space:normal;max-width:44%}
+  .pj .tn-mist{left:24%}
+  .pj .tn-flax{left:76%}
+  .pj .tri-n span{font-size:11px;line-height:16px}
+  .pj .tri-list{grid-template-columns:1fr;gap:var(--space-3)}
+}
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
 </head>
@@ -897,54 +1007,90 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-project-sel">
-  <div class="sec"><p class="label">01 · 起點</p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼開始？</span></p><div>
     <h2>不另外上一堂情緒課</h2>
     <div class="prose">
       <p>參加 SEL 種子教師培訓之後，我一直在想：科任老師一週只見孩子幾節課，要怎麼做 SEL？我的答案是，不另外找時間上「情緒課」，而是把它放進原本就要上的自然課裡。</p>
+    </div>
+    <blockquote class="day0"><p class="label">CORE IDEA ─ 核心理念</p><p>不另外找時間上「情緒課」，而是把它放進原本就要上的自然課裡。</p></blockquote>
+  </div></div>
+
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">PLAN</span><span class="zh">我怎麼規劃？</span></p><div>
+    <h2>從每天，到一堂課，到一次考試</h2>
+    <div class="prose">
       <p>這學期我試了三種做法，從每節課幾分鐘的小練習，到一整堂課的設計，再到跨越整個期中考的反思。</p>
     </div>
+    <figure class="plan3" aria-label="三個時間尺度的教學架構">
+      <p class="label">PRACTICES ─ 三個時間尺度</p>
+      <div class="p3-wrap">
+        <ol class="p3">
+          <li class="c-sage"><p class="p3-k">DAILY ─ 每節課</p><b>情緒打卡</b><p class="p3-ab">自我覺察</p><p class="p3-do">上課時把名字放到符合當下心情的位置，心情變了可以自己移動</p><p class="guide-go">說明在本頁 03 PROCESS</p></li>
+          <li class="c-mist"><p class="p3-k">LESSON ─ 一堂課</p><b>情緒地震儀</b><p class="p3-ab">五大能力</p><p class="p3-do">在地震防災課中，發現身體的訊號、用呼吸穩定情緒、安慰同學、規劃身心避難包</p><p class="guide-go"><a href="#case-sel-earthquake">看作品 →</a></p></li>
+          <li class="c-flax"><p class="p3-k">ASSESSMENT ─ 一次考試</p><b>期中考反思單</b><p class="p3-ab">自我覺察、自我管理、負責任的決定</p><p class="p3-do">考前訂目標、選讀書方法，考後回頭看心情、方法和錯誤原因，再寫下一次的承諾</p><p class="guide-go"><a href="#case-midterm-reflection">看作品 →</a></p></li>
+        </ol>
+        <p class="p3-conv" aria-hidden="true"></p>
+        <p class="p3-root">融入自然課的 SEL 實踐</p>
+      </div>
+      <figcaption>三個做法同時進行，沒有先後順序。</figcaption>
+    </figure>
   </div></div>
 
-  <div class="sec"><p class="label">02 · 三個做法</p><div>
-    <h2>從每天，到一堂課，到一次考試</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>做法</th><th>多久一次</th><th>練習的能力</th><th>孩子做什麼</th></tr></thead>
-      <tbody>
-        <tr><td style="white-space:nowrap">情緒打卡</td><td style="white-space:nowrap">每節課</td><td>自我覺察</td><td>上課時把名字放到符合當下心情的位置，心情變了可以自己移動</td></tr>
-        <tr><td style="white-space:nowrap"><a href="#case-sel-earthquake">情緒地震儀</a></td><td style="white-space:nowrap">一堂課</td><td>五大能力</td><td>在地震防災課中，發現身體的訊號、用呼吸穩定情緒、安慰同學、規劃身心避難包</td></tr>
-        <tr><td style="white-space:nowrap"><a href="#case-midterm-reflection">期中考反思單</a></td><td style="white-space:nowrap">一次考試</td><td>自我覺察、自我管理、負責任的決定</td><td>考前訂目標、選讀書方法，考後回頭看心情、方法和錯誤原因，再寫下一次的承諾</td></tr>
-      </tbody>
-    </table></div>
-  </div></div>
-
-  <div class="sec"><p class="label">03 · 情緒打卡</p><div>
+  <div class="sec"><p class="label chap"><span class="no">03</span><span class="en">PROCESS</span><span class="zh">我怎麼實踐與調整？</span></p><div>
     <h2>每節課的小練習</h2>
     <div class="prose">
       <p>每一節自然課，孩子都會先替自己的心情打卡。這個做法是我在進階培訓聽其他老師分享後，隔週就開始試的。</p>
       <p>有的孩子上課時還提不起勁，下課卻主動把名字移到開心的位置。我覺得這代表他有在留意自己情緒的變化。每節課都練一次，比一學期上一堂情緒課更容易變成習慣，也能替後面的自我管理打好基礎。</p>
     </div>
-    <p class="pend">之後會補上打卡的整體紀錄，只記錄每種心情的人數，不記名字。</p>
-  </div></div>
-
-  <div class="sec"><p class="label">04 · 串起來</p><div>
-    <h2>三件事其實在練同一件事</h2>
-    <div class="flow">
-      <div><span class="label">看見</span><b>先發現自己的狀態</b>情緒打卡看見當下的心情，地震儀看見身體的訊號，反思單看見自己準備得怎麼樣。</div>
-      <div><span class="label">調整</span><b>再想辦法調整</b>用呼吸讓自己穩下來，用讀書方法和成長承諾安排下一步。</div>
-      <div><span class="label">連結</span><b>最後想到身邊的人</b>安慰害怕的同學、在小組中分工，看到全班的匿名統計，知道自己不是唯一一個這樣想的人。</div>
-    </div>
-    <div class="prose" style="margin-top:var(--space-3)">
+    <figure class="routine" aria-label="課堂流程">
+      <p class="label">CLASSROOM ROUTINE ─ 課堂流程</p>
+      <div class="rt">
+        <div class="rt-n rt-check"><span class="rt-k">CHECK IN</span><b>辨識當下情緒</b></div>
+        <div class="rt-a rt-a1" aria-hidden="true"></div>
+        <div class="rt-n rt-ready"><span class="rt-k">AM I READY?</span><b>確認學習準備狀態</b></div>
+        <div class="rt-a rt-a2"><span>READY</span></div>
+        <div class="rt-n rt-learn"><span class="rt-k">LEARN</span><b>開始學習</b></div>
+        <div class="rt-vv"><span class="rt-a rt-down"><span>NOT YET</span></span><span class="rt-a rt-up"><span>調節後重新確認</span></span></div>
+        <div class="rt-n rt-choose"><span class="rt-k">CHOOSE</span><b>選擇適合自己的調節工具</b>
+          <ul class="rt-tools"><li>Breathe<small>呼吸</small></li><li>Drink<small>喝水</small></li><li>Reset<small>重新整理</small></li><li>Help<small>找人幫忙</small></li></ul>
+        </div>
+      </div>
+    </figure>
+    <figure class="pj-fig">
+      <img src="sel-checkin.webp" width="1055" height="1491" loading="lazy" alt="情緒打卡站海報：紅、黃、藍、綠四區，分別是像火山（生氣、緊張、焦慮、害怕）、像陽光（開心、期待、興奮、有活力）、像陰雨（難過、疲累、無聊、提不起勁）、像微風（平靜、放鬆、安心、自在），每種心情下方是空白格。">
+      <figcaption>情緒打卡站的空白版面。</figcaption>
+    </figure>
+    <div class="prose" style="margin-top:var(--space-5)">
       <p>做反思單時我也發現，孩子考完覺得「沒達到預期」的時候，其實分數並不低，他們的失望多半來自對自己的高要求。這讓我更確定，考試反思不只是檢討分數，也是在練習面對自己的情緒。</p>
     </div>
   </div></div>
 
-  <div class="sec"><p class="label">05 · 下一步</p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">NOW</span><span class="zh">目前走到哪裡？</span></p><div>
+    <h2>三件事其實在練同一件事</h2>
+    <figure class="tri" aria-label="看見、調整、連結三節點概念圖">
+      <p class="label">PRACTICE FRAMEWORK ─ 本專案的教學實踐架構</p>
+      <div class="tri-map">
+        <svg class="tri-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M50 56 L50 16 M50 56 L22 86 M50 56 L78 86"/></svg>
+        <p class="tri-c">融入自然課的<br>社會情緒學習</p>
+        <p class="tri-n tn-sage"><b>覺察</b><span>先發現自己的狀態</span></p>
+        <p class="tri-n tn-mist"><b>調整</b><span>再想辦法調整</span></p>
+        <p class="tri-n tn-flax"><b>連結</b><span>最後想到身邊的人</span></p>
+      </div>
+    </figure>
+    <ol class="tri-list">
+      <li class="c-sage"><span class="label">看見</span><b>先發現自己的狀態</b><span class="pf-txt">情緒打卡看見當下的心情，地震儀看見身體的訊號，反思單看見自己準備得怎麼樣。</span></li>
+      <li class="c-mist"><span class="label">調整</span><b>再想辦法調整</b><span class="pf-txt">用呼吸讓自己穩下來，用讀書方法和成長承諾安排下一步。</span></li>
+      <li class="c-flax"><span class="label">連結</span><b>最後想到身邊的人</b><span class="pf-txt">安慰害怕的同學、在小組中分工，看到全班的匿名統計，知道自己不是唯一一個這樣想的人。</span></li>
+    </ol>
+  </div></div>
+
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
     <h2>接下來</h2>
     <ol class="obj">
       <li><div>情緒地震儀拆成兩節課，加入安心提示小卡和角色扮演。</div></li>
       <li><div>期末考再做一次反思單，加入分辨「粗心」和「觀念不熟」的練習。</div></li>
       <li><div>從校園佈置開始，把情緒覺察和人際互動的句型放進教室和走廊。</div></li>
     </ol>
+    <p class="label ed-end">TO BE CONTINUED</p>
   </div></div>
 </template>
 
@@ -1155,7 +1301,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </template>
 
 <template id="body-project-50">
-  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">THE ORIGIN</span><span class="zh">起點</span></p><div>
+  <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼開始？</span></p><div>
     <h2>為什麼要給自己 50 天</h2>
     <div class="prose">
       <p>這學期我同時要教書、處理行政業務，還想準備英文檢定、學日文。事情一多，最先被犧牲的總是睡覺和運動。所以九月開學，我給自己一個挑戰：連續 50 天，每天都做到六件小事。</p>
@@ -1164,11 +1310,11 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <blockquote class="day0"><p class="label">DAY 0</p><p>下半年希望能持續跨出舒適圈，在工作、生活和身心健康之間取得平衡，保有對世界的熱情。</p></blockquote>
   </div></div>
 
-  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">THE SYSTEM</span><span class="zh">規則</span></p><div>
+  <div class="sec"><p class="label chap"><span class="no">02</span><span class="en">PLAN</span><span class="zh">我怎麼規劃？</span></p><div>
     <h2>每天的六件事</h2>
     <ol class="habits"><li><span class="hb-no num">01</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4.5a7.5 7.5 0 1 0 4 12.6A6.5 6.5 0 0 1 15.5 4.5Z"/><path d="M18 4h3l-3 3.5h3"/></svg><b>早睡</b><span class="hb-std">上班日 11 點前，假日 12 點前</span></li><li><span class="hb-no num">02</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="14.5" cy="4.5" r="1.8"/><path d="M8 21l3-6 3 2v4"/><path d="M6 11l3-3h4l2 4 3 1"/><path d="M11 15l2-7"/></svg><b>運動</b><span class="hb-std">至少 30 分鐘，羽球、快走、在家有氧都可以</span></li><li><span class="hb-no num">03</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5c3-1 6-1 9 1 3-2 6-2 9-1V19c-3-1-6-1-9 1-3-2-6-2-9-1Z"/><path d="M12 6.5V20"/></svg><b>閱讀</b><span class="hb-std">每天讀 10 頁書</span></li><li><span class="hb-no num">04</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4Z"/><path d="M9 13l3-6 3 6"/><path d="M10 11h4"/></svg><b>英文</b><span class="hb-std">一小時，背單字加讀一篇文章</span></li><li><span class="hb-no num">05</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></svg><b>新技能</b><span class="hb-std">一小時，日文、AI 教學、影片剪輯或專案管理</span></li><li><span class="hb-no num">06</span><svg class="hb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l-1.5 17a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1Z"/><path d="M6.6 9h10.8"/><path d="M10 13.5c1 1 3 1 4 0"/></svg><b>飲食</b><span class="hb-std">不喝含糖飲料，喝 2000ml 的水</span></li></ol>
     <figure class="pflow" aria-label="每日紀錄流程">
-      <p class="label">DAILY RECORD ─ 每日紀錄流程</p>
+      <p class="label">DAILY TRACKING ─ 每日紀錄流程</p>
       <ol>
         <li><b>生活實踐</b><span>六項習慣</span></li>
         <li><b>Notion</b><span>每日紀錄</span></li>
@@ -1178,24 +1324,27 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-3);font-size:15px">我用 Notion 資料庫記錄，每天再發一篇【Day-N】到 Threads。公開記錄是為了讓自己有個持續前進的目標，但它不算在六項習慣裡。</p>
   </div></div>
 
-  <div class="sec"><p class="label chap"><span class="no">03</span><span class="en">THE ITERATION</span><span class="zh">調整</span></p><div>
+  <div class="sec"><p class="label chap"><span class="no">03</span><span class="en">PROCESS</span><span class="zh">我怎麼實踐與調整？</span></p><div>
     <h2>規則改了好幾次</h2>
     <div class="prose"><p>開始一週後我就發現，原本的規則太死板了。打完羽球回到家已經十點多，不可能 11 點前睡；連假出去玩，也不可能每天讀英文一小時。如果照原本的規則，很快就會覺得「反正已經破功了」而放棄。所以我把每次修改都記下來：</p></div>
     <ol class="iter"><li><span class="it-no num">01</span><div><p class="it-cat">達成判定</p><p class="it-what"><span class="label">我改了什麼</span><span>從「有做／沒做」改成三種：達成、部分、未達成</span></p><span class="it-states" aria-label="三種狀態"><span class="s-full">達成</span><span class="s-part">部分</span><span class="s-none">未達成</span></span><p class="it-why"><span class="label">為什麼</span><span>只做了一半也是努力，我想看見這個差別</span></p></div></li><li><span class="it-no num">02</span><div><p class="it-cat">彈性機制</p><p class="it-what"><span class="label">我改了什麼</span><span>新增「彈性日」，每週最多三天</span></p><p class="it-why"><span class="label">為什麼</span><span>連假和聚餐需要彈性，但設上限，避免標準失去意義</span></p></div></li><li><span class="it-no num">03</span><div><p class="it-cat">情境調整</p><p class="it-what"><span class="label">我改了什麼</span><span>打羽球那天，就寢標準延到 12 點</span></p><p class="it-why"><span class="label">為什麼</span><span>羽球團 8 點到 10 點，這是我很喜歡的運動，不想為了早睡放棄</span></p></div></li><li><span class="it-no num">04</span><div><p class="it-cat">自動化</p><p class="it-what"><span class="label">我改了什麼</span><span>早睡改由就寢時間自動判定</span></p><p class="it-why"><span class="label">為什麼</span><span>讓判定一致，不用每天自己猶豫算不算</span></p></div></li><li><span class="it-no num">05</span><div><p class="it-cat">成果認定</p><p class="it-what"><span class="label">我改了什麼</span><span>用工作成果代替新技能也算數</span></p><p class="it-why"><span class="label">為什麼</span><span>趕成果報告的那天，其實也在學東西</span></p></div></li><li><span class="it-no num">06</span><div><p class="it-cat">休息機制</p><p class="it-what"><span class="label">我改了什麼</span><span>連假五天完全休息，天數不往下算</span></p><p class="it-why"><span class="label">為什麼</span><span>Day 編號只算真正執行的日子，挑戰不再設固定結束日</span></p></div></li></ol>
     <p style="color:var(--ink-muted);max-width:var(--measure);margin-top:var(--space-4);font-size:15px">之後我又在每週回顧加了一段薩提爾冰山日記：記下一件事、我的反應、背後的情緒，以及下週想做的新選擇，下週再回頭看有沒有做到。</p>
     <figure class="pflow pf5" aria-label="每週回顧流程">
       <p class="label">WEEKLY REVIEW ─ 我的每週回顧流程</p>
-      <ol>
-        <li><b>一件事</b></li>
-        <li><b>我的反應</b></li>
-        <li><b>背後情緒</b></li>
-        <li><b>新的選擇</b></li>
-        <li class="pf-pub"><b>下週回顧</b></li>
-      </ol>
+      <div class="pf-wrap">
+        <ol>
+          <li><b>一件事</b></li>
+          <li><b>我的反應</b></li>
+          <li><b>背後情緒</b></li>
+          <li><b>新的選擇</b></li>
+          <li class="pf-pub"><b>下週回顧</b></li>
+        </ol>
+        <p class="pf-loop" aria-hidden="true"><span>每週循環</span></p>
+      </div>
     </figure>
   </div></div>
 
-  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">THE DATA</span><span class="zh">數據</span></p><div>
+  <div class="sec"><p class="label chap"><span class="no">04</span><span class="en">NOW</span><span class="zh">目前走到哪裡？</span></p><div>
     <h2>前 18 天的紀錄</h2>
     <aside class="keyf p50-key" aria-label="主要數據">
       <p class="label">KEY NUMBERS ─ 主要數據</p>
@@ -1203,12 +1352,12 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
         <div><p class="keyf-num num">84%</p><p class="keyf-txt">平均達成</p></div>
         <div><p class="keyf-num num">9<small>／</small>18 天</p><p class="keyf-txt">18 天裡，有 9 天六件事全部做到。</p></div>
       </div>
-      <p class="review-flag" data-review>待作者確認：早睡達成率與整體平均達成率的統計口徑。目前保留原始數據，未修改。</p>
     </aside>
     <figure class="bars" aria-label="六項習慣完整達成的比例">
       <p class="label">COMPLETION RATE ─ 完整達成的比例</p>
       <ol><li><span class="bar-k">閱讀</span><span class="bar-t"><span class="bar-f" style="width:94%"></span></span><span class="bar-v num">94%</span></li><li><span class="bar-k">飲食</span><span class="bar-t"><span class="bar-f" style="width:94%"></span></span><span class="bar-v num">94%</span></li><li><span class="bar-k">英文</span><span class="bar-t"><span class="bar-f" style="width:83%"></span></span><span class="bar-v num">83%</span></li><li><span class="bar-k">新技能</span><span class="bar-t"><span class="bar-f" style="width:83%"></span></span><span class="bar-v num">83%</span></li><li><span class="bar-k">早睡</span><span class="bar-t"><span class="bar-f" style="width:81%"></span></span><span class="bar-v num">81%</span><span class="bar-n">（另有 19% 晚了一點）</span></li><li><span class="bar-k">運動</span><span class="bar-t"><span class="bar-f" style="width:72%"></span></span><span class="bar-v num">72%</span></li></ol>
       <p class="bar-axis num" aria-hidden="true"><span></span><span class="ax"><span>0%</span><span>50%</span><span>100%</span></span><span></span></p>
+      <p class="bar-foot">統計說明：每天每項習慣分成達成、部分、未達成三種，長條圖是「完整達成」的比例；早睡「晚了一點」的 19% 算在部分達成。整體平均達成是六項比例的平均。</p>
     </figure>
     <p class="subhead" style="margin-top:var(--space-6)">關鍵發現</p>
     <div class="flow p50-find">
@@ -1222,7 +1371,7 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
     </div>
   </div></div>
 
-  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">THE REFLECTION</span><span class="zh">心得</span></p><div>
+  <div class="sec"><p class="label chap"><span class="no">05</span><span class="en">NEXT</span><span class="zh">接下來</span></p><div>
     <h2>我學到的事</h2>
     <blockquote class="pull"><p>自己需要的不是更強的意志力，而是一套允許自己不完美的規則。</p><cite>── 摘自本篇心得</cite></blockquote>
     <div class="prose">
@@ -1455,7 +1604,8 @@ var CONTENT = [
   {
     slug: "project-sel",
     type: "project",
-    related: ["case-sel-earthquake", "case-midterm-reflection"],
+    layout: "project",
+    cat: "教學實踐",
     title: "把 SEL 放進自然課：這學期的三個做法",
     summary: "這學期我在自然課裡做了三件和社會情緒學習有關的事：每節課的情緒打卡、地震防災課的情緒地震儀，以及期中考的學習反思單。三件事規模不同，但都在練習同一件事：先看見自己，再調整自己。",
     tags: ["SEL", "自然科學", "輔導"],
@@ -1505,7 +1655,7 @@ var CONTENT = [
     type: "project",
     layout: "project",
     cat: "個人實驗",
-    stats: [["50", "天", "挑戰目標"], ["06", "項", "每日習慣"], ["18", "天", "目前呈現的紀錄範圍"]],
+    stats: [["06", "項", "每日習慣"], ["18", "天", "目前呈現的紀錄範圍"]],
     title: "Project 50：我怎麼替自己設計一套習慣系統",
     summary: "今年九月，我開始一個 50 天的習慣挑戰，每天記錄早睡、運動、閱讀、英文、新技能和飲食六件事。做到一半，我發現比起每天都做到，更重要的是把規則設計得能讓自己走下去。",
     tags: ["習慣養成", "Notion"],
