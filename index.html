@@ -776,6 +776,10 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 @media (max-width:720px){ .nt-body .prompt{padding:var(--space-3)} .prompt-copy{margin:0} }
 
 .nt-body .aside p + p{margin-top:10px}
+.nt-body .aside ul{margin:0;padding-left:1.2em}
+.nt-body .aside li + li{margin-top:4px}
+.nt-body .pj-fig{margin:var(--space-2) 0;max-width:420px}
+.nt-body .pj-fig img{display:block;width:100%;height:auto;border:var(--hairline) solid var(--line);border-radius:var(--radius-sm);background:var(--paper-raised)}
 .nt-ref{margin-top:var(--space-4);padding-top:var(--space-3);border-top:var(--hairline) solid var(--line);font-family:var(--font-sans);font-size:14px;line-height:24px}
 .nt-ref .label{margin-bottom:4px}
 .nt-ref a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-strong);overflow-wrap:anywhere}
@@ -1007,6 +1011,48 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </div>
 
 <!-- Item bodies: one <template> per public item, keyed by slug -->
+<template id="body-note-travel-site-prompts">
+<p>上一篇分享了怎麼用 AI 把 Excel 行程做成網頁，這篇想整理幾個後來慢慢加進去、自己也很喜歡的功能。</p>
+<p>有興趣的人可以先用上一篇的方法做出第一版網頁，再把下面的提示詞一次一個貼給 AI。</p>
+<h2><span class="no">01</span>地圖跟著行程走</h2>
+<p>一開始只是覺得手繪地圖很好看，再加上一個會跟著行程時間移動的小頭像，讓網站多一點互動感。</p>
+<p>至於實際出去玩時好不好用，就等旅行結束後再來分享！</p>
+<figure class="pj-fig"><img src="note-prompts-a2-map.webp" alt="功能概念示意圖卡：地圖上的小頭像依照行程時間移動。左側時間軸標出已過時段、目前預計和尚未開始的站點；依行程時間推算，不是 GPS 即時定位。" width="1080" height="1350" loading="lazy" decoding="async"></figure>
+<div class="prompt" data-no="01"><p class="prompt-ttl">地圖跟著行程走</p><div class="prompt-body"><p data-plain="1">請在現在的行程網頁加上一張地圖：</p><p data-plain="1">1. 用 SVG 畫一張簡化的手繪風地圖，把當天每個站點依大概的相對位置標上去，不需要精準比例。
+2. 站點之間用路線連起來：預計已經過的路段畫實線，還沒走的畫虛線。
+3. 放一個小頭像當作「我」，依照行程表的時間，停在「現在預計所在」的站點。
+4. 時間用旅遊當地的時區計算，不受手機目前設定的時區影響。
+5. 加一個時間滑桿，出發前可以拖動時間，預覽頭像會在哪裡。
+6. 點地圖上的站點，下方就顯示那一站的行程。</p><p data-plain="1">注意：頭像是照行程時間移動，不需要 GPS 定位。</p><p data-plain="1">其他功能和版面先不要動，改好後告訴我你改了哪些地方。</p></div></div>
+<h2><span class="no">02</span>行程延誤，一鍵往後推</h2>
+<p>出去玩不一定會完全照著原本的行程走，所以想做一個可以快速調整時間的功能。</p>
+<p>在 Threads 分享時，也有網友建議可以把已經預訂好的車票或餐廳鎖定，只調整其他行程。覺得這個想法很好，也先把它加進下面的提示詞裡，之後再來測試！</p>
+<figure class="pj-fig"><img src="note-prompts-a4-delay.webp" alt="功能概念示意圖卡：原訂行程和從咖啡廳起延誤 30 分鐘的對照。咖啡廳和午餐各延後 30 分，13:30 的固定班次巴士不順延。" width="1080" height="1350" loading="lazy" decoding="async"></figure>
+<div class="prompt" data-no="02"><p class="prompt-ttl">行程延誤與固定行程鎖定</p><div class="prompt-body"><p data-plain="1">請在行程時間軸加上「延誤順延」及「固定行程鎖定」功能：</p><p data-plain="1">1. 每個可調整的行程旁邊加上「延誤 15 分」「延誤 30 分」兩個按鈕，可以重複按，也要有「恢復原訂」的功能。
+2. 每個行程都可以設定為「固定」或「可調整」，並用鎖頭圖示區分。
+3. 按下延誤按鈕後，將這一站及後續受影響的可調整行程往後推。
+4. 已鎖定的行程（例如車票、餐廳訂位、預約時段）維持原訂時間。
+5. 如果調整後的停留時間或交通時間會影響固定行程，請顯示時間衝突提醒。
+6. 固定行程之後的其他行程，依照停留及交通時間重新計算，有需要才順延，不要一律累加延誤時間。
+7. 不要自動取消行程、縮短停留時間或修改固定行程，讓我自己決定如何調整。
+8. 順延過的時間用不同顏色標示，並顯示實際增加的分鐘數，例如「+30 分」。
+9. 如果網站已經有地圖或出發倒數功能，相關時間也要一起更新。
+10. 將調整結果及鎖定狀態存在瀏覽器裡，重新整理後不會消失。恢復原訂時保留鎖定設定。</p><p data-plain="1">其他功能和版面先不要動，改好後告訴我你改了哪些地方，並提供幾個測試情境。</p></div></div>
+<h2><span class="no">03</span>還剩多少時間可以出發？</h2>
+<p>如果下一個行程是已經預訂好的，就會希望自己不要錯過時間。</p>
+<p>所以在首頁加了一張卡片，直接顯示最晚幾點要出發、還剩幾分鐘，不用每次都自己算時間。</p>
+<figure class="pj-fig"><img src="note-prompts-a3-whereami.webp" alt="功能概念示意圖卡：「行程進度」卡片顯示目前預計所在的站點、預計 13:30 出發、最晚 13:40 出發和剩餘 20 分鐘，以及前往下一站的導航按鈕。" width="1080" height="1350" loading="lazy" decoding="async"></figure>
+<div class="prompt" data-no="03"><p class="prompt-ttl">最晚出發時間與倒數提醒</p><div class="prompt-body"><p data-plain="1">請在首頁最上方加一張「行程進度」卡片：</p><p data-plain="1">1. 依照旅遊當地的現在時間，顯示「目前預計所在的站點」和「下一站」。
+2. 顯示「最晚幾點要出發・還剩幾分鐘」。
+3. 最晚出發時間＝下一站的開始時間－到下一站的移動時間。
+4. 剩不到 10 分鐘時，卡片換成提醒的顏色；超過最晚出發時間時，顯示提醒。
+5. 下一站旁邊放一個「導航」按鈕，點了會開 Google 地圖導航到那裡。
+6. 如果有用延誤順延，這張卡片的時間也要跟著更新。
+7. 還沒出發或旅程結束時，卡片改成顯示第一站或「歡迎回家」。</p><p data-plain="1">我會在每一站的資料裡加上「到下一站要幾分鐘」。</p><p data-plain="1">其他功能和版面先不要動，改好後告訴我你改了哪些地方。</p></div></div>
+<h2><span class="no">04</span>小提醒</h2>
+<div class="aside"><ul><li>提示詞可以依照自己的網站版面及使用習慣調整。</li><li>建議一次只加一個功能，改好後先測試。</li><li>記得保留修改前的檔案，改壞了還可以回到原本的版本。</li><li>地圖位置及出發倒數都是依照行程資料計算的，不代表實際位置或即時交通狀況。</li></ul></div>
+<p>還有一些自己很喜歡的功能，之後再慢慢整理給大家！</p>
+</template>
 <template id="body-note-travel-site-steps">
 <p>我自己在規劃旅行時，習慣用 Excel 整理行程，但真的出去玩時，用手機打開 Excel 看行程，其實有點麻煩。</p>
 <p>剛好在 Threads 上看到很多網友分享自己製作旅遊網站的過程，就想說自己也來試試看，除了讓行程更方便閱讀，也想看看能不能透過 AI 做出一些像 App 一樣方便的功能。</p>
@@ -1850,6 +1896,20 @@ tagLeaves(document.getElementById("v-newsletter"),"newsletter");
 
 var CONTENT = [
   {
+    slug: "note-travel-site-prompts",
+    type: "note",
+    layout: "note",
+    cat: "方法筆記",
+    title: "我的旅遊網站：三個功能與 AI 提示詞",
+    summary: "整理三個自己很喜歡的旅遊網站功能，以及可以直接複製使用的 AI 提示詞。",
+    tags: ["旅行", "AI 應用", "工具"],
+    status: "public",
+    featured: false,
+    created: "2026-11-26",
+    updated: "2026-11-26",
+    related: ["note-travel-site-steps"]
+  },
+  {
     slug: "note-travel-site-steps",
     type: "note",
     layout: "note",
@@ -1860,7 +1920,8 @@ var CONTENT = [
     status: "public",
     featured: false,
     created: "2026-11-26",
-    updated: "2026-11-26"
+    updated: "2026-11-26",
+    related: ["note-travel-site-prompts"]
   },
   {
     slug: "case-gender-equality-hub",
