@@ -704,6 +704,81 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 .pc-go{white-space:nowrap;color:var(--c-ink);font-weight:500}
 @media (max-width:720px){.pcard > :not(.pc-art){margin-left:var(--space-3);margin-right:var(--space-3)}}
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
+
+/* ── 筆記內頁（layout: "note"），只作用在 .nt：短文、散文式閱讀版面 ── */
+.nt{max-width:640px}
+.nt .nt-head{display:flex;flex-direction:column;gap:var(--space-4);margin-top:var(--space-4);padding-bottom:var(--space-5);margin-bottom:var(--space-5);border-bottom:var(--hairline) solid var(--ink)}
+.nt .nt-head h1{font-size:clamp(26px,3.8vw,34px);line-height:1.5;letter-spacing:.04em;font-weight:600}
+.nt .nt-head h1 .t-main{display:block}
+.nt .nt-head h1 .t-sub{display:block;font-weight:500}
+.nt-dek{font-family:var(--font-serif);font-size:18px;line-height:34px;color:var(--ink-muted)}
+.nt-body{display:flex;flex-direction:column;gap:20px;font-family:var(--font-serif);font-size:17px;line-height:2;letter-spacing:.03em}
+.nt-body h2{font-size:21px;line-height:34px;margin-top:var(--space-5);padding-top:var(--space-3);border-top:var(--hairline) solid var(--line)}
+.nt-body h2 .no{display:block;font-family:var(--font-sans);font-size:12px;line-height:18px;font-weight:500;letter-spacing:.16em;color:var(--ink-muted);margin-bottom:4px}
+.nt-body ol.nt-steps{list-style:none;margin:0;padding:0;counter-reset:st;display:flex;flex-direction:column}
+.nt-body ol.nt-steps > li{counter-increment:st;display:grid;grid-template-columns:48px 1fr;gap:var(--space-3);padding:var(--space-3) 0;border-top:var(--hairline) solid var(--line)}
+.nt-body ol.nt-steps > li:last-child{border-bottom:var(--hairline) solid var(--line)}
+.nt-body ol.nt-steps > li::before{content:counter(st,decimal-leading-zero);font-family:var(--font-sans);font-size:22px;line-height:34px;font-weight:300;color:var(--sage-ink);font-variant-numeric:tabular-nums}
+.nt-body ol.nt-steps b{display:block;font-size:17px;line-height:30px;font-weight:600;color:var(--ink)}
+.nt-body ul{margin:0;padding-left:1.2em}
+.nt-body .pull{margin:var(--space-3) 0}
+.nt-body .aside{background:var(--paper-raised);border:var(--hairline) solid var(--line);border-left:3px solid var(--flax);padding:var(--space-3) var(--space-4);font-family:var(--font-sans);font-size:15px;line-height:28px}
+.nt-body .aside .label{display:block;margin-bottom:4px}
+.nt-end{margin-top:var(--space-6);display:flex;align-items:center;gap:var(--space-3);font-size:12px;letter-spacing:.16em;color:var(--ink-muted)}
+.nt-end::before,.nt-end::after{content:"";flex:1;border-top:var(--hairline) solid var(--line)}
+@media (max-width:720px){
+  .nt-dek{font-size:16px;line-height:30px}
+  .nt-body{font-size:16px;line-height:1.95}
+  .nt-body h2{font-size:19px;line-height:30px}
+  .nt-body ol.nt-steps > li{grid-template-columns:36px 1fr;gap:var(--space-2)}
+  .nt-body ol.nt-steps > li::before{font-size:18px}
+}
+
+/* 作品列表卡片（只作用在 #list-cards.wcards）：沿用專案卡片元件，圖解改為「成果形式示意」 */
+.wcards .c-sage{--c:var(--sage);--c-soft:var(--sage-soft);--c-ink:var(--sage-ink)}
+.wcards .c-mist{--c:var(--mist);--c-soft:var(--mist-soft);--c-ink:var(--mist-ink)}
+.wcards .c-flax{--c:var(--flax);--c-soft:var(--flax-soft);--c-ink:var(--flax-ink)}
+.wcards .c-brown{--c:#B5A48E;--c-soft:#EFE7DC;--c-ink:#6B5B49}
+.wcards .c-gray{--c:var(--line-strong);--c-soft:var(--paper-deep);--c-ink:var(--ink-muted)}
+.wcard .pc-art{background-image:radial-gradient(var(--line) .8px,transparent .8px);background-size:12px 12px}
+.pc-art .w-obj{fill:var(--paper-raised);stroke:var(--line-strong);stroke-width:1}
+.pc-art .w-bar{fill:var(--c-soft);stroke:none}
+.pc-art .w-ink{fill:none;stroke:var(--c-ink);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.pc-art .w-rule{fill:none;stroke:var(--line);stroke-width:1;stroke-linecap:round}
+.pc-art .w-box{fill:var(--paper-raised);stroke:var(--c-ink);stroke-width:1}
+.pc-art .w-on{fill:var(--c);stroke:var(--c-ink);stroke-width:1}
+.pc-art .w-dot{fill:var(--line-strong)}
+.pc-art .w-s{font-size:9.5px;fill:var(--ink-muted)}
+.pc-art .w-l{font-size:10px;text-anchor:start;fill:var(--c-ink);font-weight:500;letter-spacing:.06em}
+.pc-art .w-ttl{font-family:var(--font-serif);font-weight:600;font-size:11px;fill:var(--ink)}
+.list-empty{grid-column:1/-1}
+.wcard .pc-k i{white-space:nowrap}
+/* 相關內容：分類標籤不換行、不被壓縮，標題自然換行 */
+.related a .chip{flex-shrink:0;white-space:nowrap}
+.related a > span:nth-child(2){min-width:0;word-break:keep-all;overflow-wrap:anywhere}
+.related a .ph{display:inline-block;max-width:100%}
+
+/* 筆記：Prompt Block（提示詞區塊，共用元件；只出現在 .nt-body 內） */
+.nt-body .prompt{background:var(--paper-raised);border:var(--hairline) solid var(--line-strong);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4) var(--space-4);margin:var(--space-2) 0}
+.prompt-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--space-2) var(--space-3);padding-bottom:var(--space-3);margin-bottom:var(--space-3);border-bottom:var(--hairline) solid var(--line)}
+.prompt-id{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 12em}
+.prompt-id .label{font-family:var(--font-sans);font-size:11px;line-height:16px;letter-spacing:.18em;color:var(--sage-ink);font-weight:500}
+.nt-body .prompt-ttl{font-family:var(--font-sans);font-size:15px;line-height:24px;font-weight:600;color:var(--ink);letter-spacing:.04em}
+.prompt-copy{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;margin:-6px -4px -6px 0;background:transparent;border:var(--hairline) solid var(--line-strong);border-radius:var(--radius-md);font:500 13px/1 var(--font-sans);letter-spacing:.06em;color:var(--ink);cursor:pointer;flex:0 0 auto}
+.prompt-copy:hover{background:var(--paper-deep)}
+.prompt-copy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.prompt-copy.is-done{color:var(--sage-ink);border-color:var(--sage)}
+.prompt-body{display:flex;flex-direction:column;gap:14px}
+.nt-body .prompt-body p{white-space:pre-wrap;overflow-wrap:anywhere}
+.prompt-msg{font-family:var(--font-sans);font-size:13px;line-height:22px;color:var(--ink-muted);margin-top:var(--space-2)}
+.prompt-msg:empty{display:none}
+.pr-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@media (max-width:720px){ .nt-body .prompt{padding:var(--space-3)} .prompt-copy{margin:0} }
+
+.nt-body .aside p + p{margin-top:10px}
+.nt-ref{margin-top:var(--space-4);padding-top:var(--space-3);border-top:var(--hairline) solid var(--line);font-family:var(--font-sans);font-size:14px;line-height:24px}
+.nt-ref .label{margin-bottom:4px}
+.nt-ref a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-strong);overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -932,6 +1007,49 @@ footer{background:var(--paper-deep);margin-top:var(--space-6)}
 </div>
 
 <!-- Item bodies: one <template> per public item, keyed by slug -->
+<template id="body-note-travel-site-steps">
+<p>我自己在規劃旅行時，習慣用 Excel 整理行程，但真的出去玩時，用手機打開 Excel 看行程，其實有點麻煩。</p>
+<p>剛好在 Threads 上看到很多網友分享自己製作旅遊網站的過程，就想說自己也來試試看，除了讓行程更方便閱讀，也想看看能不能透過 AI 做出一些像 App 一樣方便的功能。</p>
+<p>網站的原始版面提示詞是參考 Threads 網友 @madori452 的分享，再自己跟 AI 一步步討論、修改出來的。真的很感謝網友們願意分享，整個版面變得很好看！</p>
+<p>簡單分享一下我的做法。</p>
+<h2><span class="no">01</span>先把行程排好</h2>
+<p>我自己還是習慣先用 Excel 排行程。</p>
+<p>寫清楚旅遊的國家、城市和每天的日期，再列出每一站的資訊：</p>
+<ul>
+<li>時間</li>
+<li>地點</li>
+<li>交通方式</li>
+<li>要注意的事</li>
+</ul>
+<p>地點最好寫 Google Maps 搜尋得到的原文名稱，之後要加地圖或導航功能也會比較方便。</p>
+<p>不一定要用 Excel，自己平常習慣的工具就好。</p>
+<h2><span class="no">02</span>請 AI 做出第一版</h2>
+<p>我當時是直接把 Excel 檔案丟給 Claude，再貼上網友分享的提示詞，請它幫我做成網頁。</p>
+<p>如果不知道怎麼開始，可以先試試看下面這段提示詞。</p>
+<div class="prompt" data-no="01"><p class="prompt-ttl">基礎版提示詞</p><div class="prompt-body"><p data-plain="1">我要一個人出國，想做一個用手機看的行程網頁。</p><p data-plain="1">請做成一個 HTML 檔：一天一頁、用時間軸呈現、字要大，每個地點可以一鍵開 Google 地圖。</p><p data-plain="1">先做這些就好，我用過再告訴你要加什麼。</p></div></div>
+<p>再把自己的行程貼上去，或直接上傳檔案。</p>
+<p>字體、顏色或版面都可以再依照個人喜好去調整。</p>
+<h2><span class="no">03</span>放到手機上試用</h2>
+<p>一開始我是直接用 Claude 的預覽功能看網頁。</p>
+<p>後來想讓沒有使用 Claude 的朋友也能打開，就請 Claude 教我怎麼把它變成一個可以直接用網址開啟的網站，才知道原來可以用 GitHub Pages。</p>
+<p>我也是一邊問 AI，一邊學怎麼操作的。</p>
+<p>有了網頁之後，就可以用手機實際滑滑看，有沒有哪裡不順手、字太小，或是想要看的資訊不夠清楚。</p>
+<p>GitHub Pages 的操作方式之後會再另外整理一篇。</p>
+<h2><span class="no">04</span>一次只加一個功能</h2>
+<p>其實我一開始也沒有想好要做哪些功能，很多都是做到一半才想到的。</p>
+<p>我平常使用 AI 時，會請它在每次回答後提供三個可以繼續討論的問題，有不少功能就是從這些問題延伸出來的。</p>
+<p>有時候也會直接問它：</p>
+<div class="pull"><p>「如果這是一個旅行時要用的網站，你覺得還可以加哪些方便的功能？」</p></div>
+<p>或是自己想像一下出去玩時可能會遇到的狀況，有時滑到其他網友的分享，也會想請 AI 幫我加進去試試看。</p>
+<p>像是我想到如果在某個景點待得比預期久，就可以跟 AI 說：</p>
+<div class="pull"><p>「我想要有一個延誤功能，按下去之後，後面的行程可以一起往後推。」</p></div>
+<p>建議一次先加一個功能，改好、測試沒問題之後，再繼續加下一個。</p>
+<h2><span class="no">05</span>小提醒</h2>
+<div class="aside"><p>如果網頁要放到網路上，記得不要放訂位代號、航班編號、住宿資訊或尚未出發的詳細行程。</p><p>像 GitHub Pages 這類公開網站，即使沒有主動分享網址，也不代表只有自己看得到。</p><p>如果只是想分享網站的功能，也可以另外做一份示範用的行程。記得連原始檔案裡的私人資料也要移除，不是只把畫面上的文字藏起來就好。</p></div>
+<p>之後會再整理幾個自己很喜歡的功能和相關提示詞，也會分享怎麼把 AI 做出來的網頁放到網路上。</p>
+<p>有興趣的人也可以自己試試看！</p>
+<div class="nt-ref"><p class="label">參考來源</p><p><a href="https://www.threads.com/share/BAbvf_ideQ" target="_blank" rel="noopener">Threads @madori452｜原始版面提示詞分享</a></p></div>
+</template>
 <template id="body-case-gender-equality-hub">
   <div class="sec"><p class="label chap"><span class="no">01</span><span class="en">WHY</span><span class="zh">為什麼想做這個？</span></p><div>
     <h2>為什麼要做這個網站</h2>
@@ -1718,7 +1836,7 @@ function tagLeaves(root, prefix){
     if(el.parentElement && el.parentElement!==root && isLeaf(el.parentElement)) return;
     var k=prefix+":"+(n++);
     el.setAttribute("data-ek",k);
-    var v=editVal(k); if(v!==null && typeof v==="string") el.innerHTML=v;
+    var v=editVal(k); if(v!==null && typeof v==="string"){ if(el.hasAttribute("data-plain")) el.textContent=v; else el.innerHTML=v; } /* data-plain（例如提示詞正文）一律當純文字放回 */
     applyStyle(el,k); applyHide(el,k);
     if(EDITING) makeEditable(el);
     if(el.tagName==="P") renderAfter(el,k);
@@ -1732,8 +1850,22 @@ tagLeaves(document.getElementById("v-newsletter"),"newsletter");
 
 var CONTENT = [
   {
+    slug: "note-travel-site-steps",
+    type: "note",
+    layout: "note",
+    cat: "方法筆記",
+    title: "從 Excel 到旅遊網站：我是怎麼開始的？",
+    summary: "最近用 AI 把原本的 Excel 旅遊行程做成了一個適合手機使用的網站，簡單整理一下自己的做法和提示詞，分享給也想試試看的人。",
+    tags: ["旅行", "AI 應用", "工具"],
+    status: "public",
+    featured: false,
+    created: "2026-11-26",
+    updated: "2026-11-26"
+  },
+  {
     slug: "case-gender-equality-hub",
     type: "work",
+    card: {en: "WEBSITE", tone: "c-brown", art: {kind: "browser", title: "性平教育資源網站", tiles: ["關於性平", "課程架構", "議題內涵", "參考教材", "宣導資源", "教案網站", "家長專區", "學生影片專區"]}},
     layout: "editorial",
     cat: "工具與系統",
     title: "性平教育資源網站：讓全校老師找得到宣導資料",
@@ -1750,6 +1882,7 @@ var CONTENT = [
   {
     slug: "case-learning-support",
     type: "work",
+    card: {en: "PLAN + WEBSITE", tone: "c-sage", art: {kind: "plan", steps: ["現況分析", "年度目標", "重點工作", "預期效益"], site: "授課教師網站", groups: ["年度規劃與執行", "數據與追蹤", "教學資源"]}},
     layout: "editorial",
     cat: "工具與系統",
     title: "學習扶助方案改版：從數據重新整理一份工作計畫",
@@ -1804,6 +1937,7 @@ var CONTENT = [
   {
     slug: "case-sel-earthquake",
     type: "work",
+    card: {en: "LESSON DESIGN", tone: "c-sage", art: {kind: "gauge", title: "心靈震度", max: 7, checks: ["心跳加快", "手心出汗", "肌肉緊繃"]}},
     layout: "editorial",
     related: ["project-sel"],
     cat: "教學設計",
@@ -1821,6 +1955,7 @@ var CONTENT = [
   {
     slug: "case-midterm-reflection",
     type: "work",
+    card: {en: "WORKSHEET", tone: "c-flax", art: {kind: "sheet", left: "考前", right: "考後", foot: "成長承諾"}},
     layout: "editorial",
     related: ["project-sel"],
     cat: "教學設計",
@@ -1856,6 +1991,7 @@ var CONTENT = [
   {
     slug: "case-circuit",
     type: "work",
+    card: {en: "TEACHING MATERIALS", tone: "c-mist", art: {kind: "circuit", battery: "電池", sw: "開關", bulb: "燈泡", note: "通路"}},
     layout: "editorial",
     related: ["project-australia-ai-lab"],
     cat: "教學設計",
@@ -1892,7 +2028,7 @@ var CONTENT = [
 
 var TYPES = {
   letter:  {name: "電子報", cls: "t-letter", view: "newsletter", desc: "每兩週一封的生活實驗筆記。"},
-  work:    {name: "作品", cls: "t-work",    view: "works",    desc: "這裡整理一些我實際做過的教材、工具與其他創作。除了完成的成果，也記錄當時遇到的問題、設計時的想法，以及實際使用後的發現。"},
+  work:    {name: "作品", cls: "t-work",    view: "works",    en: "WORKS — THINGS I'VE MADE", unit: "WORKS", desc: "把生活與工作中的問題，轉化成具體的工具與設計。這裡收錄實際做出來的成果，以及背後的思考。"},
   project: {name: "專案", cls: "t-project", view: "projects", en: "PROJECTS — ONGOING EXPERIMENTS", unit: "PROJECTS", desc: "把生活裡的問題，變成一個個可以實踐的計畫。\n記錄從問題、設計到實踐的過程，以及那些還在持續調整的方法。"},
   note:    {name: "筆記", cls: "t-note",    view: "notes",    desc: "學習紀錄、讀書心得，還有生活裡的一些想法。"},
   asset:   {name: "素材", cls: "t-asset",   view: null,       desc: ""}
@@ -1977,6 +2113,113 @@ function pcard(c){
     '<h3>' + title + '</h3><p>' + esc(c.summary) + '</p>' +
     '<div class="foot"><span>' + c.tags.slice(0,2).map(esc).join("・") + '</span><span class="pc-go">閱讀專案 <span class="arrow" aria-hidden="true">→</span></span></div></a>';
 }
+/* 作品列表：成果形式示意（選用欄位 card.art；只是形式示意，不是實際畫面或數據） */
+ART.sheet = function(a){ /* 學習單：考前勾選、考後書寫 */
+  var s = '<svg viewBox="0 0 320 140" aria-hidden="true"><rect class="w-obj" x="84" y="9" width="152" height="123" rx="2"/><path class="w-bar" d="M84 9h152v14H84z"/><path class="w-ink" d="M96 16h46"/>';
+  s += '<text class="w-l" x="96" y="38">' + esc(a.left||"") + '</text><text class="w-l" x="164" y="38">' + esc(a.right||"") + '</text><path class="w-rule" d="M160 30v68"/>';
+  [48,62,76,90].forEach(function(y,i){ s += '<rect class="' + (i<2?'w-on':'w-box') + '" x="96" y="' + (y-6) + '" width="7" height="7" rx="1"/><path class="w-rule" d="M108 ' + (y-2) + 'h42"/>'; });
+  [46,58,70,82,94].forEach(function(y){ s += '<path class="w-rule" d="M166 ' + y + 'h58"/>'; });
+  s += '<path class="w-rule" d="M96 104h128"/><text class="w-l" x="96" y="120">' + esc(a.foot||"") + '</text><path class="w-ink" d="M150 121h74" stroke-dasharray="2 3"/></svg>';
+  return s;
+};
+ART.browser = function(a){ /* 網站：瀏覽器外框＋分區 */
+  var s = '<svg viewBox="0 0 320 140" aria-hidden="true"><rect class="w-obj" x="30" y="8" width="260" height="125" rx="4"/><path class="w-bar" d="M30 12a4 4 0 0 1 4-4h252a4 4 0 0 1 4 4v10H30z"/>';
+  s += '<circle class="w-dot" cx="40" cy="15" r="2"/><circle class="w-dot" cx="47" cy="15" r="2"/><circle class="w-dot" cx="54" cy="15" r="2"/><rect class="w-box" x="70" y="11" width="180" height="8" rx="4" style="stroke:var(--line)"/>';
+  s += '<text class="w-ttl" x="160" y="40">' + esc(a.title||"") + '</text>';
+  (a.tiles||[]).forEach(function(t,i){ var c=i%4, r=Math.floor(i/4), x=40+c*61, y=50+r*38; s += '<rect class="a-node" x="'+x+'" y="'+y+'" width="58" height="32" rx="2"/><text class="w-s" x="'+(x+29)+'" y="'+(y+19.5)+'" style="fill:var(--ink);font-size:'+(t.length>5?8.5:9.5)+'px">'+esc(t)+'</text>'; });
+  return s + '</svg>';
+};
+ART.gauge = function(a){ /* 教學工具：0～max 級的刻度＋身體訊號勾選 */
+  var n=(a.max||7)+1, s = '<svg viewBox="0 0 320 140" aria-hidden="true"><rect class="w-obj" x="24" y="9" width="272" height="123" rx="2"/>';
+  s += '<text class="w-l" x="40" y="30">' + esc(a.title||"") + '</text><text class="w-s" x="280" y="30" style="text-anchor:end">0～' + (n-1) + '</text>';
+  for(var i=0;i<n;i++){ var x=40+i*31, h=8+i*5.4; s += '<rect class="' + (i===4?'w-on':'w-box') + '" x="'+x+'" y="'+(86-h)+'" width="22" height="'+h+'" rx="1"/><text class="w-s" x="'+(x+11)+'" y="98">'+i+'</text>'; }
+  s += '<path class="w-rule" d="M40 106h240"/>';
+  (a.checks||[]).forEach(function(t,i){ var x=40+i*84; s += '<rect class="w-box" x="'+x+'" y="113" width="8" height="8" rx="1"/><text class="w-s" x="'+(x+13)+'" y="121" style="text-anchor:start;fill:var(--ink)">'+esc(t)+'</text>'; });
+  return s + '</svg>';
+};
+ART.circuit = function(a){ /* 教材：電池、開關、燈泡串成一個完整的通路 */
+  var s = '<svg viewBox="0 0 320 140" aria-hidden="true"><rect class="w-obj" x="40" y="9" width="240" height="123" rx="2"/>';
+  /* 導線：左邊電池、上方開關（閉合）、右邊燈泡，形成封閉迴路 */
+  s += '<path class="w-ink" d="M100 64V32H144M176 32H220V58M220 82V112H100V76"/>';
+  s += '<path class="w-ink" d="M88 64h24M94 76h12" style="stroke-width:1.6"/><text class="w-s" x="84" y="62" style="text-anchor:end">+</text>';
+  s += '<circle class="w-box" cx="144" cy="32" r="2.5"/><circle class="w-box" cx="176" cy="32" r="2.5"/><path class="w-ink" d="M146 31.5L174 31"/>';
+  s += '<circle class="w-on" cx="220" cy="70" r="12" style="fill:var(--c-soft)"/><path class="w-ink" d="M211.5 61.5l17 17M228.5 61.5l-17 17"/>';
+  s += '<text class="w-l" x="58" y="74">' + esc(a.battery||"") + '</text><text class="w-s" x="160" y="23" style="fill:var(--c-ink)">' + esc(a.sw||"") + '</text><text class="w-l" x="240" y="74">' + esc(a.bulb||"") + '</text>';
+  s += '<text class="w-s" x="160" y="125">' + esc(a.note||"") + '</text></svg>';
+  return s;
+};
+ART.plan = function(a){ /* 計畫＋網站：四個階段循環，下面接給老師用的網站 */
+  var st=a.steps||[], w=64, g=12, s = '<svg viewBox="0 0 320 140" aria-hidden="true">';
+  st.forEach(function(t,i){ var x=14+i*(w+g); s += '<rect class="'+(i===0?'a-core':'a-node')+'" x="'+x+'" y="12" width="'+w+'" height="28" rx="3"/><text class="a-t a-tb" x="'+(x+w/2)+'" y="30">'+esc(t)+'</text>'; if(i<st.length-1) s += '<path class="a-arw" d="M'+(x+w+2)+' 26h8m-3-3 3 3-3 3"/>'; });
+  var last=14+(st.length-1)*(w+g)+w/2;
+  s += '<path class="a-dash" d="M'+last+' 40V50H46V40"/><path class="a-arw" d="M43 43l3-3 3 3"/>';
+  s += '<rect class="w-obj" x="14" y="62" width="292" height="66" rx="3"/><path class="w-bar" d="M14 65a3 3 0 0 1 3-3h286a3 3 0 0 1 3 3v9H14z"/><text class="w-l" x="24" y="88">' + esc(a.site||"") + '</text>';
+  (a.groups||[]).forEach(function(t,i){ var x=24+i*94; s += '<rect class="a-chip" x="'+x+'" y="98" width="86" height="20" rx="10"/><text class="w-s" x="'+(x+43)+'" y="111.5" style="fill:var(--ink)">'+esc(t)+'</text>'; });
+  return s + '</svg>';
+};
+function wcard(c){
+  var k = c.card || {};
+  return '<a class="card pcard wcard ' + esc(k.tone || "c-gray") + '" href="#' + esc(c.slug) + '">' +
+    '<div class="pc-art">' + cardArt(c) + '</div>' +
+    '<p class="pc-k"><span>' + esc(k.en || "WORK") + (c.cat ? '<i> ─ ' + esc(c.cat) + '</i>' : '') + '</span></p>' +
+    '<h3>' + phrase(c.title) + '</h3><p>' + esc(c.summary) + '</p>' +
+    '<div class="foot"><span>' + c.tags.slice(0,2).map(esc).join("・") + '</span><span class="pc-go">閱讀作品 <span class="arrow" aria-hidden="true">→</span></span></div></a>';
+}
+/* Prompt Block：在線上編輯標記完成後才加上標頭與按鈕，按鈕不會被當成可編輯文字 */
+var ICON_COPY='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 3v5A1.5 1.5 0 0 0 4 9.5h.5"/></svg>';
+var ICON_DONE='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+function promptText(body){
+  /* 每段一個空行；段內換行保留原樣。每次點擊都讀取當下的文字（含線上編輯後的內容） */
+  return Array.prototype.map.call(body.querySelectorAll("p"), function(p){ return p.textContent.replace(/^\s+|\s+$/g, ""); })
+    .filter(function(s){ return s; }).join("\n\n");
+}
+function copyFallback(text){
+  var ta=document.createElement("textarea"); ta.value=text; ta.setAttribute("readonly","");
+  ta.style.position="fixed"; ta.style.top="-1000px"; document.body.appendChild(ta); ta.select();
+  var ok=false; try{ ok=document.execCommand("copy"); }catch(e){ ok=false; }
+  document.body.removeChild(ta); return ok;
+}
+function setupPrompts(root){
+  Array.prototype.forEach.call(root.querySelectorAll(".prompt"), function(box, i){
+    if(box.querySelector(".prompt-head")) return;
+    var body=box.querySelector(".prompt-body"), ttl=box.querySelector(".prompt-ttl"); if(!body) return;
+    /* 正文一律以純文字呈現：線上編輯存下的內容用 textContent 放回，不執行 HTML */
+    Array.prototype.forEach.call(body.querySelectorAll("p[data-plain]"), function(p){
+      var k=p.getAttribute("data-ek"), v=k ? editVal(k) : null; if(typeof v==="string") p.textContent=v;
+    });
+    var no=box.getAttribute("data-no"), id="prompt-"+(i+1);
+    body.id=id+"-body";
+    var head=document.createElement("div"); head.className="prompt-head";
+    var idb=document.createElement("div"); idb.className="prompt-id";
+    var lab=document.createElement("span"); lab.className="label"; lab.textContent="PROMPT"+(no ? " "+no : ""); idb.appendChild(lab);
+    if(ttl) idb.appendChild(ttl);
+    var btn=document.createElement("button"); btn.type="button"; btn.className="prompt-copy";
+    btn.setAttribute("aria-describedby", id+"-msg");
+    btn.setAttribute("aria-label", "複製提示詞" + (ttl ? "：" + ttl.textContent.trim() : ""));
+    btn.innerHTML=ICON_COPY+'<span>複製提示詞</span>';
+    head.appendChild(idb); head.appendChild(btn); box.insertBefore(head, box.firstChild);
+    var sr=document.createElement("span"); sr.className="pr-sr"; sr.setAttribute("role","status"); sr.id=id+"-msg"; box.appendChild(sr);
+    var msg=document.createElement("p"); msg.className="prompt-msg"; box.appendChild(msg);
+    var timer=null;
+    function done(ok){
+      clearTimeout(timer);
+      if(ok){
+        btn.classList.add("is-done"); btn.innerHTML=ICON_DONE+'<span>已複製</span>'; sr.textContent="已複製提示詞"; msg.textContent="";
+        timer=setTimeout(function(){ btn.classList.remove("is-done"); btn.innerHTML=ICON_COPY+'<span>複製提示詞</span>'; sr.textContent=""; }, 2000);
+      } else {
+        sr.textContent="無法自動複製，已選取提示詞，請手動複製";
+        msg.textContent="無法自動複製。提示詞已經幫你選取好了，請按 Ctrl＋C（Mac 為 ⌘＋C），手機請長按選取後複製。";
+        try{ var r=document.createRange(); r.selectNodeContents(body); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){}
+      }
+    }
+    btn.addEventListener("click", function(){
+      var text=promptText(body);
+      if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(copyFallback(text)); });
+      } else done(copyFallback(text));
+    });
+  });
+}
 function emptyBox(what){
   return '<p class="empty">目前還沒有公開的' + what + '，整理好之後會放上來。</p>';
 }
@@ -2007,7 +2250,9 @@ function renderList(typeKey, keepCat){
   fl.hidden = !fl.innerHTML;
   var lc = document.getElementById("list-cards");
   lc.classList.toggle("pcards", typeKey === "project");
-  lc.innerHTML = items.length ? items.map(function(c){ return typeKey === "project" ? pcard(c) : card(c, true); }).join("") : emptyBox(T.name);
+  lc.classList.toggle("wcards", typeKey === "work");
+  lc.innerHTML = items.length ? items.map(function(c){ return typeKey === "project" ? pcard(c) : typeKey === "work" ? wcard(c) : card(c, true); }).join("") :
+    (listCat ? '<p class="empty list-empty">「' + esc(listCat) + '」目前還沒有公開的' + T.name + '，可以先看看其他分類。</p>' : emptyBox(T.name));
 }
 document.getElementById("list-filter").addEventListener("click", function(e){
   var b = e.target.closest(".fbtn"); if(!b) return;
@@ -2059,9 +2304,19 @@ function renderItem(c){
   var main = document.getElementById("item-main");
   var PJ = c.layout === "project";
   var ED = c.layout === "editorial" || PJ;
+  var NT = c.layout === "note";
   main.classList.toggle("ed", ED);
   main.classList.toggle("pj", PJ);
-  if(ED){
+  main.classList.toggle("nt", NT);
+  if(NT){
+    var nt = esc(c.title), nk = c.title.indexOf("：");
+    if(!EDITING && nk > 0) nt = '<span class="t-main">' + esc(c.title.slice(0, nk + 1)) + '</span><span class="t-sub">' + esc(c.title.slice(nk + 1)) + '</span>';
+    main.innerHTML = '<a class="back" href="' + back + '">← 回' + T.name + '</a>' +
+      '<header class="nt-head"><div class="ed-kicker"><span>NOTE<i aria-hidden="true"></i>' + esc(c.cat || T.name) + '</span><span class="num">UPDATED ' + esc(c.updated.replace(/-/g, ".")) + '<span class="nt-rt"></span></span></div>' +
+      '<h1 data-ek="c:' + c.slug + ':title" data-plain="1">' + nt + '</h1>' +
+      '<p class="nt-dek" data-ek="c:' + c.slug + ':summary" data-plain="1">' + esc(c.summary) + '</p>' +
+      '<p class="ed-tags">' + c.tags.map(esc).join("・") + '</p></header>';
+  } else if(ED){
     var EN = {work: "WORK", project: "PROJECT", note: "NOTE", letter: "LETTER"}[c.type] || "";
     var t = esc(c.title), k = c.title.indexOf("：");
     var tk = "title";
@@ -2088,6 +2343,17 @@ function renderItem(c){
   if(tpl){ var frag=document.createElement("div"); frag.appendChild(tpl.content.cloneNode(true)); tagLeaves(frag,"t:"+c.slug); while(frag.firstChild) main.appendChild(frag.firstChild); }
   main.querySelectorAll('[data-ek]').forEach(function(el){ applyStyle(el, el.getAttribute("data-ek")); });
   if(!tpl) main.insertAdjacentHTML("beforeend", '<p class="pend">內文整理中。</p>');
+  /* 筆記頁：內文包進 .nt-body，加上閱讀時間與結尾線 */
+  if(NT){
+    var body = document.createElement("div"); body.className = "nt-body";
+    var head = main.querySelector(".nt-head");
+    while(head.nextSibling) body.appendChild(head.nextSibling);
+    main.appendChild(body);
+    var mins = Math.max(1, Math.round(body.textContent.replace(/\s/g, "").length / 450));
+    main.querySelector(".nt-rt").textContent = "・約 " + mins + " 分鐘";
+    setupPrompts(body);
+    main.insertAdjacentHTML("beforeend", '<p class="nt-end" aria-hidden="true">END</p>');
+  }
   /* 圖片：CONTENT 有 gallery 才顯示，放進 data-gallery 那一段；沒有圖片就不出現任何區塊 */
   var gs = main.querySelector('[data-gallery]');
   function fig(g){ return '<figure><img src="' + esc(g.src) + '" alt="' + esc(g.alt || "") + '" loading="lazy">' + (g.caption ? '<figcaption>' + esc(g.caption) + '</figcaption>' : '') + '</figure>'; }
@@ -2110,7 +2376,7 @@ function renderItem(c){
   }
   var rel = PJ ? [] : relDefs.map(function(r){ return PUBLIC.filter(function(x){ return x.slug === r.slug; })[0]; }).filter(Boolean);
   if(rel.length) main.insertAdjacentHTML("beforeend", '<section class="related"><p class="label">相關內容</p>' + rel.map(function(r){
-    return '<a href="#' + esc(r.slug) + '"><span class="chip ' + TYPES[r.type].cls + '">' + TYPES[r.type].name + '</span><span>' + esc(r.title) + '</span><span aria-hidden="true">→</span></a>'; }).join("") + '</section>');
+    return '<a href="#' + esc(r.slug) + '"><span class="chip ' + TYPES[r.type].cls + '">' + TYPES[r.type].name + '</span><span>' + phrase(r.title) + '</span><span aria-hidden="true">→</span></a>'; }).join("") + '</section>');
   if(EDITING) main.querySelectorAll('[data-plain]').forEach(makeEditable);
 }
 
